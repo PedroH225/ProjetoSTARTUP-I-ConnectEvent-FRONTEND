@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EventosService } from '../../../services/teste.service'; // Importa o serviço
+import { EventosService } from '../../../services/eventos.service'; // Importa o serviço
 
 @Component({
   selector: 'app-home-page',

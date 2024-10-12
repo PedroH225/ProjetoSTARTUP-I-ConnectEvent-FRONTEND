@@ -10,12 +10,10 @@ export class EventosService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para pegar todos os eventos
   getEventos(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/evento`);
   }
 
-  // Método para pegar um evento específico pelo ID
   getEventoById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/evento/${id}`);
   }

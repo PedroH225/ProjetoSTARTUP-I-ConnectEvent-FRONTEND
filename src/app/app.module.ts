@@ -6,7 +6,7 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { CardPageComponent } from './principal/card-page/card-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonTipoComponent } from './principal/home-page/filter/button-tipo/button-tipo.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +37,13 @@ import { HttpClientModule } from '@angular/common/http';
     CardComponent,
     FilterComponent,
     CardPageComponent,
+    ButtonTipoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    NgbDropdownModule,
     FormsModule,
     HttpClientModule,
   ],

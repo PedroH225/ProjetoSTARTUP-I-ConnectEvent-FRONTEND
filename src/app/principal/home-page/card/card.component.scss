@@ -13,6 +13,16 @@
   border-radius: 0.6rem;
 }
 
+.tagOverflow {
+  border: 1px solid red;
+  // width: 20rem;
+  // height: 10rem;
+
+  // text-overflow: ellipsis;
+  // white-space: nowrap;
+  // overflow: hidden;
+}
+
 .styleButtons {
   color: $cor-Texto-e-BordaBotao-card;
   border: none;

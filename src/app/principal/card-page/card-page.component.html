@@ -4,16 +4,20 @@
       <div class="divImagem">
         <img class="tagImagem" src="../../../assets/canoagem.jpg" alt="" />
       </div>
-      <div class="divDetalhesEvento">
+      <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
-          <h5>Título do Evento</h5>
-          <p>Descrição detalhada</p>
-          <p>Hora</p>
-          <p>Local</p>
+          <h5>{{ evento.titulo }}</h5>
+          <p>{{ evento.descricao }}</p>
+          <p>Data: {{ evento.data }}</p>
+          <span>Local:</span>
+          <span>• {{ evento.endereco.local }}</span>
+          <span>
+            • Cidade: {{ evento.endereco.cidade }}/{{ evento.endereco.estado }}
+          </span>
         </div>
         <div class="detalhesDireita">
           <p>Click para Link do Evento</p>
-          <p>Telefone</p>
+          <p>Telefone: {{ evento.telefone }}</p>
           <p>sei la mais oq</p>
         </div>
       </div>

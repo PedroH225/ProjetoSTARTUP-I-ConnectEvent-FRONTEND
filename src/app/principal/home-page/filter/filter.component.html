@@ -1,18 +1,61 @@
-<div ngbDropdown>
-  <button
-    type="button"
-    class="styleButtons btn btn-outline-primary"
-    id="dropdownBasic1"
-    ngbDropdownToggle
-  >
-    Tags
-  </button>
-  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-    <button ngbDropdownItem>Acadêmico</button>
-    <button ngbDropdownItem>Balada</button>
-    <button ngbDropdownItem>Gastronomia</button>
-    <button ngbDropdownItem>Shoppings</button>
-    <button ngbDropdownItem>Show</button>
-    <button ngbDropdownItem>Standup</button>
+<div class="divFiltros">
+  <div ngbDropdown>
+    <button
+      type="button"
+      class="styleButtons btn btn-outline-primary"
+      id="dropdownBasic1"
+      ngbDropdownToggle
+    >
+      Tipo de Evento
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <app-button-tipo
+        *ngFor="let tipo of tipos"
+        [tipo]="tipo.tipo"
+        [id]="tipo.id"
+      ></app-button-tipo>
+    </div>
+  </div>
+
+  <!-- <div>
+    <select
+      ngbDropdownMenu
+      aria-labelledby="dropdownBasic1"
+      class="select form-control-lg"
+    >
+      <app-button-tipo
+        *ngFor="let tipo of tipos"
+        [tipo]="tipo.tipo"
+        [id]="tipo.id"
+      ></app-button-tipo>
+    </select>
+  </div> -->
+
+  <div ngbDropdown>
+    <button
+      type="button"
+      class="styleButtons btn btn-outline-primary"
+      id="dropdownBasic1"
+      ngbDropdownToggle
+    >
+      Data de Evento
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem></button>
+    </div>
+  </div>
+
+  <div ngbDropdown>
+    <button
+      type="button"
+      class="styleButtons btn btn-outline-primary"
+      id="dropdownBasic1"
+      ngbDropdownToggle
+    >
+      Cidade
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button ngbDropdownItem></button>
+    </div>
   </div>
 </div>

@@ -27,7 +27,7 @@ const routes: Routes = [
         component: HomePageComponent,
         children: [{ path: 'card', component: CardComponent }],
       },
-      { path: 'cardPage', component: CardPageComponent },
+      { path: 'cardPage/:id', component: CardPageComponent },
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'areaUsuario', component: AreaUsuarioComponent },

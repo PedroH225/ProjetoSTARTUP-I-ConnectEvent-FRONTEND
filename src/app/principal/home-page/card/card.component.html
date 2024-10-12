@@ -1,4 +1,4 @@
-<div class="borderCard p-3 card">
+<div class="borderCard card">
   <img
     src="../../../../assets/canoagem.jpg"
     class="tagImg card-img-top"
@@ -6,12 +6,13 @@
   />
   <div class="card-body">
     <h5 class="card-title">{{ titulo }}</h5>
-    <p class="card-text">{{ descricao }}</p>
+    <p class="tagOverflow card-text">{{ descricao }}</p>
     <a
       href="#"
       class="styleButtons btn btn-primary"
-      routerLink="/principal/cardPage"
-      >Ir ao evento!</a
-    >
+      [routerLink]="['/principal/cardPage', id]"
+      id="{{ id }}"
+      >Ir ao evento!
+    </a>
   </div>
 </div>
