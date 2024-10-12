@@ -20,6 +20,8 @@ import { FilterComponent } from './principal/home-page/filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { CardPageComponent } from './principal/card-page/card-page.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,13 @@ import { CardPageComponent } from './principal/card-page/card-page.component';
     FilterComponent,
     CardPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+  ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
 })

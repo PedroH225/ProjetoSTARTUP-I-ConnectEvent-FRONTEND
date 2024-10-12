@@ -14,15 +14,10 @@
     </div>
   </nav>
 
-  <div class="divCards">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+  <div class="divCards" *ngFor="let evento of eventos">
+    <app-card
+      [titulo]="evento.titulo"
+      [descricao]="evento.descricao"
+    ></app-card>
   </div>
 </div>
