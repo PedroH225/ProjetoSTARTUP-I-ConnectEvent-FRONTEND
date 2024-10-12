@@ -4,8 +4,8 @@
       <a class="mb-2" [routerLink]="'.'" (click)="collapse.toggle()"
         ><img class="tagIcon" src="../../../assets/filtro.png" alt=""
       /></a>
-      <div class="" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
-        <div class="mb-3 gapFiltros card-body">
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="mb-3 divFiltros card-body">
           <app-filter></app-filter>
           <app-filter></app-filter>
           <app-filter></app-filter>

@@ -18,6 +18,7 @@ import { AreaEmpreendedorComponent } from './principal/area-empreendedor/area-em
 import { CardComponent } from './principal/home-page/card/card.component';
 import { FilterComponent } from './principal/home-page/filter/filter.component';
 import { FormsModule } from '@angular/forms';
+import { CardPageComponent } from './principal/card-page/card-page.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     AreaEmpreendedorComponent,
     CardComponent,
     FilterComponent,
+    CardPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, NgbModule, FormsModule],
   providers: [provideClientHydration()],
