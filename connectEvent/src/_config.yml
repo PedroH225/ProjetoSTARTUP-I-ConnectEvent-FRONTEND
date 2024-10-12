@@ -2,13 +2,13 @@
 
 title: "ConnectEvent"
 description: "Plataforma para conectar pessoas a eventos organizados por empresários."
-url: "https://seu-usuario.github.io/seu-repositorio"
+url: "https://github.com/VictorAlexandreMuller/Projeto_STARTUP-I-ConnectEvent-FRONTEND"
 source: src
 destination: _site
 baseurl: "/Projeto_STARTUP-I-ConnectEvent-FRONTEND"  # Substitua pelo nome do seu repositório
 include: 
   - assets
-permalink: pretty
+permalink: /index.html
 exclude:
   - .gitignore
   - README.md
