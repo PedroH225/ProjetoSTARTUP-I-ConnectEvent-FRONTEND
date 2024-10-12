@@ -1,0 +1,163 @@
+@import "padroes";
+
+.divMaior {
+  background-color: $background-HomePage; // #8d8d8d;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divForm {
+  padding: 3rem;
+  margin: 1rem;
+  box-shadow: $detalhe-Sombra-BordasCard;
+  width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tagIconConnectEvent {
+  height: 6rem;
+  width: 7rem;
+}
+
+.tagTitulo {
+  font-size: 40px;
+}
+
+.divForm2 {
+  width: 100%;
+  margin: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+}
+
+.divRememberMeForgotPassword {
+  width: 100%;
+}
+
+.checkboxRememberMe {
+  background-color: $background-Botao-card;
+  border: none;
+  cursor: pointer;
+
+  &:focus {
+    box-shadow: none;
+    border: none;
+  }
+
+  &:checked {
+    box-shadow: $cor-checkedBox;
+  }
+
+  &:hover {
+    background-color: $background-hover-Botao-card;
+  }
+}
+
+.tagParaClick {
+  color: $cor-Texto-Card;
+  &:hover {
+    color: $background-hover-Botao-card;
+    filter: drop-shadow($detalhe-Sombra-BordasCard);
+  }
+}
+
+.BotaoEntrar {
+  background-color: $background-Botao-card;
+  border: none;
+
+  &:hover {
+    background-color: $background-hover-Botao-card;
+  }
+
+  &:active {
+    background-color: $background-active-Botao-Card;
+  }
+}
+
+.divNotRememberOrSignUp {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.divButtonsSignUp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tagImg {
+  height: 2rem;
+  width: 2rem;
+}
+
+.tagButtons {
+  box-shadow: $detalhe-Sombra-BordasCard;
+  border-radius: 5px;
+  height: 3rem;
+  width: 7rem;
+  border: none;
+}
+
+.tagFacebook {
+  background-color: rgb(123, 179, 236);
+  &:hover {
+    background-color: rgb(138, 189, 240);
+  }
+  &:active {
+    background-color: rgb(64, 92, 120);
+  }
+}
+
+.tagSteam {
+  background-color: rgb(74, 117, 161);
+  &:hover {
+    background-color: rgb(95, 143, 191);
+  }
+  &:active {
+    background-color: rgb(47, 75, 102);
+  }
+}
+
+.tagGoogle {
+  background-color: rgb(255, 255, 255);
+  &:hover {
+    background-color: rgb(237, 237, 237);
+  }
+  &:active {
+    background-color: rgb(211, 211, 211);
+  }
+}
+
+.tagApple {
+  background-color: rgb(234, 234, 234);
+  &:hover {
+    background-color: rgb(222, 222, 222);
+  }
+  &:active {
+    background-color: rgb(213, 213, 213);
+  }
+}

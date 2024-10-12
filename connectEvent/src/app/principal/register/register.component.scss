@@ -1,0 +1,118 @@
+@import "padroes";
+
+.divExterna {
+  padding: 2rem 0rem;
+  background-color: $background-HomePage;
+}
+
+.tamanhoRegistreSe {
+  font-size: 3rem;
+}
+
+.botaoUsuario,
+.botaoAnunciante {
+  background-color: $background-Botao-card;
+  transition: background-color 0.3s ease;
+
+  input[type="radio"] {
+    // display: none;
+  }
+
+  &.active {
+    background-color: $background-active-Botao-Card;
+  }
+}
+
+.divPrincipalDosForms {
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.displaySectionForm {
+  box-shadow: $detalhe-Sombra-BordasCard;
+  border-radius: 5px;
+  padding: 1rem;
+  width: 70%;
+}
+
+.divPrincipal2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.fotoCadastro {
+  height: 35rem;
+  width: 35rem;
+  box-shadow: $detalhe-Sombra-BordasCard;
+  border-radius: 10%;
+}
+
+.divCabecalhoUsuarioOuAnunciante {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 0rem 0rem 3rem 0rem;
+}
+
+.tagIconConnectEvent {
+  height: 6rem;
+  width: 7rem;
+}
+
+.tagTitulo {
+  text-align: center;
+}
+
+.displayForm {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(to bottom right);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to bottom right);
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.tagButtonEnviar {
+  background-color: $background-Botao-card;
+  border: none;
+
+  &:hover {
+    background-color: $background-hover-Botao-card;
+  }
+
+  &:active {
+    background-color: $background-active-Botao-Card;
+  }
+}
+
+// .divTeste {
+//   width: 30rem;
+//   height: 30rem;
+// }

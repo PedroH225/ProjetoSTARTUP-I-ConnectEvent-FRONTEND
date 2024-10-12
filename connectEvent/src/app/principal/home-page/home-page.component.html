@@ -1,0 +1,28 @@
+<div class="backgroundPrincipal">
+  <nav class="divFiltrosNavBar navbar-expand-lg navbar-light">
+    <div class="divIconeEFiltros">
+      <a class="mb-2" [routerLink]="'.'" (click)="collapse.toggle()"
+        ><img class="tagIcon" src="../../../assets/filtro.png" alt=""
+      /></a>
+      <div class="" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="mb-3 gapFiltros card-body">
+          <app-filter></app-filter>
+          <app-filter></app-filter>
+          <app-filter></app-filter>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="divCards">
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card>
+  </div>
+</div>

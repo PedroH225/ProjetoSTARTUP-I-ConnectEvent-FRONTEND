@@ -1,0 +1,39 @@
+@import "padroes";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: $background-Card;
+  border-radius: 0.6rem;
+}
+
+.tagImg {
+  border-radius: 0.6rem;
+}
+
+.styleButtons {
+  color: $cor-Texto-e-BordaBotao-card;
+  border: none;
+
+  background-color: $background-Botao-card;
+
+  &:hover {
+    background-color: $background-hover-Botao-card;
+  }
+}
+
+.borderCard {
+  border: none;
+  box-shadow: $detalhe-Sombra-BordasCard;
+  width: 25rem;
+}
+
+.card-title {
+  color: $cor-Titulo-Card;
+}
+
+.card-text {
+  color: $cor-Texto-Card;
+}

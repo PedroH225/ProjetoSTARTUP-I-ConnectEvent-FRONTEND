@@ -1,0 +1,13 @@
+@import "padroes";
+
+.styleButtons {
+  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
+  border-radius: 1rem;
+  color: $cor-Texto-e-BordaBotao-NavBarFooter;
+  padding: 0.2rem;
+  width: 10rem;
+
+  &:hover {
+    background-color: $cor-Hover-Botao-NavBarFooter;
+  }
+}

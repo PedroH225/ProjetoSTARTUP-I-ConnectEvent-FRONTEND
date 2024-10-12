@@ -1,0 +1,64 @@
+@import "padroes";
+
+.zeroDisplayFooter {
+  display: flex;
+  flex-direction: row;
+  gap: 10rem;
+  background-color: $background-NavBarFooter;
+  color: $cor-Texto-e-BordaBotao-NavBarFooter;
+  border-top: 3px solid $cor-bordas-NavBarFooter;
+  box-shadow: $cor-sombra-NavBarFooter;
+}
+
+.displayFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.divCopyright {
+  background-color: $background-NavBarFooter2;
+  color: $cor-Texto-e-BordaBotao-NavBarFooter;
+  width: 100%;
+}
+
+.divCard {
+  border: 3px solid $cor-bordas-NavBarFooter;
+  box-shadow: $cor-sombra-NavBarFooter;
+  border-radius: 10px;
+  width: 20rem;
+  height: 12rem;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.tagRow {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.tagColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.tagImgM {
+  height: 3rem;
+  width: 3rem;
+}
+
+.tagImgG {
+  height: 3.5rem;
+  width: 3.5rem;
+}

@@ -1,1 +1,1 @@
-# Projeto_STARTUP-I-ConnectEvent-BACKEND
+# Projeto_STARTUP-I-ConnectEvent-FRONTEND
