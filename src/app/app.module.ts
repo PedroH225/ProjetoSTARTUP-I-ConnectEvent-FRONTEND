@@ -6,7 +6,7 @@ import {
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { PrincipalComponent } from './principal/principal.component';
@@ -43,7 +43,6 @@ import { ButtonTipoComponent } from './principal/home-page/filter/button-tipo/bu
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    NgbDropdownModule,
     FormsModule,
     HttpClientModule,
   ],
