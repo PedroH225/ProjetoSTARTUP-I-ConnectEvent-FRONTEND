@@ -21,7 +21,6 @@ import { FormsModule } from '@angular/forms';
 import { CardPageComponent } from './principal/card-page/card-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { ButtonTipoComponent } from './principal/home-page/filter/button-tipo/button-tipo.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +36,6 @@ import { ButtonTipoComponent } from './principal/home-page/filter/button-tipo/bu
     CardComponent,
     FilterComponent,
     CardPageComponent,
-    ButtonTipoComponent,
   ],
   imports: [
     BrowserModule,

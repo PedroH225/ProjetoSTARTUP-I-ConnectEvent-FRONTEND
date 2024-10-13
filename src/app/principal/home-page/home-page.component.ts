@@ -7,7 +7,11 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
-  isCollapsed = false; // NAO TIRAR ISSO DAQUI
+  isCollapsed = true; // NAO TIRAR ISSO DAQUI
+
+  toggleFiltro(): void {
+    this.isCollapsed = !this.isCollapsed; // Alterna entre colapsado e expandido
+  }
 
   eventos: any[] = []; // Variável para armazenar os eventos
 

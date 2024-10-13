@@ -1,21 +1,25 @@
 @import "padroes";
 
-.styleButtons {
-  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
-  border-radius: 1rem;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
-  padding: 0.2rem;
-  width: 10rem;
-
-  &:hover {
-    background-color: $cor-Hover-Botao-NavBarFooter;
-  }
-}
-
 .divFiltros {
+  margin-top: 1rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+}
+
+.styleButtons {
+  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
+  border-radius: 1rem;
+  color: $cor-Texto-e-BordaBotao-NavBarFooter;
+
+  padding: 0.2rem;
+  width: 10rem;
+  appearance: none; /* Remove a seta padrão no Chrome, Safari, etc. */
+
+  &:hover {
+    background-color: $cor-Hover-Botao-NavBarFooter;
+  }
 }

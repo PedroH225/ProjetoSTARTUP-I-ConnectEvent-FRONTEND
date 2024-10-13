@@ -1,26 +1,13 @@
 <div class="divFiltros">
-  <!-- Dropdown para tipo de evento -->
-  <div ngbDropdown>
-    <button
-      type="button"
-      class="styleButtons btn btn-outline-primary"
-      id="dropdownTipoEvento"
-      ngbDropdownToggle
-    >
-      Tipo de Evento
-    </button>
-    <div ngbDropdownMenu aria-labelledby="dropdownTipoEvento">
-      <app-button-tipo
-        *ngFor="let tipo of tipos"
-        [tipo]="tipo.tipo"
-        [id]="tipo.id"
-      ></app-button-tipo>
-    </div>
-  </div>
-
   <!-- Select para tipo de evento sem ngbDropdown -->
   <div>
-    <select class="select form-control-lg">
+    <select
+      class="styleButtons btn btn-outline-primary"
+      [(ngModel)]="selectedTipo"
+    >
+      <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
+      <option value="">Tipo de Evento</option>
+      <!-- Opções de tipos de eventos -->
       <option *ngFor="let tipo of tipos" [value]="tipo.id">
         {{ tipo.tipo }}
       </option>
@@ -35,25 +22,41 @@
       id="dropdownBasic1"
       ngbDropdownToggle
     >
-      Data de Evento
+      <!-- Exibe a data ou "Data de Evento" se não houver data -->
+      {{
+        selectedDate ? (selectedDate | date : "dd/MM/yyyy") : "Data de Evento"
+      }}
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem></button>
+      <input type="date" class="form-control" [(ngModel)]="selectedDate" />
     </div>
   </div>
 
   <!-- Dropdown para cidade -->
   <div ngbDropdown>
-    <button
-      type="button"
+    <select
       class="styleButtons btn btn-outline-primary"
-      id="dropdownBasic1"
-      ngbDropdownToggle
+      [(ngModel)]="selectedTipo"
     >
-      Cidade
-    </button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem></button>
+      <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
+      <option value="">Cidades</option>
+      <!-- Opções de tipos de eventos -->
+      <!-- <option *ngFor="let tipo of tipos" [value]="tipo.id">
+        {{ tipo.tipo }}
+      </option> -->
+    </select>
+  </div>
+
+  <!-- Botao aplicar -->
+  <div>
+    <div>
+      <button
+        class="styleButtons btn btn-outline-primary"
+        ngbDropdownItem
+        (click)="filtrarPorData()"
+      >
+        Aplicar
+      </button>
     </div>
   </div>
 </div>
