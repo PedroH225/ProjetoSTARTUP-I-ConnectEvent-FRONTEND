@@ -1,0 +1,14 @@
+{
+  "routes": [
+    "/",
+    "/footer",
+    "/navBar",
+    "/principal",
+    "/principal/areaAnunciante",
+    "/principal/areaUsuario",
+    "/principal/homePage",
+    "/principal/homePage/card",
+    "/principal/login",
+    "/principal/register"
+  ]
+}
