@@ -1,26 +1,78 @@
 <div class="divMaior">
-  <div class="divForm">
+  <div class="d-flex align-items-center justify-content-center flex-column">
+    <h5 class="tamanhoRegistreSe">Entrar como...</h5>
+    <!-- Botões de Usuário e Anunciante -->
+    <div>
+      <div
+        class="d-flex gap-1 btn-group btn-group-toggle"
+        data-toggle="buttons"
+      >
+        <label
+          class="botaoUsuario btn btn-secondary"
+          [ngClass]="{ active: selectedOption === 'usuario' }"
+        >
+          <input
+            type="radio"
+            name="options"
+            id="option1"
+            autocomplete="off"
+            [(ngModel)]="selectedOption"
+            value="usuario"
+          />
+          Usuário
+        </label>
+        <label
+          class="botaoAnunciante btn btn-secondary"
+          [ngClass]="{ active: selectedOption === 'anunciante' }"
+        >
+          <input
+            type="radio"
+            name="options"
+            id="option2"
+            autocomplete="off"
+            [(ngModel)]="selectedOption"
+            value="anunciante"
+          />
+          Anunciante
+        </label>
+      </div>
+    </div>
+  </div>
+  <!-- Login Usuário -->
+  <section class="divForm" *ngIf="selectedOption === 'usuario'">
     <img
       class="tagIconConnectEvent"
       src="../../../assets/connectEventSemFundo.png"
       alt=""
     />
     <br />
-    <h5 class="tagTitulo">Entrar</h5>
-    <form class="divForm2">
+    <h5 class="tagTitulo">Entrar como Usuário</h5>
+    <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="divForm2">
       <div class="divInputs">
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline">
           <label class="form-label" for="form2Example1"
             >Endereço de Email</label
           >
-          <input type="email" id="form2Example1" class="form-control" />
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            id="form2Example1"
+            class="form-control"
+          />
         </div>
 
         <!-- Password input -->
         <div data-mdb-input-init class="form-outline">
           <label class="form-label" for="form2Example2">Senha</label>
-          <input type="password" id="form2Example2" class="form-control" />
+          <input
+            type="password"
+            name="senha"
+            [(ngModel)]="senha"
+            id="form2Example2"
+            class="form-control"
+          />
         </div>
       </div>
 
@@ -55,6 +107,7 @@
         data-mdb-button-init
         data-mdb-ripple-init
         class="BotaoEntrar btn btn-primary"
+        [routerLink]="['/principal/areaUsuario']"
       >
         Entrar
       </button>
@@ -112,5 +165,133 @@
         </div>
       </div>
     </form>
-  </div>
+  </section>
+  <!-- Login Anunciante -->
+  <section class="divForm" *ngIf="selectedOption === 'anunciante'">
+    <img
+      class="tagIconConnectEvent"
+      src="../../../assets/connectEventSemFundo.png"
+      alt=""
+    />
+    <br />
+    <h5 class="tagTitulo">Entrar como Anunciante</h5>
+    <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="divForm2">
+      <div class="divInputs">
+        <!-- Email input -->
+        <div data-mdb-input-init class="form-outline">
+          <label class="form-label" for="form2Example1"
+            >Endereço de Email</label
+          >
+          <input
+            type="email"
+            name="email"
+            [(ngModel)]="email"
+            id="form2Example1"
+            class="form-control"
+          />
+        </div>
+
+        <!-- Password input -->
+        <div data-mdb-input-init class="form-outline">
+          <label class="form-label" for="form2Example2">Senha</label>
+          <input
+            type="password"
+            name="senha"
+            [(ngModel)]="senha"
+            id="form2Example2"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <!-- 2 column grid layout for inline styling -->
+      <div class="divRememberMeForgotPassword row">
+        <div class="col d-flex justify-content-center">
+          <!-- Checkbox -->
+          <div class="form-check">
+            <input
+              class="checkboxRememberMe form-check-input"
+              type="checkbox"
+              value=""
+              id="form2Example31"
+              checked
+            />
+            <label class="form-check-label" for="form2Example31">
+              Lembre-me
+            </label>
+          </div>
+        </div>
+
+        <div class="col d-flex justify-content-center">
+          <a class="tagParaClick" href="#!">Esqueceu a senha?</a>
+        </div>
+      </div>
+
+      <br />
+
+      <!-- Submit button -->
+      <button
+        type="button"
+        data-mdb-button-init
+        data-mdb-ripple-init
+        class="BotaoEntrar btn btn-primary"
+        [routerLink]="['/principal/areaAnunciante']"
+      >
+        Entrar
+      </button>
+
+      <br />
+
+      <!-- Register buttons -->
+      <div class="divNotRememberOrSignUp text-center">
+        <a class="tagParaClick" href="#!">Registre-se</a>
+        <p>ou realize o Login com:</p>
+        <div class="divButtonsSignUp">
+          <button
+            type="button"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="tagButtons tagFacebook btn"
+          >
+            <img
+              class="tagImg"
+              src="../../../assets/login/facebook.png"
+              alt=""
+            />
+          </button>
+
+          <button
+            type="button"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="tagButtons tagSteam btn"
+          >
+            <img class="tagImg" src="../../../assets/login/social.png" alt="" />
+          </button>
+
+          <button
+            type="button"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="tagButtons tagGoogle btn"
+          >
+            <img class="tagImg" src="../../../assets/login/google.png" alt="" />
+          </button>
+
+          <button
+            type="button"
+            data-mdb-button-init
+            data-mdb-ripple-init
+            class="tagButtons tagApple btn"
+          >
+            <img
+              class="tagImg"
+              src="../../../assets/login/apple-logo.png"
+              alt=""
+            />
+          </button>
+        </div>
+      </div>
+    </form>
+  </section>
 </div>

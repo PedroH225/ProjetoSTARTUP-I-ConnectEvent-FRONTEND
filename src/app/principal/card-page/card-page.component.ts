@@ -9,6 +9,7 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
 })
 export class CardPageComponent implements OnInit {
   evento: any;
+  tipo!: string;
 
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
@@ -27,10 +28,46 @@ export class CardPageComponent implements OnInit {
     this.eventosService.getEventoById(id).subscribe(
       (response) => {
         this.evento = response; // Armazena os dados do evento
+        this.tipo = response.tipo;
       },
       (error) => {
         console.error('Erro ao buscar evento:', error);
       }
     );
+
+    console.log(this.tipo);
+
+    let cor;
+
+    switch (this.tipo) {
+      case 'Artístico':
+        break;
+      case 'Balada':
+        break;
+      case 'Cultural':
+        break;
+      case 'Educacional':
+        break;
+      case 'Esportivo':
+        break;
+      case 'Gastronômico':
+        break;
+      case 'Jogo':
+        break;
+      case 'Oficial':
+        break;
+      case 'Profissional':
+        break;
+      case 'Religioso':
+        break;
+      case 'Show':
+        break;
+      case 'Social':
+        break;
+      case 'Stand-Up':
+        break;
+      case 'Técnico-Científico':
+        break;
+    }
   }
 }
