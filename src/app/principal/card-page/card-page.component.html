@@ -6,19 +6,61 @@
       </div>
       <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
-          <h5>{{ evento.titulo }}</h5>
+          <div class="w-100 text-center">
+            <h1>{{ evento.titulo }}</h1>
+            <h5>{{ evento.tipo }}</h5>
+          </div>
           <p>{{ evento.descricao }}</p>
-          <p>Data: {{ evento.data }}</p>
-          <span>Local:</span>
-          <span>• {{ evento.endereco.local }}</span>
-          <span>
-            • Cidade: {{ evento.endereco.cidade }}/{{ evento.endereco.estado }}
-          </span>
         </div>
         <div class="detalhesDireita">
-          <p>Click para Link do Evento</p>
-          <p>Telefone: {{ evento.telefone }}</p>
-          <p>sei la mais oq</p>
+          <div class="cardsDataLocalTelefone">
+            <div class="divIconeDataLocalAlign">
+              <img
+                class="tagIcon"
+                src="../../../assets/card-page/calendar.png"
+                alt=""
+              />
+              <p><b>Data</b></p>
+            </div>
+            <p>{{ evento.data }} - {{ evento.horario }}</p>
+          </div>
+          <div class="cardsDataLocalTelefone">
+            <div class="divIconeDataLocalAlign">
+              <img
+                class="tagIcon"
+                src="../../../assets/card-page/location.png"
+                alt=""
+              />
+              <p>
+                <b>Local</b>
+              </p>
+            </div>
+            <p>
+              {{ evento.endereco.local }}, {{ evento.endereco.cidade }}/{{
+                evento.endereco.estado
+              }}
+            </p>
+          </div>
+
+          <div class="cardsDataLocalTelefone">
+            <div class="divIconeDataLocalAlign">
+              <img
+                class="tagIcon"
+                src="../../../assets/card-page/telephone.png"
+                alt=""
+              />
+              <p><b>Telefone</b></p>
+            </div>
+            <p>{{ evento.telefone }}</p>
+          </div>
+          <button class="styleButtons btn btn-primary">
+            <img
+              class="tagIcon"
+              src="../../../assets/card-page/external-linkCOLOR.png"
+              alt=""
+            />
+            Click para Link do Evento
+          </button>
         </div>
       </div>
     </div>
