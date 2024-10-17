@@ -63,3 +63,11 @@
   height: 3.5rem;
   width: 3.5rem;
 }
+
+.nav-item {
+  // border: 1px solid red;
+
+  &:hover {
+    filter: drop-shadow(0px 0px 10px $cor-Texto-e-BordaBotao-NavBarFooter);
+  }
+}
