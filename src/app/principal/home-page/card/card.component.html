@@ -4,9 +4,14 @@
     class="tagImg card-img-top"
     alt="Card image cap"
   />
-  <div class="card-body">
+  <div class="alinhamentoCard card-body">
     <h5 class="card-title">{{ titulo }}</h5>
-    <p class="tagOverflow card-text">{{ descricao }}</p>
+    <p class="infosCard card-text">
+      Tipo: {{ tipo }}
+      <br />
+      Local: {{ bairro }}, {{ cidade }}/{{ estado }}
+    </p>
+
     <a
       href="#"
       class="styleButtons btn btn-primary"

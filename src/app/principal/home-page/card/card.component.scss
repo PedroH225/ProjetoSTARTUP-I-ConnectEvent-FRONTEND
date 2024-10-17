@@ -7,22 +7,24 @@
   text-align: center;
   background-color: $background-Card;
   border-radius: 0.6rem;
+  padding: 1rem;
+}
+
+.alinhamentoCard {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .tagImg {
   border-radius: 0.6rem;
 }
 
-.tagOverflow {
-  border: 1px solid red;
-  width: 20rem;
-  height: 10rem;
-  overflow: hidden;
-}
-
 .styleButtons {
   color: $cor-Texto-e-BordaBotao-card;
   border: none;
+  width: 10rem;
 
   background-color: $background-Botao-card;
 
