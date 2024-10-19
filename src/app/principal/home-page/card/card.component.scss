@@ -1,5 +1,18 @@
 @import "padroes";
 
+.borderCard {
+  border: none;
+  box-shadow: $detalhe-Sombra-BordasCard;
+  width: 25rem;
+
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 25px $cor-Texto-e-BordaBotao-NavBarFooter;
+  }
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -13,6 +26,7 @@
 .alinhamentoCard {
   margin-top: 1rem;
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 2rem;
 }
@@ -31,12 +45,6 @@
   &:hover {
     background-color: $background-hover-Botao-card;
   }
-}
-
-.borderCard {
-  border: none;
-  box-shadow: $detalhe-Sombra-BordasCard;
-  width: 25rem;
 }
 
 .card-title {
