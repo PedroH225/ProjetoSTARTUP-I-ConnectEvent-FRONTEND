@@ -52,6 +52,23 @@
   padding: 2rem 4rem;
 }
 
+.tagListaBotao > li {
+  transition: width 2s, height 2s, transform 2s;
+
+  &:hover {
+    background-color: $background-HomePage;
+    transform: scale(1.1);
+  }
+}
+
+.tagListaBotao > .tagSair {
+  background-color: rgb(242, 200, 200);
+
+  &:hover {
+    background-color: rgb(209, 134, 134);
+  }
+}
+
 .detalhesEsquerda {
   // border: 1px solid blue;
 
@@ -82,6 +99,10 @@
   display: flex;
   justify-content: flex-end;
   gap: 1rem;
+}
+
+.tagMargin {
+  margin: 1rem 0 2rem 0;
 }
 
 .divItemPlusBox {
