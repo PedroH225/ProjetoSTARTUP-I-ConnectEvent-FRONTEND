@@ -6,7 +6,20 @@
 }
 
 .tamanhoRegistreSe {
-  font-size: 3rem;
+  color: rgb(102, 102, 102);
+  font-size: 2rem;
+}
+
+.divForm3 {
+  // border: 1px solid red;
+  // padding: 1.5rem 0 1.5rem 0;
+  margin: 0 0 1rem 0;
+  // box-shadow: $detalhe-Sombra-BordasCard;
+  // width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .botaoUsuario,
@@ -66,10 +79,6 @@
 .tagIconConnectEvent {
   height: 6rem;
   width: 7rem;
-}
-
-.tagTitulo {
-  text-align: center;
 }
 
 .displayForm {

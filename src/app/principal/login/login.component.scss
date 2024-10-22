@@ -9,6 +9,22 @@
   justify-content: center;
 }
 
+.tamanhoRegistreSe {
+  color: rgb(102, 102, 102);
+  font-size: 2rem;
+}
+
+.divForm3 {
+  padding: 1.5rem 0 1.5rem 0;
+  margin: 1rem;
+  // box-shadow: $detalhe-Sombra-BordasCard;
+  // width: 30%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .divForm {
   padding: 3rem;
   margin: 1rem;
@@ -23,10 +39,6 @@
 .tagIconConnectEvent {
   height: 6rem;
   width: 7rem;
-}
-
-.tagTitulo {
-  font-size: 40px;
 }
 
 .divForm2 {
