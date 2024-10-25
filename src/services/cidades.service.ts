@@ -10,7 +10,7 @@ export class CidadesService {
 
   constructor(private http: HttpClient) {}
 
-  getTipoEvento(): Observable<any[]> {
+  getCidades(): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}/cidades`);
   }
 }
