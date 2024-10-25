@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TipoEventoService } from '../../../../services/tipo-evento.service';
 import { CidadesService } from '../../../../services/cidades.service';
 import { FiltrarEventoService } from '../../../../services/filtrar-evento.service';
+
 
 @Component({
   selector: 'app-filter',
@@ -14,6 +15,8 @@ export class FilterComponent {
   selectedTipo: string = ''; // Variável para armazenar o tipo de evento selecionado
   selectedCidade : string = "";
   cidades: any[] = []
+
+  @Output() eventosFiltrados = new EventEmitter<any[]>();
 
   constructor(private tipoEventoService: TipoEventoService, 
               private cidadesService : CidadesService, 
@@ -51,14 +54,15 @@ export class FilterComponent {
 
   // Método para filtrar eventos por data
   filtrar(): void {
-    this.filtrarServico.filtrar(this.selectedTipo, this.selectedCidade, this.selectedDate).subscribe(
-      (response) => {
-        console.log('Eventos filtrados:', response);
-        // Aqui você pode atualizar uma variável com os eventos filtrados para exibir no template
-      },
-      (error) => {
-        console.error('Erro ao filtrar eventos:', error);
-      }
-    );
+    this.filtrarServico
+      .filtrar(this.selectedTipo, this.selectedCidade, this.selectedDate)
+      .subscribe(
+        (response) => {
+          this.eventosFiltrados.emit(response);
+        },
+        (error) => {
+          console.error('Erro ao filtrar eventos:', error);
+        }
+      );
   }
 }
