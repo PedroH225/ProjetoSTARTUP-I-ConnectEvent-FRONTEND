@@ -8,7 +8,7 @@
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
       <option value="" disabled>Tipo de Evento</option>
       <!-- Opções de tipos de eventos -->
-      <option *ngFor="let tipo of tipos" [value]="tipo.id">
+      <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
         {{ tipo.tipo }}
       </option>
     </select>
@@ -56,7 +56,7 @@
       <button
         class="tagAplicar styleButtons btn btn-outline-primary"
         ngbDropdownItem
-        (click)="filtrarPorData()"
+        (click)="filtrar()"
         
       >
         Aplicar
