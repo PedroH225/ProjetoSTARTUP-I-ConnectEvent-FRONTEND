@@ -6,7 +6,7 @@
       [(ngModel)]="selectedTipo"
     >
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
-      <option value="" disabled>Tipo de Evento</option>
+      <option value="">Tipo de Evento</option>
       <!-- Opções de tipos de eventos -->
       <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
         {{ tipo.tipo }}
@@ -39,7 +39,7 @@
       [(ngModel)]="selectedCidade"
     >
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
-      <option value="" disabled>Cidades</option>
+      <option value="">Cidades</option>
       <option *ngFor="let cidade of cidades" [value]="cidade">
         {{cidade}}
       </option>
