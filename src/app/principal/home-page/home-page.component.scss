@@ -9,6 +9,7 @@
   background-color: $background-HomePage; // cor background geral, atrás dos cards
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
 }
 
 .divFiltrosNavBar {
