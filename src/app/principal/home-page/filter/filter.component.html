@@ -8,7 +8,7 @@
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
       <option value="">Tipo de Evento</option>
       <!-- Opções de tipos de eventos -->
-      <option *ngFor="let tipo of tipos" [value]="tipo.id">
+      <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
         {{ tipo.tipo }}
       </option>
     </select>
@@ -35,11 +35,14 @@
   <!-- Dropdown para cidade -->
   <div ngbDropdown>
     <select
-      class="styleButtons btn btn-outline-primary"
-      [(ngModel)]="selectedTipo"
+      class="styleButtons btn btn-outline-primary cidade-dropdown"
+      [(ngModel)]="selectedCidade"
     >
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
       <option value="">Cidades</option>
+      <option *ngFor="let cidade of cidades" [value]="cidade">
+        {{cidade}}
+      </option>
       <!-- Opções de tipos de eventos -->
       <!-- <option *ngFor="let tipo of tipos" [value]="tipo.id">
         {{ tipo.tipo }}
@@ -53,10 +56,12 @@
       <button
         class="tagAplicar styleButtons btn btn-outline-primary"
         ngbDropdownItem
-        (click)="filtrarPorData()"
+        (click)="filtrar()"
+        
       >
         Aplicar
       </button>
     </div>
   </div>
+  
 </div>

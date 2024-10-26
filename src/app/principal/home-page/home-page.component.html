@@ -13,7 +13,7 @@
         [ngClass]="{ collapsed: isCollapsed, expanded: !isCollapsed }"
       >
         <div class="mb-3 card-body">
-          <app-filter></app-filter>
+          <app-filter (eventosFiltrados)="atualizarEventos($event)"></app-filter>
         </div>
       </div>
     </div>

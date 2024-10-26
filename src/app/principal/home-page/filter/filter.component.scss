@@ -29,3 +29,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.cidade-dropdown {
+  max-height: 150px; /* Altura máxima da lista (ajustável) */
+  overflow-y: auto;  /* Ativa a barra de rolagem vertical */
+}
