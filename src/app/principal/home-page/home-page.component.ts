@@ -31,4 +31,8 @@ export class HomePageComponent {
       }
     );
   }
+
+  atualizarEventos(eventosFiltrados: any[]): void {
+    this.eventos = eventosFiltrados; // Atualiza os eventos na home
+  }
 }
