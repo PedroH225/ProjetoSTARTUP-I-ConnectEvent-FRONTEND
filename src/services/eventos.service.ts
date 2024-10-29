@@ -11,7 +11,7 @@ export class EventosService {
   constructor(private http: HttpClient) {}
 
   getEventos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/evento`);
+    return this.http.get<any[]>(`${this.apiUrl}/evento/anunciados`);
   }
 
   getEventoById(id: number): Observable<any> {
