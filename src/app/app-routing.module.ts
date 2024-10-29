@@ -9,6 +9,7 @@ import { RegisterComponent } from './principal/register/register.component';
 import { AreaUsuarioComponent } from './principal/area-usuario/area-usuario.component';
 import { CardComponent } from './principal/home-page/card/card.component';
 import { CardPageComponent } from './principal/card-page/card-page.component';
+import { EsqueceuSenhaComponent } from './principal/esqueceu-senha/esqueceu-senha.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'areaUsuario', component: AreaUsuarioComponent },
+      { path: 'esqueceuSenha', component: EsqueceuSenhaComponent },
     ],
   },
   { path: 'footer', component: FooterComponent },
