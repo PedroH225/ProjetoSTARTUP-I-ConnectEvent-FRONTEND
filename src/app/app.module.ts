@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
 import { CardPageComponent } from './principal/card-page/card-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { EsqueceuSenhaComponent } from './principal/esqueceu-senha/esqueceu-senha.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     CardComponent,
     FilterComponent,
     CardPageComponent,
+    EsqueceuSenhaComponent,
   ],
   imports: [
     BrowserModule,
