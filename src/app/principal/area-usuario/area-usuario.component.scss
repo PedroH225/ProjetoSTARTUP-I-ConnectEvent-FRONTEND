@@ -1,123 +1,37 @@
 @import "padroes";
 
-.divPai {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.divCartaoDoEvento {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  width: 70%;
-  height: 100%;
-  // border: 1px solid green;
-  padding: 1rem;
-}
-
-.centralizar {
-  // border: 1px solid red;
-  width: 70%;
-
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.divImagem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.divPanorama {
   width: 100%;
-}
 
-.tagImagem {
-  max-width: 100%;
-  width: 40rem;
-}
-
-.divDetalhesEvento {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 6rem;
-
-  // border: 1px solid black;
-  width: 100%;
-  padding: 2rem 4rem;
 }
 
-.tagListaBotao > li {
-  transition: width 2s, height 2s, transform 2s;
-
-  &:hover {
-    background-color: $background-HomePage;
-    transform: scale(1.1);
-  }
+.divEsquerda {
+  // border: 2px solid black;
+  width: 15%;
+  padding: 2rem 0 2rem 0;
 }
 
-.tagListaBotao > .tagSair {
-  background-color: rgb(242, 200, 200);
-
-  &:hover {
-    background-color: rgb(209, 134, 134);
-  }
+.divCentral {
+  width: 70%;
+  min-height: 40rem;
 }
 
-.detalhesEsquerda {
-  // border: 1px solid blue;
-
-  width: 50%;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+.divDireita {
+  // border: 2px solid greenyellow;
+  width: 15%;
+  padding: 2rem 0 2rem 0;
 }
 
-.detalhesDireita {
-  // border: 1px solid blue;
-
-  width: 50%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.tagListaBotao {
+.divBaixo {
+  // border: 2px solid purple;
+  padding: 2rem;
   width: 100%;
 
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-.tagMargin {
-  margin: 1rem 0 2rem 0;
-}
-
-.divItemPlusBox {
-  display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-
-  padding: 1rem;
-
-  width: 100%;
-
-  box-shadow: 0px 0px 10px $background-NavBarFooter2;
-  // border: 1px solid purple;
 }
 
 .tagIconG {
@@ -132,9 +46,53 @@
 }
 
 .tagTitulo {
-  color: rgb(102, 102, 102);
-  margin: 0.5rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+}
+
+.centralizarEsquerdaEdireita {
+  // border: 1px solid red;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.divCabecalho {
+  // border: 1px solid purple;
+  padding: 0.3rem;
+  border-radius: 1rem;
+  box-shadow: 0px 5px 10px $background-NavBarFooter2;
+  width: 16rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.divListaBotoesEsquerdaEdireita {
+  // border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.divListaBotoesEsquerdaEdireita > li {
+  transition: background-color 1s, width 2s, height 2s, transform 2s;
+
+  &:hover {
+    background-color: $background-HomePage;
+    transform: scale(1.05);
+  }
+}
+
+.btn {
+  width: 12rem;
 }
 
 .styleButtons {
@@ -142,7 +100,6 @@
   color: $cor-Texto-e-BordaBotao-NavBarFooter;
   background-color: $background-NavBarFooter2;
   padding: 0.2rem;
-  width: 100%;
 
   &:hover {
     background-color: $cor-Hover-Botao-NavBarFooter;
@@ -152,5 +109,45 @@
     border: 1px solid $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
     color: $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
     background-color: $cor-Hover-Botao-NavBarFooter;
+  }
+}
+
+.divLinearParaAboxDeBaixo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20rem;
+}
+
+.divBotaoDoIconeComBotaoTexto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 16rem;
+  padding: 1rem;
+
+  box-shadow: 0px 0px 10px $background-NavBarFooter2;
+}
+
+.tagConfig {
+  background-color: rgb(255, 244, 217);
+  transition: background-color 1s, width 2s, height 2s, transform 2s;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgb(228, 213, 175);
+  }
+}
+
+.tagSair {
+  background-color: rgb(242, 200, 200);
+  transition: background-color 1s, width 2s, height 2s, transform 2s;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: rgb(209, 134, 134);
   }
 }
