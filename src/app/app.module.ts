@@ -14,7 +14,6 @@ import { LoginComponent } from './principal/login/login.component';
 import { RegisterComponent } from './principal/register/register.component';
 import { HomePageComponent } from './principal/home-page/home-page.component';
 import { AreaUsuarioComponent } from './principal/area-usuario/area-usuario.component';
-import { AreaEmpreendedorComponent } from './principal/area-empreendedor/area-empreendedor.component';
 import { CardComponent } from './principal/home-page/card/card.component';
 import { FilterComponent } from './principal/home-page/filter/filter.component';
 import { FormsModule } from '@angular/forms';
@@ -32,7 +31,6 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     HomePageComponent,
     AreaUsuarioComponent,
-    AreaEmpreendedorComponent,
     CardComponent,
     FilterComponent,
     CardPageComponent,
