@@ -1,37 +1,47 @@
 @import "padroes";
 
-.divPanorama {
-  width: 100%;
+* {
+  margin: 0;
+  padding: 0;
+}
 
+.divBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.divPanorama {
   display: flex;
   flex-direction: row;
 }
 
-.divEsquerda {
-  // border: 2px solid black;
-  width: 15%;
-  padding: 2rem 0 2rem 0;
-}
-
-.divCentral {
-  width: 70%;
-  min-height: 40rem;
-}
-
-.divDireita {
-  // border: 2px solid greenyellow;
-  width: 15%;
-  padding: 2rem 0 2rem 0;
-}
-
 .divBaixo {
   // border: 2px solid purple;
-  padding: 2rem;
+  padding: 2rem 0;
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.divEsquerda {
+  border: 2px solid black;
+  width: 16vw;
+  padding: 2rem 0;
+}
+
+.divCentral {
+  width: 68vw;
+  min-height: 40rem;
+}
+
+.divDireita {
+  border: 2px solid greenyellow;
+  width: 16vw;
+  padding: 2rem 0;
 }
 
 .tagIconG {
@@ -64,7 +74,7 @@
   padding: 0.3rem;
   border-radius: 1rem;
   box-shadow: 0px 5px 10px $background-NavBarFooter2;
-  width: 16rem;
+  width: 100%;
 
   display: flex;
   flex-direction: row;
@@ -74,7 +84,8 @@
 }
 
 .divListaBotoesEsquerdaEdireita {
-  // border: 1px solid red;
+  border: 1px solid red;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,15 +102,14 @@
   }
 }
 
-.btn {
-  width: 12rem;
-}
-
 .styleButtons {
   border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
   color: $cor-Texto-e-BordaBotao-NavBarFooter;
   background-color: $background-NavBarFooter2;
   padding: 0.2rem;
+  width: 100%;
+  // height: 4rem;
+  font-size: 1rem;
 
   &:hover {
     background-color: $cor-Hover-Botao-NavBarFooter;
@@ -126,8 +136,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 16rem;
-  padding: 1rem;
+  width: 100%;
+  // padding: 1rem;
 
   box-shadow: 0px 0px 10px $background-NavBarFooter2;
 }
