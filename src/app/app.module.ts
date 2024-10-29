@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EsqueceuSenhaComponent } from './principal/esqueceu-senha/esqueceu-senha.component';
 import { CriarEventoComponent } from './principal/area-usuario/criar-evento/criar-evento.component';
 import { EventosAnunciadosComponent } from './principal/area-usuario/eventos-anunciados/eventos-anunciados.component';
-import { EventosOcorridosComponent } from './principal/area-usuario/eventos-ocorridos/eventos-ocorridos.component';
+import { EventosOcorridosAnunciarComponent } from './principal/area-usuario/eventos-ocorridos-anunciar/eventos-ocorridos.component';
 import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
 import { EstatisticasComponent } from './principal/area-usuario/estatisticas/estatisticas.component';
 import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
@@ -48,7 +48,7 @@ import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/c
     EsqueceuSenhaComponent,
     CriarEventoComponent,
     EventosAnunciadosComponent,
-    EventosOcorridosComponent,
+    EventosOcorridosAnunciarComponent,
     FeedbacksComponent,
     EstatisticasComponent,
     EventosConfirmadosComponent,
