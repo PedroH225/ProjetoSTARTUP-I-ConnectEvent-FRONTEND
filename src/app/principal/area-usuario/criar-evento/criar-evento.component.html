@@ -12,7 +12,7 @@
         <input type="date" [(ngModel)]="data" name="data" />
 
         <label for="horario">Horário</label>
-        <input type="text" [(ngModel)]="horario" name="horario" />
+        <input type="text" [(ngModel)]="horario" name="horario" (input)="formatarHorario()" (keypress)="permitirApenasNumeros($event)" name="horario" maxlength="5" placeholder="HH:MM"/>
 
         <label for="tipo">Tipo</label>
         <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" name="tipo">
@@ -28,11 +28,11 @@
         <label for="livre">Livre +18</label>
         <div>
           <label>
-            <input type="radio" [(ngModel)]="livre" name="livre" [value]="true"/>
+            <input type="radio" [(ngModel)]="livre" name="livre" [value]="true" />
             Sim
           </label>
           <label>
-            <input type="radio" [(ngModel)]="livre" name="livre" [value]="false"/>
+            <input type="radio" [(ngModel)]="livre" name="livre" [value]="false" />
             Não
           </label>
         </div>
@@ -42,11 +42,13 @@
           <label for="link">Link</label>
           <input type="url" [(ngModel)]="link" name="link" />
 
-          <label for="rua">Rua</label>
-          <input type="text" [(ngModel)]="rua" name="rua" />
+          <label for="local">Local</label>
+          <input type="text" [(ngModel)]="local" name="local" />
 
           <label for="estado">Estado</label>
-          <input type="text" [(ngModel)]="estado" name="estado" />
+          <select [(ngModel)]="estado" name="estado">
+            <option [value]="'SP'">São Paulo</option>
+          </select>
 
           <label for="cidade">Cidade</label>
           <select class="styleButtons btn btn-outline-primary cidade-dropdown" [(ngModel)]="selectedCidade"
