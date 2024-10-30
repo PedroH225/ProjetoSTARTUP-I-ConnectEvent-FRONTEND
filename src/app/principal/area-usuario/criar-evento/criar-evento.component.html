@@ -4,9 +4,15 @@
       <div class="divSetorForm">
         <label for="titulo">Título</label>
         <input type="text" [(ngModel)]="titulo" name="titulo" required />
+        <div id="tituloErro">
+
+        </div>
 
         <label for="descricao">Descrição</label>
         <textarea [(ngModel)]="descricao" name="descricao" id="descricao" required></textarea>
+        <div id="descricaoErro">
+
+        </div>
 
         <label for="data">Data</label>
         <input type="date" [(ngModel)]="data" name="data" required />
@@ -23,6 +29,9 @@
 
         <label for="telefone">Telefone</label>
         <input type="text" [(ngModel)]="telefone" name="telefone" required />
+        <div id="telefoneErro">
+
+        </div>
 
         <label for="livre">Livre +18</label>
         <div>
@@ -39,9 +48,15 @@
         <div class="divSetorForm">
           <label for="link">Link</label>
           <input type="url" [(ngModel)]="link" name="link" required />
+          <div id="linkErro">
+
+          </div>
 
           <label for="local">Local</label>
           <input type="text" [(ngModel)]="local" name="local" required />
+          <div id="localErro">
+
+          </div>
 
           <label for="estado">Estado</label>
           <select [(ngModel)]="estado" name="estado" required>
@@ -54,12 +69,19 @@
             <option value="">Cidades</option>
             <option *ngFor="let cidade of cidades" [value]="cidade">{{ cidade }}</option>
           </select>
+          
 
           <label for="bairro">Bairro</label>
           <input type="text" [(ngModel)]="bairro" name="bairro" required />
+          <div id="bairroErro">
+
+          </div>
 
           <label for="numero">Número</label>
           <input type="number" [(ngModel)]="numero" name="numero" required />
+          <div id="numeroErro">
+
+          </div>
         </div>
 
       </div>

@@ -57,3 +57,62 @@ export function listarErrosUsuario (erros : any[]) {
       }
     });
   }
+
+  export function listarErrosEvento(erros: any[]) {
+    const tituloErroDiv = document.getElementById("tituloErro");
+    const descricaoErroDiv = document.getElementById("descricaoErro");
+    const telefoneErroDiv = document.getElementById("telefoneErro");
+    const linkErroDiv = document.getElementById("linkErro");
+    const localErroDiv = document.getElementById("localErro");
+    const bairroErroDiv = document.getElementById("bairroErro");
+    const numeroErroDiv = document.getElementById("numeroErro");
+
+    const divs = [tituloErroDiv, descricaoErroDiv, telefoneErroDiv, linkErroDiv, localErroDiv, bairroErroDiv, numeroErroDiv];
+
+    divs.forEach(div => {
+        if (div) {
+            div.innerHTML = ''; // Esvazia o conteúdo da div
+        }
+    });
+
+    if (!Array.isArray(erros)) {
+        alert("Erro desconhecido. Tente novamente mais tarde.");
+        return;
+    }
+
+    erros.forEach(erro => {
+        const alert = document.createElement("ngb-alert");
+        alert.classList.add('alert', 'alert-danger', "p-1", 'mb-0');
+        alert.textContent = erro.mensagem;
+
+        if (erro.campo === "tituloErro") {
+            if (tituloErroDiv) {
+                tituloErroDiv.appendChild(alert);
+            }
+        } else if (erro.campo === "descricaoErro") {
+            if (descricaoErroDiv) {
+                descricaoErroDiv.appendChild(alert);
+            }
+        } else if (erro.campo === "telefoneErro") {
+            if (telefoneErroDiv) {
+                telefoneErroDiv.appendChild(alert);
+            }
+        } else if (erro.campo === "linkErro") {
+            if (linkErroDiv) {
+                linkErroDiv.appendChild(alert);
+            }
+        } else if (erro.campo === "localErro") {
+            if (localErroDiv) {
+                localErroDiv.appendChild(alert);
+            }
+        } else if (erro.campo === "bairroErro") {
+            if (bairroErroDiv) {
+                bairroErroDiv.appendChild(alert);
+            }
+        } else if (erro.campo === "numeroErro") {
+            if (numeroErroDiv) {
+                numeroErroDiv.appendChild(alert);
+            }
+        }
+    });
+}

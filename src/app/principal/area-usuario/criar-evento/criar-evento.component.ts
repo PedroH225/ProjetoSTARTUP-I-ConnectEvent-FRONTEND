@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TipoEventoService } from '../../../../services/tipo-evento.service';
 import { CidadesService } from '../../../../services/cidades.service';
 import { EventosService } from '../../../../services/eventos.service';
+import { listarErrosEvento } from '../../../utils/listarErros';
 
 @Component({
   selector: 'app-criar-evento',
@@ -71,7 +72,7 @@ export class CriarEventoComponent {
         erros = error.error // Captura os erros
 
         console.log(erros);
-        //listarErrosEvento(erros)
+        listarErrosEvento(erros)
       }
     );
   }
