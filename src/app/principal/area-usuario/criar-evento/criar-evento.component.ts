@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TipoEventoService } from '../../../../services/tipo-evento.service';
 import { CidadesService } from '../../../../services/cidades.service';
+import { EventosService } from '../../../../services/eventos.service';
 
 @Component({
   selector: 'app-criar-evento',
@@ -19,7 +20,7 @@ export class CriarEventoComponent {
   telefone : string = '';
   livre !: boolean;
   link : string = '';
-  rua : string = '';
+  local : string = '';
   estado : string = '';
   selectedCidade : string = '';
   bairro : string = '';
@@ -28,7 +29,8 @@ export class CriarEventoComponent {
 
   constructor(
     private tipoEventoService: TipoEventoService,
-    private cidadesService : CidadesService
+    private cidadesService : CidadesService,
+    private eventoService : EventosService
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +39,7 @@ export class CriarEventoComponent {
   }
 
   onSubmit() {
-    console.log({
+    const payload = {
       titulo: this.titulo,
       descricao: this.descricao,
       data: this.data,
@@ -46,12 +48,32 @@ export class CriarEventoComponent {
       telefone: this.telefone,
       livre: this.livre,
       link: this.link,
-      rua: this.rua,
+      fotos: [],
+      local: this.local,
       estado: this.estado,
       cidade: this.selectedCidade,
       bairro: this.bairro,
-      numero: this.numero
-    });
+      numero: this.numero,
+      usuarioId: 1
+    };
+    
+    this.eventoService.criarEvento(payload).subscribe(
+      (response) => {
+          alert("Evento criado com sucesso!") 
+        console.log(response);
+        
+      },
+      (error) => {
+        console.log(error);
+        
+        // Erro no registro
+        let erros: any[] = [];
+        erros = error.error // Captura os erros
+
+        console.log(erros);
+        //listarErrosEvento(erros)
+      }
+    );
   }
 
   getTipoEvento(): void {
@@ -74,6 +96,24 @@ export class CriarEventoComponent {
         console.error('Erro ao buscar eventos:', error);
       }
     );
+  }
+
+  formatarHorario() {
+    // Remove caracteres não numéricos
+    this.horario = this.horario.replace(/\D/g, '');
+
+    // Adiciona ":" após os dois primeiros dígitos para o formato "HH:MM"
+    if (this.horario.length > 2) {
+      this.horario = this.horario.slice(0, 2) + ':' + this.horario.slice(2, 4);
+    }
+  }
+
+  permitirApenasNumeros(event: KeyboardEvent) {
+    const charCode = event.key.charCodeAt(0);
+    // Permite apenas números e o caractere ':'
+    if ((charCode < 48 || charCode > 57) && charCode !== 58) {
+      event.preventDefault();
+    }
   }
 }
 
