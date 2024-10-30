@@ -8,6 +8,7 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
   styleUrls: ['./card-page.component.scss'],
 })
 export class CardPageComponent implements OnInit {
+  isButtonHidden: boolean = true; // Variável para controlar a visibilidade
   evento: any;
   tipo!: string;
 
@@ -34,8 +35,6 @@ export class CardPageComponent implements OnInit {
         console.error('Erro ao buscar evento:', error);
       }
     );
-
-    console.log(this.tipo);
 
     let cor;
 
