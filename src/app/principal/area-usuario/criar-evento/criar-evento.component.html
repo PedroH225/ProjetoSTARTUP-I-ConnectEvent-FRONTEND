@@ -3,71 +3,67 @@
     <div class="divIntermediariaForm">
       <div class="divSetorForm">
         <label for="titulo">Título</label>
-        <input type="text" [(ngModel)]="titulo" name="titulo" />
+        <input type="text" [(ngModel)]="titulo" name="titulo" required />
 
         <label for="descricao">Descrição</label>
-        <textarea [(ngModel)]="descricao" name="descricao" id="descricao"></textarea>
+        <textarea [(ngModel)]="descricao" name="descricao" id="descricao" required></textarea>
 
         <label for="data">Data</label>
-        <input type="date" [(ngModel)]="data" name="data" />
+        <input type="date" [(ngModel)]="data" name="data" required />
 
         <label for="horario">Horário</label>
-        <input type="text" [(ngModel)]="horario" name="horario" (input)="formatarHorario()" (keypress)="permitirApenasNumeros($event)" name="horario" maxlength="5" placeholder="HH:MM"/>
+        <input type="text" [(ngModel)]="horario" name="horario" (input)="formatarHorario()" 
+          (keypress)="permitirApenasNumeros($event)" maxlength="5" placeholder="HH:MM" required />
 
         <label for="tipo">Tipo</label>
-        <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" name="tipo">
+        <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" name="tipo" required>
           <option value="">Tipo de Evento</option>
-          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
-            {{ tipo.tipo }}
-          </option>
+          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">{{ tipo.tipo }}</option>
         </select>
 
         <label for="telefone">Telefone</label>
-        <input type="text" [(ngModel)]="telefone" name="telefone" />
+        <input type="text" [(ngModel)]="telefone" name="telefone" required />
 
         <label for="livre">Livre +18</label>
         <div>
           <label>
-            <input type="radio" [(ngModel)]="livre" name="livre" [value]="true" />
+            <input type="radio" [(ngModel)]="livre" name="livre" [value]="true" required />
             Sim
           </label>
           <label>
-            <input type="radio" [(ngModel)]="livre" name="livre" [value]="false" />
+            <input type="radio" [(ngModel)]="livre" name="livre" [value]="false" required />
             Não
           </label>
         </div>
 
-
         <div class="divSetorForm">
           <label for="link">Link</label>
-          <input type="url" [(ngModel)]="link" name="link" />
+          <input type="url" [(ngModel)]="link" name="link" required />
 
           <label for="local">Local</label>
-          <input type="text" [(ngModel)]="local" name="local" />
+          <input type="text" [(ngModel)]="local" name="local" required />
 
           <label for="estado">Estado</label>
-          <select [(ngModel)]="estado" name="estado">
+          <select [(ngModel)]="estado" name="estado" required>
             <option [value]="'SP'">São Paulo</option>
           </select>
 
           <label for="cidade">Cidade</label>
           <select class="styleButtons btn btn-outline-primary cidade-dropdown" [(ngModel)]="selectedCidade"
-            name="cidade">
+            name="cidade" required>
             <option value="">Cidades</option>
-            <option *ngFor="let cidade of cidades" [value]="cidade">
-              {{ cidade }}
-            </option>
+            <option *ngFor="let cidade of cidades" [value]="cidade">{{ cidade }}</option>
           </select>
 
           <label for="bairro">Bairro</label>
-          <input type="text" [(ngModel)]="bairro" name="bairro" />
+          <input type="text" [(ngModel)]="bairro" name="bairro" required />
 
           <label for="numero">Número</label>
-          <input type="number" [(ngModel)]="numero" name="numero" />
+          <input type="number" [(ngModel)]="numero" name="numero" required />
         </div>
 
       </div>
     </div>
-    <input type="button" value="Salvar" (click)="onSubmit()" />
+    <button type="submit" [disabled]="!form.valid">Salvar</button>
   </form>
 </div>
