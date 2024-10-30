@@ -17,4 +17,8 @@ export class EventosService {
   getEventoById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/evento/${id}`);
   }
+
+  criarEvento(dados: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/evento`, dados);
+  }
 }
