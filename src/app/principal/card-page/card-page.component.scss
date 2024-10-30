@@ -75,10 +75,18 @@
 }
 
 .detalhesEsquerda {
+  width: 60%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divDescricaoEvento {
+  box-shadow: $detalhe-Sombra-BordasCard;
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
-  width: 60%;
 
   display: flex;
   flex-direction: column;

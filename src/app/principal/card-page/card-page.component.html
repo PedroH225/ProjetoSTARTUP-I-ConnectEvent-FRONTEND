@@ -10,11 +10,16 @@
       </div>
       <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
-          <div class="w-100 text-center">
-            <h1>{{ evento.titulo }}</h1>
-            <h5>{{ evento.tipo }}</h5>
+          <div class="divDescricaoEvento">
+            <div class="w-100 text-center">
+              <h1>{{ evento.titulo }}</h1>
+              <h5>{{ evento.tipo }}</h5>
+            </div>
+            <p>{{ evento.descricao }}</p>
           </div>
-          <p>{{ evento.descricao }}</p>
+          <div>
+            <button *ngIf="!isButtonHidden">Confirmar Presença</button>
+          </div>
         </div>
         <div class="detalhesDireita">
           <div class="cardsDataLocalTelefone">
