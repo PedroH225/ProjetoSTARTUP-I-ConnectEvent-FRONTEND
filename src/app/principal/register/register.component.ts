@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CidadesService } from '../../../services/cidades.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +20,7 @@ export class RegisterComponent {
     idade !: number;
   
     constructor( private cidadesService : CidadesService, 
+              private usuarioService : UsuarioService,
     ) {}
 
     ngOnInit(): void {
@@ -26,8 +28,24 @@ export class RegisterComponent {
     }
 
     onSubmit() {
-      console.log("aaaa" + this.nome, this.email, this.senha, this.confirmacao, this.genero, this.estado, this.idade);
-      
+      const payload = {
+        nome: this.nome,
+        email: this.email,
+        senha: this.senha,
+        genero: this.genero,
+        estado: this.estado,
+        idade: this.idade,
+      };      
+
+      this.usuarioService.registrarUsuario(payload).subscribe(
+        response => {
+          console.log('Resposta do servidor:', response);
+        },
+        error => {
+          console.error('Erro ao enviar os dados:', error);
+        }
+      );
+
     }
     
   getCidades(): void {

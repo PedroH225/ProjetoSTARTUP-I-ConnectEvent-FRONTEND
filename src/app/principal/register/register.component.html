@@ -52,7 +52,7 @@
             <h3 class="tamanhoRegistreSe">Registro de Usuário</h3>
             <img class="tagIconConnectEvent" src="../../../assets/connectEventSemFundo.png" alt="" />
           </div>
-          
+
           <form class="displayForm" (ngSubmit)="onSubmit()" #form="ngForm">
             <div>
               <div class="row">
@@ -74,13 +74,13 @@
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
                     <label class="form-label" for="senha">Senha</label>
-                    <input type="text" [(ngModel)]="senha" name="senha" class="form-control form-control-lg" />
+                    <input type="password" [(ngModel)]="senha" name="senha" class="form-control form-control-lg" />
                   </div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
                     <label class="form-label" for="lastName">Confirmar Senha</label>
-                    <input type="text" [(ngModel)]="confirmacao" name="confirmacao" class="form-control form-control-lg" />
+                    <input type="password" [(ngModel)]="confirmacao" name="confirmacao" class="form-control form-control-lg" />
                   </div>
                 </div>
               </div>
