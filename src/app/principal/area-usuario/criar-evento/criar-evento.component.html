@@ -1,51 +1,71 @@
 <div class="">
-  <form class="divForm" action="">
+  <form class="divForm" (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="divIntermediariaForm">
       <div class="divSetorForm">
-        <label for="">Título</label>
-        <input type="text" />
+        <label for="titulo">Título</label>
+        <input type="text" [(ngModel)]="titulo" name="titulo" />
 
-        <label for="">Descrição</label>
-        <textarea name="" id=""></textarea>
+        <label for="descricao">Descrição</label>
+        <textarea [(ngModel)]="descricao" name="descricao" id="descricao"></textarea>
 
-        <label for="">Data</label>
-        <input type="date" />
+        <label for="data">Data</label>
+        <input type="date" [(ngModel)]="data" name="data" />
 
-        <label for="">Horário</label>
-        <input type="number" />
+        <label for="horario">Horário</label>
+        <input type="text" [(ngModel)]="horario" name="horario" />
 
-        <label for="">Tipo</label>
-        <input type="text" />
+        <label for="tipo">Tipo</label>
+        <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" name="tipo">
+          <option value="">Tipo de Evento</option>
+          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
+            {{ tipo.tipo }}
+          </option>
+        </select>
 
-        <label for="">Telefone</label>
-        <input type="number" />
+        <label for="telefone">Telefone</label>
+        <input type="text" [(ngModel)]="telefone" name="telefone" />
 
-        <label for="">Livre +18</label>
-        <input type="checkbox" />
-      </div>
-      <div class="divSetorForm">
-        <label for="">Link</label>
-        <input type="url" />
+        <label for="livre">Livre +18</label>
+        <div>
+          <label>
+            <input type="radio" [(ngModel)]="livre" name="livre" [value]="true"/>
+            Sim
+          </label>
+          <label>
+            <input type="radio" [(ngModel)]="livre" name="livre" [value]="false"/>
+            Não
+          </label>
+        </div>
 
-        <label for="">Rua</label>
-        <input type="text" />
 
-        <label for="">Estado</label>
-        <input type="text" />
+        <div class="divSetorForm">
+          <label for="link">Link</label>
+          <input type="url" [(ngModel)]="link" name="link" />
 
-        <label for="">Cidade</label>
-        <input type="text" />
+          <label for="rua">Rua</label>
+          <input type="text" [(ngModel)]="rua" name="rua" />
 
-        <label for="">Bairro</label>
-        <input type="text" />
+          <label for="estado">Estado</label>
+          <input type="text" [(ngModel)]="estado" name="estado" />
 
-        <label for="">Número</label>
-        <input type="text" />
+          <label for="cidade">Cidade</label>
+          <select class="styleButtons btn btn-outline-primary cidade-dropdown" [(ngModel)]="selectedCidade"
+            name="cidade">
+            <option value="">Cidades</option>
+            <option *ngFor="let cidade of cidades" [value]="cidade">
+              {{ cidade }}
+            </option>
+          </select>
 
-        <label for="">Foto</label>
-        <input type="text" />
+          <label for="bairro">Bairro</label>
+          <input type="text" [(ngModel)]="bairro" name="bairro" />
+
+          <label for="numero">Número</label>
+          <input type="number" [(ngModel)]="numero" name="numero" />
+        </div>
+
       </div>
     </div>
-    <input type="button" value="Salvar" />
+    <input type="button" value="Salvar" (click)="onSubmit()" />
   </form>
 </div>
