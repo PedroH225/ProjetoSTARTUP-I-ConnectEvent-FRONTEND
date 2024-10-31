@@ -18,7 +18,7 @@
             <p>{{ evento.descricao }}</p>
           </div>
           <div>
-            <button *ngIf="(autenticacao$ | async)" [disabled]="desabilitarBotao">Confirmar Presença</button>
+            <button *ngIf="(autenticacao$ | async)" [disabled]="desabilitarBotao" (click)="participar()">Confirmar Presença</button>
             <label for="presenca" *ngIf="desabilitarBotao">Você já está participando do evento.</label>
           </div>
         </div>

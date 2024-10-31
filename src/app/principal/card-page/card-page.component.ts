@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Importar para acessar os parâmetros da URL
 import { EventosService } from '../../../services/eventos.service'; // Importa o serviço
 import { AutenticacaoService } from '../../../services/autenticacao.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-card-page',
@@ -17,7 +18,8 @@ export class CardPageComponent implements OnInit {
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
     private autenticacaoService : AutenticacaoService,
-    private eventosService: EventosService // Serviço para buscar o evento
+    private eventosService: EventosService,
+    private usuarioService: UsuarioService // Serviço para buscar o evento
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,20 @@ export class CardPageComponent implements OnInit {
     }
   }
 
+  participar() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.usuarioService.participar(parseInt(id)).subscribe(
+        (response) => {
+          this.desabilitarBotao = true;
+          alert("Presença confirmada com sucesso!")
+        },
+      (error) => {
+        alert(error)
+      });
+    };
+  }
+
   getEventoById(id: number): void {
     this.eventosService.getEventoById(id).subscribe(
       (response) => {
@@ -42,6 +58,7 @@ export class CardPageComponent implements OnInit {
         console.error('Erro ao buscar evento:', error);
       }
     );
+    
 
     let cor;
 
