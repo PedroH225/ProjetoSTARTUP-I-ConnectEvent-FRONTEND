@@ -1,1 +1,61 @@
-<p>eventos-anunciados works!</p>
+<div class="divBody">
+  <div class="divTabelaPaginacaoQuantidade">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome do Evento</th>
+          <th scope="col">Data</th>
+          <th scope="col">Hora</th>
+          <th scope="col"></th>
+          <th scope="col">Evento</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (country of countries; track country.name) {
+        <tr>
+          <th scope="row">{{ country.id }}</th>
+          <td>
+            <img
+              [src]="
+                'https://upload.wikimedia.org/wikipedia/commons/' + country.flag
+              "
+              [alt]="'The flag of ' + country.name"
+              class="me-2"
+              style="width: 20px"
+            />
+            {{ country.name }}
+          </td>
+          <td>{{ country.area | number }}</td>
+          <td>{{ country.population | number }}</td>
+          <td><button>Ver</button></td>
+          <td><button>Editar</button></td>
+          <td><button>Deletar</button></td>
+        </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshCountries()"
+      >
+      </ngb-pagination>
+
+      <select
+        class="form-select"
+        style="width: auto"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshCountries()"
+      >
+        <option [ngValue]="2">2 items per page</option>
+        <option [ngValue]="4">4 items per page</option>
+        <option [ngValue]="6">6 items per page</option>
+      </select>
+    </div>
+  </div>
+</div>
