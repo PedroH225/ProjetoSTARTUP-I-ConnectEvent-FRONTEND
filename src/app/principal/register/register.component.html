@@ -42,15 +42,27 @@
 
   <div class="divPrincipalDosForms">
     <!-- Section para Usuário -->
-    <section id="registroUsuario" class="displaySectionForm vh-10 gradient-custom" *ngIf="selectedOption === 'usuario'">
+    <section
+      id="registroUsuario"
+      class="displaySectionForm vh-10 gradient-custom"
+      *ngIf="selectedOption === 'usuario'"
+    >
       <div class="divPrincipal2 card-body p-4 p-md-5">
         <div class="divTeste">
-          <img class="fotoCadastro" src="../../../assets/registro/imgEventosCadastroUsuarioComum.png" alt="" />
+          <img
+            class="fotoCadastro"
+            src="../../../assets/registro/imgEventosCadastroUsuarioComum.png"
+            alt=""
+          />
         </div>
         <div class="divTeste">
           <div class="divCabecalhoUsuarioOuAnunciante">
             <h3 class="tamanhoRegistreSe">Registro de Usuário</h3>
-            <img class="tagIconConnectEvent" src="../../../assets/connectEventSemFundo.png" alt="" />
+            <img
+              class="tagIconConnectEvent"
+              src="../../../assets/connectEventSemFundo.png"
+              alt=""
+            />
           </div>
 
           <form class="displayForm" (ngSubmit)="onSubmit()" #form="ngForm">
@@ -59,20 +71,26 @@
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
                     <label class="form-label" for="nome">Nome</label>
-                    <input type="text" [(ngModel)]="nome" name="nome" class="form-control form-control-lg" />
+                    <input
+                      type="text"
+                      [(ngModel)]="nome"
+                      name="nome"
+                      class="form-control form-control-lg"
+                    />
                   </div>
-                  <div class="mt-2" id="nomeErro">
-
-                  </div>
+                  <div class="divErro mt-2" id="nomeErro"></div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
                     <label class="form-label" for="lastName">E-mail</label>
-                    <input type="text" [(ngModel)]="email" name="email" class="form-control form-control-lg" />
+                    <input
+                      type="text"
+                      [(ngModel)]="email"
+                      name="email"
+                      class="form-control form-control-lg"
+                    />
                   </div>
-                  <div class="mt-2" id="emailErro">
-
-                  </div>
+                  <div class="divErro mt-2" id="emailErro"></div>
                 </div>
               </div>
 
@@ -80,39 +98,61 @@
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
                     <label class="form-label" for="senha">Senha</label>
-                    <input type="password" [(ngModel)]="senha" name="senha" class="form-control form-control-lg" />
+                    <input
+                      type="password"
+                      [(ngModel)]="senha"
+                      name="senha"
+                      class="form-control form-control-lg"
+                    />
                   </div>
-                  <div class="mt-2" id="senhaErro">
-
-                  </div>
+                  <div class="divErro mt-2" id="senhaErro"></div>
                 </div>
                 <div class="col-md-6 mb-4">
                   <div data-mdb-input-init class="form-outline">
-                    <label class="form-label" for="confirmar">Confirmar Senha</label>
-                    <input type="password" [(ngModel)]="confirmacao" name="confirmacao" class="form-control form-control-lg" />
+                    <label class="form-label" for="confirmar"
+                      >Confirmar Senha</label
+                    >
+                    <input
+                      type="password"
+                      [(ngModel)]="confirmacao"
+                      name="confirmacao"
+                      class="form-control form-control-lg"
+                    />
                   </div>
+                  <div class="divErro mt-2" id="senhaErro"></div>
                 </div>
               </div>
 
               <div class="d-flex align-items-center row mb-4">
                 <div class="col-md-6 d-flex align-items-center">
-                  <div data-mdb-input-init class="form-outline datepicker w-100">
+                  <div
+                    data-mdb-input-init
+                    class="form-outline datepicker w-100"
+                  >
                     <label for="idade" class="form-label">Idade</label>
-                    <input type="number" [(ngModel)]="idade" name="idade" class="form-control form-control-lg" />
-                    <div class="mt-2" id="idadeErro">
-
-                    </div>
+                    <input
+                      type="number"
+                      [(ngModel)]="idade"
+                      name="idade"
+                      class="form-control form-control-lg"
+                    />
+                    <div class="divErro mt-2" id="idadeErro"></div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <label class="pb-2">Gênero:</label>
                   <div>
-                    <select [(ngModel)]="genero" name="genero" class="w-100 select form-control-lg">
+                    <select
+                      [(ngModel)]="genero"
+                      name="genero"
+                      class="w-100 select form-control-lg"
+                    >
                       <option [value]="'Masculino'">Masculino</option>
                       <option [value]="'Feminino'">Feminino</option>
                       <option [value]="'Outro'">Outro</option>
                     </select>
                   </div>
+                  <div class="divErro mt-2" id="generoErro"></div>
                 </div>
               </div>
 
@@ -120,29 +160,56 @@
                 <div class="col-md-6">
                   <label class="pb-2" for="estado">Estado</label>
                   <div>
-                    <select [(ngModel)]="estado" name="estado" class="w-100 select form-control-lg">
+                    <select
+                      [(ngModel)]="estado"
+                      name="estado"
+                      class="w-100 select form-control-lg"
+                    >
                       <option [value]="'SP'">São Paulo</option>
                     </select>
                   </div>
+                  <div class="divErro mt-2" id="estadoErro"></div>
                 </div>
+
                 <div class="col-md-6">
+                  <label class="pb-2" for="estado">Cidades</label>
                   <div ngbDropdown>
-                    <select name="cidade" class="styleButtons btn btn-outline-primary cidade-dropdown"
-                      [(ngModel)]="selectedCidade">
-                      <option value="">Cidades</option>
+                    <select
+                      name="cidade"
+                      class="w-100 select form-control-lg"
+                      [(ngModel)]="selectedCidade"
+                    >
                       <option *ngFor="let cidade of cidades" [value]="cidade">
-                        {{cidade}}
+                        {{ cidade }}
                       </option>
                     </select>
                   </div>
+                  <div class="divErro mt-2" id="generoErro"></div>
                 </div>
               </div>
             </div>
             <div class="mt-4 pt-2">
-              <button data-mdb-ripple-init class="tagButtonEnviar btn btn-primary btn-lg" type="submit">Enviar</button>            
+              <button
+                data-mdb-ripple-init
+                class="tagButtonEnviar btn btn-primary btn-lg"
+                type="submit"
+              >
+                Enviar
+              </button>
             </div>
           </form>
-          <ngb-alert *ngIf="sucesso === true" role="alert" class="alert alert-seccess show fade alert-dismissible">This is an success alert<button type="button" aria-label="Close" class="btn-close"></button><!----></ngb-alert>        </div>
+          <ngb-alert
+            *ngIf="sucesso === true"
+            role="alert"
+            class="alert alert-seccess show fade alert-dismissible"
+            >This is an success alert<button
+              type="button"
+              aria-label="Close"
+              class="btn-close"
+            ></button
+            ><!----></ngb-alert
+          >
+        </div>
       </div>
     </section>
 
