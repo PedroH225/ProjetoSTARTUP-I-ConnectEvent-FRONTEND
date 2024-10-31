@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Nome do Evento</th>
+          <th scope="col">Título do Evento</th>
           <th scope="col">Data</th>
           <th scope="col">Hora</th>
           <th scope="col"></th>
@@ -13,27 +13,15 @@
         </tr>
       </thead>
       <tbody>
-        @for (country of countries; track country.name) {
-        <tr>
-          <th scope="row">{{ country.id }}</th>
-          <td>
-            <img
-              [src]="
-                'https://upload.wikimedia.org/wikipedia/commons/' + country.flag
-              "
-              [alt]="'The flag of ' + country.name"
-              class="me-2"
-              style="width: 20px"
-            />
-            {{ country.name }}
-          </td>
-          <td>{{ country.area | number }}</td>
-          <td>{{ country.population | number }}</td>
+        <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
+          <th scope="row">{{ evento.id }}</th>
+          <td>{{ evento.titulo }}</td>
+          <td>{{ evento.data | date: 'shortDate' }}</td> <!-- Ajuste conforme o formato de data -->
+          <td>{{ evento.hora | date: 'shortTime' }}</td> <!-- Ajuste conforme o formato de hora -->
           <td><button>Ver</button></td>
           <td><button>Editar</button></td>
-          <td><button>Deletar</button></td>
+          <td><button >Deletar</button></td>
         </tr>
-        }
       </tbody>
     </table>
 
@@ -42,20 +30,8 @@
         [collectionSize]="collectionSize"
         [(page)]="page"
         [pageSize]="pageSize"
-        (pageChange)="refreshCountries()"
-      >
+        (pageChange)="refreshEventos()">
       </ngb-pagination>
-
-      <select
-        class="form-select"
-        style="width: auto"
-        [(ngModel)]="pageSize"
-        (ngModelChange)="refreshCountries()"
-      >
-        <option [ngValue]="2">2 items per page</option>
-        <option [ngValue]="4">4 items per page</option>
-        <option [ngValue]="6">6 items per page</option>
-      </select>
     </div>
   </div>
 </div>

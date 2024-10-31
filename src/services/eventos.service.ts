@@ -14,6 +14,14 @@ export class EventosService {
     return this.http.get<any[]>(`${this.apiUrl}/evento/anunciados`);
   }
 
+  getEventosUsuario() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/evento`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+  }
+
   getEventoById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/evento/${id}`);
   }
