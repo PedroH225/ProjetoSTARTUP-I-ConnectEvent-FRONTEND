@@ -1,5 +1,14 @@
 <div class="divBody">
   <div class="divTabelaPaginacaoQuantidade">
+    <form (ngSubmit)="onSubmit()" #form="ngForm">
+      <label for="filtros" >Filtro</label>
+    <select name="selectFiltro" [(ngModel)]="selectedFiltro">
+      <option value="" selected>Todos os eventos</option>
+      <option value="correntes">Correntes</option>
+      <option value="ocorridos">Ocorridos</option>
+    </select>
+    <button type="submit">Aplicar</button>
+  </form>
     <table class="table table-striped">
       <thead>
         <tr>

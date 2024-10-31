@@ -11,6 +11,7 @@ import { EventosService } from '../../../../services/eventos.service';
 export class EventosAnunciadosComponent implements OnInit {
   eventos: any[] = []; // Array para armazenar eventos
   paginatedEventos: any[] = []; // Array para eventos paginados
+  selectedFiltro: string = '';
   page = 1;
   pageSize = 5;
   collectionSize = 0; // Inicialize como 0, será atualizado depois
@@ -19,7 +20,7 @@ export class EventosAnunciadosComponent implements OnInit {
     private autenticacaoService: AutenticacaoService,
     private eventoService: EventosService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getEventosUsuario(); // Chama o método para buscar eventos ao inicializar
@@ -36,6 +37,24 @@ export class EventosAnunciadosComponent implements OnInit {
         console.error('Erro ao buscar eventos:', error);
       }
     );
+  }
+
+  onSubmit() {
+    switch (this.selectedFiltro) {
+      case "":
+      console.log("todos");
+      
+        break;
+      case "correntes":
+      console.log("anunciados");
+      
+        break;
+      case "ocorridos":
+      console.log("ocorridossss");
+      
+        break;
+    }
+
   }
 
   trackByEventoId(index: number, evento: any): number {
