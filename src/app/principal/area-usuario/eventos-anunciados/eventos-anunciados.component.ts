@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AutenticacaoService } from '../../../../services/autenticacao.service';
 import { EventosService } from '../../../../services/eventos.service';
+import { FiltrarEventoService } from '../../../../services/filtrar-evento.service';
 
 @Component({
   selector: 'app-eventos-anunciados',
@@ -19,7 +20,8 @@ export class EventosAnunciadosComponent implements OnInit {
   constructor(
     private autenticacaoService: AutenticacaoService,
     private eventoService: EventosService,
-    private router: Router
+    private router: Router,
+    private filtroServico : FiltrarEventoService
   ) { }
 
   ngOnInit() {
@@ -42,16 +44,32 @@ export class EventosAnunciadosComponent implements OnInit {
   onSubmit() {
     switch (this.selectedFiltro) {
       case "":
-      console.log("todos");
-      
+      this.getEventosUsuario();
         break;
       case "correntes":
-      console.log("anunciados");
+        this.filtroServico.filtrarEventoAnunciados().subscribe(
+          (response: any[]) => {
+            this.eventos = response; // Armazena os eventos recebidos
+            this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
+            this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+          },
+          (error: Error) => {
+            console.error('Erro ao buscar eventos:', error);
+          }
+        );
       
         break;
       case "ocorridos":
-      console.log("ocorridossss");
-      
+      this.filtroServico.filtrarEventoOcorridos().subscribe(
+      (response: any[]) => {
+        this.eventos = response; // Armazena os eventos recebidos
+        this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
+        this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+      },
+      (error: Error) => {
+        console.error('Erro ao buscar eventos:', error);
+      }
+    );
         break;
     }
 

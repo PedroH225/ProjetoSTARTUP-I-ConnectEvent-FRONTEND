@@ -26,4 +26,22 @@ export class FiltrarEventoService {
 
     return this.http.get<any[]>(`${this.apiUrl}/evento/filtrar`, { params });
   }
+
+  // Area do usuário
+  filtrarEventoOcorridos() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/ocorridos`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+  }
+
+  filtrarEventoAnunciados() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/eventoAnunciado`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+
+  }
 }
