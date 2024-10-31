@@ -23,14 +23,17 @@ export class CardPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.getEventoById(+id); 
-      this.eventosService.verificarPresenca(parseInt(id)).subscribe((resposta: { estaParticipando: boolean }) => {
-        this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
-        
-      });
+      this.getEventoById(+id);
+      this.autenticacao$.subscribe(autenticado => {
+        if (autenticado) {
+          // O usuário está autenticado, verifica a presença
+          this.eventosService.verificarPresenca(parseInt(id)).subscribe((resposta: { estaParticipando: boolean }) => {
+            this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
+          });
+      }
+    });
     }
   }
 
