@@ -13,4 +13,8 @@ export class UsuarioService {
   registrarUsuario(dados: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuario`, dados);
   }
+
+  login(dados: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/usuario/login`, dados);
+  }
 }
