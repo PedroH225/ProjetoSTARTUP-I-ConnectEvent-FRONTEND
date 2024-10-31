@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Importar para acessar os parâmetros da URL
 import { EventosService } from '../../../services/eventos.service'; // Importa o serviço
+import { AutenticacaoService } from '../../../services/autenticacao.service';
 
 @Component({
   selector: 'app-card-page',
@@ -8,20 +9,26 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
   styleUrls: ['./card-page.component.scss'],
 })
 export class CardPageComponent implements OnInit {
-  isButtonHidden: boolean = true; // Variável para controlar a visibilidade
+  public autenticacao$ = this.autenticacaoService.autenticacao$; 
+  desabilitarBotao : boolean = false;
   evento: any;
   tipo!: string;
 
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
+    private autenticacaoService : AutenticacaoService,
     private eventosService: EventosService // Serviço para buscar o evento
   ) {}
 
   ngOnInit(): void {
-    // Captura o ID da rota e carrega o evento correto
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.getEventoById(+id); // Converte o ID para number e busca o evento
+      this.getEventoById(+id); 
+      this.eventosService.verificarPresenca(parseInt(id)).subscribe((resposta: { estaParticipando: boolean }) => {
+        this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
+        
+      });
     }
   }
 

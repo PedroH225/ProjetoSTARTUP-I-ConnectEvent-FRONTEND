@@ -25,4 +25,12 @@ export class EventosService {
       headers: { 'Authorization': `Bearer ${token}` }
   });
   }
+
+  verificarPresenca(id: number) : Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get(`${this.apiUrl}/evento/${id}/verificar-participacao`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
+  }
 }
