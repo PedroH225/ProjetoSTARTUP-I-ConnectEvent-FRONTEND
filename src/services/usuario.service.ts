@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsuarioService {
   private apiUrl = 'http://localhost:3000'; // Endereço do backend
@@ -18,12 +18,27 @@ export class UsuarioService {
     return this.http.post(`${this.apiUrl}/usuario/login`, dados);
   }
 
-  participar(id:number): Observable<any> {
+  participar(id: number): Observable<any> {
     const token = localStorage.getItem('token');
 
-    return this.http.put(`${this.apiUrl}/usuario/participar/${id}`, {}, {
-      headers: { 'Authorization': `Bearer ${token}` }
-  });
-  };
+    return this.http.put(
+      `${this.apiUrl}/usuario/participar/${id}`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
   }
 
+  desParticipar(id: number): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.put(
+      `${this.apiUrl}/usuario/participar/${id}`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  }
+}

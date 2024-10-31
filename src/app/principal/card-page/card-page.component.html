@@ -18,8 +18,21 @@
             <p>{{ evento.descricao }}</p>
           </div>
           <div>
-            <button *ngIf="(autenticacao$ | async)" [disabled]="desabilitarBotao" (click)="participar()">Confirmar Presença</button>
-            <label for="presenca" *ngIf="desabilitarBotao">Você já está participando do evento.</label>
+            <button
+              *ngIf="!desabilitarBotao && (autenticacao$ | async)"
+              [disabled]="desabilitarBotao"
+              (click)="participar()"
+            >
+              Confirmar Presença
+            </button>
+            <button
+              for="presenca"
+              *ngIf="desabilitarBotao && (autenticacao$ | async)"
+              [disabled]="!desabilitarBotao"
+              (click)="participar()"
+            >
+              Retirar Presença
+            </button>
           </div>
         </div>
         <div class="detalhesDireita">

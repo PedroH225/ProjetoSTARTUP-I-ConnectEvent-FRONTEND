@@ -10,14 +10,15 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrls: ['./card-page.component.scss'],
 })
 export class CardPageComponent implements OnInit {
-  public autenticacao$ = this.autenticacaoService.autenticacao$; 
-  desabilitarBotao : boolean = false;
+  public autenticacao$ = this.autenticacaoService.autenticacao$;
+  desabilitarBotao: boolean = false;
+  habilitarBotao: boolean = true;
   evento: any;
   tipo!: string;
 
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
-    private autenticacaoService : AutenticacaoService,
+    private autenticacaoService: AutenticacaoService,
     private eventosService: EventosService,
     private usuarioService: UsuarioService // Serviço para buscar o evento
   ) {}
@@ -26,14 +27,16 @@ export class CardPageComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.getEventoById(+id);
-      this.autenticacao$.subscribe(autenticado => {
+      this.autenticacao$.subscribe((autenticado) => {
         if (autenticado) {
           // O usuário está autenticado, verifica a presença
-          this.eventosService.verificarPresenca(parseInt(id)).subscribe((resposta: { estaParticipando: boolean }) => {
-            this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
-          });
-      }
-    });
+          this.eventosService
+            .verificarPresenca(parseInt(id))
+            .subscribe((resposta: { estaParticipando: boolean }) => {
+              this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
+            });
+        }
+      });
     }
   }
 
@@ -43,13 +46,16 @@ export class CardPageComponent implements OnInit {
       this.usuarioService.participar(parseInt(id)).subscribe(
         (response) => {
           this.desabilitarBotao = true;
-          alert("Presença confirmada com sucesso!")
+          alert('Presença confirmada com sucesso!');
         },
-      (error) => {
-        alert(error)
-      });
-    };
+        (error) => {
+          alert(error);
+        }
+      );
+    }
   }
+
+  desParticipar() {}
 
   getEventoById(id: number): void {
     this.eventosService.getEventoById(id).subscribe(
@@ -61,7 +67,6 @@ export class CardPageComponent implements OnInit {
         console.error('Erro ao buscar evento:', error);
       }
     );
-    
 
     let cor;
 
