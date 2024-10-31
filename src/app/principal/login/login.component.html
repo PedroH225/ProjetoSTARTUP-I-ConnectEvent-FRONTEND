@@ -107,12 +107,11 @@
 
       <!-- Submit button -->
       <button
-        type="button"
+        type="submit" 
         data-mdb-button-init
         data-mdb-ripple-init
         class="BotaoEntrar btn btn-primary"
-        (click)="onSubmit()"
-        type="submit" [disabled]="!form.valid"
+        [disabled]="!form.valid"
       >
         Entrar
       </button>

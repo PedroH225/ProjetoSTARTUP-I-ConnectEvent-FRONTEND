@@ -21,6 +21,14 @@ export class LoginComponent {
   )
    {} // Injeta o serviço de roteamento
 
+  ngOnInit() {
+    this.autenticacaoService.autenticacao$.subscribe((autenticado) => {
+      if (autenticado) {
+        this.router.navigate(['/principal/areaUsuario']);
+      }
+    });
+  }
+
   onSubmit() {
     const payload = {
       email: this.email,
@@ -31,7 +39,6 @@ export class LoginComponent {
       (response) => {
         localStorage.setItem("token", response.token)
         this.autenticacaoService.verificarAutenticacao(); // Atualiza o estado da autenticação
-        this.router.navigate(["/principal/areaUsuario"])
       },
       (error) => {
         alert("erro!")
