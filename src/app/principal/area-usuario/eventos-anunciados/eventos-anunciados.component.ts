@@ -13,6 +13,8 @@ export class EventosAnunciadosComponent implements OnInit {
   eventos: any[] = []; // Array para armazenar eventos
   paginatedEventos: any[] = []; // Array para eventos paginados
   selectedFiltro: string = '';
+  today: Date = new Date();
+
   page = 1;
   pageSize = 5;
   collectionSize = 0; // Inicialize como 0, será atualizado depois
@@ -39,6 +41,16 @@ export class EventosAnunciadosComponent implements OnInit {
         console.error('Erro ao buscar eventos:', error);
       }
     );
+  }
+
+  convertToDate(dateString: string): Date {
+    const [day, month, year] = dateString.split('/').map(part => parseInt(part, 10));
+    return new Date(year, month - 1, day);
+  }
+
+  isEventoInFuture(evento: any): boolean {
+    const eventoDate = this.convertToDate(evento.data);
+    return eventoDate > this.today;
   }
 
   onSubmit() {

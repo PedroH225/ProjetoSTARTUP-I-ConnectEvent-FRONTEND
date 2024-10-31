@@ -25,11 +25,12 @@
         <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
           <th scope="row">{{ evento.id }}</th>
           <td>{{ evento.titulo }}</td>
-          <td>{{ evento.data | date: 'shortDate' }}</td> <!-- Ajuste conforme o formato de data -->
+          <td>{{ evento.data }}</td> <!-- Ajuste conforme o formato de data -->
           <td>{{ evento.horario }}</td> <!-- Ajuste conforme o formato de hora -->
-          <td><button>Ver</button></td>
+          <td><button>Visualizar</button></td>
           <td><button>Editar</button></td>
           <td><button >Deletar</button></td>
+          <td><button *ngIf="!evento.isAnunciado && isEventoInFuture(evento)">Anunciar</button></td>
         </tr>
       </tbody>
     </table>
