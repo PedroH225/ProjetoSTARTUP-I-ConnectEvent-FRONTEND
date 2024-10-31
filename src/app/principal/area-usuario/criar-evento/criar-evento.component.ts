@@ -55,7 +55,6 @@ export class CriarEventoComponent {
       cidade: this.selectedCidade,
       bairro: this.bairro,
       numero: this.numero,
-      usuarioId: 1
     };
     
     this.eventoService.criarEvento(payload).subscribe(

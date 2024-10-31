@@ -19,6 +19,18 @@ export class EventosService {
   }
 
   criarEvento(dados: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/evento`, dados);
+    const token = localStorage.getItem('token');
+
+    return this.http.post(`${this.apiUrl}/evento`, dados, {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
+  }
+
+  verificarPresenca(id: number) : Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get(`${this.apiUrl}/evento/${id}/verificar-participacao`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
   }
 }

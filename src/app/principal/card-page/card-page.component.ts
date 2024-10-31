@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Importar para acessar os parâmetros da URL
 import { EventosService } from '../../../services/eventos.service'; // Importa o serviço
+import { AutenticacaoService } from '../../../services/autenticacao.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-card-page',
@@ -8,21 +10,42 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
   styleUrls: ['./card-page.component.scss'],
 })
 export class CardPageComponent implements OnInit {
-  isButtonHidden: boolean = true; // Variável para controlar a visibilidade
+  public autenticacao$ = this.autenticacaoService.autenticacao$; 
+  desabilitarBotao : boolean = false;
   evento: any;
   tipo!: string;
 
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
-    private eventosService: EventosService // Serviço para buscar o evento
+    private autenticacaoService : AutenticacaoService,
+    private eventosService: EventosService,
+    private usuarioService: UsuarioService // Serviço para buscar o evento
   ) {}
 
   ngOnInit(): void {
-    // Captura o ID da rota e carrega o evento correto
+
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.getEventoById(+id); // Converte o ID para number e busca o evento
+      this.getEventoById(+id); 
+      this.eventosService.verificarPresenca(parseInt(id)).subscribe((resposta: { estaParticipando: boolean }) => {
+        this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
+        
+      });
     }
+  }
+
+  participar() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.usuarioService.participar(parseInt(id)).subscribe(
+        (response) => {
+          this.desabilitarBotao = true;
+          alert("Presença confirmada com sucesso!")
+        },
+      (error) => {
+        alert(error)
+      });
+    };
   }
 
   getEventoById(id: number): void {
@@ -35,6 +58,7 @@ export class CardPageComponent implements OnInit {
         console.error('Erro ao buscar evento:', error);
       }
     );
+    
 
     let cor;
 

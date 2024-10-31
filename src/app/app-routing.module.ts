@@ -20,6 +20,7 @@ import { EventosOcorridosUsuarioComponent } from './principal/area-usuario/event
 import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { EventosOcorridosAnunciarComponent } from './principal/area-usuario/eventos-ocorridos-anunciar/eventos-ocorridos.component';
+import { authGuard } from '../services/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -42,7 +43,7 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       {
         path: 'areaUsuario',
-        component: AreaUsuarioComponent,
+        component: AreaUsuarioComponent, canActivate : [authGuard],
         children: [
           { path: 'adicionarAmigos', component: AdicionarAmigosComponent },
           { path: 'configuracoes', component: ConfiguracoesComponent },
