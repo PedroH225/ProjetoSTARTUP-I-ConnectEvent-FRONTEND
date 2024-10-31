@@ -18,35 +18,43 @@
 
     <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
       <ul class="tagListaBotao navbar-nav">
-        <ng-container *ngIf="!(autenticacao$ | async)"> <!-- Verifica se a autenticação é falsa -->
-        <li class="nav-item">
-          <a
-            class="styleButtons btn nav-item active"
-            [routerLink]="'/principal/login'"
-            (click)="isMenuCollapsed = true"
-            >Login</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="styleButtons btn nav-item active"
-            [routerLink]="'/principal/register'"
-            (click)="isMenuCollapsed = true"
-            >Register</a
-          > 
-        </li>
-      </ng-container>
-      <ng-container *ngIf="(autenticacao$ | async)"> <!-- Verifica se a autenticação é verdadeira -->
-        <li class="nav-item">
-          <a [routerLink]="'/principal/areaUsuario'">Área do usuário</a>
-        </li>
-        <li class="nav-item">
-          <a (click)="logout()"
-          [routerLink]="'/principal/areaUsuario'"
-          >Logout</a>
-        </li>
-      </ng-container>
-      
+        <ng-container *ngIf="!(autenticacao$ | async)">
+          <!-- Verifica se a autenticação é falsa -->
+          <li class="nav-item">
+            <a
+              class="styleButtons btn nav-item active"
+              [routerLink]="'/principal/login'"
+              (click)="isMenuCollapsed = true"
+              >Login</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="styleButtons btn nav-item active"
+              [routerLink]="'/principal/register'"
+              (click)="isMenuCollapsed = true"
+              >Register</a
+            >
+          </li>
+        </ng-container>
+        <ng-container *ngIf="autenticacao$ | async">
+          <!-- Verifica se a autenticação é verdadeira -->
+          <li class="nav-item">
+            <a
+              class="styleButtons btn nav-item active"
+              [routerLink]="'/principal/areaUsuario'"
+              >Área do usuário</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              (click)="logout()"
+              class="tagSair styleButtons btn nav-item active"
+              [routerLink]="'/principal/areaUsuario'"
+              >Logout</a
+            >
+          </li>
+        </ng-container>
       </ul>
       <!-- </div> -->
     </div>
