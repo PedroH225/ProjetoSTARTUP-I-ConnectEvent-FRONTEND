@@ -96,8 +96,9 @@
           </div>
 
           <label for="fotos">Escolha as fotos:</label>
-          <input type="file" id="fotos" name="fotos" accept="image/*" multiple required
-            (change)="onFileSelected($event)">
+          <app-image-uploader (imagesChanged)="onImagesChanged($event)"></app-image-uploader>
+
+
 
         </div>
       </div>

@@ -153,6 +153,11 @@ export class CriarEventoComponent {
       event.preventDefault();
     }
   }
+  onImagesChanged(file : File[]) {
+    this.fotos = file; // Atualiza as imagens ao receber do uploader
+    console.log(this.fotos);
+    
+  }
 
   carregarEvento(id: string): void {
     this.eventoService.getEventoById(parseInt(id)).subscribe(
@@ -226,18 +231,4 @@ export class CriarEventoComponent {
     return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
   }
 
-  onFileSelected(event: any): void {
-    const files: FileList = event.target.files;
-    this.fotos = []; // Limpar fotos anteriores
-  
-    if (files.length > 0) {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        // Verificar se o arquivo é uma imagem (opcional)
-        if (file.type.startsWith('image/')) {
-          this.fotos.push(file); // Adiciona o arquivo ao array de fotos
-        }
-      }
-    }
-  }
 }

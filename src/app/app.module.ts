@@ -31,6 +31,7 @@ import { EventosOcorridosUsuarioComponent } from './principal/area-usuario/event
 import { AdicionarAmigosComponent } from './principal/area-usuario/adicionar-amigos/adicionar-amigos.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/configuracoes.component';
+import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/c
     AdicionarAmigosComponent,
     ListaDeAmigosComponent,
     ConfiguracoesComponent,
+    ImageUploaderComponent,
   ],
   imports: [
     BrowserModule,
