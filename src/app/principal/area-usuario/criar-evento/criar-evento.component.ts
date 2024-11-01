@@ -77,17 +77,15 @@ export class CriarEventoComponent {
     
     if (this.eventoId) {
       this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
-        (response) => {
-          console.log(response);
+        () => {
             this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
             alert("Evento editado com sucesso!") 
         },
         (error) => {
-          console.log(error);
+          
           let erros: any[] = [];
           erros = error.error // Captura os erros
   
-          console.log(erros);
           listarErrosEvento(erros)
         }
       );
@@ -98,11 +96,9 @@ export class CriarEventoComponent {
 
       },
       (error) => {
-        console.log(error);
         let erros: any[] = [];
         erros = error.error // Captura os erros
 
-        console.log(erros);
         listarErrosEvento(erros)
       }
     );
@@ -152,10 +148,6 @@ export class CriarEventoComponent {
   carregarEvento(id: string): void {
     this.eventoService.getEventoById(parseInt(id)).subscribe(
       (response) => {
-        console.log(response);
-        console.log("Conversão: " + this.convertStringToDate(response.data));
-        
-        
         // Carregar os dados do evento no formulário
         this.titulo = response.titulo;
         this.descricao = response.descricao;
