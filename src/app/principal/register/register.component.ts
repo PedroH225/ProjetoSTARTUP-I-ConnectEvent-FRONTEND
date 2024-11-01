@@ -82,10 +82,11 @@ export class RegisterComponent {
       const alert = document.createElement("ngb-alert");
       alert.classList.add('alert', 'alert-danger', "p-1", 'mb-0');
   
-      const idadeErroDiv = document.getElementById("senhaErro");
-      if (idadeErroDiv) {
+      const senhaErroDiv = document.getElementById("senhaErro");
+      if (senhaErroDiv) {
+        senhaErroDiv.innerHTML = "";
         alert.textContent = "Senhas não coincidem"; // Define o conteúdo do alerta
-        idadeErroDiv.appendChild(alert);
+        senhaErroDiv.appendChild(alert);
       }
       return false; // Retorna falso se as senhas não coincidem
     }
