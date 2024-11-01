@@ -33,7 +33,7 @@
           <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
           <td><button [routerLink]="['/principal/areaUsuario/editarEvento', evento.id]">Editar</button></td>
           <td><button (click)="excluirEvento(evento.id)">Excluir</button></td>
-          <td><ng-container *ngIf="!evento.isAnunciado; else anunciado">
+          <td><ng-container *ngIf="!(evento.isAnunciado && isEventoInFuture(evento)); else anunciado">
             <ng-container *ngIf="isEventoInFuture(evento); else passado">
               <button (click)="anunciarEvento(evento.id)">Anunciar</button>
             </ng-container>
