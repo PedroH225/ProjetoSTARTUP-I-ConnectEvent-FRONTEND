@@ -15,6 +15,10 @@ export class CriarEventoComponent {
   tipos : any[] = [];
   cidades : any[] = [];
 
+
+  tipoTelefone: string = '';
+  telefoneHabilitado: boolean = false; // Define se o campo de telefone está habilitado
+
   titulo : string = '';
   descricao : string = '';
   data !: Date;
@@ -184,5 +188,36 @@ export class CriarEventoComponent {
     const year = date.getFullYear();
     return `${year}-${month}-${day}`;
   }
+
+  formatarTelefone(event: any) {
+    let numero = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+    // Limita a 11 dígitos para celular ou 10 para fixo
+    if (this.tipoTelefone === 'celular') {
+        if (numero.length > 11) {
+            numero = numero.slice(0, 11); // Limita a 11 dígitos
+        }
+    } else {
+        if (numero.length > 10) {
+            numero = numero.slice(0, 10); // Limita a 10 dígitos
+        }
+    }
+
+    // Formatação
+    if (this.tipoTelefone === 'celular') {
+        this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
+            .replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o hífen
+    } else {
+        this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
+            .replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
+    }
 }
 
+onTipoTelefoneChange() {
+  this.telefoneHabilitado = !!this.tipoTelefone; // Habilita o campo apenas se um tipo for selecionado
+}
+
+// Retorna o valor do maxlength baseado no tipo de telefone
+getMaxLength(): number {
+  return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
+}
+}
