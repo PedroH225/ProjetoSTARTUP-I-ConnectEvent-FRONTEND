@@ -48,6 +48,7 @@ const routes: Routes = [
           { path: 'adicionarAmigos', component: AdicionarAmigosComponent },
           { path: 'configuracoes', component: ConfiguracoesComponent },
           { path: 'criarEvento', component: CriarEventoComponent },
+          { path: 'editarEvento/:id', component: CriarEventoComponent },
           { path: 'estatisticas', component: EstatisticasComponent },
           { path: 'eventosAnunciados', component: EventosAnunciadosComponent },
           {

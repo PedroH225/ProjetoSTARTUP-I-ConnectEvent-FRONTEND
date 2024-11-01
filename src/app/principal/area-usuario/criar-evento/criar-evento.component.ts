@@ -3,6 +3,8 @@ import { TipoEventoService } from '../../../../services/tipo-evento.service';
 import { CidadesService } from '../../../../services/cidades.service';
 import { EventosService } from '../../../../services/eventos.service';
 import { listarErrosEvento } from '../../../utils/listarErros';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-criar-evento',
@@ -16,6 +18,7 @@ export class CriarEventoComponent {
   titulo : string = '';
   descricao : string = '';
   data !: Date;
+  dataString : string = '';
   horario : string = '';
   selectedTipo : string = '';
   telefone : string = '';
@@ -27,23 +30,38 @@ export class CriarEventoComponent {
   bairro : string = '';
   numero !: number;
   // foto;
+  eventoId: string | null = null;
 
   constructor(
     private tipoEventoService: TipoEventoService,
     private cidadesService : CidadesService,
-    private eventoService : EventosService
+    private eventoService : EventosService,
+    private route: ActivatedRoute,
+    private router: Router          
+
   ) {}
 
   ngOnInit(): void {
     this.getTipoEvento(); // Chamar o método quando o componente for inicializado
     this.getCidades();
+
+    this.eventoId = this.route.snapshot.paramMap.get('id');
+    if (this.eventoId) {
+      const botao = document.querySelector("#botaoSubmit")
+      const h1 = document.querySelector("#editarcriar")
+      if (botao && h1) {
+        botao.innerHTML = "Editar"
+        h1.innerHTML = "Editar evento"
+      }
+      this.carregarEvento(this.eventoId);
+    }
   }
 
   onSubmit() {
     const payload = {
       titulo: this.titulo,
       descricao: this.descricao,
-      data: this.data,
+      data: this.dataString,
       horario: this.horario,
       tipo: this.selectedTipo,
       telefone: this.telefone,
@@ -57,16 +75,30 @@ export class CriarEventoComponent {
       numero: this.numero,
     };
     
+    if (this.eventoId) {
+      this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
+        (response) => {
+          console.log(response);
+            this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
+            alert("Evento editado com sucesso!") 
+        },
+        (error) => {
+          console.log(error);
+          let erros: any[] = [];
+          erros = error.error // Captura os erros
+  
+          console.log(erros);
+          listarErrosEvento(erros)
+        }
+      );
+    } else {
     this.eventoService.criarEvento(payload).subscribe(
-      (response) => {
-          alert("Evento criado com sucesso!") 
-        console.log(response);
-        
+      () => {
+          alert("Evento criado com sucesso!")
+
       },
       (error) => {
         console.log(error);
-        
-        // Erro no registro
         let erros: any[] = [];
         erros = error.error // Captura os erros
 
@@ -74,6 +106,7 @@ export class CriarEventoComponent {
         listarErrosEvento(erros)
       }
     );
+  }
   }
 
   getTipoEvento(): void {
@@ -114,6 +147,50 @@ export class CriarEventoComponent {
     if ((charCode < 48 || charCode > 57) && charCode !== 58) {
       event.preventDefault();
     }
+  }
+
+  carregarEvento(id: string): void {
+    this.eventoService.getEventoById(parseInt(id)).subscribe(
+      (response) => {
+        console.log(response);
+        console.log("Conversão: " + this.convertStringToDate(response.data));
+        
+        
+        // Carregar os dados do evento no formulário
+        this.titulo = response.titulo;
+        this.descricao = response.descricao;
+        this.data = this.convertStringToDate(response.data); // Armazena como Date
+
+        // Atribuir a data formatada como string para o input
+        this.dataString = this.convertDateToString(this.data); // Nova propriedade para o input de data
+        this.horario = response.horario;
+        this.selectedTipo = response.tipo;
+        this.telefone = response.telefone;
+        this.livre = response.livre;
+        this.link = response.link;
+        this.local = response.endereco.local;
+        this.estado = response.endereco.estado;
+        this.selectedCidade = response.endereco.cidade;
+        this.bairro = response.endereco.bairro;
+        this.numero = response.endereco.numero;
+      },
+      (error) => {
+        console.error('Erro ao carregar evento:', error);
+      }
+    );
+  }
+
+  convertStringToDate(dateString: string): Date {
+    const parts = dateString.split('/');
+    // O construtor Date usa o formato (ano, mês - 1, dia)
+    return new Date(+parts[2], +parts[1] - 1, +parts[0]);
+  }
+  
+  convertDateToString(date: Date): string {
+    const day = ('0' + date.getDate()).slice(-2);
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const year = date.getFullYear();
+    return `${year}-${month}-${day}`;
   }
 }
 

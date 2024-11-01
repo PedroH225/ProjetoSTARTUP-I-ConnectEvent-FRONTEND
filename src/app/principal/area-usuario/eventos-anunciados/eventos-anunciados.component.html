@@ -31,7 +31,7 @@
           <td>{{ evento.data }}</td> <!-- Ajuste conforme o formato de data -->
           <td>{{ evento.horario }}</td> <!-- Ajuste conforme o formato de hora -->
           <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
-          <td><button>Editar</button></td>
+          <td><button [routerLink]="['/principal/areaUsuario/editarEvento', evento.id]">Editar</button></td>
           <td><button (click)="excluirEvento(evento.id)">Excluir</button></td>
           <td><ng-container *ngIf="!evento.isAnunciado; else anunciado">
             <ng-container *ngIf="isEventoInFuture(evento); else passado">

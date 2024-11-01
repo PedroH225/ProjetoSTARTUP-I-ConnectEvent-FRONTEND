@@ -1,4 +1,5 @@
 <div class="">
+  <h1 id="editarcriar">Criar evento</h1>
   <form class="divForm" (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="divIntermediariaForm">
       <div class="divSetorForm">
@@ -15,10 +16,10 @@
         </div>
 
         <label for="data">Data</label>
-        <input type="date" [(ngModel)]="data" name="data" required />
+        <input type="date" [(ngModel)]="dataString" name="data" required />
 
         <label for="horario">Horário</label>
-        <input type="text" [(ngModel)]="horario" name="horario" (input)="formatarHorario()" 
+        <input type="text" [(ngModel)]="horario" name="horario" (input)="formatarHorario()"
           (keypress)="permitirApenasNumeros($event)" maxlength="5" placeholder="HH:MM" required />
 
         <label for="tipo">Tipo</label>
@@ -69,7 +70,7 @@
             <option value="">Cidades</option>
             <option *ngFor="let cidade of cidades" [value]="cidade">{{ cidade }}</option>
           </select>
-          
+
 
           <label for="bairro">Bairro</label>
           <input type="text" [(ngModel)]="bairro" name="bairro" required />
@@ -82,10 +83,13 @@
           <div id="numeroErro">
 
           </div>
-        </div>
+
+          <label for="fotos">Escolha as fotos:</label>
+          <input type="file" id="fotos" name="fotos" accept="image/*" multiple required>
+        </div>  <!-- Não implementado -->
 
       </div>
     </div>
-    <button type="submit" [disabled]="!form.valid">Salvar</button>
+    <button id="botaoSubmit" type="submit" [disabled]="!form.valid">Salvar</button>
   </form>
 </div>

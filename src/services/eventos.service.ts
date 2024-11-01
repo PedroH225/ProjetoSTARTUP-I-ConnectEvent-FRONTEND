@@ -34,6 +34,14 @@ export class EventosService {
   });
   }
 
+  editarEvento(id : number, dados: any) : Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.put(`${this.apiUrl}/evento/${id}`, dados , {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
+  }
+
   verificarPresenca(id: number) : Observable<any> {
     const token = localStorage.getItem('token');
 
