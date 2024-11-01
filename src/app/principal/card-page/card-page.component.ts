@@ -15,6 +15,7 @@ export class CardPageComponent implements OnInit {
   habilitarBotao: boolean = true;
   evento: any;
   tipo!: string;
+  imagemEventoUrl : string = '';
 
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
@@ -75,6 +76,7 @@ export class CardPageComponent implements OnInit {
       (response) => {
         this.evento = response; // Armazena os dados do evento
         this.tipo = response.tipo;
+        this.imagemEventoUrl = `http://localhost:3000/uploads/${response.fotos[0].foto}`;
       },
       (error) => {
         console.error('Erro ao buscar evento:', error);
