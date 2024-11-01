@@ -20,8 +20,10 @@ export class NavBarComponent implements OnInit{
   }  
 
   logout() {
+    if (confirm("Tem certeza que deseja sair?")) {
     this.autenticacaoService.logout();
     this.router.navigate(["/principal/homePage"])
+    }
   }
 }
 
