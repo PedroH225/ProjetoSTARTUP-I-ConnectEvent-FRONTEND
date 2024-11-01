@@ -16,6 +16,7 @@ export class EventosConfirmadosComponent {
   paginatedEventos: any[] = []; // Array para eventos paginados
   selectedFiltro: string = '';
   today: Date = new Date();
+  ocorrido : boolean = false;
 
   page = 1;
   pageSize = 5;
@@ -49,26 +50,16 @@ export class EventosConfirmadosComponent {
     switch (this.selectedFiltro) {
       case "":
       this.getEventosParticipando();
-        break;
-      case "correntes":
-        this.filtroServico.filtrarEventoAnunciados().subscribe(
-          (response: any[]) => {
-            this.eventos = response; // Armazena os eventos recebidos
-            this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
-            this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
-          },
-          (error: Error) => {
-            console.error('Erro ao buscar eventos:', error);
-          }
-        );
-      
+      this.ocorrido = false;
         break;
       case "ocorridos":
-      this.filtroServico.filtrarEventoOcorridos().subscribe(
+      this.usuarioService.getEventosParticipandoOcorridos().subscribe(
       (response: any[]) => {
         this.eventos = response; // Armazena os eventos recebidos
         this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
         this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+        this.ocorrido = true;
+        
       },
       (error: Error) => {
         console.error('Erro ao buscar eventos:', error);

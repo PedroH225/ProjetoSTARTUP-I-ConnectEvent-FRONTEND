@@ -4,7 +4,6 @@
             <label for="filtros">Filtro</label>
             <select name="selectFiltro" [(ngModel)]="selectedFiltro">
                 <option value="" selected>Todos os eventos</option>
-                <option value="correntes">Correntes</option>
                 <option value="ocorridos">Ocorridos</option>
             </select>
             <button type="submit">Aplicar</button>
@@ -28,7 +27,14 @@
                     <td>{{ evento.data }}</td>
                     <td>{{ evento.horario }}</td>
                     <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
-                    <td><button>Retirar</button></td>
+                    <td>
+                        <ng-container *ngIf="!ocorrido">
+                            <button>Retirar</button>
+                        </ng-container>
+                        <ng-container *ngIf="ocorrido">
+                            Ocorrido
+                        </ng-container>
+                    </td>
                 </tr>
             </tbody>
         </table>

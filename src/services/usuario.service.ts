@@ -51,5 +51,19 @@ export class UsuarioService {
         }
       );
     }
+
+    getEventosParticipandoOcorridos(): Observable<any> {
+      const token = localStorage.getItem('token');
+  
+      return this.http.get(
+        `${this.apiUrl}/usuario/eventoOcorridos`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+    }
   }
+  
+
+  
 
