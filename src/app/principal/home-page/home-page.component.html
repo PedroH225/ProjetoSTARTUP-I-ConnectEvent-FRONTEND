@@ -22,6 +22,7 @@
   <div class="divCards">
     <app-card
       *ngFor="let evento of eventos"
+      [imagem]="'http://localhost:3000/uploads/' + evento.fotos[0].foto"
       [titulo]="evento.titulo"
       [descricao]="evento.descricao"
       [id]="evento.id"
