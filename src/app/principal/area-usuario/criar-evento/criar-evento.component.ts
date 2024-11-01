@@ -12,38 +12,38 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './criar-evento.component.scss'
 })
 export class CriarEventoComponent {
-  tipos : any[] = [];
-  cidades : any[] = [];
+  tipos: any[] = [];
+  cidades: any[] = [];
 
 
   tipoTelefone: string = '';
   telefoneHabilitado: boolean = false; // Define se o campo de telefone está habilitado
 
-  titulo : string = '';
-  descricao : string = '';
+  titulo: string = '';
+  descricao: string = '';
   data !: Date;
-  dataString : string = '';
-  horario : string = '';
-  selectedTipo : string = '';
-  telefone : string = '';
+  dataString: string = '';
+  horario: string = '';
+  selectedTipo: string = '';
+  telefone: string = '';
   livre !: boolean;
-  link : string = '';
-  local : string = '';
-  estado : string = '';
-  selectedCidade : string = '';
-  bairro : string = '';
+  link: string = '';
+  local: string = '';
+  estado: string = '';
+  selectedCidade: string = '';
+  bairro: string = '';
   numero !: number;
   // foto;
   eventoId: string | null = null;
 
   constructor(
     private tipoEventoService: TipoEventoService,
-    private cidadesService : CidadesService,
-    private eventoService : EventosService,
+    private cidadesService: CidadesService,
+    private eventoService: EventosService,
     private route: ActivatedRoute,
-    private router: Router          
+    private router: Router
 
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getTipoEvento(); // Chamar o método quando o componente for inicializado
@@ -78,35 +78,35 @@ export class CriarEventoComponent {
       bairro: this.bairro,
       numero: this.numero,
     };
-    
+
     if (this.eventoId) {
       this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
         () => {
-            this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
-            alert("Evento editado com sucesso!") 
+          this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
+          alert("Evento editado com sucesso!")
         },
         (error) => {
-          
+
           let erros: any[] = [];
           erros = error.error // Captura os erros
-  
+
           listarErrosEvento(erros)
         }
       );
     } else {
-    this.eventoService.criarEvento(payload).subscribe(
-      () => {
+      this.eventoService.criarEvento(payload).subscribe(
+        () => {
           alert("Evento criado com sucesso!")
 
-      },
-      (error) => {
-        let erros: any[] = [];
-        erros = error.error // Captura os erros
+        },
+        (error) => {
+          let erros: any[] = [];
+          erros = error.error // Captura os erros
 
-        listarErrosEvento(erros)
-      }
-    );
-  }
+          listarErrosEvento(erros)
+        }
+      );
+    }
   }
 
   getTipoEvento(): void {
@@ -181,7 +181,7 @@ export class CriarEventoComponent {
     // O construtor Date usa o formato (ano, mês - 1, dia)
     return new Date(+parts[2], +parts[1] - 1, +parts[0]);
   }
-  
+
   convertDateToString(date: Date): string {
     const day = ('0' + date.getDate()).slice(-2);
     const month = ('0' + (date.getMonth() + 1)).slice(-2);
@@ -193,31 +193,31 @@ export class CriarEventoComponent {
     let numero = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
     // Limita a 11 dígitos para celular ou 10 para fixo
     if (this.tipoTelefone === 'celular') {
-        if (numero.length > 11) {
-            numero = numero.slice(0, 11); // Limita a 11 dígitos
-        }
+      if (numero.length > 11) {
+        numero = numero.slice(0, 11); // Limita a 11 dígitos
+      }
     } else {
-        if (numero.length > 10) {
-            numero = numero.slice(0, 10); // Limita a 10 dígitos
-        }
+      if (numero.length > 10) {
+        numero = numero.slice(0, 10); // Limita a 10 dígitos
+      }
     }
 
     // Formatação
     if (this.tipoTelefone === 'celular') {
-        this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
-            .replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o hífen
+      this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
+        .replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o hífen
     } else {
-        this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
-            .replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
+      this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
+        .replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
     }
-}
+  }
 
-onTipoTelefoneChange() {
-  this.telefoneHabilitado = !!this.tipoTelefone; // Habilita o campo apenas se um tipo for selecionado
-}
+  onTipoTelefoneChange() {
+    this.telefoneHabilitado = !!this.tipoTelefone; // Habilita o campo apenas se um tipo for selecionado
+  }
 
-// Retorna o valor do maxlength baseado no tipo de telefone
-getMaxLength(): number {
-  return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
-}
+  // Retorna o valor do maxlength baseado no tipo de telefone
+  getMaxLength(): number {
+    return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
+  }
 }
