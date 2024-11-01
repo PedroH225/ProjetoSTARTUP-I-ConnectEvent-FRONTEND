@@ -14,10 +14,12 @@
         <tr>
           <th scope="col">ID</th>
           <th scope="col">Título do Evento</th>
-          <th scope="col">Data</th>
-          <th scope="col">Hora</th>
+          <th scope="col">Data do Evento</th>
+          <th scope="col">Horário</th>
           <th scope="col"></th>
           <th scope="col">Evento</th>
+          <th scope="col"></th>
+          <th scope="col">Status</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -30,7 +32,14 @@
           <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
           <td><button>Editar</button></td>
           <td><button (click)="excluirEvento(evento.id)">Excluir</button></td>
-          <td><button *ngIf="!evento.isAnunciado && isEventoInFuture(evento)" (click)="anunciarEvento(evento.id)">Anunciar</button></td>
+          <td><ng-container *ngIf="!evento.isAnunciado; else anunciado">
+            <ng-container *ngIf="isEventoInFuture(evento); else passado">
+              <button (click)="anunciarEvento(evento.id)">Anunciar</button>
+            </ng-container>
+          </ng-container>
+          <ng-template #anunciado>Anunciado</ng-template>
+          <ng-template #passado>Passado</ng-template>  
+        </td>
         </tr>
       </tbody>
     </table>
