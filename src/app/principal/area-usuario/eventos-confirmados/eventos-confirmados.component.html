@@ -1,1 +1,42 @@
-<p>eventos-confirmados works!</p>
+<div class="divBody">
+    <div class="divTabelaPaginacaoQuantidade">
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+            <label for="filtros">Filtro</label>
+            <select name="selectFiltro" [(ngModel)]="selectedFiltro">
+                <option value="" selected>Todos os eventos</option>
+                <option value="correntes">Correntes</option>
+                <option value="ocorridos">Ocorridos</option>
+            </select>
+            <button type="submit">Aplicar</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Título do Evento</th>
+                    <th scope="col">Data do Evento</th>
+                    <th scope="col">Horário</th>
+                    <th scope="col">Evento</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
+                    <th scope="row">{{ evento.id }}</th>
+                    <td>{{ evento.titulo }}</td>
+                    <td>{{ evento.data }}</td>
+                    <td>{{ evento.horario }}</td>
+                    <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
+                    <td><button>Retirar</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+                (pageChange)="refreshEventos()">
+            </ngb-pagination>
+        </div>
+    </div>
+</div>
