@@ -44,4 +44,13 @@ export class FiltrarEventoService {
     });
 
   }
+
+  filtrarEventoNaoAnunciados() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/eventoNaoAnunciado`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+
+  }
 }

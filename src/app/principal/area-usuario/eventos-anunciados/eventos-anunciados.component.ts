@@ -73,6 +73,18 @@ export class EventosAnunciadosComponent implements OnInit {
       }
     );
         break;
+        case "Nanunciado":
+      this.filtroServico.filtrarEventoNaoAnunciados().subscribe(
+      (response: any[]) => {
+        this.eventos = response; // Armazena os eventos recebidos
+        this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
+        this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+      },
+      (error: Error) => {
+        console.error('Erro ao buscar eventos:', error);
+      }
+    );
+        break;
     }
 
   }
