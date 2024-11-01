@@ -41,4 +41,12 @@ export class EventosService {
       headers: { 'Authorization': `Bearer ${token}` }
   });
   }
+
+  excluirEvento(id : number) : Observable<any>{
+    const token = localStorage.getItem('token');
+
+    return this.http.delete(`${this.apiUrl}/evento/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
+  }
 }

@@ -43,16 +43,6 @@ export class EventosAnunciadosComponent implements OnInit {
     );
   }
 
-  convertToDate(dateString: string): Date {
-    const [day, month, year] = dateString.split('/').map(part => parseInt(part, 10));
-    return new Date(year, month - 1, day);
-  }
-
-  isEventoInFuture(evento: any): boolean {
-    const eventoDate = this.convertToDate(evento.data);
-    return eventoDate > this.today;
-  }
-
   onSubmit() {
     switch (this.selectedFiltro) {
       case "":
@@ -85,6 +75,30 @@ export class EventosAnunciadosComponent implements OnInit {
         break;
     }
 
+  }
+
+  convertToDate(dateString: string): Date {
+    const [day, month, year] = dateString.split('/').map(part => parseInt(part, 10));
+    return new Date(year, month - 1, day);
+  }
+
+  isEventoInFuture(evento: any): boolean {
+    const eventoDate = this.convertToDate(evento.data);
+    return eventoDate > this.today;
+  }
+
+  excluirEvento(id: number) {
+    if (confirm("Excluir o evento?")) {
+      this.eventoService.excluirEvento(id).subscribe(
+        () => {
+          this.getEventosUsuario();
+        },
+        (error: Error) => {
+          alert("Erro ao excluir evento.")
+        }
+      );
+    }
+    
   }
 
   trackByEventoId(index: number, evento: any): number {
