@@ -98,7 +98,19 @@ export class EventosAnunciadosComponent implements OnInit {
         }
       );
     }
-    
+  }
+
+  anunciarEvento(id : number) {
+    if (confirm("Anunciar o evento? Essa ação não pode ser revertida.")) {
+      this.eventoService.anunciarEvento(id).subscribe(
+        () => {
+          this.getEventosUsuario();
+        },
+        (error: Error) => {
+          alert("Erro ao anunciar evento.")
+        }
+      );
+    }
   }
 
   trackByEventoId(index: number, evento: any): number {

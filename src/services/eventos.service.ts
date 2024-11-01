@@ -42,6 +42,14 @@ export class EventosService {
   });
   }
 
+  anunciarEvento(id : number) : Observable<any>{
+    const token = localStorage.getItem('token');
+
+    return this.http.put(`${this.apiUrl}/evento/${id}/anunciar`, {}, {
+      headers: { 'Authorization': `Bearer ${token}` }
+  });
+  }
+
   excluirEvento(id : number) : Observable<any>{
     const token = localStorage.getItem('token');
 
