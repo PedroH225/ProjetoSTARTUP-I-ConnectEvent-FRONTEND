@@ -33,7 +33,7 @@ export class CriarEventoComponent {
   selectedCidade: string = '';
   bairro: string = '';
   numero !: number;
-  // foto;
+  fotos : File[] = []
   eventoId: string | null = null;
 
   constructor(
@@ -62,23 +62,28 @@ export class CriarEventoComponent {
   }
 
   onSubmit() {
-    const payload = {
-      titulo: this.titulo,
-      descricao: this.descricao,
-      data: this.dataString,
-      horario: this.horario,
-      tipo: this.selectedTipo,
-      telefone: this.telefone,
-      livre: this.livre,
-      link: this.link,
-      fotos: [],
-      local: this.local,
-      estado: this.estado,
-      cidade: this.selectedCidade,
-      bairro: this.bairro,
-      numero: this.numero,
-    };
+    const payload = new FormData();
+  
+  // Adiciona os campos de dados ao FormData
+  payload.append('titulo', this.titulo);
+  payload.append('descricao', this.descricao);
+  payload.append('data', this.dataString);
+  payload.append('horario', this.horario);
+  payload.append('tipo', this.selectedTipo);
+  payload.append('telefone', this.telefone);
+  payload.append('livre', String(this.livre));
+  payload.append('link', this.link);
+  payload.append('local', this.local);
+  payload.append('estado', this.estado);
+  payload.append('cidade', this.selectedCidade);
+  payload.append('bairro', this.bairro);
+  payload.append('numero', String(this.numero));
 
+  // Adiciona as fotos ao FormData
+  for (const foto of this.fotos) {
+    payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
+  }
+  
     if (this.eventoId) {
       this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
         () => {
@@ -219,5 +224,20 @@ export class CriarEventoComponent {
   // Retorna o valor do maxlength baseado no tipo de telefone
   getMaxLength(): number {
     return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
+  }
+
+  onFileSelected(event: any): void {
+    const files: FileList = event.target.files;
+    this.fotos = []; // Limpar fotos anteriores
+  
+    if (files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        // Verificar se o arquivo é uma imagem (opcional)
+        if (file.type.startsWith('image/')) {
+          this.fotos.push(file); // Adiciona o arquivo ao array de fotos
+        }
+      }
+    }
   }
 }

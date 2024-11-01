@@ -31,19 +31,19 @@
         <div>
           <label for="tipoTelefone">Contato</label>
           <select id="tipoTelefone" name="tipoTelefone" [(ngModel)]="tipoTelefone" (change)="onTipoTelefoneChange()">
-              <option value="" selected disabled>Escolha uma opção</option>
-              <option value="fixo">Telefone Fixo</option>
-              <option value="celular">Celular</option>
+            <option value="" selected disabled>Escolha uma opção</option>
+            <option value="fixo">Telefone Fixo</option>
+            <option value="celular">Celular</option>
           </select>
-      </div>
-      
-      <div>
+        </div>
+
+        <div>
           <input type="text" [(ngModel)]="telefone" name="telefone"
-                 [placeholder]="tipoTelefone === 'celular' ? '(xx) xxxxx-xxxx' : '(xx) xxxx-xxxx'" required
-                 (input)="formatarTelefone($event)" [maxlength]="getMaxLength()"
-                 [disabled]="!telefoneHabilitado" /> <!-- Desabilitado até o tipo ser selecionado -->
+            [placeholder]="tipoTelefone === 'celular' ? '(xx) xxxxx-xxxx' : '(xx) xxxx-xxxx'" required
+            (input)="formatarTelefone($event)" [maxlength]="getMaxLength()" [disabled]="!telefoneHabilitado" />
+          <!-- Desabilitado até o tipo ser selecionado -->
           <div id="telefoneErro"></div>
-      </div>
+        </div>
 
         <label for="livre">Livre +18</label>
         <div>
@@ -96,9 +96,10 @@
           </div>
 
           <label for="fotos">Escolha as fotos:</label>
-          <input type="file" id="fotos" name="fotos" accept="image/*" multiple required>
-        </div> <!-- Não implementado -->
+          <input type="file" id="fotos" name="fotos" accept="image/*" multiple required
+            (change)="onFileSelected($event)">
 
+        </div>
       </div>
     </div>
     <button id="botaoSubmit" type="submit" [disabled]="!form.valid">Salvar</button>
