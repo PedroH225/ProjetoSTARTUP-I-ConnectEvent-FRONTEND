@@ -30,11 +30,11 @@ export class UsuarioService {
     );
   }
 
-  desParticipar(id: number): Observable<any> {
+  removerParticipar(id: number): Observable<any> {
     const token = localStorage.getItem('token');
 
     return this.http.put(
-      `${this.apiUrl}/usuario/participar/${id}`,
+      `${this.apiUrl}/usuario/removerParticipar/${id}`,
       {},
       {
         headers: { Authorization: `Bearer ${token}` },

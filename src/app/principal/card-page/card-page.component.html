@@ -29,7 +29,7 @@
               for="presenca"
               *ngIf="desabilitarBotao && (autenticacao$ | async)"
               [disabled]="!desabilitarBotao"
-              (click)="participar()"
+              (click)="removerParticipar()"
             >
               Retirar Presença
             </button>

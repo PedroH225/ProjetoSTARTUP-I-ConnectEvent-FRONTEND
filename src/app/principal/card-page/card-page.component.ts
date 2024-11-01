@@ -46,7 +46,7 @@ export class CardPageComponent implements OnInit {
       this.usuarioService.participar(parseInt(id)).subscribe(
         (response) => {
           this.desabilitarBotao = true;
-          alert('Presença confirmada com sucesso!');
+          alert(response.message);
         },
         (error) => {
           alert(error);
@@ -55,7 +55,20 @@ export class CardPageComponent implements OnInit {
     }
   }
 
-  desParticipar() {}
+  removerParticipar() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.usuarioService.removerParticipar(parseInt(id)).subscribe(
+        (response) => {
+          this.desabilitarBotao = false;
+          alert(response.message);
+        },
+        (error) => {
+          alert(error);
+        }
+      );
+    }
+  }
 
   getEventoById(id: number): void {
     this.eventosService.getEventoById(id).subscribe(
