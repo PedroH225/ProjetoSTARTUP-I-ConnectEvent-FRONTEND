@@ -29,7 +29,7 @@
                     <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
                     <td>
                         <ng-container *ngIf="!ocorrido">
-                            <button>Retirar</button>
+                            <button (click)="retirarPresenca(evento.id)">Retirar</button>
                         </ng-container>
                         <ng-container *ngIf="ocorrido">
                             Ocorrido

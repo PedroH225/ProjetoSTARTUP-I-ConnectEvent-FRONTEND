@@ -70,6 +70,21 @@ export class EventosConfirmadosComponent {
 
   }
 
+  retirarPresenca(id : number) {
+    if (confirm("Você tem certeza que quer retirar a sua presença no evento?")) {
+      this.usuarioService.removerParticipar(id).subscribe(
+        () => {
+          alert("Presença retirada com sucesso!")
+          this.getEventosParticipando();
+        },
+        (error: Error) => {
+          console.error('Erro ao retirar presença:', error);
+        }
+      );
+    }
+    
+  }
+
   convertToDate(dateString: string): Date {
     const [day, month, year] = dateString.split('/').map(part => parseInt(part, 10));
     return new Date(year, month - 1, day);
