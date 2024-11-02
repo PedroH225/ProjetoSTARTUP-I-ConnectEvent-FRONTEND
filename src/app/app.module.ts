@@ -28,7 +28,9 @@ import { EstatisticasComponent } from './principal/area-usuario/estatisticas/est
 import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/configuracoes.component';
+import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao
     EventosConfirmadosComponent,
     ListaDeAmigosComponent,
     ConfiguracoesComponent,
+    ImageUploaderComponent,
     GeolocalizacaoComponent,
   ],
   imports: [
