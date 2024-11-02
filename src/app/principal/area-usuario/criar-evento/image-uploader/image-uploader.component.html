@@ -15,8 +15,9 @@
       <div class="col-md-4" *ngFor="let image of imageUrls; let i = index">
         <div class="card mb-3">
           <img [src]="image" class="card-img-top" alt="Imagem" style="width: 100%; height: auto;">
-          <div class="card-body">
+          <div class="d-flex gap-1 card-body">
             <button class="btn btn-danger" (click)="removeImage(i)">Remover Imagem</button>
+            <p>*Nova Foto*</p>
           </div>
         </div>
       </div>

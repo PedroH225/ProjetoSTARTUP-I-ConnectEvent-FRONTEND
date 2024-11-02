@@ -38,13 +38,15 @@ export class ImageUploaderComponent {
     this.imagesChanged.emit(this.images); // Emitir imagens alteradas
   }
 
-  removerImagemExistente(index: number, imagemId : number) {
-    this.fotosExistentes.splice(index, 1);
-    this.removerChanged.emit(imagemId)
+  removerImagemExistente(index: number, imagemId: number) {
+    if (confirm("Deseja excluir uma foto existente?")) {
+      this.fotosExistentes.splice(index, 1);
+      this.removerChanged.emit(imagemId)
+    }
   }
 
   carregarImagensExistentes(imagens: string[]) {
     this.fotosExistentes = imagens;
-    console.log(imagens);
+
   }
 }
