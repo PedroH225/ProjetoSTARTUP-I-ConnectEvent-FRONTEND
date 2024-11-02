@@ -136,15 +136,10 @@
         </div>
       </div>
       <label class="mt-2" for="fotos">Escolha as fotos:</label>
-      <input
-        type="file"
-        id="fotos"
-        name="fotos"
-        accept="image/*"
-        multiple
-        required
-        (change)="onFileSelected($event)"
-      />
+      <app-image-uploader
+        (removerChanged)="removerChanged($event)"
+        (imagesChanged)="onImagesChanged($event)"
+      ></app-image-uploader>
     </div>
     <button id="botaoSubmit" type="submit" [disabled]="!form.valid">
       Salvar
