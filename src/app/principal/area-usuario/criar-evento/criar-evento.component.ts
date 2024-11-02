@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TipoEventoService } from '../../../../services/tipo-evento.service';
 import { CidadesService } from '../../../../services/cidades.service';
 import { EventosService } from '../../../../services/eventos.service';
 import { listarErrosEvento } from '../../../utils/listarErros';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 
 @Component({
   selector: 'app-criar-evento',
@@ -13,6 +14,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CriarEventoComponent {
   tipos: any[] = [];
   cidades: any[] = [];
+
+  fotosExistentes: string[] = []; // Armazena as imagens que já estão no banco de dados
+  fotosParaRemover: string[] = [];
+  imagensNovas: string[] = [];
+
+  @ViewChild(ImageUploaderComponent) imageUploaderComponent!: ImageUploaderComponent;
 
   tipoTelefone: string = '';
   telefoneHabilitado: boolean = false; // Define se o campo de telefone está habilitado
@@ -30,8 +37,9 @@ export class CriarEventoComponent {
   estado: string = '';
   selectedCidade: string = '';
   bairro: string = '';
-  numero!: number;
-  fotos: File[] = [];
+  numero !: number;
+  fotos: string[] = []
+
   eventoId: string | null = null;
 
   constructor(
@@ -39,8 +47,9 @@ export class CriarEventoComponent {
     private cidadesService: CidadesService,
     private eventoService: EventosService,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router,
+
+  ) { }
 
   ngOnInit(): void {
     this.getTipoEvento(); // Chamar o método quando o componente for inicializado
@@ -60,6 +69,38 @@ export class CriarEventoComponent {
 
   onSubmit() {
     const payload = new FormData();
+
+    // Adiciona os campos de dados ao FormData
+    payload.append('titulo', this.titulo);
+    payload.append('descricao', this.descricao);
+    payload.append('data', this.dataString);
+    payload.append('horario', this.horario);
+    payload.append('tipo', this.selectedTipo);
+    payload.append('telefone', this.telefone);
+    payload.append('livre', String(this.livre));
+    payload.append('link', this.link);
+    payload.append('local', this.local);
+    payload.append('estado', this.estado);
+    payload.append('cidade', this.selectedCidade);
+    payload.append('bairro', this.bairro);
+    payload.append('numero', String(this.numero));
+
+    // Adiciona as fotos ao FormData
+    for (const foto of this.fotos) {
+      payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
+    }
+
+    for (const imagem of this.fotosParaRemover) {
+      payload.append('fotosParaRemover', imagem); // Envia as imagens que precisam ser removidas
+    }
+
+    if (this.eventoId) {
+      this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
+        () => {
+          this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
+          alert("Evento editado com sucesso!")
+        },
+        (error) => {
 
     // Adiciona os campos de dados ao FormData
     payload.append('titulo', this.titulo);
@@ -151,6 +192,12 @@ export class CriarEventoComponent {
     }
   }
 
+  onImagesChanged(file: string[]) {
+    this.fotos = file; // Atualiza as imagens ao receber do uploader
+    console.log(this.fotos);
+
+  }
+
   carregarEvento(id: string): void {
     this.eventoService.getEventoById(parseInt(id)).subscribe(
       (response) => {
@@ -171,6 +218,8 @@ export class CriarEventoComponent {
         this.selectedCidade = response.endereco.cidade;
         this.bairro = response.endereco.bairro;
         this.numero = response.endereco.numero;
+
+        this.imageUploaderComponent.carregarImagensExistentes(response.fotos); // ajuste conforme seu modelo
       },
       (error) => {
         console.error('Erro ao carregar evento:', error);
@@ -225,18 +274,4 @@ export class CriarEventoComponent {
     return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
   }
 
-  onFileSelected(event: any): void {
-    const files: FileList = event.target.files;
-    this.fotos = []; // Limpar fotos anteriores
-
-    if (files.length > 0) {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        // Verificar se o arquivo é uma imagem (opcional)
-        if (file.type.startsWith('image/')) {
-          this.fotos.push(file); // Adiciona o arquivo ao array de fotos
-        }
-      }
-    }
-  }
 }
