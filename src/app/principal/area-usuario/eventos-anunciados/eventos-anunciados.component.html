@@ -1,17 +1,18 @@
 <div class="divBody">
-  <h1>Seus eventos</h1>
+  <h1 class="tagTitulo">Eventos Anunciados</h1>
   <div class="divTabelaPaginacaoQuantidade">
-    <form (ngSubmit)="onSubmit()" #form="ngForm">
-      <label for="filtros" >Filtro</label>
-    <select name="selectFiltro" [(ngModel)]="selectedFiltro">
-      <option value="" selected>Todos os eventos</option>
-      <option value="Nanunciado">Não Anunciados</option>
-      <option value="correntes">Correntes</option>
-      <option value="ocorridos">Ocorridos</option>
-    </select>
-    <button type="submit">Aplicar</button>
-  </form>
-    <table class="table table-striped">
+    <form class="divEnd" (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="divFiltro">
+        <select name="selectFiltro" [(ngModel)]="selectedFiltro">
+          <option value="" selected>Todos os eventos</option>
+          <option value="Nanunciado">Não Anunciados</option>
+          <option value="correntes">Correntes</option>
+          <option value="ocorridos">Ocorridos</option>
+        </select>
+        <button type="submit">Aplicar</button>
+      </div>
+    </form>
+    <table class="mb-2 table table-striped">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -29,19 +30,37 @@
         <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
           <th scope="row">{{ evento.id }}</th>
           <td>{{ evento.titulo }}</td>
-          <td>{{ evento.data }}</td> <!-- Ajuste conforme o formato de data -->
-          <td>{{ evento.horario }}</td> <!-- Ajuste conforme o formato de hora -->
-          <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
-          <td><button [routerLink]="['/principal/areaUsuario/editarEvento', evento.id]">Editar</button></td>
+          <td>{{ evento.data }}</td>
+          <!-- Ajuste conforme o formato de data -->
+          <td>{{ evento.horario }}</td>
+          <!-- Ajuste conforme o formato de hora -->
+          <td>
+            <button [routerLink]="['/principal/cardPage', evento.id]">
+              Visualizar
+            </button>
+          </td>
+          <td>
+            <button
+              [routerLink]="['/principal/areaUsuario/editarEvento', evento.id]"
+            >
+              Editar
+            </button>
+          </td>
           <td><button (click)="excluirEvento(evento.id)">Excluir</button></td>
-          <td><ng-container *ngIf="!(evento.isAnunciado && isEventoInFuture(evento)); else anunciado">
-            <ng-container *ngIf="isEventoInFuture(evento); else passado">
-              <button (click)="anunciarEvento(evento.id)">Anunciar</button>
+          <td>
+            <ng-container
+              *ngIf="
+                !(evento.isAnunciado && isEventoInFuture(evento));
+                else anunciado
+              "
+            >
+              <ng-container *ngIf="isEventoInFuture(evento); else passado">
+                <button (click)="anunciarEvento(evento.id)">Anunciar</button>
+              </ng-container>
             </ng-container>
-          </ng-container>
-          <ng-template #anunciado>Anunciado</ng-template>
-          <ng-template #passado>Passado</ng-template>  
-        </td>
+            <ng-template #anunciado>Anunciado</ng-template>
+            <ng-template #passado>Passado</ng-template>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -51,7 +70,8 @@
         [collectionSize]="collectionSize"
         [(page)]="page"
         [pageSize]="pageSize"
-        (pageChange)="refreshEventos()">
+        (pageChange)="refreshEventos()"
+      >
       </ngb-pagination>
     </div>
   </div>
