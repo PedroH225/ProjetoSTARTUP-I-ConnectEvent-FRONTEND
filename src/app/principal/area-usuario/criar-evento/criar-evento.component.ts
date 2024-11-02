@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { TipoEventoService } from '../../../../services/tipo-evento.service';
 import { CidadesService } from '../../../../services/cidades.service';
 import { EventosService } from '../../../../services/eventos.service';
 import { listarErrosEvento } from '../../../utils/listarErros';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 
 
 @Component({
@@ -14,6 +15,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CriarEventoComponent {
   tipos: any[] = [];
   cidades: any[] = [];
+
+  fotosExistentes: string[] = []; // Armazena as imagens que já estão no banco de dados
+  fotosParaRemover: string[] = [];
+  imagensNovas: string[] = [];
+
+  @ViewChild(ImageUploaderComponent) imageUploaderComponent!: ImageUploaderComponent;
 
 
   tipoTelefone: string = '';
@@ -33,7 +40,7 @@ export class CriarEventoComponent {
   selectedCidade: string = '';
   bairro: string = '';
   numero !: number;
-  fotos : File[] = []
+  fotos: string[] = []
   eventoId: string | null = null;
 
   constructor(
@@ -41,7 +48,7 @@ export class CriarEventoComponent {
     private cidadesService: CidadesService,
     private eventoService: EventosService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
 
   ) { }
 
@@ -63,27 +70,31 @@ export class CriarEventoComponent {
 
   onSubmit() {
     const payload = new FormData();
-  
-  // Adiciona os campos de dados ao FormData
-  payload.append('titulo', this.titulo);
-  payload.append('descricao', this.descricao);
-  payload.append('data', this.dataString);
-  payload.append('horario', this.horario);
-  payload.append('tipo', this.selectedTipo);
-  payload.append('telefone', this.telefone);
-  payload.append('livre', String(this.livre));
-  payload.append('link', this.link);
-  payload.append('local', this.local);
-  payload.append('estado', this.estado);
-  payload.append('cidade', this.selectedCidade);
-  payload.append('bairro', this.bairro);
-  payload.append('numero', String(this.numero));
 
-  // Adiciona as fotos ao FormData
-  for (const foto of this.fotos) {
-    payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
-  }
-  
+    // Adiciona os campos de dados ao FormData
+    payload.append('titulo', this.titulo);
+    payload.append('descricao', this.descricao);
+    payload.append('data', this.dataString);
+    payload.append('horario', this.horario);
+    payload.append('tipo', this.selectedTipo);
+    payload.append('telefone', this.telefone);
+    payload.append('livre', String(this.livre));
+    payload.append('link', this.link);
+    payload.append('local', this.local);
+    payload.append('estado', this.estado);
+    payload.append('cidade', this.selectedCidade);
+    payload.append('bairro', this.bairro);
+    payload.append('numero', String(this.numero));
+
+    // Adiciona as fotos ao FormData
+    for (const foto of this.fotos) {
+      payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
+    }
+
+    for (const imagem of this.fotosParaRemover) {
+      payload.append('fotosParaRemover', imagem); // Envia as imagens que precisam ser removidas
+    }
+
     if (this.eventoId) {
       this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
         () => {
@@ -153,10 +164,11 @@ export class CriarEventoComponent {
       event.preventDefault();
     }
   }
-  onImagesChanged(file : File[]) {
+
+  onImagesChanged(file: string[]) {
     this.fotos = file; // Atualiza as imagens ao receber do uploader
     console.log(this.fotos);
-    
+
   }
 
   carregarEvento(id: string): void {
@@ -179,6 +191,8 @@ export class CriarEventoComponent {
         this.selectedCidade = response.endereco.cidade;
         this.bairro = response.endereco.bairro;
         this.numero = response.endereco.numero;
+
+        this.imageUploaderComponent.carregarImagensExistentes(response.fotos); // ajuste conforme seu modelo
       },
       (error) => {
         console.error('Erro ao carregar evento:', error);

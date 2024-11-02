@@ -7,23 +7,40 @@ import { Component, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./image-uploader.component.scss']
 })
 export class ImageUploaderComponent {
-  images: File[] = []; // Inicializa como um array de File
+  images: string[] = []; // Inicializa como um array de File
+  fotosExistentes: any[] = []; // Adicione esta linha
 
-  @Output() imagesChanged = new EventEmitter<File[]>(); // Define o tipo como File[]
+
+  @Output() imagesChanged = new EventEmitter<string[]>(); // Define o tipo como File[]
 
   addImage(event: any) {
     const files: FileList = event.target.files; // Obtém todos os arquivos selecionados
     if (files.length > 0) {
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        this.images.push(file); // Adiciona o arquivo diretamente
+        const reader = new FileReader();
+
+        reader.onload = (e) => {
+          this.images.push(e.target!.result as string); // Adiciona a URL da imagem ao array
+          this.imagesChanged.emit(this.images); // Emitir imagens alteradas
+        };
+
+        reader.readAsDataURL(file); // Lê o arquivo como URL
       }
-      this.imagesChanged.emit(this.images); // Emitir imagens alteradas
     }
   }
 
   removeImage(index: number) {
     this.images.splice(index, 1);
     this.imagesChanged.emit(this.images); // Emitir imagens alteradas
+  }
+
+  removerImagemExistente(index: number) {
+    this.fotosExistentes.splice(index, 1);
+  }
+
+  carregarImagensExistentes(imagens: string[]) {
+    this.fotosExistentes = imagens;
+    console.log(imagens);
   }
 }
