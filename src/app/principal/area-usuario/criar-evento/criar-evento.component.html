@@ -5,32 +5,53 @@
       <div class="divSetorForm">
         <label for="titulo">Título</label>
         <input type="text" [(ngModel)]="titulo" name="titulo" required />
-        <div id="tituloErro">
-
-        </div>
+        <div id="tituloErro"></div>
 
         <label for="descricao">Descrição</label>
-        <textarea [(ngModel)]="descricao" name="descricao" id="descricao" required></textarea>
-        <div id="descricaoErro">
-
-        </div>
+        <textarea
+          [(ngModel)]="descricao"
+          name="descricao"
+          id="descricao"
+          required
+        ></textarea>
+        <div id="descricaoErro"></div>
 
         <label for="data">Data</label>
         <input type="date" [(ngModel)]="dataString" name="data" required />
 
         <label for="horario">Horário</label>
-        <input type="text" [(ngModel)]="horario" name="horario" (input)="formatarHorario()"
-          (keypress)="permitirApenasNumeros($event)" maxlength="5" placeholder="HH:MM" required />
+        <input
+          type="text"
+          [(ngModel)]="horario"
+          name="horario"
+          (input)="formatarHorario()"
+          (keypress)="permitirApenasNumeros($event)"
+          maxlength="5"
+          placeholder="HH:MM"
+          required
+        />
 
         <label for="tipo">Tipo</label>
-        <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" name="tipo" required>
+        <select
+          class="styleButtons btn btn-outline-primary"
+          [(ngModel)]="selectedTipo"
+          name="tipo"
+          required
+        >
           <option value="">Tipo de Evento</option>
-          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">{{ tipo.tipo }}</option>
+          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
+            {{ tipo.tipo }}
+          </option>
         </select>
 
         <div>
           <label for="tipoTelefone">Contato</label>
-          <select id="tipoTelefone" name="tipoTelefone" [(ngModel)]="tipoTelefone" (change)="onTipoTelefoneChange()">
+          <select
+            id="tipoTelefone"
+            name="tipoTelefone"
+            [(ngModel)]="tipoTelefone"
+            (change)="onTipoTelefoneChange()"
+          >
             <option value="" selected disabled>Escolha uma opção</option>
             <option value="fixo">Telefone Fixo</option>
             <option value="celular">Celular</option>
@@ -38,9 +59,18 @@
         </div>
 
         <div>
-          <input type="text" [(ngModel)]="telefone" name="telefone"
-            [placeholder]="tipoTelefone === 'celular' ? '(xx) xxxxx-xxxx' : '(xx) xxxx-xxxx'" required
-            (input)="formatarTelefone($event)" [maxlength]="getMaxLength()" [disabled]="!telefoneHabilitado" />
+          <input
+            type="text"
+            [(ngModel)]="telefone"
+            name="telefone"
+            [placeholder]="
+              tipoTelefone === 'celular' ? '(xx) xxxxx-xxxx' : '(xx) xxxx-xxxx'
+            "
+            required
+            (input)="formatarTelefone($event)"
+            [maxlength]="getMaxLength()"
+            [disabled]="!telefoneHabilitado"
+          />
           <!-- Desabilitado até o tipo ser selecionado -->
           <div id="telefoneErro"></div>
         </div>
@@ -48,11 +78,23 @@
         <label for="livre">Livre +18</label>
         <div>
           <label>
-            <input type="radio" [(ngModel)]="livre" name="livre" [value]="true" required />
+            <input
+              type="radio"
+              [(ngModel)]="livre"
+              name="livre"
+              [value]="true"
+              required
+            />
             Sim
           </label>
           <label>
-            <input type="radio" [(ngModel)]="livre" name="livre" [value]="false" required />
+            <input
+              type="radio"
+              [(ngModel)]="livre"
+              name="livre"
+              [value]="false"
+              required
+            />
             Não
           </label>
         </div>
@@ -60,15 +102,11 @@
         <div class="divSetorForm">
           <label for="link">Link</label>
           <input type="url" [(ngModel)]="link" name="link" required />
-          <div id="linkErro">
-
-          </div>
+          <div id="linkErro"></div>
 
           <label for="local">Local</label>
           <input type="text" [(ngModel)]="local" name="local" required />
-          <div id="localErro">
-
-          </div>
+          <div id="localErro"></div>
 
           <label for="estado">Estado</label>
           <select [(ngModel)]="estado" name="estado" required>
@@ -76,32 +114,41 @@
           </select>
 
           <label for="cidade">Cidade</label>
-          <select class="styleButtons btn btn-outline-primary cidade-dropdown" [(ngModel)]="selectedCidade"
-            name="cidade" required>
+          <select
+            class="styleButtons btn btn-outline-primary cidade-dropdown"
+            [(ngModel)]="selectedCidade"
+            name="cidade"
+            required
+          >
             <option value="">Cidades</option>
-            <option *ngFor="let cidade of cidades" [value]="cidade">{{ cidade }}</option>
+            <option *ngFor="let cidade of cidades" [value]="cidade">
+              {{ cidade }}
+            </option>
           </select>
-
 
           <label for="bairro">Bairro</label>
           <input type="text" [(ngModel)]="bairro" name="bairro" required />
-          <div id="bairroErro">
-
-          </div>
+          <div id="bairroErro"></div>
 
           <label for="numero">Número</label>
           <input type="number" [(ngModel)]="numero" name="numero" required />
-          <div id="numeroErro">
-
-          </div>
+          <div id="numeroErro"></div>
 
           <label for="fotos">Escolha as fotos:</label>
-          <input type="file" id="fotos" name="fotos" accept="image/*" multiple required
-            (change)="onFileSelected($event)">
-
+          <input
+            type="file"
+            id="fotos"
+            name="fotos"
+            accept="image/*"
+            multiple
+            required
+            (change)="onFileSelected($event)"
+          />
         </div>
       </div>
     </div>
-    <button id="botaoSubmit" type="submit" [disabled]="!form.valid">Salvar</button>
+    <button id="botaoSubmit" type="submit" [disabled]="!form.valid">
+      Salvar
+    </button>
   </form>
 </div>
