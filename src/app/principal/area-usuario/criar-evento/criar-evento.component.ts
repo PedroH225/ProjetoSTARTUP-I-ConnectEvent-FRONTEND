@@ -107,6 +107,7 @@ export class CriarEventoComponent {
   this.eventoService.criarEvento(payload).subscribe(
     () => {
       alert('Evento criado com sucesso!');
+      this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
     },
     (error) => {
       let erros: any[] = [];
