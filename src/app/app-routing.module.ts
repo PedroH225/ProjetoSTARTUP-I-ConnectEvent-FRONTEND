@@ -19,7 +19,6 @@ import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-co
 import { EventosOcorridosUsuarioComponent } from './principal/area-usuario/eventos-ocorridos-usuario/eventos-ocorridos-usuario.component';
 import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
-import { EventosOcorridosAnunciarComponent } from './principal/area-usuario/eventos-ocorridos-anunciar/eventos-ocorridos.component';
 import { authGuard } from '../services/guards/auth.guard';
 
 const routes: Routes = [
@@ -43,7 +42,8 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },
       {
         path: 'areaUsuario',
-        component: AreaUsuarioComponent, canActivate : [authGuard],
+        component: AreaUsuarioComponent,
+        canActivate: [authGuard],
         children: [
           { path: 'adicionarAmigos', component: AdicionarAmigosComponent },
           { path: 'configuracoes', component: ConfiguracoesComponent },
@@ -54,10 +54,6 @@ const routes: Routes = [
           {
             path: 'eventosConfirmados',
             component: EventosConfirmadosComponent,
-          },
-          {
-            path: 'eventosOcorridosAnunciar',
-            component: EventosOcorridosAnunciarComponent,
           },
           {
             path: 'eventosOcorridosUsuario',

@@ -6,11 +6,10 @@ import { listarErrosEvento } from '../../../utils/listarErros';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ImageUploaderComponent } from './image-uploader/image-uploader.component';
 
-
 @Component({
   selector: 'app-criar-evento',
   templateUrl: './criar-evento.component.html',
-  styleUrl: './criar-evento.component.scss'
+  styleUrl: './criar-evento.component.scss',
 })
 export class CriarEventoComponent {
   tipos: any[] = [];
@@ -22,18 +21,17 @@ export class CriarEventoComponent {
 
   @ViewChild(ImageUploaderComponent) imageUploaderComponent!: ImageUploaderComponent;
 
-
   tipoTelefone: string = '';
   telefoneHabilitado: boolean = false; // Define se o campo de telefone está habilitado
 
   titulo: string = '';
   descricao: string = '';
-  data !: Date;
+  data!: Date;
   dataString: string = '';
   horario: string = '';
   selectedTipo: string = '';
   telefone: string = '';
-  livre !: boolean;
+  livre!: boolean;
   link: string = '';
   local: string = '';
   estado: string = '';
@@ -41,6 +39,7 @@ export class CriarEventoComponent {
   bairro: string = '';
   numero !: number;
   fotos: string[] = []
+
   eventoId: string | null = null;
 
   constructor(
@@ -58,11 +57,11 @@ export class CriarEventoComponent {
 
     this.eventoId = this.route.snapshot.paramMap.get('id');
     if (this.eventoId) {
-      const botao = document.querySelector("#botaoSubmit")
-      const h1 = document.querySelector("#editarcriar")
+      const botao = document.querySelector('#botaoSubmit');
+      const h1 = document.querySelector('#editarcriar');
       if (botao && h1) {
-        botao.innerHTML = "Editar"
-        h1.innerHTML = "Editar evento"
+        botao.innerHTML = 'Editar';
+        h1.innerHTML = 'Editar evento';
       }
       this.carregarEvento(this.eventoId);
     }
@@ -103,23 +102,51 @@ export class CriarEventoComponent {
         },
         (error) => {
 
-          let erros: any[] = [];
-          erros = error.error // Captura os erros
+    // Adiciona os campos de dados ao FormData
+    payload.append('titulo', this.titulo);
+    payload.append('descricao', this.descricao);
+    payload.append('data', this.dataString);
+    payload.append('horario', this.horario);
+    payload.append('tipo', this.selectedTipo);
+    payload.append('telefone', this.telefone);
+    payload.append('livre', String(this.livre));
+    payload.append('link', this.link);
+    payload.append('local', this.local);
+    payload.append('estado', this.estado);
+    payload.append('cidade', this.selectedCidade);
+    payload.append('bairro', this.bairro);
+    payload.append('numero', String(this.numero));
 
-          listarErrosEvento(erros)
-        }
-      );
+    // Adiciona as fotos ao FormData
+    for (const foto of this.fotos) {
+      payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
+    }
+
+    if (this.eventoId) {
+      this.eventoService
+        .editarEvento(parseInt(this.eventoId), payload)
+        .subscribe(
+          () => {
+            this.router.navigate(['/principal/areaUsuario/eventosAnunciados']);
+            alert('Evento editado com sucesso!');
+          },
+          (error) => {
+            let erros: any[] = [];
+            erros = error.error; // Captura os erros
+
+            listarErrosEvento(erros);
+          }
+        );
     } else {
       this.eventoService.criarEvento(payload).subscribe(
         () => {
-          alert("Evento criado com sucesso!")
-
+          alert('Evento criado com sucesso!');
         },
         (error) => {
           let erros: any[] = [];
-          erros = error.error // Captura os erros
+          erros = error.error; // Captura os erros
 
-          listarErrosEvento(erros)
+          listarErrosEvento(erros);
         }
       );
     }
@@ -228,10 +255,12 @@ export class CriarEventoComponent {
 
     // Formatação
     if (this.tipoTelefone === 'celular') {
-      this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
+      this.telefone = numero
+        .replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
         .replace(/(\d{5})(\d)/, '$1-$2'); // Adiciona o hífen
     } else {
-      this.telefone = numero.replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
+      this.telefone = numero
+        .replace(/(\d{2})(\d)/, '($1) $2') // Adiciona a DDD
         .replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona o hífen
     }
   }
