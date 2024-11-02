@@ -26,11 +26,11 @@ import { EventosAnunciadosComponent } from './principal/area-usuario/eventos-anu
 import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
 import { EstatisticasComponent } from './principal/area-usuario/estatisticas/estatisticas.component';
 import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
-import { EventosOcorridosUsuarioComponent } from './principal/area-usuario/eventos-ocorridos-usuario/eventos-ocorridos-usuario.component';
-import { AdicionarAmigosComponent } from './principal/area-usuario/adicionar-amigos/adicionar-amigos.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/configuracoes.component';
 import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
+import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
+
 
 @NgModule({
   declarations: [
@@ -51,11 +51,10 @@ import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/im
     FeedbacksComponent,
     EstatisticasComponent,
     EventosConfirmadosComponent,
-    EventosOcorridosUsuarioComponent,
-    AdicionarAmigosComponent,
     ListaDeAmigosComponent,
     ConfiguracoesComponent,
     ImageUploaderComponent,
+    GeolocalizacaoComponent,
   ],
   imports: [
     BrowserModule,

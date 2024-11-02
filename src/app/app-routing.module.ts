@@ -10,16 +10,15 @@ import { AreaUsuarioComponent } from './principal/area-usuario/area-usuario.comp
 import { CardComponent } from './principal/home-page/card/card.component';
 import { CardPageComponent } from './principal/card-page/card-page.component';
 import { EsqueceuSenhaComponent } from './principal/esqueceu-senha/esqueceu-senha.component';
-import { AdicionarAmigosComponent } from './principal/area-usuario/adicionar-amigos/adicionar-amigos.component';
 import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/configuracoes.component';
 import { CriarEventoComponent } from './principal/area-usuario/criar-evento/criar-evento.component';
 import { EstatisticasComponent } from './principal/area-usuario/estatisticas/estatisticas.component';
 import { EventosAnunciadosComponent } from './principal/area-usuario/eventos-anunciados/eventos-anunciados.component';
 import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
-import { EventosOcorridosUsuarioComponent } from './principal/area-usuario/eventos-ocorridos-usuario/eventos-ocorridos-usuario.component';
 import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { authGuard } from '../services/guards/auth.guard';
+import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -45,7 +44,6 @@ const routes: Routes = [
         component: AreaUsuarioComponent,
         canActivate: [authGuard],
         children: [
-          { path: 'adicionarAmigos', component: AdicionarAmigosComponent },
           { path: 'configuracoes', component: ConfiguracoesComponent },
           { path: 'criarEvento', component: CriarEventoComponent },
           { path: 'editarEvento/:id', component: CriarEventoComponent },
@@ -55,12 +53,9 @@ const routes: Routes = [
             path: 'eventosConfirmados',
             component: EventosConfirmadosComponent,
           },
-          {
-            path: 'eventosOcorridosUsuario',
-            component: EventosOcorridosUsuarioComponent,
-          },
           { path: 'feedbacks', component: FeedbacksComponent },
           { path: 'listaDeAmigos', component: ListaDeAmigosComponent },
+          { path: 'geolocalizacao', component: GeolocalizacaoComponent },
         ],
       },
       { path: 'esqueceuSenha', component: EsqueceuSenhaComponent },
