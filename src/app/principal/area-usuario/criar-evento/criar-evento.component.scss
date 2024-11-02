@@ -1,3 +1,23 @@
+@import "padroes";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.divBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+}
+
+.tagTitulo {
+  margin: 0.5rem 0 1rem 0;
+}
+
 .divForm {
   display: flex;
   align-items: center;
@@ -6,22 +26,37 @@
   gap: 2rem;
 }
 
-.divIntermediariaForm {
+.divForm2 {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
 
   width: 100%;
 }
 
+.divForm3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .divSetorForm {
   width: 50%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.3rem;
+}
+
+.divColocarEmLinha {
+  display: flex;
+  flex-direction: row;
+}
+
+.divColocarEmColuna {
+  display: flex;
+  flex-direction: column;
 }

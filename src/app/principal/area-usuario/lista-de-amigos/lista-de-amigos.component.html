@@ -1,1 +1,52 @@
-<p>lista-de-amigos works!</p>
+<div class="divBody">
+  <h1 class="tagTitulo">Amigos</h1>
+  <div class="divTabelaPaginacaoQuantidade">
+    <form class="divAddAmigo" action="">
+      <div class="divBoxAdicionarAmigos">
+        <label for="">Adicionar</label>
+        <input type="text" />
+      </div>
+      <button>Enviar</button>
+    </form>
+
+    <table class="mb-2 table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nº</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Cidade</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of paginatedAmigos">
+          <th></th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <button [routerLink]="['/principal/cardPage', evento.id]">
+              Visualizar
+            </button>
+          </td>
+          <!-- <td>
+            <ng-container *ngIf="!ocorrido">
+              <button (click)="retirarPresenca(evento.id)">Retirar</button>
+            </ng-container>
+            <ng-container *ngIf="ocorrido"> Ocorrido </ng-container>
+          </td> -->
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshEventos()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

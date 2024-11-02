@@ -1,49 +1,56 @@
 <div class="divBody">
-    <h1>Eventos Confirmados</h1>
-    <div class="divTabelaPaginacaoQuantidade">
-        <form (ngSubmit)="onSubmit()" #form="ngForm">
-            <label for="filtros">Filtro</label>
-            <select name="selectFiltro" [(ngModel)]="selectedFiltro">
-                <option value="" selected>Eventos futuros</option>
-                <option value="ocorridos">Ocorridos</option>
-            </select>
-            <button type="submit">Aplicar</button>
-        </form>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Título do Evento</th>
-                    <th scope="col">Data do Evento</th>
-                    <th scope="col">Horário</th>
-                    <th scope="col">Evento</th>
-                    <th scope="col">Status</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
-                    <th scope="row">{{ evento.id }}</th>
-                    <td>{{ evento.titulo }}</td>
-                    <td>{{ evento.data }}</td>
-                    <td>{{ evento.horario }}</td>
-                    <td><button [routerLink]="['/principal/cardPage', evento.id]">Visualizar</button></td>
-                    <td>
-                        <ng-container *ngIf="!ocorrido">
-                            <button (click)="retirarPresenca(evento.id)">Retirar</button>
-                        </ng-container>
-                        <ng-container *ngIf="ocorrido">
-                            Ocorrido
-                        </ng-container>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <h1 class="tagTitulo">Eventos Confirmados</h1>
+  <div class="divTabelaPaginacaoQuantidade">
+    <form class="divEnd" (ngSubmit)="onSubmit()" #form="ngForm">
+      <div class="divFiltro">
+        <select name="selectFiltro" [(ngModel)]="selectedFiltro">
+          <option value="" selected>Eventos futuros</option>
+          <option value="ocorridos">Ocorridos</option>
+        </select>
+        <button type="submit">Aplicar</button>
+      </div>
+    </form>
+    <table class="mb-2 table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Título do Evento</th>
+          <th scope="col">Data do Evento</th>
+          <th scope="col">Horário</th>
+          <th scope="col">Evento</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
+          <th scope="row">{{ evento.id }}</th>
+          <td>{{ evento.titulo }}</td>
+          <td>{{ evento.data }}</td>
+          <td>{{ evento.horario }}</td>
+          <td>
+            <button [routerLink]="['/principal/cardPage', evento.id]">
+              Visualizar
+            </button>
+          </td>
+          <td>
+            <ng-container *ngIf="!ocorrido">
+              <button (click)="retirarPresenca(evento.id)">Retirar</button>
+            </ng-container>
+            <ng-container *ngIf="ocorrido"> Ocorrido </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-        <div class="d-flex justify-content-between p-2">
-            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-                (pageChange)="refreshEventos()">
-            </ngb-pagination>
-        </div>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshEventos()"
+      >
+      </ngb-pagination>
     </div>
+  </div>
 </div>

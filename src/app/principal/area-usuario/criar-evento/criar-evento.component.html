@@ -1,65 +1,66 @@
-<div class="">
-  <h1 id="editarcriar">Criar evento</h1>
+<div class="divBody">
+  <h1 class="tagTitulo" id="editarcriar">Criar evento</h1>
   <form class="divForm" (ngSubmit)="onSubmit()" #form="ngForm">
-    <div class="divIntermediariaForm">
-      <div class="divSetorForm">
-        <label for="titulo">Título</label>
-        <input type="text" [(ngModel)]="titulo" name="titulo" required />
-        <div id="tituloErro"></div>
+    <div class="divForm2">
+      <div class="divColocarEmLinha gap-5">
+        <div class="divSetorForm">
+          <label for="titulo">Título</label>
+          <input type="text" [(ngModel)]="titulo" name="titulo" required />
+          <div id="tituloErro"></div>
 
-        <label for="descricao">Descrição</label>
-        <textarea
-          [(ngModel)]="descricao"
-          name="descricao"
-          id="descricao"
-          required
-        ></textarea>
-        <div id="descricaoErro"></div>
+          <label for="descricao">Descrição</label>
+          <textarea
+            [(ngModel)]="descricao"
+            name="descricao"
+            id="descricao"
+            required
+          ></textarea>
+          <div id="descricaoErro"></div>
 
-        <label for="data">Data</label>
-        <input type="date" [(ngModel)]="dataString" name="data" required />
+          <label for="data">Data</label>
+          <input type="date" [(ngModel)]="dataString" name="data" required />
 
-        <label for="horario">Horário</label>
-        <input
-          type="text"
-          [(ngModel)]="horario"
-          name="horario"
-          (input)="formatarHorario()"
-          (keypress)="permitirApenasNumeros($event)"
-          maxlength="5"
-          placeholder="HH:MM"
-          required
-        />
+          <label for="horario">Horário</label>
+          <input
+            class="text-center"
+            type="text"
+            [(ngModel)]="horario"
+            name="horario"
+            (input)="formatarHorario()"
+            (keypress)="permitirApenasNumeros($event)"
+            maxlength="5"
+            placeholder="HH:MM"
+            required
+          />
 
-        <label for="tipo">Tipo</label>
-        <select
-          class="styleButtons btn btn-outline-primary"
-          [(ngModel)]="selectedTipo"
-          name="tipo"
-          required
-        >
-          <option value="">Tipo de Evento</option>
-          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
-            {{ tipo.tipo }}
-          </option>
-        </select>
-
-        <div>
+          <label for="tipo">Tipo</label>
+          <select
+            class="styleButtons btn btn-outline-primary"
+            [(ngModel)]="selectedTipo"
+            name="tipo"
+            required
+          >
+            <option value="">Tipo de Evento</option>
+            <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
+              {{ tipo.tipo }}
+            </option>
+          </select>
           <label for="tipoTelefone">Contato</label>
           <select
+            class="text-center"
             id="tipoTelefone"
             name="tipoTelefone"
             [(ngModel)]="tipoTelefone"
             (change)="onTipoTelefoneChange()"
           >
-            <option value="" selected disabled>Escolha uma opção</option>
-            <option value="fixo">Telefone Fixo</option>
-            <option value="celular">Celular</option>
+            <option class="text-center" value="" selected disabled>
+              Escolha uma opção
+            </option>
+            <option class="text-center" value="fixo">Telefone Fixo</option>
+            <option class="text-center" value="celular">Celular</option>
           </select>
-        </div>
-
-        <div>
           <input
+            class="text-center"
             type="text"
             [(ngModel)]="telefone"
             name="telefone"
@@ -74,32 +75,31 @@
           <!-- Desabilitado até o tipo ser selecionado -->
           <div id="telefoneErro"></div>
         </div>
-
-        <label for="livre">Livre +18</label>
-        <div>
-          <label>
-            <input
-              type="radio"
-              [(ngModel)]="livre"
-              name="livre"
-              [value]="true"
-              required
-            />
-            Sim
-          </label>
-          <label>
-            <input
-              type="radio"
-              [(ngModel)]="livre"
-              name="livre"
-              [value]="false"
-              required
-            />
-            Não
-          </label>
-        </div>
-
         <div class="divSetorForm">
+          <label for="livre">Livre +18</label>
+          <div class="d-flex gap-2">
+            <label>
+              <input
+                type="radio"
+                [(ngModel)]="livre"
+                name="livre"
+                [value]="true"
+                required
+              />
+              Sim
+            </label>
+            <label>
+              <input
+                type="radio"
+                [(ngModel)]="livre"
+                name="livre"
+                [value]="false"
+                required
+              />
+              Não
+            </label>
+          </div>
+
           <label for="link">Link</label>
           <input type="url" [(ngModel)]="link" name="link" required />
           <div id="linkErro"></div>
@@ -133,13 +133,13 @@
           <label for="numero">Número</label>
           <input type="number" [(ngModel)]="numero" name="numero" required />
           <div id="numeroErro"></div>
-
-          <label for="fotos">Escolha as fotos:</label>
-
-          <app-image-uploader (removerChanged)="removerChanged($event)" (imagesChanged)="onImagesChanged($event)"></app-image-uploader>
-
         </div>
       </div>
+      <label class="mt-2" for="fotos">Escolha as fotos:</label>
+      <app-image-uploader
+        (removerChanged)="removerChanged($event)"
+        (imagesChanged)="onImagesChanged($event)"
+      ></app-image-uploader>
     </div>
     <button id="botaoSubmit" type="submit" [disabled]="!form.valid">
       Salvar
