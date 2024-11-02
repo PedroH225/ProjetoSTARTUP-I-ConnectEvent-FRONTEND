@@ -9,14 +9,14 @@ import { ImageUploaderComponent } from './image-uploader/image-uploader.componen
 @Component({
   selector: 'app-criar-evento',
   templateUrl: './criar-evento.component.html',
-  styleUrl: './criar-evento.component.scss',
+  styleUrls: ['./criar-evento.component.scss'], // Correção de styleUrl para styleUrls
 })
 export class CriarEventoComponent {
   tipos: any[] = [];
   cidades: any[] = [];
 
   fotosExistentes: string[] = []; // Armazena as imagens que já estão no banco de dados
-  fotosParaRemover: string[] = [];
+  fotosParaRemover: number[] = [];
   imagensNovas: string[] = [];
 
   @ViewChild(ImageUploaderComponent) imageUploaderComponent!: ImageUploaderComponent;
@@ -37,8 +37,8 @@ export class CriarEventoComponent {
   estado: string = '';
   selectedCidade: string = '';
   bairro: string = '';
-  numero !: number;
-  fotos: string[] = []
+  numero!: number; // Mantive o espaço antes do tipo
+  fotos: File[] = [];
 
   eventoId: string | null = null;
 
@@ -48,7 +48,6 @@ export class CriarEventoComponent {
     private eventoService: EventosService,
     private route: ActivatedRoute,
     private router: Router,
-
   ) { }
 
   ngOnInit(): void {
@@ -69,7 +68,6 @@ export class CriarEventoComponent {
 
   onSubmit() {
     const payload = new FormData();
-
     // Adiciona os campos de dados ao FormData
     payload.append('titulo', this.titulo);
     payload.append('descricao', this.descricao);
@@ -85,58 +83,26 @@ export class CriarEventoComponent {
     payload.append('bairro', this.bairro);
     payload.append('numero', String(this.numero));
 
-    // Adiciona as fotos ao FormData
     for (const foto of this.fotos) {
-      payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
+      payload.append('fotos', foto);
     }
 
-    for (const imagem of this.fotosParaRemover) {
-      payload.append('fotosParaRemover', imagem); // Envia as imagens que precisam ser removidas
+    for (let i = 0; i < this.fotosParaRemover.length; i++) {
+      payload.append('fotosParaRemover', String(this.fotosParaRemover[i]));
     }
-
+    
     if (this.eventoId) {
       this.eventoService.editarEvento(parseInt(this.eventoId), payload).subscribe(
         () => {
-          this.router.navigate(["/principal/areaUsuario/eventosAnunciados"])
-          alert("Evento editado com sucesso!")
+          this.router.navigate(["/principal/areaUsuario/eventosAnunciados"]);
+          alert("Evento editado com sucesso!");
         },
         (error) => {
-
-    // Adiciona os campos de dados ao FormData
-    payload.append('titulo', this.titulo);
-    payload.append('descricao', this.descricao);
-    payload.append('data', this.dataString);
-    payload.append('horario', this.horario);
-    payload.append('tipo', this.selectedTipo);
-    payload.append('telefone', this.telefone);
-    payload.append('livre', String(this.livre));
-    payload.append('link', this.link);
-    payload.append('local', this.local);
-    payload.append('estado', this.estado);
-    payload.append('cidade', this.selectedCidade);
-    payload.append('bairro', this.bairro);
-    payload.append('numero', String(this.numero));
-
-    // Adiciona as fotos ao FormData
-    for (const foto of this.fotos) {
-      payload.append('fotos', foto); // O nome 'fotos' deve ser o esperado pelo seu backend
-    }
-
-    if (this.eventoId) {
-      this.eventoService
-        .editarEvento(parseInt(this.eventoId), payload)
-        .subscribe(
-          () => {
-            this.router.navigate(['/principal/areaUsuario/eventosAnunciados']);
-            alert('Evento editado com sucesso!');
-          },
-          (error) => {
-            let erros: any[] = [];
-            erros = error.error; // Captura os erros
-
-            listarErrosEvento(erros);
-          }
-        );
+          let erros: any[] = [];
+          erros = error.error; // Captura os erros
+          listarErrosEvento(erros);
+        }
+      );
     } else {
       this.eventoService.criarEvento(payload).subscribe(
         () => {
@@ -145,7 +111,6 @@ export class CriarEventoComponent {
         (error) => {
           let erros: any[] = [];
           erros = error.error; // Captura os erros
-
           listarErrosEvento(erros);
         }
       );
@@ -192,10 +157,14 @@ export class CriarEventoComponent {
     }
   }
 
-  onImagesChanged(file: string[]) {
+  onImagesChanged(file: File[]) {
     this.fotos = file; // Atualiza as imagens ao receber do uploader
     console.log(this.fotos);
+  }
 
+  removerChanged(num : number) {
+    this.fotosParaRemover.push(num);
+    
   }
 
   carregarEvento(id: string): void {
@@ -273,5 +242,4 @@ export class CriarEventoComponent {
   getMaxLength(): number {
     return this.tipoTelefone === 'celular' ? 15 : 14; // 15 para celular (11 dígitos + 4 para máscara), 14 para fixo (10 dígitos + 4 para máscara)
   }
-
 }

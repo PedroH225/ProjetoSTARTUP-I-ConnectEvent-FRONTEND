@@ -136,7 +136,7 @@
 
           <label for="fotos">Escolha as fotos:</label>
 
-          <app-image-uploader (imagesChanged)="onImagesChanged($event)"></app-image-uploader>
+          <app-image-uploader (removerChanged)="removerChanged($event)" (imagesChanged)="onImagesChanged($event)"></app-image-uploader>
 
         </div>
       </div>
