@@ -1,11 +1,11 @@
-<div class="divPai">
+<div class="divPai" [ngStyle]="{'background-image': 'url(' + imagemEventoUrl + ')'}">
   <div class="divCartaoDoEvento">
     <div class="centralizar">
       <div class="divImagem">
         <img
           class="tagImagem"
-          src="../../../assets/2pexels-edotommo99-3249760.jpg"
-          alt=""
+          [src]="imagemEventoUrl"
+          alt="Imagem do evento"
         />
       </div>
       <div class="divDetalhesEvento" *ngIf="evento">
@@ -18,7 +18,21 @@
             <p>{{ evento.descricao }}</p>
           </div>
           <div>
-            <button *ngIf="!isButtonHidden">Confirmar Presença</button>
+            <button
+              *ngIf="!desabilitarBotao && (autenticacao$ | async)"
+              [disabled]="desabilitarBotao"
+              (click)="participar()"
+            >
+              Confirmar Presença
+            </button>
+            <button
+              for="presenca"
+              *ngIf="desabilitarBotao && (autenticacao$ | async)"
+              [disabled]="!desabilitarBotao"
+              (click)="removerParticipar()"
+            >
+              Retirar Presença
+            </button>
           </div>
         </div>
         <div class="detalhesDireita">

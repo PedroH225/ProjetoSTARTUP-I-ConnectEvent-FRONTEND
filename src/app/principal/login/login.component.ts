@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../../services/usuario.service';
+import { response } from 'express';
+import { AutenticacaoService } from '../../../services/autenticacao.service';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +14,35 @@ export class LoginComponent {
   email: string = '';
   senha: string = '';
 
-  constructor(private router: Router) {} // Injeta o serviço de roteamento
+  constructor(
+    private router: Router,
+    private usuarioService: UsuarioService,
+    private autenticacaoService : AutenticacaoService
+  )
+   {} // Injeta o serviço de roteamento
 
-  fazerLogin(form: any) {
-    if (form.valid) {
-      form.ngSubmit.emit(); // Emite o evento de submit manualmente
-    } else {
-      console.log('Formulário inválido');
-    }
+  ngOnInit() {
+    this.autenticacaoService.autenticacao$.subscribe((autenticado) => {
+      if (autenticado) {
+        this.router.navigate(['/principal/areaUsuario']);
+      }
+    });
   }
 
-  onSubmit(form: any) {
-    console.log('Email:', this.email);
-    console.log('Senha:', this.senha);
+  onSubmit() {
+    const payload = {
+      email: this.email,
+      senha: this.senha
+    }
+
+    this.usuarioService.login(payload).subscribe(
+      (response) => {
+        localStorage.setItem("token", response.token)
+        this.autenticacaoService.verificarAutenticacao(); // Atualiza o estado da autenticação
+      },
+      (error) => {
+        alert("erro!")
+      }
+    )
   }
 }

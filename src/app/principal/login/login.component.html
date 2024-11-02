@@ -49,7 +49,7 @@
     />
     <br />
     <h5 class="tamanhoRegistreSe">Login Usuário</h5>
-    <form #login="ngForm" (ngSubmit)="onSubmit(login)" class="divForm2">
+    <form #form="ngForm" (ngSubmit)="onSubmit()"  class="divForm2">
       <div class="divInputs">
         <!-- Email input -->
         <div data-mdb-input-init class="form-outline">
@@ -107,15 +107,15 @@
 
       <!-- Submit button -->
       <button
-        type="button"
+        type="submit" 
         data-mdb-button-init
         data-mdb-ripple-init
         class="BotaoEntrar btn btn-primary"
-        [routerLink]="['/principal/areaUsuario']"
+        [disabled]="!form.valid"
       >
         Entrar
       </button>
-
+      
       <br />
 
       <!-- Register buttons -->
