@@ -11,6 +11,7 @@ export class FiltrarEventoService {
   constructor(private http: HttpClient) {}
 
   filtrar(tipo: string, cidade: string, data: string): Observable<any[]> {
+    const token = localStorage.getItem('token');
     let params = new HttpParams();
 
     // Adiciona os parâmetros somente se estiverem preenchidos
@@ -24,7 +25,10 @@ export class FiltrarEventoService {
       params = params.set('data', data);
     }
 
-    return this.http.get<any[]>(`${this.apiUrl}/evento/filtrar`, { params });
+    return this.http.get<any[]>(`${this.apiUrl}/evento/filtrar`, {
+      params,
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
   }
 
   // Area do usuário

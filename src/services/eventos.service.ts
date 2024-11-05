@@ -11,7 +11,11 @@ export class EventosService {
   constructor(private http: HttpClient) {}
 
   getEventos(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/evento/anunciados`);
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/evento/anunciados`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
   }
 
   getEventosUsuario() {
