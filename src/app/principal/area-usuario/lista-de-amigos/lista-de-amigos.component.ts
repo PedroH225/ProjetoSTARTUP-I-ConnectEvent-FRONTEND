@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AmizadeService } from '../../../../services/amizade.service';
+import { listarErrosAmizade } from '../../../utils/listarErros';
 
 @Component({
   selector: 'app-lista-de-amigos',
@@ -34,10 +35,11 @@ export class ListaDeAmigosComponent implements OnInit {
         (response) => {
           console.log(response);
           this.newFriendEmail = ''; // Limpa o campo após enviar
-          this.refreshAmigos(); // Recarrega a lista de amigos
+          this.refreshPendentes(); // Recarrega a lista de amigos
+          alert("Pedido de amizade enviado.")
         },
         (error) => {
-          console.error('Erro ao adicionar amigo', error);
+          listarErrosAmizade(error)
         }
       );
     }
