@@ -12,6 +12,9 @@
       Local: {{ bairro }}, {{ cidade }}/{{ estado }}
     </p>
 
+    
+    
+
     <a
       href="#"
       class="styleButtons btn btn-primary"
@@ -19,5 +22,9 @@
       id="{{ id }}"
       >Ir ao evento!
     </a>
+    
+    <ng-container *ngIf="participantes.length > 0">
+      <p>Tem amigos!</p>
+    </ng-container>
   </div>
 </div>

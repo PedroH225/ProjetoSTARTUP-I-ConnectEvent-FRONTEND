@@ -16,6 +16,6 @@ export class CardComponent {
   @Input() cidade: string = '';
   @Input() estado: string = '';
   @Input() imagem: string = '';
-
+  @Input() participantes : any[] = [];
 
 }

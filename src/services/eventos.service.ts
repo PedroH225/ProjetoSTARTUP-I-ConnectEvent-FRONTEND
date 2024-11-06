@@ -27,7 +27,11 @@ export class EventosService {
   }
 
   getEventoById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/evento/${id}`);
+    const token = localStorage.getItem('token');
+    
+    return this.http.get<any>(`${this.apiUrl}/evento/${id}`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });;
   }
 
   criarEvento(dados: any): Observable<any> {
