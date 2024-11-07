@@ -31,7 +31,6 @@ import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/c
 import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

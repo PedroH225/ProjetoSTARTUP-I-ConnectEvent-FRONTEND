@@ -1,0 +1,48 @@
+@import "padroes";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.divBody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-direction: column;
+  // border: 1px solid red;
+}
+
+.divFiltro {
+  box-shadow: $detalhe-Sombra-BordasCard;
+  border-radius: 2rem;
+  margin: 1rem;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.divComponenteDoFiltro {
+  width: 20rem;
+  margin: 0.5rem;
+}
+
+.divBotaoDoFiltro {
+}
+
+.divErro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.informacoesDosDadosFiltrados {
+  border: 1px solid red;
+  padding: 1rem;
+}
