@@ -121,3 +121,28 @@ export function listarErrosEvento(erros: any[]) {
     }
   });
 }
+
+export function listarErrosAmizade(erro : any) {
+  const amizadeErroDiv = document.querySelector('#amizadeErro');
+
+  if (amizadeErroDiv) {
+    // Limpa alertas anteriores
+    amizadeErroDiv.innerHTML = '';
+
+    // Cria um novo alerta
+    const alert = document.createElement('ngb-alert'); // Use um div padrão
+    alert.classList.add('alert', 'alert-danger', 'p-1', 'mb-0');
+    alert.textContent = erro.error.mensagem;
+    
+
+    if (erro.error.tipo === "amizadeErro") {
+        amizadeErroDiv.appendChild(alert);
+        
+    } else {
+      const defaultAlert = document.createElement('div');
+      defaultAlert.classList.add('alert', 'alert-danger', 'p-1', 'mb-0');
+      defaultAlert.textContent = "Erro desconhecido";
+      amizadeErroDiv.appendChild(defaultAlert);
+    }
+  } 
+}

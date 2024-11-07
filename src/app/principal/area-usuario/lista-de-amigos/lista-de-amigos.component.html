@@ -2,13 +2,16 @@
   <h1 class="tagTitulo">Amigos</h1>
   <div class="divTabelaPaginacaoQuantidade">
     <!-- Formulário para adicionar amigo -->
-    <form class="divAddAmigo" (submit)="addFriend()">
+    <form class="divAddAmigo" (ngSubmit)="addFriend()" #form="ngForm">
       <div class="divBoxAdicionarAmigos">
         <label for="friendEmail">Adicionar</label>
         <input type="text" id="friendEmail" [(ngModel)]="newFriendEmail" name="friendEmail" required />
       </div>
-      <button type="submit">Enviar</button>
+      <button type="submit" [disabled]="!form.valid">Enviar</button>
     </form>
+    <div id="amizadeErro" class="mt-2">
+
+    </div>
 
     <!-- Lista de Amigos -->
     <table class="mb-2 table table-striped">

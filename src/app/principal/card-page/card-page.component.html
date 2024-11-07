@@ -17,6 +17,14 @@
             </div>
             <p>{{ evento.descricao }}</p>
           </div>
+
+          <div *ngIf="evento.participantes.length > 0">
+            <p>Amigos participando:</p>
+            <p *ngFor="let participante of evento.participantes">
+              {{ participante.nome }}
+            </p>
+          </div>
+          
           <div>
             <button
               *ngIf="!desabilitarBotao && (autenticacao$ | async)"
