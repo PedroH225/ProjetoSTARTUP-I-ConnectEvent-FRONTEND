@@ -4,13 +4,17 @@
     <div class="divComponenteDoFiltro col-md-6">
       <label class="pb-2" for="">Evento</label>
       <div ngbDropdown>
-        <select name="selectedEvento" [(ngModel)]="selectedEvento" class="w-100 select form-control-lg" required>
-          <option *ngFor=" let evento of usuarioEventos" value="{{ evento.id }}"> {{ evento.titulo }} </option>
-        </select>
-        <ng-container *ngIf="!selectedEvento">
-          <p>Selecione o evento</p>
+        <ng-container *ngIf="usuarioEventos && usuarioEventos.length > 0; else noEventsMessage">
+          <select name="selectedEvento" [(ngModel)]="selectedEvento" class="w-100 select form-control-lg" required>
+            <option *ngFor="let evento of usuarioEventos" [value]="evento.id">{{ evento.titulo }}</option>
+          </select>
+          <ng-container *ngIf="!selectedEvento">
+            <p>Selecione o evento</p>
+          </ng-container>
         </ng-container>
-        
+        <ng-template #noEventsMessage>
+          <p>Você não possui eventos cadastrados.</p>
+        </ng-template>
       </div>
     </div>
     <div class="divComponenteDoFiltro col-md-6">
