@@ -69,4 +69,15 @@ export class AmizadeService {
         headers: { Authorization: `Bearer ${token}` },
       });
   }
+
+  getEventosParticipandoAmigo(amigoId : number): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get(
+      `${this.apiUrl}/usuario/eventosAmigo/${amigoId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AmizadeService } from '../../../../services/amizade.service';
 import { listarErrosAmizade } from '../../../utils/listarErros';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-de-amigos',
@@ -17,11 +19,17 @@ export class ListaDeAmigosComponent implements OnInit {
 
   newFriendEmail: string = '';
 
+  eventosAmigo : any[] = [];
+
   page = 1;
   pageSize = 5;
   collectionSize = 0;
 
-  constructor(private amizadeService: AmizadeService) {}
+  constructor(
+    private amizadeService: AmizadeService,
+    private modalService : NgbModal,
+    private router : Router
+  ) {}
 
   ngOnInit() {
     this.refreshAmigos(); // Carrega a lista de amigos ao iniciar o componente
@@ -140,5 +148,25 @@ export class ListaDeAmigosComponent implements OnInit {
         console.error('Erro ao excluir pedido', error);
       }
     );
+  }
+
+  visualizarParticipados(id:number, content : any) {
+    this.amizadeService.getEventosParticipandoAmigo(id).subscribe(
+      (eventos) => {
+        this.eventosAmigo = eventos;
+        console.log(this.eventosAmigo);
+        
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+      },
+      (error) => {
+
+      }
+    )
+  }
+
+  navegarParaEvento(id : number) {
+    this.modalService.dismissAll()
+
+    this.router.navigate(['/principal/cardPage', id])
   }
 }
