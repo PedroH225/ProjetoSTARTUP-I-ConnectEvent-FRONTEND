@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EventosService } from '../../../../services/eventos.service';
+import { EstatisticasService } from '../../../../services/estatisticas.service';
 
 @Component({
   selector: 'app-estatisticas',
@@ -13,8 +14,11 @@ export class EstatisticasComponent {
   selectedEvento: string | null = null;
   selectedDados: string | null = null;
 
+  graficoImg : any;
+
   constructor(
-    private eventoService : EventosService
+    private eventoService : EventosService,
+    private estatisticaService : EstatisticasService
   ) {}
 
   ngOnInit() {
@@ -31,7 +35,27 @@ export class EstatisticasComponent {
   }
 
   onSubmit() {
-    console.log(this.selectedEvento, this.selectedDados);
+    switch (this.selectedDados) {
+      case "genero":
+        this.estatisticaService.getPizzaGenero(parseInt(this.selectedEvento)).subscribe(
+          (grafico) => {
+            
+          },
+          (error) => {
+            
+          }
+        )
+        break;
+
+      case "idade":
+        
+        break;
+
+      case "participantess":
+        
+        break;
+      
+    }
     
   }
 }

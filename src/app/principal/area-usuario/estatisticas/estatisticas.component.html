@@ -24,7 +24,7 @@
         <select name="selectedDados" [(ngModel)]="selectedDados" class="w-100 select form-control-lg" [disabled]="!selectedEvento" required>
           <option value="genero">Genero</option>
           <option value="idade">Idade</option>
-          <option value="participados">Participados</option>
+          <option value="participantes">Participantes</option>
         </select>
         <ng-container *ngIf="(selectedEvento && !selectedDados)">
           <p>Selecione os dados</p>
