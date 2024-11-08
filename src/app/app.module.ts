@@ -30,6 +30,7 @@ import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos
 import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/configuracoes.component';
 import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
+import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
