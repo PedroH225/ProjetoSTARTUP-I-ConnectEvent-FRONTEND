@@ -1,33 +1,38 @@
 <div class="divBody">
-  <!-- <form action=""> -->
+  <form #form="ngForm" (ngSubmit)="onSubmit()">
   <div class="divFiltro">
     <div class="divComponenteDoFiltro col-md-6">
       <label class="pb-2" for="">Evento</label>
       <div ngbDropdown>
-        <select name="" class="w-100 select form-control-lg">
-          <option *ngFor="let cidade; of" [value]="cidade">
-            {{ cidade }}
-          </option>
+        <select name="selectedEvento" [(ngModel)]="selectedEvento" class="w-100 select form-control-lg" required>
+          <option *ngFor=" let evento of usuarioEventos" value="{{ evento.id }}"> {{ evento.titulo }} </option>
         </select>
+        <ng-container *ngIf="!selectedEvento">
+          <p>Selecione o evento</p>
+        </ng-container>
+        
       </div>
-      <div class="divErro mt-2" id="generoErro"></div>
     </div>
     <div class="divComponenteDoFiltro col-md-6">
       <label class="pb-2" for="">Dados</label>
+      
       <div ngbDropdown>
-        <select name="" class="w-100 select form-control-lg">
-          <option *ngFor="let cidade; of" [value]="cidade">
-            {{ cidade }}
-          </option>
+        <select name="selectedDados" [(ngModel)]="selectedDados" class="w-100 select form-control-lg" [disabled]="!selectedEvento" required>
+          <option value="genero">Genero</option>
+          <option value="idade">Idade</option>
+          <option value="participados">Participados</option>
         </select>
+        <ng-container *ngIf="(selectedEvento && !selectedDados)">
+          <p>Selecione os dados</p>
+        </ng-container>
       </div>
-      <div class="divErro mt-2" id="generoErro"></div>
     </div>
+
     <div class="divBotaoDoFiltro">
-      <button class="mt-3">Selecionar</button>
+      <button type="submit" class="mt-3" [disabled]="!form.valid">Selecionar</button>
     </div>
   </div>
-  <!-- </form> -->
+  </form>
 
   <!-- DIV RESPONSÁVEL POR TRAZER AS INFORMACOES GRÁFICAS COM OS SEUS RESPECTIVOS TITULOS -->
   <div class="informacoesDosDadosFiltrados"></div>
