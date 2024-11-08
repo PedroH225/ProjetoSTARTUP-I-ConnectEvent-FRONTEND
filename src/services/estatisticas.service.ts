@@ -12,27 +12,29 @@ export class EstatisticasService {
     private http: HttpClient
   ) { }
 
-  getPizzaGenero(id : number): Observable<any[]> {
+  getPizzaGenero(id: number): Observable<Blob> {
     const token = localStorage.getItem('token');
-
-    return this.http.get<any[]>(`${this.apiUrl}/grafico/pizza-genero/${id}`, {
-      headers: {'Authorization': `Bearer ${token}` }
+    return this.http.get(`${this.apiUrl}/grafico/pizza-genero/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+      responseType: 'blob' // A resposta é um arquivo binário (PNG/JPG)
     });
   }
 
-  getHistogramaIdade(id : number): Observable<any[]> {
+  getHistogramaIdade(id : number): Observable<Blob> {
     const token = localStorage.getItem('token');
 
-    return this.http.get<any[]>(`${this.apiUrl}/grafico/histograma-idade/${id}`, {
-      headers: {'Authorization': `Bearer ${token}` }
+    return this.http.get(`${this.apiUrl}/grafico/histograma-idade/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+      responseType: 'blob' // A resposta é um arquivo binário (PNG/JPG)
     });
   }
 
-  getLinhaParticipantes(id : number): Observable<any[]> {
+  getLinhaParticipantes(id : number): Observable<Blob> {
     const token = localStorage.getItem('token');
 
-    return this.http.get<any[]>(`${this.apiUrl}/grafico/linha-participados/${id}`, {
-      headers: {'Authorization': `Bearer ${token}` }
+    return this.http.get(`${this.apiUrl}/grafico/linha-participados/${id}`, {
+      headers: { 'Authorization': `Bearer ${token}` },
+      responseType: 'blob' // A resposta é um arquivo binário (PNG/JPG)
     });
   }
 }

@@ -39,5 +39,9 @@
   </form>
 
   <!-- DIV RESPONSÁVEL POR TRAZER AS INFORMACOES GRÁFICAS COM OS SEUS RESPECTIVOS TITULOS -->
-  <div class="informacoesDosDadosFiltrados"></div>
+  <div class="informacoesDosDadosFiltrados">
+    <div *ngIf="graficoImg">
+      <img [src]="graficoImg" alt="Gráfico de Gênero" />
+    </div>
+  </div>
 </div>

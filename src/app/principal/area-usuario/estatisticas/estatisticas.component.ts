@@ -11,10 +11,10 @@ export class EstatisticasComponent {
 
   usuarioEventos : any[] = []
 
-  selectedEvento: string | null = null;
+  selectedEvento!: number;
   selectedDados: string | null = null;
 
-  graficoImg : any;
+  graficoImg : string | undefined;
 
   constructor(
     private eventoService : EventosService,
@@ -37,22 +37,42 @@ export class EstatisticasComponent {
   onSubmit() {
     switch (this.selectedDados) {
       case "genero":
-        this.estatisticaService.getPizzaGenero(parseInt(this.selectedEvento)).subscribe(
-          (grafico) => {
-            
+        this.estatisticaService.getPizzaGenero(this.selectedEvento).subscribe(
+          (grafico : Blob) => {
+            const objectURL = URL.createObjectURL(grafico)
+            this.graficoImg =  objectURL;
           },
           (error) => {
+            console.log(error);
             
           }
         )
         break;
 
       case "idade":
-        
+        this.estatisticaService.getHistogramaIdade(this.selectedEvento).subscribe(
+          (grafico : Blob) => {
+            const objectURL = URL.createObjectURL(grafico)
+            this.graficoImg =  objectURL;
+          },
+          (error) => {
+            console.log(error);
+            
+          }
+        )
         break;
 
-      case "participantess":
-        
+      case "participantes":
+        this.estatisticaService.getLinhaParticipantes(this.selectedEvento).subscribe(
+          (grafico : Blob) => {
+            const objectURL = URL.createObjectURL(grafico)
+            this.graficoImg =  objectURL;
+          },
+          (error) => {
+            console.log(error);
+            
+          }
+        )
         break;
       
     }
