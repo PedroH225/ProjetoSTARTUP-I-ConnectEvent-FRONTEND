@@ -1,5 +1,16 @@
+@import "padroes";
+
+.divBody {
+}
+
+.divCentralizarMap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .mapBox {
-  width: 30rem;
+  width: 60rem;
   height: 30rem;
-  background: #ddd;
+  border-radius: 2rem;
 }
