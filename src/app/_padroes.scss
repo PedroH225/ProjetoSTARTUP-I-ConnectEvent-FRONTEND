@@ -1,11 +1,16 @@
 /* Padrões utilizados no projeto */
 
+// Fontes:
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 /* NavBar e Footer */
 $cor-bordas-NavBarFooter: wheat;
 $cor-sombra-NavBarFooter: 0px 0px 10px rgb(176, 176, 176); // direita sul brilho
 $background-NavBarFooter: #2b2b2b;
 $background-NavBarFooter2: #303030;
 $cor-Texto-e-BordaBotao-NavBarFooter: #dea521;
+$cor-CONNECTEVENT: #dea521;
+
 $cor-Hover-Botao-NavBarFooter: #353535;
 $cor-Texto-e-Bordas-active-Botao-NavBarFooter: #5b5b5b;
 /* Lembrando que os icones das Redes Sociais devem ser confeccionados em Photoshop */
