@@ -1,15 +1,22 @@
 <div class="divBody">
   <h1 class="tagTitulo" id="editarcriar">Criar evento</h1>
-  <form class="divForm" (ngSubmit)="onSubmit()" #form="ngForm">
-    <div class="divForm2">
+  <form class="divFormEbotaoSalvar" (ngSubmit)="onSubmit()" #form="ngForm">
+    <div class="divFormInternaDoForm">
       <div class="divColocarEmLinha gap-5">
-        <div class="divSetorForm">
+        <div class="divColunasEsquerdaEdireitaDoForm">
           <label for="titulo">Título</label>
-          <input type="text" [(ngModel)]="titulo" name="titulo" required />
+          <input
+            class="inputsStyles"
+            type="text"
+            [(ngModel)]="titulo"
+            name="titulo"
+            required
+          />
           <div id="tituloErro"></div>
 
           <label for="descricao">Descrição</label>
           <textarea
+            class="inputsStyles"
             [(ngModel)]="descricao"
             name="descricao"
             id="descricao"
@@ -18,11 +25,17 @@
           <div id="descricaoErro"></div>
 
           <label for="data">Data</label>
-          <input type="date" [(ngModel)]="dataString" name="data" required />
+          <input
+            class="inputsStyles"
+            type="date"
+            [(ngModel)]="dataString"
+            name="data"
+            required
+          />
 
           <label for="horario">Horário</label>
           <input
-            class="text-center"
+            class="inputsStyles text-center"
             type="text"
             [(ngModel)]="horario"
             name="horario"
@@ -35,7 +48,7 @@
 
           <label for="tipo">Tipo</label>
           <select
-            class="styleButtons btn btn-outline-primary"
+            class="inputsStyles btn btn-outline-primary"
             [(ngModel)]="selectedTipo"
             name="tipo"
             required
@@ -47,7 +60,7 @@
           </select>
           <label for="tipoTelefone">Contato</label>
           <select
-            class="text-center"
+            class="inputsStyles text-center"
             id="tipoTelefone"
             name="tipoTelefone"
             [(ngModel)]="tipoTelefone"
@@ -60,7 +73,7 @@
             <option class="text-center" value="celular">Celular</option>
           </select>
           <input
-            class="text-center"
+            class="inputsStyles text-center"
             type="text"
             [(ngModel)]="telefone"
             name="telefone"
@@ -75,7 +88,7 @@
           <!-- Desabilitado até o tipo ser selecionado -->
           <div id="telefoneErro"></div>
         </div>
-        <div class="divSetorForm">
+        <div class="divColunasEsquerdaEdireitaDoForm">
           <label for="livre">Livre +18</label>
           <div class="d-flex gap-2">
             <label>
@@ -101,21 +114,38 @@
           </div>
 
           <label for="link">Link</label>
-          <input type="url" [(ngModel)]="link" name="link" required />
+          <input
+            class="inputsStyles"
+            type="url"
+            [(ngModel)]="link"
+            name="link"
+            required
+          />
           <div id="linkErro"></div>
 
           <label for="local">Local</label>
-          <input type="text" [(ngModel)]="local" name="local" required />
+          <input
+            class="inputsStyles"
+            type="text"
+            [(ngModel)]="local"
+            name="local"
+            required
+          />
           <div id="localErro"></div>
 
           <label for="estado">Estado</label>
-          <select [(ngModel)]="estado" name="estado" required>
+          <select
+            class="inputsStyles"
+            [(ngModel)]="estado"
+            name="estado"
+            required
+          >
             <option [value]="'SP'">São Paulo</option>
           </select>
 
           <label for="cidade">Cidade</label>
           <select
-            class="styleButtons btn btn-outline-primary cidade-dropdown"
+            class="inputsStyles btn btn-outline-primary cidade-dropdown"
             [(ngModel)]="selectedCidade"
             name="cidade"
             required
@@ -127,21 +157,38 @@
           </select>
 
           <label for="bairro">Bairro</label>
-          <input type="text" [(ngModel)]="bairro" name="bairro" required />
+          <input
+            class="inputsStyles"
+            type="text"
+            [(ngModel)]="bairro"
+            name="bairro"
+            required
+          />
           <div id="bairroErro"></div>
 
           <label for="numero">Número</label>
-          <input type="number" [(ngModel)]="numero" name="numero" required />
+          <input
+            class="inputsStyles"
+            type="number"
+            [(ngModel)]="numero"
+            name="numero"
+            required
+          />
           <div id="numeroErro"></div>
         </div>
       </div>
-      <label class="mt-2" for="fotos">Escolha as fotos:</label>
+      <!-- <label class="mt-5" for="fotos">Escolha as fotos:</label> -->
       <app-image-uploader
         (removerChanged)="removerChanged($event)"
         (imagesChanged)="onImagesChanged($event)"
       ></app-image-uploader>
     </div>
-    <button id="botaoSubmit" type="submit" [disabled]="!form.valid">
+    <button
+      class="btn styleBotaoSalvar"
+      id="botaoSubmit"
+      type="submit"
+      [disabled]="!form.valid"
+    >
       Salvar
     </button>
   </form>
