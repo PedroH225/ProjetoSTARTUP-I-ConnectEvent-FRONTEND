@@ -5,11 +5,18 @@
   margin: 0;
 }
 
+.tituloCONNECTEVENT {
+  background: linear-gradient(to right, $cor-CONNECTEVENT, rgb(234, 245, 135));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
+
 .tagDivComposta {
   // border: 1px solid red;
   display: flex;
 
-  padding: 0.4rem 10rem;
+  padding: 0.8rem 10rem;
   background-color: $background-NavBarFooter;
   border-bottom: 3px solid $cor-bordas-NavBarFooter;
   box-shadow: $cor-sombra-NavBarFooter;
@@ -47,7 +54,7 @@
 }
 
 .tagSair {
-  background-color: rgb(105, 68, 68);
+  background-color: rgb(192, 58, 58);
   color: white;
   font-weight: 600;
   transition: background-color 1s, transform 2s;
