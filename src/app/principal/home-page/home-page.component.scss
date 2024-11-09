@@ -8,33 +8,8 @@
 .backgroundPrincipal {
   background-color: $background-HomePage; // cor background geral, atrás dos cards
   display: flex;
-  flex-direction: row;
-  min-height: 100vh;
-}
-
-.divFiltrosNavBar {
-  background-color: $background-NavBarFooter2; // cor dos filtros na navbar
-  padding-top: 1.5rem;
-  border-right: 3px solid $cor-bordas-NavBarFooter;
-  box-shadow: $cor-sombra-NavBarFooter;
-
-  // width: 1rem;
-  transition: width 0.5s ease-in-out; /* Animação suave de largura */
-
-  &.expanded {
-    width: 20rem; /* Largura expandida */
-  }
-
-  &.collapsed {
-    width: 12rem; /* Largura colapsada */
-  }
-}
-
-.divIconeEFiltros {
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  // gap: 1rem; NAO COLOCAR GAP, POIS TRAVA A ANIMACAO DE ENCOLHIMENTO
+  min-height: 100vh;
 }
 
 .tagIcon {

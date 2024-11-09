@@ -4,6 +4,7 @@
   border: none;
   box-shadow: $detalhe-Sombra-BordasCard;
   width: 25rem;
+  position: relative;
 
   transition: transform 0.3s ease-in-out;
 
@@ -11,6 +12,16 @@
     transform: scale(1.1);
     box-shadow: 0px 0px 25px $cor-Texto-e-BordaBotao-NavBarFooter;
   }
+}
+
+.divTemAmigos {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+}
+
+.tagImgEstrelaTemAmigos {
+  width: 3rem;
 }
 
 .card {
@@ -69,4 +80,8 @@
 
 .card-text {
   color: $cor-Texto-Card;
+}
+
+.divTemAmigos {
+  height: 5rem;
 }

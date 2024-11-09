@@ -1,4 +1,13 @@
 <div class="borderCard card">
+  <div class="divTemAmigos">
+    <ng-container *ngIf="participantes.length > 0">
+      <img
+        class="tagImgEstrelaTemAmigos"
+        src="../../../../assets/amigos.png"
+        alt="temAmigos"
+      />
+    </ng-container>
+  </div>
   <div class="divImg">
     <img [src]="imagem" class="tagImg card-img-top" alt="Card image cap" />
   </div>
@@ -10,9 +19,6 @@
       Local: {{ bairro }}, {{ cidade }}/{{ estado }}
     </p>
 
-    
-    
-
     <a
       href="#"
       class="styleButtons btn btn-primary"
@@ -20,9 +26,5 @@
       id="{{ id }}"
       >Ir ao evento!
     </a>
-    
-    <ng-container *ngIf="participantes.length > 0">
-      <p>Tem amigos!</p>
-    </ng-container>
   </div>
 </div>

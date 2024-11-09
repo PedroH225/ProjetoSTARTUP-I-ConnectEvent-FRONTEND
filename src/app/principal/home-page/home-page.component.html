@@ -1,24 +1,11 @@
 <div class="backgroundPrincipal">
-  <nav
-    class="divFiltrosNavBar navbar-expand-lg navbar-light"
-    [ngClass]="isCollapsed ? 'collapsed' : 'expanded'"
-  >
-    <div class="divIconeEFiltros">
-      <a class="mb-2" [routerLink]="'.'" (click)="toggleFiltro()">
-        <img class="tagIcon" src="../../../assets/filtro.png" alt="filtro" />
-      </a>
-      <div
-        #collapse="ngbCollapse"
-        [(ngbCollapse)]="isCollapsed"
-        [ngClass]="{ collapsed: isCollapsed, expanded: !isCollapsed }"
-      >
-        <div class="mb-3 card-body">
-          <app-filter (eventosFiltrados)="atualizarEventos($event)"></app-filter>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- Filtro -->
+  <div class="mb-3 card-body">
+    <app-filter (eventosFiltrados)="atualizarEventos($event)"></app-filter>
+  </div>
+  <!-- Fim Filtro -->
 
+  <!-- Cards -->
   <div class="divCards">
     <app-card
       *ngFor="let evento of eventos"
@@ -33,4 +20,5 @@
       [participantes]="evento.participantes"
     ></app-card>
   </div>
+  <!-- Fim Cards -->
 </div>

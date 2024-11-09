@@ -41,7 +41,7 @@
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
       <option value="">Cidades</option>
       <option *ngFor="let cidade of cidades" [value]="cidade">
-        {{cidade}}
+        {{ cidade }}
       </option>
       <!-- Opções de tipos de eventos -->
       <!-- <option *ngFor="let tipo of tipos" [value]="tipo.id">
@@ -57,11 +57,9 @@
         class="tagAplicar styleButtons btn btn-outline-primary"
         ngbDropdownItem
         (click)="filtrar()"
-        
       >
         Aplicar
       </button>
     </div>
   </div>
-  
 </div>
