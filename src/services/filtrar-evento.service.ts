@@ -10,11 +10,15 @@ export class FiltrarEventoService {
 
   constructor(private http: HttpClient) {}
 
-  filtrar(tipo: string, cidade: string, data: string): Observable<any[]> {
+  filtrar(titulo: string, tipo: string, cidade: string, data: string): Observable<any[]> {
     const token = localStorage.getItem('token');
     let params = new HttpParams();
 
     // Adiciona os parâmetros somente se estiverem preenchidos
+    if (titulo) {
+      params = params.set('titulo', titulo);
+
+    }
     if (tipo) {
       params = params.set('tipo', tipo);
     }
