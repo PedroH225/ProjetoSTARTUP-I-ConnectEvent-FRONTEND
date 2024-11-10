@@ -2,7 +2,7 @@
   <!-- Select para tipo de evento sem ngbDropdown -->
   <div>
 
-    <form #form="ngForm" onsubmit="filtrar()">
+    <form #form="ngForm" (ngSubmit)="filtrar()">
       <input type="text" name="titulo" [(ngModel)]="titulo">
       <div>
         <button type="submit" class="tagAplicar styleButtons btn btn-outline-primary" ngbDropdownItem>
