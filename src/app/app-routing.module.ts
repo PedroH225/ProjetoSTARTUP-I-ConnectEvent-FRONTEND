@@ -46,7 +46,7 @@ const routes: Routes = [
         canActivate: [authGuard],
         children: [
           // inicio do 'path que auxilia o desenvolvimento
-          { path: '', redirectTo: 'listaDeAmigos', pathMatch: 'full' }, // Redireciona para criarEvento ao carregar areaUsuario
+          // { path: '', redirectTo: 'listaDeAmigos', pathMatch: 'full' }, // Redireciona para criarEvento ao carregar areaUsuario
           // fim do 'path' que auxilia o desenvolvimento
           { path: 'configuracoes', component: ConfiguracoesComponent },
           { path: 'criarEvento', component: CriarEventoComponent },
