@@ -1,112 +1,161 @@
 <div class="divBody">
   <h1 class="tagTitulo">Amigos</h1>
-  <div class="divTabelaPaginacaoQuantidade">
-    <!-- Formulário para adicionar amigo -->
-    <form class="divAddAmigo" (ngSubmit)="addFriend()" #form="ngForm">
-      <div class="divBoxAdicionarAmigos">
-        <label for="friendEmail">Adicionar</label>
-        <input type="text" id="friendEmail" [(ngModel)]="newFriendEmail" name="friendEmail" required />
-      </div>
-      <button type="submit" [disabled]="!form.valid">Enviar</button>
-    </form>
-    <div id="amizadeErro" class="mt-2">
+  <div class="divGeralComTodasAsListas">
+    <!-- Lista dos SEUS Amigos -->
+    <div class="divListaEsquerdaSeusAmigos">
+      <table class="mb-2 table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Nº</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Eventos</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let amigo of paginatedAmigos; let count = index">
+            <td>
+              <strong>{{ 1 + count }}</strong>
+            </td>
+            <td>{{ amigo.nome }}</td>
+            <td>
+              <button (click)="visualizarParticipados(amigo.id, content)">
+                Eventos Participados
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <ng-template #content let-modal>
+        <div class="modal-header m-3 mb-0">
+          <h4 class="modal-title" id="modal-basic-title">
+            Eventos Participados
+          </h4>
+          <button
+            type="button"
+            class="btn-close"
+            aria-label="Close"
+            (click)="modal.dismiss('Cross click')"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <ul *ngIf="eventosAmigo.length > 0">
+            <li
+              *ngFor="let evento of eventosAmigo"
+              class="list-group-item d-flex justify-content-between align-items-center m-3"
+            >
+              {{ evento.titulo }}
+              <!-- Botão maior e espaçado -->
+              <button
+                (click)="navegarParaEvento(evento.id)"
+                class="btn btn-primary btn-lg p-1"
+              >
+                Ver Detalhes
+              </button>
+            </li>
+          </ul>
+          <p *ngIf="eventosAmigo.length === 0">
+            Este amigo não está participando de nenhum evento.
+          </p>
+        </div>
+      </ng-template>
+
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination
+          [collectionSize]="collectionSize"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          (pageChange)="refreshListaAmigo()"
+        >
+        </ngb-pagination>
+      </div>
     </div>
 
-    <!-- Lista de Amigos -->
-    <table class="mb-2 table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nº</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Eventos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let amigo of paginatedAmigos; let count = index">
-          <td><strong>{{ 1 + count }}</strong></td>
-          <td>{{ amigo.nome }}</td>
-          <td><button (click)="visualizarParticipados(amigo.id, content)">Eventos Participados</button></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <ng-template #content let-modal>
-      <div class="modal-header m-3 mb-0">
-        <h4 class="modal-title" id="modal-basic-title">Eventos Participados</h4>
-        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    <div class="divListaDireitaAddPendentesErecebidos">
+      <!-- Input ADD Amigos -->
+      <div class="divInputAddAmigos">
+        <form class="formAddAmigo" (ngSubmit)="addFriend()" #form="ngForm">
+          <div class="divBoxAdicionarAmigos">
+            <label for="friendEmail">Adicionar</label>
+            <input
+              type="text"
+              id="friendEmail"
+              [(ngModel)]="newFriendEmail"
+              name="friendEmail"
+              required
+            />
+          </div>
+          <button type="submit" [disabled]="!form.valid">Enviar</button>
+        </form>
+        <div id="amizadeErro" class="mt-2"></div>
       </div>
-      <div class="modal-body">
-        <ul *ngIf="eventosAmigo.length > 0">
-          <li *ngFor="let evento of eventosAmigo" class="list-group-item d-flex justify-content-between align-items-center m-3">
-            {{ evento.titulo }}
-            <!-- Botão maior e espaçado -->
-            <button 
-              (click)="navegarParaEvento(evento.id)" 
-              class="btn btn-primary btn-lg p-1">
-              Ver Detalhes
-            </button>
-          </li>
-        </ul>
-        <p *ngIf="eventosAmigo.length === 0">Este amigo não está participando de nenhum evento.</p>
+
+      <!-- Pedidos Pendentes -->
+      <div class="divPedidosPendentes">
+        <h2>Pedidos Pendentes</h2>
+        <table class="mb-2 table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let amigo of paginatedPendente; let count = index">
+              <td>
+                <strong>{{ 1 + count }}</strong>
+              </td>
+              <td>{{ amigo.nome }}</td>
+              <td>Pendente</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2">
+          <ngb-pagination
+            [collectionSize]="amigosPendente.length"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            (pageChange)="refreshListaPendente()"
+          >
+          </ngb-pagination>
+        </div>
       </div>
-    </ng-template>
 
-    <div class="d-flex justify-content-between p-2">
-      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
-        (pageChange)="refreshListaAmigo()">
-      </ngb-pagination>
-    </div>
-
-    <!-- Pedidos Pendentes -->
-    <h2>Pedidos Pendentes</h2>
-    <table class="mb-2 table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nº</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let amigo of paginatedPendente; let count = index">
-          <td><strong>{{ 1 + count }}</strong></td>
-          <td>{{ amigo.nome }}</td>
-          <td>Pendente</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-between p-2">
-      <ngb-pagination [collectionSize]="amigosPendente.length" [(page)]="page" [pageSize]="pageSize"
-        (pageChange)="refreshListaPendente()">
-      </ngb-pagination>
-    </div>
-
-    <!-- Pedidos Recebidos -->
-    <h2>Pedidos Recebidos</h2>
-    <table class="mb-2 table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nº</th>
-          <th scope="col">Nome</th>
-          <th scope="col">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let amigo of paginatedRecebido; let count = index">
-          <td><strong>{{ 1 + count }}</strong></td>
-          <td>{{ amigo.nome }}</td>
-          <td>
-            <button (click)="aceitarPedido(amigo.id)">Aceitar</button>
-            <button (click)="excluirPedido(amigo.id)">Excluir</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="d-flex justify-content-between p-2">
-      <ngb-pagination [collectionSize]="amigosRecebido.length" [(page)]="page" [pageSize]="pageSize"
-        (pageChange)="refreshListaRecebido()">
-      </ngb-pagination>
+      <!-- Pedidos Recebidos -->
+      <div class="divPedidosRecebidos">
+        <h2>Pedidos Recebidos</h2>
+        <table class="mb-2 table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Nº</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let amigo of paginatedRecebido; let count = index">
+              <td>
+                <strong>{{ 1 + count }}</strong>
+              </td>
+              <td>{{ amigo.nome }}</td>
+              <td>
+                <button (click)="aceitarPedido(amigo.id)">Aceitar</button>
+                <button (click)="excluirPedido(amigo.id)">Excluir</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-between p-2">
+          <ngb-pagination
+            [collectionSize]="amigosRecebido.length"
+            [(page)]="page"
+            [pageSize]="pageSize"
+            (pageChange)="refreshListaRecebido()"
+          >
+          </ngb-pagination>
+        </div>
+      </div>
     </div>
   </div>
 </div>
