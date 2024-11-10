@@ -2,12 +2,15 @@
   <!-- Select para tipo de evento sem ngbDropdown -->
   <div>
 
-    <input type="text" name="titulo" [(ngModel)]="titulo">
-
-    <select
-      class="styleButtons btn btn-outline-primary"
-      [(ngModel)]="selectedTipo"
-    >
+    <form #form="ngForm" onsubmit="filtrar()">
+      <input type="text" name="titulo" [(ngModel)]="titulo">
+      <div>
+        <button type="submit" class="tagAplicar styleButtons btn btn-outline-primary" ngbDropdownItem>
+          Pesquisar
+        </button>
+      </div>
+    </form>
+    <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" (change)="filtrar()">
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
       <option value="">Tipo de Evento</option>
       <!-- Opções de tipos de eventos -->
@@ -19,28 +22,21 @@
 
   <!-- Dropdown para data de evento -->
   <div ngbDropdown>
-    <button
-      type="button"
-      class="styleButtons btn btn-outline-primary"
-      id="dropdownBasic1"
-      ngbDropdownToggle
-    >
+    <button type="button" class="styleButtons btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
       <!-- Exibe a data ou "Data de Evento" se não houver data -->
       {{
-        selectedDate ? (selectedDate | date : "dd/MM/yyyy") : "Data de Evento"
+      selectedDate ? (selectedDate | date : "dd/MM/yyyy") : "Data de Evento"
       }}
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <input type="date" class="form-control" [(ngModel)]="selectedDate" />
+      <input type="date" class="form-control" [(ngModel)]="selectedDate" (change)="filtrar()" />
     </div>
   </div>
 
   <!-- Dropdown para cidade -->
   <div ngbDropdown>
-    <select
-      class="styleButtons btn btn-outline-primary cidade-dropdown"
-      [(ngModel)]="selectedCidade"
-    >
+    <select class="styleButtons btn btn-outline-primary cidade-dropdown" [(ngModel)]="selectedCidade"
+      (change)="filtrar()">
       <!-- Opção padrão que aparece quando nenhum tipo de evento foi selecionado -->
       <option value="">Cidades</option>
       <option *ngFor="let cidade of cidades" [value]="cidade">
@@ -53,16 +49,4 @@
     </select>
   </div>
 
-  <!-- Botao aplicar -->
-  <div>
-    <div>
-      <button
-        class="tagAplicar styleButtons btn btn-outline-primary"
-        ngbDropdownItem
-        (click)="filtrar()"
-      >
-        Aplicar
-      </button>
-    </div>
-  </div>
 </div>
