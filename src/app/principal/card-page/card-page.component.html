@@ -1,12 +1,11 @@
-<div class="divPai" [ngStyle]="{'background-image': 'url(' + imagemEventoUrl + ')'}">
+<div
+  class="divPai"
+  [ngStyle]="{ 'background-image': 'url(' + imagemEventoUrl + ')' }"
+>
   <div class="divCartaoDoEvento">
     <div class="centralizar">
       <div class="divImagem">
-        <img
-          class="tagImagem"
-          [src]="imagemEventoUrl"
-          alt="Imagem do evento"
-        />
+        <img class="tagImagem" [src]="imagemEventoUrl" alt="Imagem do evento" />
       </div>
       <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
@@ -18,15 +17,23 @@
             <p>{{ evento.descricao }}</p>
           </div>
 
-          <div *ngIf="evento.participantes.length > 0">
-            <p>Amigos participando:</p>
+          <div
+            class="divDosAmigosImagemElistagem"
+            *ngIf="evento.participantes.length > 0"
+          >
+            <img
+              class="tagImgEstrelaTemAmigos"
+              src="../../../assets/amigos.png"
+              alt=""
+            />
             <p *ngFor="let participante of evento.participantes">
               {{ participante.nome }}
             </p>
           </div>
-          
-          <div>
+
+          <div class="divBotaoConfirmarRetirarPresenca">
             <button
+              class="btnConfirmarPresenca"
               *ngIf="!desabilitarBotao && (autenticacao$ | async)"
               [disabled]="desabilitarBotao"
               (click)="participar()"
@@ -34,6 +41,7 @@
               Confirmar Presença
             </button>
             <button
+              class="btnRetirarPresenca"
               for="presenca"
               *ngIf="desabilitarBotao && (autenticacao$ | async)"
               [disabled]="!desabilitarBotao"
