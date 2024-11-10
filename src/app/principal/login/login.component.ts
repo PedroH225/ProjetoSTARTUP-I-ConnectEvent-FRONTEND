@@ -13,6 +13,8 @@ export class LoginComponent {
   selectedOption: string = 'usuario';
   email: string = '';
   senha: string = '';
+  
+  erro : boolean = false;
 
   constructor(
     private router: Router,
@@ -41,7 +43,7 @@ export class LoginComponent {
         this.autenticacaoService.verificarAutenticacao(); // Atualiza o estado da autenticação
       },
       (error) => {
-        alert("erro!")
+        this.erro = true;
       }
     )
   }

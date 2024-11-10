@@ -103,6 +103,10 @@
         </div>
       </div>
 
+      <ngb-alert class="alert-danger w-100" *ngIf="erro" [dismissible]="false">
+        Usuário ou senha incorretos.
+      </ngb-alert>
+
       <br />
 
       <!-- Submit button -->
