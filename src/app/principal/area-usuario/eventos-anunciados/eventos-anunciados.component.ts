@@ -7,7 +7,7 @@ import { FiltrarEventoService } from '../../../../services/filtrar-evento.servic
 @Component({
   selector: 'app-eventos-anunciados',
   templateUrl: './eventos-anunciados.component.html',
-  styleUrls: ['./eventos-anunciados.component.scss']
+  styleUrls: ['./eventos-anunciados.component.scss'],
 })
 export class EventosAnunciadosComponent implements OnInit {
   eventos: any[] = []; // Array para armazenar eventos
@@ -23,8 +23,8 @@ export class EventosAnunciadosComponent implements OnInit {
     private autenticacaoService: AutenticacaoService,
     private eventoService: EventosService,
     private router: Router,
-    private filtroServico : FiltrarEventoService
-  ) { }
+    private filtroServico: FiltrarEventoService
+  ) {}
 
   ngOnInit() {
     this.getEventosUsuario(); // Chama o método para buscar eventos ao inicializar
@@ -45,10 +45,10 @@ export class EventosAnunciadosComponent implements OnInit {
 
   onSubmit() {
     switch (this.selectedFiltro) {
-      case "":
-      this.getEventosUsuario();
+      case '':
+        this.getEventosUsuario();
         break;
-      case "correntes":
+      case 'correntes':
         this.filtroServico.filtrarEventoAnunciados().subscribe(
           (response: any[]) => {
             this.eventos = response; // Armazena os eventos recebidos
@@ -59,38 +59,39 @@ export class EventosAnunciadosComponent implements OnInit {
             console.error('Erro ao buscar eventos:', error);
           }
         );
-      
+
         break;
-      case "ocorridos":
-      this.filtroServico.filtrarEventoOcorridos().subscribe(
-      (response: any[]) => {
-        this.eventos = response; // Armazena os eventos recebidos
-        this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
-        this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
-      },
-      (error: Error) => {
-        console.error('Erro ao buscar eventos:', error);
-      }
-    );
+      case 'ocorridos':
+        this.filtroServico.filtrarEventoOcorridos().subscribe(
+          (response: any[]) => {
+            this.eventos = response; // Armazena os eventos recebidos
+            this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
+            this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+          },
+          (error: Error) => {
+            console.error('Erro ao buscar eventos:', error);
+          }
+        );
         break;
-        case "Nanunciado":
-      this.filtroServico.filtrarEventoNaoAnunciados().subscribe(
-      (response: any[]) => {
-        this.eventos = response; // Armazena os eventos recebidos
-        this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
-        this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
-      },
-      (error: Error) => {
-        console.error('Erro ao buscar eventos:', error);
-      }
-    );
+      case 'Nanunciado':
+        this.filtroServico.filtrarEventoNaoAnunciados().subscribe(
+          (response: any[]) => {
+            this.eventos = response; // Armazena os eventos recebidos
+            this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
+            this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+          },
+          (error: Error) => {
+            console.error('Erro ao buscar eventos:', error);
+          }
+        );
         break;
     }
-
   }
 
   convertToDate(dateString: string): Date {
-    const [day, month, year] = dateString.split('/').map(part => parseInt(part, 10));
+    const [day, month, year] = dateString
+      .split('/')
+      .map((part) => parseInt(part, 10));
     return new Date(year, month - 1, day);
   }
 
@@ -100,26 +101,26 @@ export class EventosAnunciadosComponent implements OnInit {
   }
 
   excluirEvento(id: number) {
-    if (confirm("Excluir o evento?")) {
+    if (confirm('Excluir o evento?')) {
       this.eventoService.excluirEvento(id).subscribe(
         () => {
           this.getEventosUsuario();
         },
         (error: Error) => {
-          alert("Erro ao excluir evento.")
+          alert('Erro ao excluir evento.');
         }
       );
     }
   }
 
-  anunciarEvento(id : number) {
-    if (confirm("Anunciar o evento? Essa ação não pode ser revertida.")) {
+  anunciarEvento(id: number) {
+    if (confirm('Anunciar o evento? Essa ação não pode ser revertida.')) {
       this.eventoService.anunciarEvento(id).subscribe(
         () => {
           this.getEventosUsuario();
         },
         (error: Error) => {
-          alert("Erro ao anunciar evento.")
+          alert('Erro ao anunciar evento.');
         }
       );
     }
@@ -131,7 +132,10 @@ export class EventosAnunciadosComponent implements OnInit {
 
   // Método para atualizar eventos paginados
   refreshPaginatedEventos(): void {
-    this.paginatedEventos = this.eventos.slice((this.page - 1) * this.pageSize, this.page * this.pageSize);
+    this.paginatedEventos = this.eventos.slice(
+      (this.page - 1) * this.pageSize,
+      this.page * this.pageSize
+    );
   }
 
   // Método chamado para atualizar eventos e a coleção paginada
