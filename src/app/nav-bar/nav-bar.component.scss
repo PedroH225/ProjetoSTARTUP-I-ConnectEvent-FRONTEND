@@ -11,6 +11,7 @@
   -webkit-text-fill-color: transparent;
   font-weight: bold;
   font-family: system-ui;
+  font-size: 2.5rem;
 }
 
 .tagDivComposta {
@@ -21,6 +22,7 @@
   background-color: $background-NavBarFooter;
   border-bottom: 3px solid $cor-bordas-NavBarFooter;
   box-shadow: $cor-sombra-NavBarFooter;
+  min-width: 100%;
 }
 
 .tagListaBotao {

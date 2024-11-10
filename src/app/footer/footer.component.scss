@@ -5,6 +5,7 @@
   flex-direction: row;
   gap: 10rem;
   flex-wrap: wrap;
+  min-width: 100%;
   background-color: $background-NavBarFooter;
   color: $cor-Texto-e-BordaBotao-NavBarFooter;
   border-top: 3px solid $cor-bordas-NavBarFooter;

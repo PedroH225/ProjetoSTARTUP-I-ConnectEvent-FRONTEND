@@ -1,52 +1,98 @@
-<div class="divFiltros">
-  <!-- Select para tipo de evento -->
-  <div>
-    <form #form="ngForm" (ngSubmit)="filtrar()">
-      <input type="text" name="titulo" [(ngModel)]="titulo">
-      <div>
-        <button type="submit" class="tagAplicar styleButtons btn btn-outline-primary" ngbDropdownItem>
-          Pesquisar
+<div class="divBody">
+  <form
+    class="divFormDePesquisaCampoEbotao"
+    #form="ngForm"
+    (ngSubmit)="filtrar()"
+  >
+    <input
+      class="inputPesquisa"
+      type="text"
+      name="titulo"
+      [(ngModel)]="titulo"
+    />
+    <button
+      type="submit"
+      class="tagAplicar styleButtons btn btn-outline-primary"
+      ngbDropdownItem
+    >
+      Pesquisar
+    </button>
+  </form>
+  <div class="divFiltros">
+    <!-- TIPO DE EVENTO -->
+    <div>
+      <div style="display: flex; align-items: center">
+        <select
+          class="styleButtons btn btn-outline-primary"
+          [(ngModel)]="selectedTipo"
+          (change)="filtrar()"
+        >
+          <option value="" disabled>Tipo de Evento</option>
+          <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
+            {{ tipo.tipo }}
+          </option>
+        </select>
+        <button
+          *ngIf="selectedTipo"
+          type="button"
+          class="btn btn-outline-secondary btn-sm ml-2"
+          (click)="selectedTipo = ''; filtrar()"
+        >
+          X
         </button>
       </div>
-    </form>
+    </div>
 
-    <!-- Select para tipo de evento com botão para limpar seleção -->
-    <div style="display: flex; align-items: center;">
-      <select class="styleButtons btn btn-outline-primary" [(ngModel)]="selectedTipo" (change)="filtrar()">
-        <option value="" disabled>Tipo de Evento</option>
-        <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
-          {{ tipo.tipo }}
-        </option>
-      </select>
-      <button *ngIf="selectedTipo" type="button" class="btn btn-outline-secondary btn-sm ml-2" (click)="selectedTipo = ''; filtrar()">
+    <!-- DATA DE EVENTO -->
+    <div ngbDropdown style="display: flex; align-items: center">
+      <button
+        type="button"
+        class="styleButtons btn btn-outline-primary"
+        id="dropdownBasic1"
+        ngbDropdownToggle
+      >
+        {{
+          selectedDate ? (selectedDate | date : "dd/MM/yyyy") : "Data de Evento"
+        }}
+      </button>
+      <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+        <input
+          type="date"
+          class="form-control"
+          [(ngModel)]="selectedDate"
+          (change)="filtrar()"
+        />
+      </div>
+      <button
+        *ngIf="selectedDate"
+        type="button"
+        class="btn btn-outline-secondary btn-sm ml-2"
+        (click)="selectedDate = ''; filtrar()"
+      >
         X
       </button>
     </div>
-  </div>
 
-  <!-- Dropdown para data de evento -->
-  <div ngbDropdown style="display: flex; align-items: center;">
-    <button type="button" class="styleButtons btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-      {{ selectedDate ? (selectedDate | date : "dd/MM/yyyy") : "Data de Evento" }}
-    </button>
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <input type="date" class="form-control" [(ngModel)]="selectedDate" (change)="filtrar()" />
+    <!-- CIDADES -->
+    <div style="display: flex; align-items: center">
+      <select
+        class="styleButtons btn btn-outline-primary cidade-dropdown"
+        [(ngModel)]="selectedCidade"
+        (change)="filtrar()"
+      >
+        <option value="" disabled>Cidades</option>
+        <option *ngFor="let cidade of cidades" [value]="cidade">
+          {{ cidade }}
+        </option>
+      </select>
+      <button
+        *ngIf="selectedCidade"
+        type="button"
+        class="btn btn-outline-secondary btn-sm ml-2"
+        (click)="selectedCidade = ''; filtrar()"
+      >
+        X
+      </button>
     </div>
-    <button *ngIf="selectedDate" type="button" class="btn btn-outline-secondary btn-sm ml-2" (click)="selectedDate = ''; filtrar()">
-      X
-    </button>
-  </div>
-
-  <!-- Dropdown para cidade -->
-  <div style="display: flex; align-items: center;">
-    <select class="styleButtons btn btn-outline-primary cidade-dropdown" [(ngModel)]="selectedCidade" (change)="filtrar()">
-      <option value="" disabled>Cidades</option>
-      <option *ngFor="let cidade of cidades" [value]="cidade">
-        {{ cidade }}
-      </option>
-    </select>
-    <button *ngIf="selectedCidade" type="button" class="btn btn-outline-secondary btn-sm ml-2" (click)="selectedCidade = ''; filtrar()">
-      X
-    </button>
   </div>
 </div>

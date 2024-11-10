@@ -16,6 +16,7 @@
 
 .tagTitulo {
   margin: 0.5rem 0 1rem 0;
+  font-family: segoe ui;
 }
 
 .divFormEbotaoSalvar {
@@ -26,7 +27,7 @@
   gap: 2rem;
 
   padding: 1rem;
-  box-shadow: 0px 0px 15px $cor-CONNECTEVENT;
+  box-shadow: 0px 0px 15px grey;
   border-radius: 2rem;
 }
 
@@ -47,9 +48,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.3rem;
+  gap: 1rem;
   padding: 1rem;
   box-shadow: 0px 0px 15px rgb(77, 77, 77);
+  border-radius: 1rem;
 }
 
 .divColocarEmLinha {
@@ -70,7 +72,30 @@
   color: black;
   border: 1px solid black;
   font-family: roboto;
+  min-height: 2rem;
+  max-height: 10rem;
 }
 
-.styleBotaoSalvar {
+.styleBotaoCriar {
+  width: 10rem;
+  padding: 1rem;
+  color: black;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(215, 215, 215);
+    transition: 0.2s ease-in;
+  }
+}
+
+.tagSelect {
+  cursor: pointer;
+
+  &:hover,
+  &:active,
+  &:focus-within {
+    background-color: rgb(239, 239, 239);
+    transition: 0.2s ease-in;
+  }
 }

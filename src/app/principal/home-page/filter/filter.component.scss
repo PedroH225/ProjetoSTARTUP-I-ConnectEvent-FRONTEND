@@ -1,15 +1,37 @@
 @import "padroes";
 
-.divFiltros {
+.divBody {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+
   padding: 1rem 0 0.7rem 0;
   border-bottom: 3px solid $cor-bordas-NavBarFooter;
   box-shadow: 0px 0px 15px rgb(40, 40, 40);
+  background-color: $background-NavBarFooter;
+}
+
+.divFormDePesquisaCampoEbotao {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputPesquisa {
+  border-radius: 1rem;
+  padding: 0 1rem;
+}
+
+.divFiltros {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background-color: $background-NavBarFooter;
 }
 
 .styleButtons {

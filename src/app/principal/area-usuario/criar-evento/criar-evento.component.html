@@ -1,5 +1,5 @@
 <div class="divBody">
-  <h1 class="tagTitulo" id="editarcriar">Criar evento</h1>
+  <h1 class="tagTitulo" id="editarcriar">CRIAR EVENTO</h1>
   <form class="divFormEbotaoSalvar" (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="divFormInternaDoForm">
       <div class="divColocarEmLinha gap-5">
@@ -48,7 +48,7 @@
 
           <label for="tipo">Tipo</label>
           <select
-            class="inputsStyles btn btn-outline-primary"
+            class="inputsStyles tagSelect"
             [(ngModel)]="selectedTipo"
             name="tipo"
             required
@@ -60,7 +60,7 @@
           </select>
           <label for="tipoTelefone">Contato</label>
           <select
-            class="inputsStyles text-center"
+            class="inputsStyles tagSelect text-center"
             id="tipoTelefone"
             name="tipoTelefone"
             [(ngModel)]="tipoTelefone"
@@ -135,7 +135,7 @@
 
           <label for="estado">Estado</label>
           <select
-            class="inputsStyles"
+            class="inputsStyles tagSelect"
             [(ngModel)]="estado"
             name="estado"
             required
@@ -145,7 +145,7 @@
 
           <label for="cidade">Cidade</label>
           <select
-            class="inputsStyles btn btn-outline-primary cidade-dropdown"
+            class="inputsStyles tagSelect"
             [(ngModel)]="selectedCidade"
             name="cidade"
             required
@@ -184,12 +184,12 @@
       ></app-image-uploader>
     </div>
     <button
-      class="btn styleBotaoSalvar"
+      class="styleBotaoCriar"
       id="botaoSubmit"
       type="submit"
       [disabled]="!form.valid"
     >
-      Salvar
+      CRIAR
     </button>
   </form>
 </div>
