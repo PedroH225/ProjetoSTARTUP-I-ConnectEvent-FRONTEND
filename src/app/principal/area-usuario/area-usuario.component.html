@@ -1,25 +1,26 @@
 <div class="divBody">
-  <div class="divPanorama">
-    <!-- AQUI COMEÇA A DIV ESQUERDA  -->
-    <div class="divEsquerdaUsuarioDireitaAnunciar">
-      <div class="centralizarEsquerdaEdireita">
-        <div class="divCabecalho">
-          <img
-            class="tagIcon"
-            src="../../../assets/restrictPlaceUser/pin.png"
-            alt=""
-          />
-          <h5 class="tagTitulo">Usuário</h5>
-          <img
-            class="tagIcon"
-            src="../../../assets/restrictPlaceUser/pin.png"
-            alt=""
-          />
+  <!-- Menu Lateral -->
+  <div class="divMenuLateral">
+    <!-- COLLAPSE = USUARIO + ANUNCIANTES -->
+    <div ngbAccordion class="divAccordion">
+      <!-- USUARIO -->
+      <div ngbAccordionItem [collapsed]="true" class="divAccordionItem">
+        <div ngbAccordionHeader class="divAccordionHeader">
+          <button ngbAccordionButton>
+            <div class="centralizarTextoDentroDaBoxCollapse">
+              <img
+                class="tagIcon"
+                src="../../../assets/restrictPlaceUser/pin.png"
+                alt=""
+              />
+              <h5 class="tagTitulo">Usuário</h5>
+            </div>
+          </button>
         </div>
-        <div class="">
-          <ul class="divListaBotoesEsquerdaEdireita navbar-nav">
+        <div ngbAccordionCollapse class="">
+          <ul ngbAccordionBody class="divAccordionBody navbar-nav">
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img
                   class="tagIcon"
                   src="../../../assets/restrictPlaceUser/confirmation.png"
@@ -34,7 +35,7 @@
             </li>
 
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img
                   class="tagIcon"
                   src="../../../assets/restrictPlaceUser/high-five.png"
@@ -47,8 +48,9 @@
                 >
               </div>
             </li>
+
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img
                   class="tagIcon"
                   src="../../../assets/restrictPlaceUser/mapa.png"
@@ -64,31 +66,25 @@
           </ul>
         </div>
       </div>
-    </div>
 
-    <!-- AQUI COMEÇA A DIV CENTRAL  -->
-    <div class="divCentral divBorda"><router-outlet></router-outlet></div>
-
-    <!-- AQUI COMEÇA A DIV DIREITA  -->
-    <div class="divEsquerdaUsuarioDireitaAnunciar">
-      <div class="centralizarEsquerdaEdireita">
-        <div class="divCabecalho">
-          <img
-            class="tagIcon"
-            src="../../../assets/restrictPlaceUser/post-it.png"
-            alt=""
-          />
-          <h5 class="tagTitulo">Anunciar</h5>
-          <img
-            class="tagIcon"
-            src="../../../assets/restrictPlaceUser/post-it.png"
-            alt=""
-          />
+      <!-- ANUNCIANTES -->
+      <div ngbAccordionItem [collapsed]="true" class="divAccordionItem">
+        <div ngbAccordionHeader class="divAccordionHeader">
+          <button ngbAccordionButton class="divTeste">
+            <div class="centralizarTextoDentroDaBoxCollapse">
+              <img
+                class="tagIcon"
+                src="../../../assets/restrictPlaceUser/post-it.png"
+                alt=""
+              />
+              <h5 class="tagTitulo">Anunciar</h5>
+            </div>
+          </button>
         </div>
-        <div class="">
-          <ul class="divListaBotoesEsquerdaEdireita navbar-nav">
+        <div ngbAccordionCollapse class="">
+          <ul ngbAccordionBody class="divAccordionBody navbar-nav">
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img class="tagIcon" src="../../../assets/add2.png" alt="" />
                 <a
                   class="styleButtons btn nav-item active"
@@ -98,7 +94,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img
                   class="tagIcon"
                   src="../../../assets/restrictPlaceUser/coworking.png"
@@ -112,7 +108,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img
                   class="tagIcon"
                   src="../../../assets/restrictPlaceUser/feedback-do-cliente.png"
@@ -126,7 +122,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <div class="divBotaoDoIconeComBotaoTexto">
+              <div class="divComponenteDoBotao">
                 <img
                   class="tagIcon"
                   src="../../../assets/restrictPlaceUser/estatisticas.png"
@@ -143,42 +139,34 @@
         </div>
       </div>
     </div>
+
+    <!-- CONFIGURAÇÕES -->
+    <div class="tagConfig divComponenteDoBotao" style="padding: 0.5rem 1rem">
+      <img
+        class="tagIconG"
+        src="../../../assets/restrictPlaceUser/settings.png"
+        alt=""
+      />
+      <a
+        class="styleButtons btn nav-item active"
+        [routerLink]="'/principal/areaUsuario/configuracoes'"
+        >Configurações</a
+      >
+    </div>
+
+    <!-- SAIR -->
+    <div class="tagSair divComponenteDoBotao" style="padding: 0.5rem 1rem">
+      <img
+        class="tagIconG"
+        src="../../../assets/restrictPlaceUser/sair.png"
+        alt=""
+      />
+      <a class="styleButtons btn nav-item active" (click)="logout()">Sair</a>
+    </div>
   </div>
-  <!-- AQUI COMEÇA A DIV DE BAIXO  -->
-  <div class="divBaixo">
-    <ul class="divLinearParaAboxDeBaixo navbar-nav">
-      <li class="nav-item">
-        <div
-          class="tagConfig divBotaoDoIconeComBotaoTexto"
-          style="padding: 0.5rem 1rem"
-        >
-          <img
-            class="tagIconG"
-            src="../../../assets/restrictPlaceUser/settings.png"
-            alt=""
-          />
-          <a
-            class="styleButtons btn nav-item active"
-            [routerLink]="'/principal/areaUsuario/configuracoes'"
-            >Configurações</a
-          >
-        </div>
-      </li>
-      <li class="nav-item">
-        <div
-          class="tagSair divBotaoDoIconeComBotaoTexto"
-          style="padding: 0.5rem 1rem"
-        >
-          <img
-            class="tagIconG"
-            src="../../../assets/restrictPlaceUser/sair.png"
-            alt=""
-          />
-          <a class="styleButtons btn nav-item active" (click)="logout()"
-            >Sair</a
-          >
-        </div>
-      </li>
-    </ul>
+
+  <!-- Conteúdo do Menu -->
+  <div class="divConteudoMenu divBorda">
+    <router-outlet></router-outlet>
   </div>
 </div>

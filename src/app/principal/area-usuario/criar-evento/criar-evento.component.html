@@ -2,187 +2,261 @@
   <h1 class="tagTitulo" id="editarcriar">CRIAR EVENTO</h1>
   <form class="divFormEbotaoSalvar" (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="divFormInternaDoForm">
-      <div class="divColocarEmLinha gap-5">
-        <div class="divColunasEsquerdaEdireitaDoForm">
-          <label for="titulo">Título</label>
+      <!-- Principais Informações -->
+      <div class="divSetordoForm">
+        <h3 class="text-center mb-5">Principais Informações</h3>
+        <!-- Título ------------------------------------------------------------- Tamanho GRANDE -->
+        <div class="divInputsGrandesForm">
+          <label class="tagLabelG" for="titulo">Título</label>
           <input
-            class="inputsStyles"
+            class="inputsStylesG"
             type="text"
             [(ngModel)]="titulo"
             name="titulo"
             required
           />
           <div id="tituloErro"></div>
+        </div>
+        <!-- ----------------------------------------------------------------------------------- -->
 
-          <label for="descricao">Descrição</label>
+        <!-- Descrição ---------------------------------------------------------- Tamanho GRANDE -->
+        <div class="divInputsGrandesForm">
+          <label class="tagLabelG" for="descricao">Descrição</label>
           <textarea
-            class="inputsStyles"
+            class="inputsStylesG"
             [(ngModel)]="descricao"
             name="descricao"
             id="descricao"
             required
           ></textarea>
           <div id="descricaoErro"></div>
-
-          <label for="data">Data</label>
-          <input
-            class="inputsStyles"
-            type="date"
-            [(ngModel)]="dataString"
-            name="data"
-            required
-          />
-
-          <label for="horario">Horário</label>
-          <input
-            class="inputsStyles text-center"
-            type="text"
-            [(ngModel)]="horario"
-            name="horario"
-            (input)="formatarHorario()"
-            (keypress)="permitirApenasNumeros($event)"
-            maxlength="5"
-            placeholder="HH:MM"
-            required
-          />
-
-          <label for="tipo">Tipo</label>
-          <select
-            class="inputsStyles tagSelect"
-            [(ngModel)]="selectedTipo"
-            name="tipo"
-            required
-          >
-            <option value="">Tipo de Evento</option>
-            <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
-              {{ tipo.tipo }}
-            </option>
-          </select>
-          <label for="tipoTelefone">Contato</label>
-          <select
-            class="inputsStyles tagSelect text-center"
-            id="tipoTelefone"
-            name="tipoTelefone"
-            [(ngModel)]="tipoTelefone"
-            (change)="onTipoTelefoneChange()"
-          >
-            <option class="text-center" value="" selected disabled>
-              Escolha uma opção
-            </option>
-            <option class="text-center" value="fixo">Telefone Fixo</option>
-            <option class="text-center" value="celular">Celular</option>
-          </select>
-          <input
-            class="inputsStyles text-center"
-            type="text"
-            [(ngModel)]="telefone"
-            name="telefone"
-            [placeholder]="
-              tipoTelefone === 'celular' ? '(xx) xxxxx-xxxx' : '(xx) xxxx-xxxx'
-            "
-            required
-            (input)="formatarTelefone($event)"
-            [maxlength]="getMaxLength()"
-            [disabled]="!telefoneHabilitado"
-          />
-          <!-- Desabilitado até o tipo ser selecionado -->
-          <div id="telefoneErro"></div>
         </div>
-        <div class="divColunasEsquerdaEdireitaDoForm">
-          <label for="livre">Livre +18</label>
-          <div class="d-flex gap-2">
-            <label>
-              <input
-                type="radio"
-                [(ngModel)]="livre"
-                name="livre"
-                [value]="true"
-                required
-              />
-              Sim
-            </label>
-            <label>
-              <input
-                type="radio"
-                [(ngModel)]="livre"
-                name="livre"
-                [value]="false"
-                required
-              />
-              Não
-            </label>
+        <!-- ----------------------------------------------------------------------------------- -->
+
+        <!-- Data, Horário e Tipo --------------------------------------------- Tamanho PEQUENO -->
+        <div class="divInputsPequenosForm">
+          <!-- Data -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="data">Data</label>
+            <input
+              class="inputsStylesP text-center"
+              type="date"
+              [(ngModel)]="dataString"
+              name="data"
+              required
+            />
           </div>
 
-          <label for="link">Link</label>
-          <input
-            class="inputsStyles"
-            type="url"
-            [(ngModel)]="link"
-            name="link"
-            required
-          />
-          <div id="linkErro"></div>
+          <!-- Horário -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="horario">Horário</label>
+            <input
+              class="inputsStylesP text-center"
+              type="text"
+              [(ngModel)]="horario"
+              name="horario"
+              (input)="formatarHorario()"
+              (keypress)="permitirApenasNumeros($event)"
+              maxlength="5"
+              placeholder="HH:MM"
+              required
+            />
+          </div>
 
-          <label for="local">Local</label>
-          <input
-            class="inputsStyles"
-            type="text"
-            [(ngModel)]="local"
-            name="local"
-            required
-          />
-          <div id="localErro"></div>
-
-          <label for="estado">Estado</label>
-          <select
-            class="inputsStyles tagSelect"
-            [(ngModel)]="estado"
-            name="estado"
-            required
-          >
-            <option [value]="'SP'">São Paulo</option>
-          </select>
-
-          <label for="cidade">Cidade</label>
-          <select
-            class="inputsStyles tagSelect"
-            [(ngModel)]="selectedCidade"
-            name="cidade"
-            required
-          >
-            <option value="">Cidades</option>
-            <option *ngFor="let cidade of cidades" [value]="cidade">
-              {{ cidade }}
-            </option>
-          </select>
-
-          <label for="bairro">Bairro</label>
-          <input
-            class="inputsStyles"
-            type="text"
-            [(ngModel)]="bairro"
-            name="bairro"
-            required
-          />
-          <div id="bairroErro"></div>
-
-          <label for="numero">Número</label>
-          <input
-            class="inputsStyles"
-            type="number"
-            [(ngModel)]="numero"
-            name="numero"
-            required
-          />
-          <div id="numeroErro"></div>
+          <!-- Tipo -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="tipo">Tipo</label>
+            <select
+              class="inputsStylesP tagSelect text-center"
+              [(ngModel)]="selectedTipo"
+              name="tipo"
+              required
+            >
+              <option value="">Tipo de Evento</option>
+              <option *ngFor="let tipo of tipos" [value]="tipo.tipo">
+                {{ tipo.tipo }}
+              </option>
+            </select>
+          </div>
         </div>
+        <!-- ----------------------------------------------------------------------------------- -->
       </div>
-      <!-- <label class="mt-5" for="fotos">Escolha as fotos:</label> -->
-      <app-image-uploader
-        (removerChanged)="removerChanged($event)"
-        (imagesChanged)="onImagesChanged($event)"
-      ></app-image-uploader>
+
+      <!-- Endereço -->
+      <div class="divSetordoForm">
+        <h3 class="text-center mb-5">Endereço</h3>
+        <!-- Logradouro e Número --------------------------------------------- Tamanho MEDIO --- -->
+        <div class="divInputsMediosForm">
+          <!-- Logradouro (antigo "local") -->
+          <div class="divConteudoUnitarioMedio">
+            <label class="tagLabelM" for="local">Logradouro</label>
+            <input
+              class="inputsStylesM"
+              type="text"
+              [(ngModel)]="local"
+              name="local"
+              required
+            />
+            <div id="localErro"></div>
+          </div>
+
+          <!-- Número -->
+          <div class="divConteudoUnitarioMedio">
+            <label class="tagLabelM" for="numero">Número</label>
+            <input
+              class="inputsStylesM"
+              type="number"
+              [(ngModel)]="numero"
+              name="numero"
+              required
+            />
+            <div id="numeroErro"></div>
+          </div>
+        </div>
+        <!-- ----------------------------------------------------------------------------------- -->
+
+        <!-- Estado, Cidade e Bairro --------------------------------------- Tamanho PEQUENO --- -->
+        <div class="divInputsPequenosForm">
+          <!-- Estado -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="estado">Estado</label>
+            <select
+              class="inputsStylesP tagSelect"
+              [(ngModel)]="estado"
+              name="estado"
+              required
+            >
+              <option [value]="'SP'">São Paulo</option>
+            </select>
+          </div>
+
+          <!-- Cidade -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="cidade">Cidade</label>
+            <select
+              class="inputsStylesP tagSelect text-center"
+              [(ngModel)]="selectedCidade"
+              name="cidade"
+              required
+            >
+              <option value="">Cidades</option>
+              <option *ngFor="let cidade of cidades" [value]="cidade">
+                {{ cidade }}
+              </option>
+            </select>
+          </div>
+
+          <!-- Bairro -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="bairro">Bairro</label>
+            <input
+              class="inputsStylesP"
+              type="text"
+              [(ngModel)]="bairro"
+              name="bairro"
+              required
+            />
+            <div id="bairroErro"></div>
+          </div>
+        </div>
+        <!-- ----------------------------------------------------------------------------------- -->
+      </div>
+
+      <!-- Outras Informações -->
+      <div class="divSetordoForm">
+        <h3 class="text-center mb-5">Outras Informações</h3>
+        <!-- - Contato, Livre e Link --------------------------------------- Tamanho PEQUENO --- -->
+        <div class="divInputsPequenosForm">
+          <!-- Contato -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="tipoTelefone">Contato</label>
+            <select
+              class="inputsStylesP tagSelect text-center"
+              id="tipoTelefone"
+              name="tipoTelefone"
+              [(ngModel)]="tipoTelefone"
+              (change)="onTipoTelefoneChange()"
+            >
+              <option class="text-center" value="" selected disabled>
+                Escolha uma opção
+              </option>
+              <option class="text-center" value="fixo">Telefone Fixo</option>
+              <option class="text-center" value="celular">Celular</option>
+            </select>
+            <input
+              class="inputsStyles text-center"
+              type="text"
+              [(ngModel)]="telefone"
+              name="telefone"
+              [placeholder]="
+                tipoTelefone === 'celular'
+                  ? '(xx) xxxxx-xxxx'
+                  : '(xx) xxxx-xxxx'
+              "
+              required
+              (input)="formatarTelefone($event)"
+              [maxlength]="getMaxLength()"
+              [disabled]="!telefoneHabilitado"
+            />
+            <!-- Desabilitado até o tipo ser selecionado -->
+            <div id="telefoneErro"></div>
+          </div>
+
+          <!-- Livre -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="livre">Livre +18</label>
+            <div
+              class="divConteudoUnitarioPequeno flex-row gap-2 justify-content-center"
+            >
+              <label>
+                <input
+                  type="radio"
+                  [(ngModel)]="livre"
+                  name="livre"
+                  [value]="true"
+                  required
+                />
+                Sim
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  [(ngModel)]="livre"
+                  name="livre"
+                  [value]="false"
+                  required
+                />
+                Não
+              </label>
+            </div>
+          </div>
+
+          <!-- Link -->
+          <div class="divConteudoUnitarioPequeno">
+            <label class="tagLabelP" for="link">Link</label>
+            <input
+              class="inputsStylesP"
+              type="url"
+              [(ngModel)]="link"
+              name="link"
+              required
+            />
+            <div id="linkErro"></div>
+          </div>
+        </div>
+        <!-- ----------------------------------------------------------------------------------- -->
+      </div>
+
+      <!-- Foto -->
+      <div>
+        <app-image-uploader
+          (removerChanged)="removerChanged($event)"
+          (imagesChanged)="onImagesChanged($event)"
+        ></app-image-uploader>
+      </div>
     </div>
+
+    <!-- Botão Salvar -->
     <button
       class="styleBotaoCriar"
       id="botaoSubmit"
