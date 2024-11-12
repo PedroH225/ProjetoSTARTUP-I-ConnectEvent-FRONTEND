@@ -10,6 +10,17 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {}
 
+  getUsuarioById(): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get(
+      `${this.apiUrl}/usuario`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  }
+
   registrarUsuario(dados: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuario`, dados);
   }
