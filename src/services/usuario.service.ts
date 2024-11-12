@@ -21,6 +21,18 @@ export class UsuarioService {
     );
   }
 
+  editarUsuario(usuario : any): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.put(
+      `${this.apiUrl}/usuario`,
+       usuario ,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  }
+
   registrarUsuario(dados: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuario`, dados);
   }
