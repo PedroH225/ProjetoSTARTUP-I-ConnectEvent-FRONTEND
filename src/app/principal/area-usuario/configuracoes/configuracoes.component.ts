@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CidadesService } from '../../../../services/cidades.service';
 
 @Component({
   selector: 'app-configuracoes',
@@ -18,16 +19,20 @@ export class ConfiguracoesComponent {
   estado : string = '';
   cidade : string = '';
 
+  cidades : any[] = []
+
 
   @ViewChild('editModal') editModal: any;
 
   constructor(
     private usuarioService: UsuarioService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private cidadesService : CidadesService
   ) {}
 
   ngOnInit() {
     this.carregarUsuario();
+    this.getCidades();
   }
 
   carregarUsuario() {
@@ -44,6 +49,17 @@ export class ConfiguracoesComponent {
       },
       (error) => {
         alert("Erro desconhecido");
+      }
+    );
+  }
+
+  getCidades(): void {
+    this.cidadesService.getCidades().subscribe(
+      (response) => {
+        this.cidades = response;
+      },
+      (error) => {
+        console.error('Erro ao buscar cidades:', error);
       }
     );
   }

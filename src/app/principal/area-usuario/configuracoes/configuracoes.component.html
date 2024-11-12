@@ -31,17 +31,45 @@
             <label for="idade">Idade</label>
             <input type="number" id="idade" class="form-control" [(ngModel)]="idade" name="idade" />
           </div>
+
           <div class="form-group">
             <label for="genero">Gênero</label>
-            <input type="text" id="genero" class="form-control" [(ngModel)]="genero" name="genero" />
-          </div>
+            <select
+            [(ngModel)]="genero"
+            name="genero"
+            class="w-100 select form-control-lg"
+          >
+            <option [value]="'Masculino'">Masculino</option>
+            <option [value]="'Feminino'">Feminino</option>
+            <option [value]="'Outro'">Outro</option>
+          </select>            <input type="text" id="estado" class="form-control" [(ngModel)]="estado" name="estado" />
+
+         </div>
+         
           <div class="form-group">
             <label for="estado">Estado</label>
-            <input type="text" id="estado" class="form-control" [(ngModel)]="estado" name="estado" />
-          </div>
+            <select
+                      [(ngModel)]="estado"
+                      name="estado"
+                      class="w-100 select form-control-lg"
+                    >
+                      <option [value]="'SP'">São Paulo</option>
+                    </select>
+             </div>
+
           <div class="form-group">
             <label for="cidade">Cidade</label>
-            <input type="text" id="cidade" class="form-control" [(ngModel)]="cidade" name="cidade" />
+            <div ngbDropdown>
+                <select
+                  name="cidade"
+                  class="w-100 select form-control-lg"
+                  [(ngModel)]="cidade"
+                >
+                  <option *ngFor="let cidade of cidades" [value]="cidade">
+                    {{ cidade }}
+                  </option>
+                </select>
+              </div>
           </div>
           <button type="submit" class="btn btn-success">Salvar</button>
         </form>
