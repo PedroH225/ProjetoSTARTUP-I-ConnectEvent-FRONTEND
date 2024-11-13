@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CidadesService } from '../../../../services/cidades.service';
+import { listarErrosUsuario } from '../../../utils/listarErros';
 
 @Component({
   selector: 'app-configuracoes',
@@ -50,6 +51,8 @@ export class ConfiguracoesComponent {
         
       },
       (error) => {
+        console.log(error);
+        
         alert("Erro desconhecido");
       }
     );
@@ -89,7 +92,8 @@ export class ConfiguracoesComponent {
         this.carregarUsuario();
       },
       (error) => {
-        alert("Erro ao atualizar usuário");
+        listarErrosUsuario(error.error)
+        
       }
     );
   }

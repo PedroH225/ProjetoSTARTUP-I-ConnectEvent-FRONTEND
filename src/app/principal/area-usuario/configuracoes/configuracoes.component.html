@@ -18,18 +18,27 @@
         </button>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="onSubmit(modal)">
+        <form #form="ngForm" (ngSubmit)="onSubmit(modal)">
           <div class="form-group">
             <label for="nome">Nome</label>
             <input type="text" id="nome" class="form-control" [(ngModel)]="nome" name="nome" required />
+          </div>
+          <div id="nomeErro">
+
           </div>
           <div class="form-group">
             <label for="email">Email</label>
             <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email" required />
           </div>
+          <div id="emailErro">
+
+          </div>
           <div class="form-group">
             <label for="idade">Idade</label>
-            <input type="number" id="idade" class="form-control" [(ngModel)]="idade" name="idade" />
+            <input type="number" id="idade" class="form-control" [(ngModel)]="idade" name="idade" required/>
+          </div>
+          <div id="idadeErro">
+
           </div>
 
           <div class="form-group">
@@ -38,11 +47,12 @@
             [(ngModel)]="genero"
             name="genero"
             class="w-100 select form-control-lg"
-          >
+            required
+            >
             <option [value]="'Masculino'">Masculino</option>
             <option [value]="'Feminino'">Feminino</option>
             <option [value]="'Outro'">Outro</option>
-          </select>            
+            </select>            
          </div>
          
           <div class="form-group">
@@ -51,6 +61,7 @@
                       [(ngModel)]="estado"
                       name="estado"
                       class="w-100 select form-control-lg"
+                      required
                     >
                       <option [value]="'SP'">São Paulo</option>
                     </select>
@@ -63,6 +74,7 @@
                   name="cidade"
                   class="w-100 select form-control-lg"
                   [(ngModel)]="cidade"
+                  required
                 >
                   <option *ngFor="let cidade of cidades" [value]="cidade">
                     {{ cidade }}
@@ -70,7 +82,7 @@
                 </select>
               </div>
           </div>
-          <button type="submit" class="btn btn-success">Salvar</button>
+          <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
         </form>
       </div>
     </ng-template>
