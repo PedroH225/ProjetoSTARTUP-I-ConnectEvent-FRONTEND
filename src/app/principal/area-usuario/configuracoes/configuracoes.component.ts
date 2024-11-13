@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CidadesService } from '../../../../services/cidades.service';
-import { listarErrosUsuario } from '../../../utils/listarErros';
+import { listarErrosAlterarSenha, listarErrosUsuario } from '../../../utils/listarErros';
 
 @Component({
   selector: 'app-configuracoes',
@@ -111,6 +111,28 @@ export class ConfiguracoesComponent {
 
   onSubmitAlterarSenha(modal : any) {
     console.log(this.senhaAtual, this.senhaNova, this.confirmarSenha);
+
+    const payload = {
+      senhaAtual: this.senhaAtual,
+      senhaNova: this.senhaNova,
+      confirmarSenha: this.confirmarSenha,
+    };
+
+    // Enviando o payload ao backend
+    this.usuarioService.alterarSenha(payload).subscribe(
+      () => {
+        alert("Senha alterada com sucesso!");
+        modal.close();
+
+        this.senhaAtual = ''
+        this.senhaNova = ''
+        this.confirmarSenha = ''
+      },
+      (error) => {
+        listarErrosAlterarSenha(error.error)        
+        
+      }
+    );
     
   }
 }
