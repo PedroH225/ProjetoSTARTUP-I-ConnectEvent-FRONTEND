@@ -20,10 +20,16 @@ export class ConfiguracoesComponent {
   estado : string = '';
   cidade : string = '';
 
+  senhaAtual : string = '';
+  senhaNova : string = '';
+  confirmarSenha : string = '';
+
   cidades : any[] = []
 
 
   @ViewChild('editModal') editModal: any;
+  @ViewChild('alterarSenha') modalSenha: any;
+
 
   constructor(
     private usuarioService: UsuarioService,
@@ -72,6 +78,11 @@ export class ConfiguracoesComponent {
   openEditModal() {
     this.modalService.open(this.editModal);
   }
+  
+  openSenhaModal() {
+    this.modalService.open(this.modalSenha);
+
+  }
 
   onSubmit(modal: any) {
     // Construindo o payload com os dados do usuário
@@ -96,5 +107,10 @@ export class ConfiguracoesComponent {
         
       }
     );
+  }
+
+  onSubmitAlterarSenha(modal : any) {
+    console.log(this.senhaAtual, this.senhaNova, this.confirmarSenha);
+    
   }
 }

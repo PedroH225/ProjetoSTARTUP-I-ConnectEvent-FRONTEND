@@ -8,6 +8,7 @@
   
     <!-- Botão para abrir o modal de edição -->
     <button class="btn btn-primary" (click)="openEditModal()">Editar</button>
+    <button class="btn btn-primary" (click)="openSenhaModal()">Alterar Senha</button>
   
     <!-- Modal de edição -->
     <ng-template #editModal let-modal>
@@ -81,6 +82,31 @@
                   </option>
                 </select>
               </div>
+          </div>
+          <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
+        </form>
+      </div>
+    </ng-template>
+    <ng-template #alterarSenha let-modalSenha>
+      <div class="modal-header">
+        <h5 class="modal-title">Alterar Senha</h5>
+        <button type="button" class="close" aria-label="Close" (click)="modalSenha.dismiss()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="onSubmitAlterarSenha(modalSenha)">
+          <div class="form-group">
+            <label for="senhaAtual">Digite a senha atual:</label>
+            <input type="password" class="form-control" name="senhaAtual" [(ngModel)]="senhaAtual" required>
+          </div>
+          <div class="form-group">
+            <label for="senhaNova">Digite a nova senha:</label>
+            <input type="password" class="form-control" name="senhaNova" [(ngModel)]="senhaNova" required>
+          </div>
+          <div class="form-group">
+            <label for="confirmarSenhaNova">Confirme a nova senha:</label>
+            <input type="password" class="form-control" name="confirmarSenhaNova" [(ngModel)]="confirmarSenha" required>
           </div>
           <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
         </form>
