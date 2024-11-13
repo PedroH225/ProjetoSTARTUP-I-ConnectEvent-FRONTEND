@@ -100,13 +100,22 @@
             <label for="senhaAtual">Digite a senha atual:</label>
             <input type="password" class="form-control" name="senhaAtual" [(ngModel)]="senhaAtual" required>
           </div>
+          <div id="atualErro">
+
+          </div>
           <div class="form-group">
             <label for="senhaNova">Digite a nova senha:</label>
             <input type="password" class="form-control" name="senhaNova" [(ngModel)]="senhaNova" required>
           </div>
+          <div id="novaErro">
+
+          </div>
           <div class="form-group">
             <label for="confirmarSenhaNova">Confirme a nova senha:</label>
             <input type="password" class="form-control" name="confirmarSenhaNova" [(ngModel)]="confirmarSenha" required>
+          </div>
+          <div id="confirmarErro">
+
           </div>
           <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
         </form>
