@@ -122,7 +122,7 @@ export function listarErrosEvento(erros: any[]) {
   });
 }
 
-export function listarErrosAmizade(erro : any) {
+export function listarErrosAmizade(erro: any) {
   const amizadeErroDiv = document.querySelector('#amizadeErro');
 
   if (amizadeErroDiv) {
@@ -133,16 +133,58 @@ export function listarErrosAmizade(erro : any) {
     const alert = document.createElement('ngb-alert'); // Use um div padrão
     alert.classList.add('alert', 'alert-danger', 'p-1', 'mb-0');
     alert.textContent = erro.error.mensagem;
-    
+
 
     if (erro.error.tipo === "amizadeErro") {
-        amizadeErroDiv.appendChild(alert);
-        
+      amizadeErroDiv.appendChild(alert);
+
     } else {
       const defaultAlert = document.createElement('div');
       defaultAlert.classList.add('alert', 'alert-danger', 'p-1', 'mb-0');
       defaultAlert.textContent = "Erro desconhecido";
       amizadeErroDiv.appendChild(defaultAlert);
     }
-  } 
+  }
+}
+
+export function listarErrosAlterarSenha(erros: any) {
+  const atualErroDiv = document.getElementById('atualErro');
+  const novaErroDiv = document.getElementById('novaErro');
+  const confirmarErroDiv = document.getElementById('confirmarErro');
+
+  const divs = [
+    atualErroDiv, novaErroDiv, confirmarErroDiv
+  ]
+
+  divs.forEach((div) => {
+    if (div) {
+      div.innerHTML = ''; // Esvazia o conteúdo da div
+    }
+  });
+
+  if (!Array.isArray(erros)) {
+    alert('Erro desconhecido. Tente novamente mais tarde.');
+    return;
+  }
+
+  erros.forEach((erro) => {
+    const alert = document.createElement('ngb-alert');
+    alert.classList.add('alert', 'alert-danger', 'p-1', 'mb-0');
+    alert.textContent = erro.mensagem;
+
+    if (erro.campo === 'atualErro') {
+      if (atualErroDiv) {
+        atualErroDiv.appendChild(alert);
+      }
+    } else if (erro.campo === 'novaErro') {
+      if (novaErroDiv) {
+        novaErroDiv.appendChild(alert);
+      }
+    } else if (erro.campo === 'confirmarErro') {
+      if (confirmarErroDiv) {
+        confirmarErroDiv.appendChild(alert);
+      }
+    }
+  })
+
 }
