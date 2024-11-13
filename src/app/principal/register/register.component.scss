@@ -1,39 +1,8 @@
 @import "padroes";
 
-.divExterna {
+.divBody {
   padding: 2rem 0rem;
   background-color: $background-HomePage;
-}
-
-.tamanhoRegistreSe {
-  color: rgb(102, 102, 102);
-  font-size: 2rem;
-}
-
-.divForm3 {
-  // border: 1px solid red;
-  // padding: 1.5rem 0 1.5rem 0;
-  margin: 0 0 1rem 0;
-  // box-shadow: $detalhe-Sombra-BordasCard;
-  // width: 30%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.botaoUsuario,
-.botaoAnunciante {
-  background-color: $background-Botao-card;
-  transition: background-color 0.3s ease;
-
-  input[type="radio"] {
-    // display: none;
-  }
-
-  &.active {
-    background-color: $background-active-Botao-Card;
-  }
 }
 
 .divPrincipalDosForms {
@@ -74,6 +43,11 @@
   justify-content: space-around;
 
   padding: 0rem 0rem 3rem 0rem;
+}
+
+.tamanhoRegistreSe {
+  color: rgb(102, 102, 102);
+  font-size: 2rem;
 }
 
 .tagIconConnectEvent {
@@ -120,11 +94,6 @@
     background-color: $background-active-Botao-Card;
   }
 }
-
-// .divTeste {
-//   width: 30rem;
-//   height: 30rem;
-// }
 
 .divErro {
   display: flex;
