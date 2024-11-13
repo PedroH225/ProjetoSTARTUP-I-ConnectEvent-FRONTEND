@@ -64,6 +64,19 @@ export class UsuarioService {
       }
     );
   }
+
+  alterarSenha(body : any): Observable<any> {
+    const token = localStorage.getItem('token');
+
+    return this.http.put(
+      `${this.apiUrl}/usuario/alterarSenha`,
+       body ,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  }
+
     getEventosParticipando(): Observable<any> {
       const token = localStorage.getItem('token');
   
