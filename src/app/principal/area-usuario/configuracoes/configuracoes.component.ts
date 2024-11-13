@@ -46,6 +46,8 @@ export class ConfiguracoesComponent {
         this.genero = usuario.genero
         this.estado = usuario.estado
         this.cidade = usuario.cidade
+
+        
       },
       (error) => {
         alert("Erro desconhecido");
