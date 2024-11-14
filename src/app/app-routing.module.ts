@@ -15,7 +15,7 @@ import { CriarEventoComponent } from './principal/area-usuario/criar-evento/cria
 import { EstatisticasComponent } from './principal/area-usuario/estatisticas/estatisticas.component';
 import { EventosAnunciadosComponent } from './principal/area-usuario/eventos-anunciados/eventos-anunciados.component';
 import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
-import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
+import { FeedbacksComponent } from './principal/area-usuario/feedbacks-anunciar/feedbacks.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { authGuard } from '../services/guards/auth.guard';
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';

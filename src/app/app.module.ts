@@ -23,7 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EsqueceuSenhaComponent } from './principal/esqueceu-senha/esqueceu-senha.component';
 import { CriarEventoComponent } from './principal/area-usuario/criar-evento/criar-evento.component';
 import { EventosAnunciadosComponent } from './principal/area-usuario/eventos-anunciados/eventos-anunciados.component';
-import { FeedbacksComponent } from './principal/area-usuario/feedbacks/feedbacks.component';
+import { FeedbacksComponent } from './principal/area-usuario/feedbacks-anunciar/feedbacks.component';
 import { EstatisticasComponent } from './principal/area-usuario/estatisticas/estatisticas.component';
 import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
@@ -31,6 +31,7 @@ import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/c
 import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
+import { FeedbacksUsuarioComponent } from './principal/area-usuario/feedbacks-usuario/feedbacks-usuario.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
     ConfiguracoesComponent,
     ImageUploaderComponent,
     GeolocalizacaoComponent,
+    FeedbacksUsuarioComponent,
   ],
   imports: [
     BrowserModule,
