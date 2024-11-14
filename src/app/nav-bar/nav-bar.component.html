@@ -1,24 +1,13 @@
-<nav class="navbar navbar-expand navbar-light bg-body-tertiary">
-  <div class="container-fluid tagDivComposta">
-    <a class="navbar-brand" [routerLink]="'/principal/homePage'">
-      <h1 class="tituloCONNECTEVENT">CONNECTEVENT</h1>
-      <!-- <img class="tagImg" src="../../assets/connectEventSemFundo.png" alt="" /> -->
-    </a>
-
-    <!-- <div class="divHamburguer">
-      <button
-        class="navbar-toggler"
-        type="button"
-        (click)="isMenuCollapsed = !isMenuCollapsed"
-        aria-controls="navbarNav"
-        aria-expanded="!isMenuCollapsed"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-
-    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-      <ul class="tagListaBotao navbar-nav">
+<nav class="divNavBar navbar-expand">
+  <a class="tituloCONNECTEVENT" [routerLink]="'/principal/homePage'">
+    CONNECTEVENT
+  </a>
+  <!-- Div responsável por transformar botão em Menu Hamburguer -->
+  <!-- Colocar ngIf -->
+  <div class="divBotoes">
+    <!-- Botões Login/Registro OU ÁreaUsuário/Logout -->
+    <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
+      <ul class="listaBotao navbar-nav">
         <ng-container *ngIf="!(autenticacao$ | async)">
           <!-- Verifica se a autenticação é falsa -->
           <li class="nav-item">
@@ -26,8 +15,9 @@
               class="styleButtons btn nav-item active"
               [routerLink]="'/principal/login'"
               (click)="isMenuCollapsed = true"
-              >Login</a
             >
+              Login
+            </a>
           </li>
           <li class="nav-item">
             <a
@@ -56,7 +46,8 @@
           </li>
         </ng-container>
       </ul>
-      <!-- </div> -->
     </div>
+    <!-- DIV DO MENU HAMBURGUER -->
+    <div></div>
   </div>
 </nav>
