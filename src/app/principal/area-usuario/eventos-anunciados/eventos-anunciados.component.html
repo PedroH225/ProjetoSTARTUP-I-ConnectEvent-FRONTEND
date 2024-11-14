@@ -1,7 +1,7 @@
 <div class="divBody">
   <h1 class="tagTitulo">Eventos Anunciados</h1>
   <div class="divTabelaPaginacaoQuantidade">
-    <form class="divEnd" (ngSubmit)="onSubmit()" #form="ngForm">
+    <form class="divEnd" (change)="onSubmit()" #form="ngForm">
       <div class="divFiltro">
         <select
           class="tagSelectFiltro"
@@ -13,7 +13,6 @@
           <option value="correntes">Correntes</option>
           <option value="ocorridos">Ocorridos</option>
         </select>
-        <button class="btnFiltro" type="submit">Aplicar</button>
       </div>
     </form>
     <table class="mb-2 table table-striped">

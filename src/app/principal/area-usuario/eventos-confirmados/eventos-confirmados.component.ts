@@ -142,7 +142,6 @@ export class EventosConfirmadosComponent {
     this.feedbackServico.getSemFeedback().subscribe(
       (response) => {
         this.semFeedback = response;
-        console.log(this.semFeedback);
         
       },
     (error) => {

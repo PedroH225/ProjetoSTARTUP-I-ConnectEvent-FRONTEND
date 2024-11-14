@@ -1,13 +1,12 @@
 <div class="divBody">
   <h1 class="tagTitulo">Eventos Confirmados</h1>
   <div class="divTabelaPaginacaoQuantidade">
-    <form class="divEnd" (ngSubmit)="onSubmit()" #form="ngForm">
+    <form class="divEnd" (change)="onSubmit()" #form="ngForm">
       <div class="divFiltro">
         <select name="selectFiltro" [(ngModel)]="selectedFiltro">
           <option value="" selected>Eventos futuros</option>
           <option value="ocorridos">Ocorridos</option>
         </select>
-        <button type="submit">Aplicar</button>
       </div>
     </form>
     <table class="mb-2 table table-striped">
