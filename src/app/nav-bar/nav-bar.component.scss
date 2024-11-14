@@ -5,6 +5,20 @@
   margin: 0;
 }
 
+.divNavBar {
+  border: 1px solid red;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+
+  padding: 0.8rem 0;
+  background-color: $background-NavBarFooter;
+  border-bottom: 3px solid $cor-bordas-NavBarFooter;
+  box-shadow: $cor-sombra-NavBarFooter;
+}
+
 .tituloCONNECTEVENT {
   background: linear-gradient(to right, $cor-CONNECTEVENT, rgb(234, 245, 135));
   -webkit-background-clip: text;
@@ -12,30 +26,19 @@
   font-weight: bold;
   font-family: system-ui;
   font-size: 2.5rem;
+
+  @media screen and (max-width: 80rem) {
+    font-size: 1.5rem;
+  }
 }
 
-.tagDivComposta {
-  // border: 1px solid red;
-  display: flex;
-
-  padding: 0.8rem 10rem;
-  background-color: $background-NavBarFooter;
-  border-bottom: 3px solid $cor-bordas-NavBarFooter;
-  box-shadow: $cor-sombra-NavBarFooter;
-  min-width: 100%;
+.divBotoes {
+  width: auto;
 }
 
-.tagListaBotao {
-  width: 100%;
-
+.listaBotao {
   display: flex;
-  justify-content: flex-end;
   gap: 1rem;
-}
-
-.tagImg {
-  height: 5rem;
-  width: 6rem;
 }
 
 .styleButtons {
