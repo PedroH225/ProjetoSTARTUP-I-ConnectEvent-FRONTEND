@@ -5,20 +5,13 @@
   background-color: $background-HomePage;
 }
 
-.divPrincipalDosForms {
-  padding: 1rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
-}
-
 .displaySectionForm {
   box-shadow: $detalhe-Sombra-BordasCard;
   border-radius: 5px;
   padding: 1rem;
-  width: 70%;
+  width: 70rem;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .divPrincipal2 {
@@ -27,27 +20,42 @@
   align-items: center;
   justify-content: center;
   gap: 5rem;
+
+  @media screen and (max-width: 80rem) {
+    gap: 0rem;
+  }
 }
 
 .fotoCadastro {
   height: 35rem;
+
   width: 35rem;
   box-shadow: $detalhe-Sombra-BordasCard;
   border-radius: 10%;
+
+  @media screen and (max-width: 80rem) {
+    display: none;
+  }
 }
 
-.divCabecalhoUsuarioOuAnunciante {
+.divCabecalho {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: space-around;
-
-  padding: 0rem 0rem 3rem 0rem;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .tamanhoRegistreSe {
   color: rgb(102, 102, 102);
   font-size: 2rem;
+}
+
+.divTituloEimagemEconteudoInputsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .tagIconConnectEvent {
@@ -59,27 +67,11 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
-.gradient-custom {
-  /* fallback for old browsers */
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right);
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to bottom right);
-}
-
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-}
-
-.card-registration .select-arrow {
-  top: 13px;
+.div1 {
+  width: 100%;
 }
 
 .tagButtonEnviar {
