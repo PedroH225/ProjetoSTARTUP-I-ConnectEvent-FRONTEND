@@ -19,4 +19,14 @@ export class FeedbackService {
         headers: { Authorization: `Bearer ${token}` },
       });
   }
+
+  adicionarFeedback(eventoId : number, body : any) {
+    const token = localStorage.getItem('token');
+
+    return this.http.post<any[]>(`${this.apiUrl}/feedback/${eventoId}`,
+      body,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  }
 }

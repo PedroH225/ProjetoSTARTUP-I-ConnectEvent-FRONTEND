@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AutenticacaoService } from '../../../../services/autenticacao.service';
 import { EventosService } from '../../../../services/eventos.service';
 
@@ -6,6 +6,7 @@ import { FiltrarEventoService } from '../../../../services/filtrar-evento.servic
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { FeedbackService } from '../../../../services/feedback.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-eventos-confirmados',
@@ -19,6 +20,14 @@ export class EventosConfirmadosComponent {
   today: Date = new Date();
   ocorrido: boolean = false;
 
+  comentario : string = '';
+  nota !: number;
+
+  selectedEventoId !: number;
+
+  @ViewChild('addFeedback') addFeedbackModal: any;
+
+
   semFeedback : number[] = [];
 
   page = 1;
@@ -30,7 +39,9 @@ export class EventosConfirmadosComponent {
     private usuarioService: UsuarioService,
     private router: Router,
     private filtroServico: FiltrarEventoService,
-    private feedbackServico : FeedbackService
+    private feedbackServico : FeedbackService,
+    private modalService: NgbModal
+
   ) {}
 
   ngOnInit() {
@@ -44,6 +55,20 @@ export class EventosConfirmadosComponent {
         this.eventos = response; // Armazena os eventos recebidos
         this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
         this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+      },
+      (error: Error) => {
+        console.error('Erro ao buscar eventos:', error);
+      }
+    );
+  }
+
+  getEventosParticipandoOcorridos() : void {
+    this.usuarioService.getEventosParticipandoOcorridos().subscribe(
+      (response: any[]) => {
+        this.eventos = response; // Armazena os eventos recebidos
+        this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
+        this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
+        this.ocorrido = true;
       },
       (error: Error) => {
         console.error('Erro ao buscar eventos:', error);
@@ -89,7 +114,29 @@ export class EventosConfirmadosComponent {
     }
   }
 
-  adicionarFeedback(id: number) {}
+  adicionarFeedback(modal : any, id: number) {
+    const payload = {
+      comentario : this.comentario,
+      nota : this.nota
+    }
+
+    this.feedbackServico.adicionarFeedback(id, payload).subscribe(
+      () => {
+        alert("Feedback enviado com sucesso.")
+        modal.close()
+
+        this.getSemFeedback();
+        this.getEventosParticipandoOcorridos();
+
+        this.comentario = ''
+        this.nota = 0
+
+      },
+    (error) => {
+      alert("Erro ao enviar feedback.")
+    })
+  }
+
 
   getSemFeedback() {
     this.feedbackServico.getSemFeedback().subscribe(
@@ -102,6 +149,11 @@ export class EventosConfirmadosComponent {
       console.log(error);
       
     })
+  }
+
+  openAddFeedbackModal(eventoId : number) {
+    this.selectedEventoId = eventoId;
+    this.modalService.open(this.addFeedbackModal)
   }
 
   convertToDate(dateString: string): Date {
