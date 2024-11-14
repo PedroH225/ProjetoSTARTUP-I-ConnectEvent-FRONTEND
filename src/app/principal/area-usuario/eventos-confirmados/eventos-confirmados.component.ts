@@ -5,6 +5,7 @@ import { EventosService } from '../../../../services/eventos.service';
 import { FiltrarEventoService } from '../../../../services/filtrar-evento.service';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../../../../services/usuario.service';
+import { FeedbackService } from '../../../../services/feedback.service';
 
 @Component({
   selector: 'app-eventos-confirmados',
@@ -18,6 +19,8 @@ export class EventosConfirmadosComponent {
   today: Date = new Date();
   ocorrido: boolean = false;
 
+  semFeedback : number[] = [];
+
   page = 1;
   pageSize = 5;
   collectionSize = 0; // Inicialize como 0, será atualizado depois
@@ -26,11 +29,13 @@ export class EventosConfirmadosComponent {
     private autenticacaoService: AutenticacaoService,
     private usuarioService: UsuarioService,
     private router: Router,
-    private filtroServico: FiltrarEventoService
+    private filtroServico: FiltrarEventoService,
+    private feedbackServico : FeedbackService
   ) {}
 
   ngOnInit() {
     this.getEventosParticipando(); // Chama o método para buscar eventos ao inicializar
+    this.getSemFeedback()
   }
 
   getEventosParticipando(): void {
@@ -85,6 +90,19 @@ export class EventosConfirmadosComponent {
   }
 
   adicionarFeedback(id: number) {}
+
+  getSemFeedback() {
+    this.feedbackServico.getSemFeedback().subscribe(
+      (response) => {
+        this.semFeedback = response;
+        console.log(this.semFeedback);
+        
+      },
+    (error) => {
+      console.log(error);
+      
+    })
+  }
 
   convertToDate(dateString: string): Date {
     const [day, month, year] = dateString

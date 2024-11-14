@@ -37,7 +37,14 @@
             <ng-container *ngIf="!ocorrido">
               <button (click)="retirarPresenca(evento.id)">Retirar</button>
             </ng-container>
-            <ng-container *ngIf="ocorrido"> Ocorrido <button (click)="adicionarFeedback(evento.id)">Dar Feedback</button> </ng-container>
+            <ng-container *ngIf="ocorrido">
+              <button
+                [disabled]="!semFeedback.includes(evento.id)"
+                (click)="adicionarFeedback(evento.id)"
+              >
+                {{ semFeedback.includes(evento.id) ? 'Dar Feedback' : 'Feedback enviado' }}
+              </button>
+            </ng-container>
           </td>
         </tr>
       </tbody>
