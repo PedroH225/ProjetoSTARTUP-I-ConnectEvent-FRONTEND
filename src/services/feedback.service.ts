@@ -11,6 +11,15 @@ export class FeedbackService {
 
   constructor(private http: HttpClient) { }
 
+  getById(feedbackId : number): Observable<any[]> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/feedback/${feedbackId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  }
+
   getSemFeedback(): Observable<any[]> {
     const token = localStorage.getItem('token');
 
@@ -43,6 +52,16 @@ export class FeedbackService {
     const token = localStorage.getItem('token');
 
     return this.http.get<any[]>(`${this.apiUrl}/feedback/usuario`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  }
+
+  editarFeedback(feedbackId : number, body : any) {
+    const token = localStorage.getItem('token');
+
+    return this.http.put<any[]>(`${this.apiUrl}/feedback/${feedbackId}`,
+      body,
       {
         headers: { Authorization: `Bearer ${token}` },
       });
