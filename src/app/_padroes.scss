@@ -1,40 +1,72 @@
-/* Padrões utilizados no projeto */
+// ------------------------------------------------------------------------------
+// ---------------------- Padrões utilizados no projeto -------------------------
+// ------------------------------------------------------------------------------
 
-// Fontes:
+// ------------------------------------------------------------------------------
+// --------------------------------- Fontes -------------------------------------
+// ------------------------------------------------------------------------------
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-/* NavBar e Footer */
-$cor-bordas-NavBarFooter: wheat;
-$cor-sombra-NavBarFooter: 0px 0px 10px rgb(176, 176, 176); // direita sul brilho
-$background-NavBarFooter: #2b2b2b;
-$background-NavBarFooter2: #303030;
-$cor-Texto-e-BordaBotao-NavBarFooter: #dea521;
-$cor-CONNECTEVENT: #dea521;
+// ------------------------------------------------------------------------------
+// -------------------------------- Dark Mode -----------------------------------
+// ------------------------------------------------------------------------------
+$CONNECTEVENT-cor-cinza-light: #b0b0b0;
+$CONNECTEVENT-cor-cinza-mid: #353535;
+$CONNECTEVENT-cor-cinza-low-dark: #303030;
+$CONNECTEVENT-cor-cinza-dark: #2b2b2b;
+$CONNECTEVENT-cor-preto: black;
 
-$cor-Hover-Botao-NavBarFooter: #353535;
-$cor-Texto-e-Bordas-active-Botao-NavBarFooter: #5b5b5b;
-/* Lembrando que os icones das Redes Sociais devem ser confeccionados em Photoshop */
+// ------------------------------------------------------------------------------
+// -------------------------------- Light Mode ----------------------------------
+// ------------------------------------------------------------------------------
+$CONNECTEVENT-cor-branco: white;
+$CONNECTEVENT-cor-branco-light-gelo: #efefef;
+$CONNECTEVENT-cor-branco-mid: #cfcfcf;
+$CONNECTEVENT-cor-branco-dark: #aeaeae;
 
-/* Outros */
-$cor-checkedBox: 0px 0px 7px black;
+// ------------------------------------------------------------------------------
+// ---------------------------------- Cores -------------------------------------
+// ------------------------------------------------------------------------------
+// ----- Cores CONNECTEVENT -----
+$CONNECTEVENT-cor-dourado-light: wheat;
+$CONNECTEVENT-cor-dourado: #dea521;
+$CONNECTEVENT-cor-limao: #eaf587;
 
-/* Home Page // Login // Register */
-/* Default */
-$background-HomePage: #e2e2e2; // background geral, atrás dos cards
-/* Cards */
-$cor-Titulo-Card: #212121;
-$cor-Texto-Card: #2c2c2c;
-$background-active-Botao-Card: #5b5b5b;
-$background-Card: #bdbdbd;
-$background-Botao-card: #2b2b2b;
-$background-hover-Botao-card: #404040;
-$cor-Texto-e-BordaBotao-card: #efefef;
-$cor-Bordas-Card: none; // rgb(57, 57, 57);
-$detalhe-Sombra-BordasCard: 0px 0px 10px rgb(132, 132, 132); // direita sul brilho
+// ------------------------------------------------------------------------------
+// --------------------------------- Detalhes -----------------------------------
+// ------------------------------------------------------------------------------
+// --------- Obrigatoriamente os detalhes devem estar abaixo das cores ----------
+// ------------------------------------------------------------------------------
+$detalhe-borda-especial: $CONNECTEVENT-cor-dourado-light;
+$detalhe-borda-normal: $CONNECTEVENT-cor-dourado;
 
-/* Home Pages Especiais */
+// ------------------------------------------------------------------------------
+// ----------------------------- Botões das Tabelas -----------------------------
+// ------------------------------------------------------------------------------
+.BotaoTabelaCONNECTEVENT {
+  padding: 0 0.5rem;
+  border-radius: 1rem;
+  border: 2px solid black;
+  color: white;
+  background-color: grey;
+}
 
-// Botões das Tabelas
+.herancaCoresTabela {
+  margin-top: 15px;
+  width: 100%;
+  overflow: hidden;
+  border-collapse: separate;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  border-radius: 1.5rem;
+}
 
-.BotoesDeAcaoParaTabelaCONNECTEVENT {
+.herancaCoresTabela > thead > tr > th {
+  background-color: rgb(53, 16, 53);
+  color: white;
+  font-weight: bold;
+}
+
+.herancaCoresTabela > tbody > tr > td {
+  background-color: rgb(255, 238, 255);
 }

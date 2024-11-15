@@ -2,11 +2,11 @@
 
 .divBody {
   padding: 2rem 0rem;
-  background-color: $background-HomePage;
+  background-color: $CONNECTEVENT-cor-cinza-mid;
 }
 
 .displaySectionForm {
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 5px;
   padding: 1rem;
   width: 70rem;
@@ -30,7 +30,7 @@
   height: 35rem;
 
   width: 35rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 10%;
 
   @media screen and (max-width: 80rem) {
@@ -75,15 +75,15 @@
 }
 
 .tagButtonEnviar {
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
   border: none;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 
   &:active {
-    background-color: $background-active-Botao-Card;
+    background-color: $CONNECTEVENT-cor-cinza-light;
   }
 }
 

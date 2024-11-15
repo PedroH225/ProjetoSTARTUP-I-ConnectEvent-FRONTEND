@@ -17,7 +17,7 @@
   width: 35rem;
   padding: 1rem;
 
-  box-shadow: 0px 0px 10px $background-NavBarFooter2;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-dark;
 }
 
 .divCentralizar {
@@ -35,19 +35,19 @@
 }
 
 .styleButtons {
-  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
-  background-color: $background-NavBarFooter2;
+  border: 1px solid $detalhe-borda-normal;
+  color: $detalhe-borda-normal;
+  background-color: $CONNECTEVENT-cor-cinza-low-dark;
   padding: 0.2rem;
 
   &:hover {
-    background-color: $cor-Hover-Botao-NavBarFooter;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 
   &:active {
-    border: 1px solid $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
-    color: $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
-    background-color: $cor-Hover-Botao-NavBarFooter;
+    border: 1px solid $CONNECTEVENT-cor-cinza-light;
+    color: $CONNECTEVENT-cor-cinza-light;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }
 

@@ -2,7 +2,7 @@
 
 .borderCard {
   border: none;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   width: 25rem;
   position: relative;
 
@@ -10,7 +10,7 @@
 
   &:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 25px $cor-Texto-e-BordaBotao-NavBarFooter;
+    box-shadow: 0px 0px 25px $detalhe-borda-normal;
   }
 }
 
@@ -29,7 +29,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background-color: $background-Card;
+  background-color: $CONNECTEVENT-cor-cinza-light;
   border-radius: 0.6rem;
   padding: 1rem;
 }
@@ -63,23 +63,23 @@
 }
 
 .styleButtons {
-  color: $cor-Texto-e-BordaBotao-card;
+  color: $CONNECTEVENT-cor-branco-light-gelo;
   border: none;
   width: 10rem;
 
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }
 
 .card-title {
-  color: $cor-Titulo-Card;
+  color: $CONNECTEVENT-cor-cinza-dark;
 }
 
 .card-text {
-  color: $cor-Texto-Card;
+  color: $CONNECTEVENT-cor-cinza-dark;
 }
 
 .divTemAmigos {

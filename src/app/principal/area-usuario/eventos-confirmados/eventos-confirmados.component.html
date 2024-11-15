@@ -10,7 +10,7 @@
         <button type="submit">Aplicar</button>
       </div>
     </form>
-    <table class="mb-2 table table-striped">
+    <table class="herancaCoresTabela mb-2 table table-striped">
       <thead>
         <tr>
           <th scope="col">ID</th>
@@ -19,25 +19,40 @@
           <th scope="col">Horário</th>
           <th scope="col">Evento</th>
           <th scope="col">Status</th>
-          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
-          <th scope="row">{{ evento.id }}</th>
+          <td scope="row">{{ evento.id }}</td>
           <td>{{ evento.titulo }}</td>
           <td>{{ evento.data }}</td>
           <td>{{ evento.horario }}</td>
           <td>
-            <button [routerLink]="['/principal/cardPage', evento.id]">
+            <button
+              class="BotaoTabelaCONNECTEVENT"
+              [routerLink]="['/principal/cardPage', evento.id]"
+            >
               Visualizar
             </button>
           </td>
           <td>
             <ng-container *ngIf="!ocorrido">
-              <button (click)="retirarPresenca(evento.id)">Retirar</button>
+              <button
+                class="BotaoTabelaCONNECTEVENT"
+                (click)="retirarPresenca(evento.id)"
+              >
+                Retirar
+              </button>
             </ng-container>
-            <ng-container *ngIf="ocorrido"> Ocorrido <button (click)="adicionarFeedback(evento.id)">Dar Feedback</button> </ng-container>
+            <ng-container *ngIf="ocorrido">
+              Ocorrido
+              <button
+                class="BotaoTabelaCONNECTEVENT"
+                (click)="adicionarFeedback(evento.id)"
+              >
+                Dar Feedback
+              </button>
+            </ng-container>
           </td>
         </tr>
       </tbody>

@@ -9,6 +9,10 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  background: url(../../../assets/wallpapers/wallpaperflare.com_wallpaper7.jpg);
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
 }
 
 .divMenuLateral {
@@ -24,15 +28,17 @@
 .divConteudoMenu {
   width: 100%;
   min-width: 50vw;
-
   min-height: 40rem;
+  // REVER A TAG ABAIXO
+  backdrop-filter: blur(5px);
 }
 
 .divBorda {
   padding: 1rem;
   margin: 1rem;
   border-radius: 1rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  // REVER A TAG ABAIXO
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
 }
 
 .tagIconG {
@@ -103,7 +109,7 @@
   transition: background-color 0.2s, width 1s, height 1s, transform 1s;
 
   &:hover {
-    background-color: $background-HomePage;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
     transform: scale(1.05);
   }
 }
@@ -119,22 +125,22 @@
 }
 
 .styleButtons {
-  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
-  background-color: $background-NavBarFooter2;
+  border: 1px solid $detalhe-borda-normal;
+  color: $detalhe-borda-normal;
+  background-color: $CONNECTEVENT-cor-cinza-low-dark;
   padding: 0.2rem;
   width: 100%;
   // height: 4rem;
   font-size: 1rem;
 
   &:hover {
-    background-color: $cor-Hover-Botao-NavBarFooter;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 
   &:active {
-    border: 1px solid $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
-    color: $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
-    background-color: $cor-Hover-Botao-NavBarFooter;
+    border: 1px solid $CONNECTEVENT-cor-cinza-light;
+    color: $CONNECTEVENT-cor-cinza-light;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }
 
