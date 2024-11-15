@@ -44,16 +44,8 @@
               </button>
             </ng-container>
             <ng-container *ngIf="ocorrido">
-              Ocorrido
               <button
                 class="BotaoTabelaCONNECTEVENT"
-                (click)="adicionarFeedback(evento.id)"
-              >
-                Dar Feedback
-              </button>
-            </ng-container>
-            <ng-container *ngIf="ocorrido">
-              <button
                 [disabled]="!semFeedback.includes(evento.id)"
                 (click)="openAddFeedbackModal(evento.id)"
               >
