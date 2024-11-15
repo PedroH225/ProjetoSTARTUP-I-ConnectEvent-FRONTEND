@@ -1,5 +1,5 @@
 <h1>Seus Feedbacks</h1>
-<ng-container *ngIf="feedbacks.length > 0">
+<ng-container *ngIf="feedbacks.length > 0; else semFeedbacks">
     <div *ngFor="let feedback of feedbacks">
         <p>{{ feedback.evento.titulo }}</p>
         <p>{{ feedback.usuario.nome }}</p>
@@ -8,3 +8,7 @@
          <p>{{ feedback.data }}</p>
     </div>
 </ng-container>
+
+<ng-template #semFeedbacks>
+    <h2>Você não fez nenhum feedback.</h2>
+</ng-template>
