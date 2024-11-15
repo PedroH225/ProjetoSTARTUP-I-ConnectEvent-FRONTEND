@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AutenticacaoService } from '../../services/autenticacao.service';
 import { Router } from '@angular/router';
 import { ThemeService } from '../../services/theme.service';
@@ -7,6 +7,7 @@ import { ThemeService } from '../../services/theme.service';
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrl: './nav-bar.component.scss',
+  encapsulation : ViewEncapsulation.None
 })
 export class NavBarComponent implements OnInit {
   public autenticacao$ = this.autenticacaoService.autenticacao$;

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeService {
-  private isDarkMode = false; // estado inicial
+  private isDarkMode : boolean = false; // estado inicial
 
   constructor() {
     // Verifica o tema preferido do usuário (armazenado no localStorage ou nas preferências do sistema)
@@ -32,7 +32,7 @@ export class ThemeService {
   private isSystemDarkMode(): boolean {
     return (
       window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
+      window.matchMedia('(prefers-color-scheme: dark-theme)').matches
     );
   }
 }
