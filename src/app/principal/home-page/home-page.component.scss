@@ -6,7 +6,13 @@
 }
 
 .backgroundPrincipal {
-  background-color: $CONNECTEVENT-cor-cinza-mid; // cor background geral, atrás dos cards
+  background-color: $CONNECTEVENT-cor-cinza-mid;
+  // background: linear-gradient(
+  //   225deg,
+  //   $CONNECTEVENT-cor-cinza-dark 0%,
+  //   $CONNECTEVENT-cor-cinza-mid 70%,
+  //   $CONNECTEVENT-cor-cinza-light 100%
+  // );
   display: flex;
   flex-direction: column;
 }
