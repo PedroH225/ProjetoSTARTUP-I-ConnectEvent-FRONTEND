@@ -29,4 +29,13 @@ export class FeedbackService {
         headers: { Authorization: `Bearer ${token}` },
       });
   }
+
+  visualizarFeedbacksEvento(eventoId : number) {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/feedback/evento/${eventoId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  }
 }
