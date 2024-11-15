@@ -1,13 +1,12 @@
 <div class="divBody">
   <h1 class="tagTitulo">Eventos Confirmados</h1>
   <div class="divTabelaPaginacaoQuantidade">
-    <form class="divEnd" (ngSubmit)="onSubmit()" #form="ngForm">
+    <form class="divEnd" (change)="onSubmit()" #form="ngForm">
       <div class="divFiltro">
         <select name="selectFiltro" [(ngModel)]="selectedFiltro">
           <option value="" selected>Eventos futuros</option>
           <option value="ocorridos">Ocorridos</option>
         </select>
-        <button type="submit">Aplicar</button>
       </div>
     </form>
     <table class="herancaCoresTabela mb-2 table table-striped">
@@ -53,10 +52,65 @@
                 Dar Feedback
               </button>
             </ng-container>
+            <ng-container *ngIf="ocorrido">
+              <button
+                [disabled]="!semFeedback.includes(evento.id)"
+                (click)="openAddFeedbackModal(evento.id)"
+              >
+                {{
+                  semFeedback.includes(evento.id)
+                    ? "Dar Feedback"
+                    : "Feedback enviado"
+                }}
+              </button>
+            </ng-container>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <ng-template #addFeedback let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title">Adicionar feedback</h5>
+        <button
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          #form="ngForm"
+          (ngSubmit)="adicionarFeedback(modal, selectedEventoId)"
+        >
+          <div class="form-group">
+            <label for="comentario">Comentário</label>
+            <input
+              type="text"
+              id="nome"
+              class="form-control"
+              [(ngModel)]="comentario"
+              name="comentario"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nota">Nota</label>
+            <ngb-rating [(rate)]="nota" required />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!form.valid"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </ng-template>
 
     <div class="d-flex justify-content-between p-2">
       <ngb-pagination

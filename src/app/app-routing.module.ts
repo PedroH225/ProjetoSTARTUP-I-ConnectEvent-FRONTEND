@@ -19,6 +19,7 @@ import { FeedbacksComponent } from './principal/area-usuario/feedbacks-anunciar/
 import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
 import { authGuard } from '../services/guards/auth.guard';
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
+import { FeedbacksUsuarioComponent } from './principal/area-usuario/feedbacks-usuario/feedbacks-usuario.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -60,6 +61,7 @@ const routes: Routes = [
           { path: 'feedbacks', component: FeedbacksComponent },
           { path: 'listaDeAmigos', component: ListaDeAmigosComponent },
           { path: 'geolocalizacao', component: GeolocalizacaoComponent },
+          {path: 'feedbacksUsuario', component: FeedbacksUsuarioComponent}
         ],
       },
       { path: 'esqueceuSenha', component: EsqueceuSenhaComponent },
