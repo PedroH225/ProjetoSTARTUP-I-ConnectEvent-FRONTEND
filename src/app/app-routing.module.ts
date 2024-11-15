@@ -47,7 +47,7 @@ const routes: Routes = [
         canActivate: [authGuard],
         children: [
           // inicio do 'path que auxilia o desenvolvimento
-          { path: '', redirectTo: 'eventosConfirmados', pathMatch: 'full' }, // Redireciona para criarEvento ao carregar areaUsuario
+          { path: '', redirectTo: 'estatisticas', pathMatch: 'full' }, // Redireciona para criarEvento ao carregar areaUsuario
           // fim do 'path' que auxilia o desenvolvimento
           { path: 'configuracoes', component: ConfiguracoesComponent },
           { path: 'criarEvento', component: CriarEventoComponent },
@@ -61,7 +61,7 @@ const routes: Routes = [
           { path: 'feedbacks', component: FeedbacksComponent },
           { path: 'listaDeAmigos', component: ListaDeAmigosComponent },
           { path: 'geolocalizacao', component: GeolocalizacaoComponent },
-          {path: 'feedbacksUsuario', component: FeedbacksUsuarioComponent}
+          { path: 'feedbacksUsuario', component: FeedbacksUsuarioComponent },
         ],
       },
       { path: 'esqueceuSenha', component: EsqueceuSenhaComponent },

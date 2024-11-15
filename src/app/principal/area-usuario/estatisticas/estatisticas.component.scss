@@ -6,19 +6,25 @@
 }
 
 .divBody {
+  width: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  flex-direction: column;
-  // border: 1px solid red;
+  flex-direction: row;
+}
+
+.divDivisoria {
+  width: 45%;
+  border: 1px solid red;
 }
 
 .divFiltro {
+  border: 1px solid blue;
   box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 2rem;
   margin: 1rem;
-  width: 100%;
+  width: 30rem;
 
   display: flex;
   flex-direction: row;
