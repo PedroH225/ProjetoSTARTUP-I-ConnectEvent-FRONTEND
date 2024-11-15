@@ -81,4 +81,19 @@ export class FeedbacksUsuarioComponent {
       
     })
   }
+
+  excluirFeedback(feedbackId : number) {
+    if (confirm("Deseja excluir o feedback?")) {
+      this.feedbackServico.excluirFeedback(feedbackId).subscribe(
+        () => {
+          alert("Feedback excluído com sucesso.")
+
+          this.visualizarFeedbacksUsuario();
+        },
+      (error) => {
+        console.log(error);
+        
+      })
+    }
+  }
 }

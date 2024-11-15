@@ -66,4 +66,13 @@ export class FeedbackService {
         headers: { Authorization: `Bearer ${token}` },
       });
   }
+
+  excluirFeedback(feedbackId: number) {
+    const token = localStorage.getItem('token');
+
+    return this.http.delete<any[]>(`${this.apiUrl}/feedback/${feedbackId}`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  }
 }

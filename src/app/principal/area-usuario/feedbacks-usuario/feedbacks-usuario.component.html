@@ -7,7 +7,7 @@
          <p>{{ feedback.comentario }}</p>
          <p>{{ feedback.data }}</p>
          <button type="submit" class="btn btn-success" (click)="openAddFeedbackModal(feedback.id)">Editar</button>
-         <button type="submit" class="btn btn-danger">Excluir</button>
+         <button type="submit" class="btn btn-danger" (click)="excluirFeedback(feedback.id)">Excluir</button>
         </div>
 </ng-container>
 
