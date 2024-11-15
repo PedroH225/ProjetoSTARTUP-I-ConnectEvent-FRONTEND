@@ -16,6 +16,8 @@ export class EstatisticasComponent {
   selectedDados2: string | null = null;
 
   graficoImg: string | undefined;
+  graficoImg2: string | undefined;
+
 
   constructor(
     private eventoService: EventosService,
@@ -78,12 +80,12 @@ export class EstatisticasComponent {
   }
 
   onSubmit2() {
-    switch (this.selectedDados) {
+    switch (this.selectedDados2) {
       case 'genero':
         this.estatisticaService.getPizzaGenero(this.selectedEvento2).subscribe(
           (grafico: Blob) => {
             const objectURL = URL.createObjectURL(grafico);
-            this.graficoImg = objectURL;
+            this.graficoImg2 = objectURL;
           },
           (error) => {
             console.log(error);
@@ -97,7 +99,7 @@ export class EstatisticasComponent {
           .subscribe(
             (grafico: Blob) => {
               const objectURL = URL.createObjectURL(grafico);
-              this.graficoImg = objectURL;
+              this.graficoImg2 = objectURL;
             },
             (error) => {
               console.log(error);
@@ -111,7 +113,7 @@ export class EstatisticasComponent {
           .subscribe(
             (grafico: Blob) => {
               const objectURL = URL.createObjectURL(grafico);
-              this.graficoImg = objectURL;
+              this.graficoImg2 = objectURL;
             },
             (error) => {
               console.log(error);

@@ -73,7 +73,7 @@
 
   <!-- Direita -->
   <div class="divDivisoria">
-    <form #form="ngForm" (ngSubmit)="onSubmit2()">
+    <form #form2="ngForm" (ngSubmit)="onSubmit2()">
       <div class="divFiltro">
         <div class="divComponenteDoFiltro col-md-6">
           <label class="pb-2" for="">Evento</label>
@@ -81,12 +81,12 @@
             <ng-container
               *ngIf="
                 usuarioEventos && usuarioEventos.length > 0;
-                else noEventsMessage
+                else noEventsMessage2
               "
             >
               <select
                 name="selectedEvento"
-                [(ngModel)]="selectedEvento"
+                [(ngModel)]="selectedEvento2"
                 class="w-100 select form-control-lg"
                 required
               >
@@ -97,11 +97,11 @@
                   {{ evento.titulo }}
                 </option>
               </select>
-              <ng-container *ngIf="!selectedEvento">
+              <ng-container *ngIf="!selectedEvento2">
                 <p>Selecione o evento</p>
               </ng-container>
             </ng-container>
-            <ng-template #noEventsMessage>
+            <ng-template #noEventsMessage2>
               <p>Você não possui eventos cadastrados.</p>
             </ng-template>
           </div>
@@ -114,21 +114,21 @@
               name="selectedDados2"
               [(ngModel)]="selectedDados2"
               class="w-100 select form-control-lg"
-              [disabled]="!selectedEvento"
+              [disabled]="!selectedEvento2"
               required
             >
               <option value="genero">Genero</option>
               <option value="idade">Idade</option>
               <option value="participantes">Participantes</option>
             </select>
-            <ng-container *ngIf="selectedEvento && !selectedDados2">
+            <ng-container *ngIf="selectedEvento2 && !selectedDados2">
               <p>Selecione os dados</p>
             </ng-container>
           </div>
         </div>
 
         <div class="divBotaoDoFiltro">
-          <button type="submit" class="mt-3" [disabled]="!form.valid">
+          <button type="submit" class="mt-3" [disabled]="!form2.valid">
             Selecionar
           </button>
         </div>
@@ -137,8 +137,8 @@
 
     <!-- DIV RESPONSÁVEL POR TRAZER AS INFORMACOES GRÁFICAS COM OS SEUS RESPECTIVOS TITULOS -->
     <div class="informacoesDosDadosFiltrados">
-      <div *ngIf="graficoImg">
-        <img [src]="graficoImg" alt="Gráfico de Gênero" />
+      <div *ngIf="graficoImg2">
+        <img [src]="graficoImg2" alt="Gráfico de Gênero" />
       </div>
     </div>
   </div>
