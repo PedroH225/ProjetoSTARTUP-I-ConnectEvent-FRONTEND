@@ -38,4 +38,13 @@ export class FeedbackService {
         headers: { Authorization: `Bearer ${token}` },
       });
   }
+
+  visualizarFeedbacksUsuario() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/feedback/usuario`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  }
 }
