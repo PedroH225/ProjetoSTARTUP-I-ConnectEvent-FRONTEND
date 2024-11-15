@@ -1,4 +1,5 @@
-<div class="borderCard card">
+<div class="divBody">
+  <!--  -->
   <div class="divTemAmigos">
     <ng-container *ngIf="participantes.length > 0">
       <img
@@ -6,22 +7,25 @@
         src="../../../../assets/amigos.png"
         alt="temAmigos"
         placement="top"
-        ngbPopover="Um de seus amigos está participando deste evento" 
+        ngbPopover="Um de seus amigos está participando deste evento"
         triggers="hover"
       />
     </ng-container>
   </div>
-  <div class="divImg">
-    <img [src]="imagem" class="tagImg card-img-top" alt="Card image cap" />
-  </div>
-  <div class="alinhamentoCard card-body">
-    <h5 class="card-title">{{ titulo }}</h5>
-    <p class="infosCard card-text">
-      Categoria: {{ tipo }}
-      <br />
-      Local: {{ bairro }}, {{ cidade }}/{{ estado }}
-    </p>
+  <!--  -->
 
+  <div class="infoCard">
+    <div class="divImg">
+      <img [src]="imagem" class="tagImg" alt="" />
+    </div>
+    <div class="alinhamentoCard">
+      <h5 class="">{{ titulo }}</h5>
+      <p class="">
+        Categoria: {{ tipo }}
+        <br />
+        Local: {{ bairro }}, {{ cidade }}/{{ estado }}
+      </p>
+    </div>
     <a
       href="#"
       class="styleButtons btn btn-primary"
