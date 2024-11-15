@@ -4,7 +4,8 @@
     <form class="divEnd" (change)="onSubmit()" #form="ngForm">
       <div class="divFiltro">
         <select name="selectFiltro" [(ngModel)]="selectedFiltro">
-          <option value="" selected>Eventos futuros</option>
+          <option value="" selected>Todos os eventos</option>
+          <option value="futuros">Eventos futuros</option>
           <option value="ocorridos">Ocorridos</option>
         </select>
       </div>
@@ -35,7 +36,7 @@
             </button>
           </td>
           <td>
-            <ng-container *ngIf="!ocorrido">
+            <ng-container *ngIf="isEventoInFuture(evento)">
               <button
                 class="BotaoTabelaCONNECTEVENT"
                 (click)="retirarPresenca(evento.id)"
@@ -43,7 +44,7 @@
                 Retirar
               </button>
             </ng-container>
-            <ng-container *ngIf="ocorrido">
+            <ng-container *ngIf="!isEventoInFuture(evento)">
               <button
                 class="BotaoTabelaCONNECTEVENT"
                 [disabled]="!semFeedback.includes(evento.id)"

@@ -20,7 +20,7 @@ export class EventosConfirmadosComponent {
   today: Date = new Date();
   ocorrido: boolean = false;
 
-  comentario : string = '';
+  comentario: string = '';
   nota !: number;
 
   selectedEventoId !: number;
@@ -28,7 +28,7 @@ export class EventosConfirmadosComponent {
   @ViewChild('addFeedback') addFeedbackModal: any;
 
 
-  semFeedback : number[] = [];
+  semFeedback: number[] = [];
 
   page = 1;
   pageSize = 5;
@@ -39,13 +39,13 @@ export class EventosConfirmadosComponent {
     private usuarioService: UsuarioService,
     private router: Router,
     private filtroServico: FiltrarEventoService,
-    private feedbackServico : FeedbackService,
+    private feedbackServico: FeedbackService,
     private modalService: NgbModal
 
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.getEventosParticipando(); // Chama o método para buscar eventos ao inicializar
+    this.getEventosSemFiltro(); // Chama o método para buscar eventos ao inicializar
     this.getSemFeedback()
   }
 
@@ -62,13 +62,12 @@ export class EventosConfirmadosComponent {
     );
   }
 
-  getEventosParticipandoOcorridos() : void {
+  getEventosParticipandoOcorridos(): void {
     this.usuarioService.getEventosParticipandoOcorridos().subscribe(
       (response: any[]) => {
         this.eventos = response; // Armazena os eventos recebidos
         this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
         this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
-        this.ocorrido = true;
       },
       (error: Error) => {
         console.error('Erro ao buscar eventos:', error);
@@ -76,24 +75,48 @@ export class EventosConfirmadosComponent {
     );
   }
 
+  getEventosSemFiltro(): void {
+    this.usuarioService.getEventosParticipando().subscribe(
+      (responseFuturos: any[]) => {
+        const eventosFuturos = responseFuturos; 
+
+        this.eventos = [...eventosFuturos];
+        this.collectionSize = this.eventos.length; 
+        this.refreshPaginatedEventos(); 
+      },
+      (error: Error) => {
+        console.error('Erro ao buscar eventos futuros:', error);
+      }
+    );
+    // Busca os eventos passados
+    this.usuarioService.getEventosParticipandoOcorridos().subscribe(
+      (responseOcorridos: any[]) => {
+        const eventosOcorridos = responseOcorridos; 
+        
+        eventosOcorridos.forEach(ocorrido => {
+          this.eventos.push(ocorrido);
+        });
+
+        this.collectionSize = this.eventos.length; 
+        this.refreshPaginatedEventos();
+        
+      },
+      (error: Error) => {
+        console.error('Erro ao buscar eventos passados:', error);
+      }
+    );
+  }
+
   onSubmit() {
     switch (this.selectedFiltro) {
       case '':
+      this.getEventosSemFiltro()
+        break;
+      case 'futuros':
         this.getEventosParticipando();
-        this.ocorrido = false;
         break;
       case 'ocorridos':
-        this.usuarioService.getEventosParticipandoOcorridos().subscribe(
-          (response: any[]) => {
-            this.eventos = response; // Armazena os eventos recebidos
-            this.collectionSize = this.eventos.length; // Atualiza o tamanho da coleção
-            this.refreshPaginatedEventos(); // Atualiza os eventos paginados após buscar
-            this.ocorrido = true;
-          },
-          (error: Error) => {
-            console.error('Erro ao buscar eventos:', error);
-          }
-        );
+        this.getEventosParticipandoOcorridos()
         break;
     }
   }
@@ -105,7 +128,11 @@ export class EventosConfirmadosComponent {
       this.usuarioService.removerParticipar(id).subscribe(
         () => {
           alert('Presença retirada com sucesso!');
-          this.getEventosParticipando();
+          if (this.selectedFiltro === "futuros") {
+            this.getEventosParticipando();
+          } else {
+            this.getEventosSemFiltro()
+          }
         },
         (error: Error) => {
           console.error('Erro ao retirar presença:', error);
@@ -114,10 +141,10 @@ export class EventosConfirmadosComponent {
     }
   }
 
-  adicionarFeedback(modal : any, id: number) {
+  adicionarFeedback(modal: any, id: number) {
     const payload = {
-      comentario : this.comentario,
-      nota : this.nota
+      comentario: this.comentario,
+      nota: this.nota
     }
 
     this.feedbackServico.adicionarFeedback(id, payload).subscribe(
@@ -126,15 +153,19 @@ export class EventosConfirmadosComponent {
         modal.close()
 
         this.getSemFeedback();
-        this.getEventosParticipandoOcorridos();
-
+        if (this.selectedFiltro === "ocorridos") {
+          this.getEventosParticipandoOcorridos();
+        } else {
+          this.getEventosSemFiltro()
+        }
+        
         this.comentario = ''
         this.nota = 0
 
       },
-    (error) => {
-      alert("Erro ao enviar feedback.")
-    })
+      (error) => {
+        alert("Erro ao enviar feedback.")
+      })
   }
 
 
@@ -142,15 +173,15 @@ export class EventosConfirmadosComponent {
     this.feedbackServico.getSemFeedback().subscribe(
       (response) => {
         this.semFeedback = response;
-        
+
       },
-    (error) => {
-      console.log(error);
-      
-    })
+      (error) => {
+        console.log(error);
+
+      })
   }
 
-  openAddFeedbackModal(eventoId : number) {
+  openAddFeedbackModal(eventoId: number) {
     this.selectedEventoId = eventoId;
     this.modalService.open(this.addFeedbackModal)
   }
