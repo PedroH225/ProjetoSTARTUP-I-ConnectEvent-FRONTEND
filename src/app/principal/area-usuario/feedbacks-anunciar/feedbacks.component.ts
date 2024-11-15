@@ -36,7 +36,6 @@ export class FeedbacksComponent {
     (feedbacks) => {
       this.feedbacks = feedbacks;
       
-      
     },
   (error) => {
     console.log(error);

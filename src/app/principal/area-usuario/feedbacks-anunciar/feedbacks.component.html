@@ -16,8 +16,8 @@
 
     <ng-container *ngIf="feedbacks.length > 0">
         <div *ngFor="let feedback of feedbacks">
-            <p>{{ feedback.nota }}</p>
-            <p>{{ feedback.comentario }}</p>
+            <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />           
+             <p>{{ feedback.comentario }}</p>
         </div>
     </ng-container>
 </div>
