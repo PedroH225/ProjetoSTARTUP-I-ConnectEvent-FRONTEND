@@ -1,3 +1,4 @@
+<div>
     <h1>Feedbacks eventos anunciados</h1>
     <label class="pb-2" for="estado">Selecione o evento</label>
     <div ngbDropdown>
@@ -12,3 +13,11 @@
         </option>
       </select>
     </div>
+
+    <ng-container *ngIf="feedbacks.length > 0">
+        <div *ngFor="let feedback of feedbacks">
+            <p>{{ feedback.nota }}</p>
+            <p>{{ feedback.comentario }}</p>
+        </div>
+    </ng-container>
+</div>
