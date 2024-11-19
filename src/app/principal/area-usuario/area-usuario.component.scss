@@ -30,7 +30,7 @@
   min-width: 50vw;
   min-height: 40rem;
   // REVER A TAG ABAIXO
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(10px);
 }
 
 .divBorda {
@@ -44,6 +44,11 @@
 .tagIconG {
   width: 3rem;
   height: 3rem;
+}
+
+.tagIconM {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .tagIcon {
@@ -69,35 +74,49 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 0.5rem;
-  border: 1px solid rgb(152, 152, 152);
-  border-radius: 1rem;
   text-decoration: none;
 }
 
 .divAccordionHeader {
-  padding: 0.3rem;
-  border-radius: 0.2rem;
   width: 100%;
 }
 
-.centralizarTextoDentroDaBoxCollapse {
-  width: 100%;
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+// Propriedades AccordionButton
+[ngbAccordionButton] {
+  border: none;
+  box-shadow: none;
+  color: $CONNECTEVENT-cor-branco;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  padding: 1rem;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+  }
 }
 
-// Propriedade para retirar o padrão do Accordion Button quando clica
-[ngbAccordionButton] {
-  background-color: white;
-  box-shadow: none;
+// Propriedades AccordionItem
+[ngbAccordionItem] {
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  border: none;
 }
+
+::ng-deep .accordion-button::after {
+  display: none;
+}
+
+// ------------------------------------------------------------------
 // ------------------------------------------------------------------
 
 .divAccordionBody {
-  margin: 0.5rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,7 +129,7 @@
 
   &:hover {
     background-color: $CONNECTEVENT-cor-cinza-mid;
-    transform: scale(1.05);
+    // transform: scale(1.05);
   }
 }
 
@@ -122,26 +141,6 @@
   gap: 0.5rem;
   width: 15rem;
   padding: 0.2rem;
-}
-
-.styleButtons {
-  border: 1px solid $detalhe-borda-normal;
-  color: $detalhe-borda-normal;
-  background-color: $CONNECTEVENT-cor-cinza-low-dark;
-  padding: 0.2rem;
-  width: 100%;
-  // height: 4rem;
-  font-size: 1rem;
-
-  &:hover {
-    background-color: $CONNECTEVENT-cor-cinza-mid;
-  }
-
-  &:active {
-    border: 1px solid $CONNECTEVENT-cor-cinza-light;
-    color: $CONNECTEVENT-cor-cinza-light;
-    background-color: $CONNECTEVENT-cor-cinza-mid;
-  }
 }
 
 .tagConfig {

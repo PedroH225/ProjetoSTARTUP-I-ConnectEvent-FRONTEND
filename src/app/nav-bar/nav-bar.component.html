@@ -13,7 +13,7 @@
           <!-- Verifica se a autenticação é falsa -->
           <li class="nav-item">
             <a
-              class="styleButtons btn nav-item active"
+              class="styleButtonsNavBar"
               [routerLink]="'/principal/login'"
               (click)="isMenuCollapsed = true"
             >
@@ -22,7 +22,7 @@
           </li>
           <li class="nav-item">
             <a
-              class="styleButtons btn nav-item active"
+              class="styleButtonsNavBar"
               [routerLink]="'/principal/register'"
               (click)="isMenuCollapsed = true"
               >Register</a
@@ -33,17 +33,13 @@
           <!-- Verifica se a autenticação é verdadeira -->
           <li class="nav-item">
             <a
-              class="styleButtons btn nav-item active"
+              class="styleButtonsNavBar"
               [routerLink]="'/principal/areaUsuario'"
               >Área do usuário</a
             >
           </li>
           <li class="nav-item">
-            <a
-              (click)="logout()"
-              class="tagSair styleButtons btn nav-item active"
-              >Logout</a
-            >
+            <a (click)="logout()" class="tagSair styleButtonsNavBar">Logout</a>
           </li>
         </ng-container>
       </ul>

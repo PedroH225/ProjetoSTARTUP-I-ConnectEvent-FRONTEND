@@ -7,17 +7,11 @@
       <div ngbAccordionItem [collapsed]="true" class="divAccordionItem">
         <div ngbAccordionHeader class="divAccordionHeader">
           <button ngbAccordionButton>
-            <div class="centralizarTextoDentroDaBoxCollapse">
-              <img
-                class="tagIcon"
-                src="../../../assets/restrictPlaceUser/pin.png"
-                alt=""
-              />
-              <h5 class="tagTitulo">Usuário</h5>
-            </div>
+            <img class="tagIconM" src="../../../assets/internet.png" alt="" />
+            <h5 class="tagTitulo">Usuário</h5>
           </button>
         </div>
-        <div ngbAccordionCollapse class="">
+        <div ngbAccordionCollapse>
           <ul ngbAccordionBody class="divAccordionBody navbar-nav">
             <li class="nav-item">
               <div class="divComponenteDoBotao">
@@ -27,7 +21,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/eventosConfirmados'"
                   >Eventos Confirmados</a
                 >
@@ -42,7 +36,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/listaDeAmigos'"
                   >Lista de Amigos</a
                 >
@@ -57,7 +51,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/geolocalizacao'"
                   >Geolocalização</a
                 >
@@ -71,7 +65,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/feedbacksUsuario'"
                   >Feedbacks</a
                 >
@@ -84,24 +78,22 @@
       <!-- ANUNCIANTES -->
       <div ngbAccordionItem [collapsed]="true" class="divAccordionItem">
         <div ngbAccordionHeader class="divAccordionHeader">
-          <button ngbAccordionButton class="divTeste">
-            <div class="centralizarTextoDentroDaBoxCollapse">
-              <img
-                class="tagIcon"
-                src="../../../assets/restrictPlaceUser/post-it.png"
-                alt=""
-              />
-              <h5 class="tagTitulo">Anunciar</h5>
-            </div>
+          <button ngbAccordionButton>
+            <img
+              class="tagIconM"
+              src="../../../assets/megafone (2).png"
+              alt=""
+            />
+            <h5 class="tagTitulo">Anunciar</h5>
           </button>
         </div>
-        <div ngbAccordionCollapse class="">
+        <div ngbAccordionCollapse>
           <ul ngbAccordionBody class="divAccordionBody navbar-nav">
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img class="tagIcon" src="../../../assets/add2.png" alt="" />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/criarEvento'"
                   >Criar Evento</a
                 >
@@ -115,7 +107,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/eventosAnunciados'"
                   >Eventos Anunciados</a
                 >
@@ -129,7 +121,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/feedbacks'"
                   >Feedbacks</a
                 >
@@ -143,7 +135,7 @@
                   alt=""
                 />
                 <a
-                  class="styleButtons btn nav-item active"
+                  class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/estatisticas'"
                   >Estatísticas</a
                 >

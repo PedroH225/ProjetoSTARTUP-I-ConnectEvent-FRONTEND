@@ -45,31 +45,10 @@
   gap: 1rem;
 }
 
-.styleButtons {
-  border: 1px solid $detalhe-borda-normal;
-  color: $detalhe-borda-normal;
-  background-color: $CONNECTEVENT-cor-cinza-low-dark;
-  padding: 0.2rem;
-  width: 10rem;
-
-  &:hover {
-    background-color: $CONNECTEVENT-cor-cinza-mid;
-  }
-
-  &:active {
-    border: 1px solid $CONNECTEVENT-cor-cinza-light;
-    color: $CONNECTEVENT-cor-cinza-light;
-    background-color: $CONNECTEVENT-cor-cinza-mid;
-  }
-}
-
 .tagSair {
-  background-color: rgb(192, 58, 58);
   color: white;
-  font-weight: 600;
-  transition: background-color 1s, transform 2s;
 
-  &:hover {
-    background-color: rgb(209, 134, 134);
+  &::after {
+    background-color: #d18686;
   }
 }

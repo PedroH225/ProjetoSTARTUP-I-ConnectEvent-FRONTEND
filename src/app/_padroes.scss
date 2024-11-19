@@ -77,51 +77,76 @@ $detalhe-borda-hover-light: $CONNECTEVENT-cor-dourado-light;
   background-color: rgb(255, 238, 255);
 }
 
-// Mixin para tema claro
-@mixin light-theme {
-  background-color: $CONNECTEVENT-cor-branco-mid;
-  color: $CONNECTEVENT-cor-branco-mid;
+.styleButtonsNavBar {
+  color: $detalhe-borda-normal;
+  padding: 0.7rem 2rem;
+  width: 10rem;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative; // Necessário para posicionar o pseudo-elemento
 
-  a {
-    color: $CONNECTEVENT-cor-branco-mid;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; // Posiciona o pseudo-elemento na parte inferior
+    left: 50%; // Começa no centro
+    width: 0;
+    height: 3px; // Altura desejada para a "borda"
+    background-color: $detalhe-borda-normal;
+    transition: all 0.3s ease-out; // Controle a duração e o timing
+    transform: translateX(-50%);
   }
 
-  button {
-    background-color: $CONNECTEVENT-cor-branco-mid;
-    color: $CONNECTEVENT-cor-branco-mid;
-
+  &:hover::after {
+    width: 100%;
   }
 }
+
+// Mixin para tema claro
+// @mixin light-theme {
+//   background-color: $CONNECTEVENT-cor-branco-mid;
+//   color: $CONNECTEVENT-cor-branco-mid;
+
+//   a {
+//     color: $CONNECTEVENT-cor-branco-mid;
+//   }
+
+//   button {
+//     background-color: $CONNECTEVENT-cor-branco-mid;
+//     color: $CONNECTEVENT-cor-branco-mid;
+
+//   }
+// }
 
 // Mixin para tema escuro
-@mixin dark-theme {
-  background-color: $CONNECTEVENT-cor-preto;
-  color: $CONNECTEVENT-cor-preto;
+// @mixin dark-theme {
+//   background-color: $CONNECTEVENT-cor-preto;
+//   color: $CONNECTEVENT-cor-preto;
 
-  a {
-    color: $CONNECTEVENT-cor-preto;
-  }
+//   a {
+//     color: $CONNECTEVENT-cor-preto;
+//   }
 
-  button {
-    background-color: $CONNECTEVENT-cor-preto;
-    color: $CONNECTEVENT-cor-preto;
+//   button {
+//     background-color: $CONNECTEVENT-cor-preto;
+//     color: $CONNECTEVENT-cor-preto;
 
-  }
-}
-
+//   }
+// }
 
 // Estilos Globais
-body {
-  // Tema claro padrão
-  @include light-theme;
+// body {
+//   // Tema claro padrão
+//   @include light-theme;
 
-  // Quando a classe 'dark' for adicionada ao body, aplica o tema escuro
-  &.dark-theme {
-    @include dark-theme;
-  }
+//   // Quando a classe 'dark' for adicionada ao body, aplica o tema escuro
+//   &.dark-theme {
+//     @include dark-theme;
+//   }
 
-  @media (prefers-color-scheme: dark-theme) {
-    @include dark-theme;
-  }
+//   @media (prefers-color-scheme: dark-theme) {
+//     @include dark-theme;
+//   }
 
-}
+// }
