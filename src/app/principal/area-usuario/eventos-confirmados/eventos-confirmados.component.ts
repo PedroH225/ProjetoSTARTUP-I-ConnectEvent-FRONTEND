@@ -3,7 +3,7 @@ import { AutenticacaoService } from '../../../../services/autenticacao.service';
 import { EventosService } from '../../../../services/eventos.service';
 
 import { FiltrarEventoService } from '../../../../services/filtrar-evento.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { FeedbackService } from '../../../../services/feedback.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -40,13 +40,18 @@ export class EventosConfirmadosComponent {
     private router: Router,
     private filtroServico: FiltrarEventoService,
     private feedbackServico: FeedbackService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private route : ActivatedRoute
 
   ) { }
 
   ngOnInit() {
-    this.getEventosSemFiltro(); // Chama o método para buscar eventos ao inicializar
-    this.getSemFeedback()
+    this.route.queryParams.subscribe((params) => {
+      this.selectedFiltro = params['filtro'] || ''; // Restaura o filtro
+      this.page = +params['page'] || 1; // Restaura a página
+      this.onSubmit(); // Aplica o filtro restaurado      
+    });    
+    this.getSemFeedback();
   }
 
   getEventosParticipando(): void {
@@ -108,6 +113,11 @@ export class EventosConfirmadosComponent {
   }
 
   onSubmit() {
+    this.router.navigate([], {
+      queryParams: { filtro: this.selectedFiltro, page: this.page },
+      queryParamsHandling: 'merge', // Preserva outros parâmetros
+    });
+    
     switch (this.selectedFiltro) {
       case '':
       this.getEventosSemFiltro()
@@ -119,6 +129,8 @@ export class EventosConfirmadosComponent {
         this.getEventosParticipandoOcorridos()
         break;
     }
+
+    this.getSemFeedback();
   }
 
   retirarPresenca(id: number) {

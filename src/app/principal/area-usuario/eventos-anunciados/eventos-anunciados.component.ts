@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AutenticacaoService } from '../../../../services/autenticacao.service';
 import { EventosService } from '../../../../services/eventos.service';
 import { FiltrarEventoService } from '../../../../services/filtrar-evento.service';
@@ -12,7 +12,7 @@ import { FiltrarEventoService } from '../../../../services/filtrar-evento.servic
 export class EventosAnunciadosComponent implements OnInit {
   eventos: any[] = []; // Array para armazenar eventos
   paginatedEventos: any[] = []; // Array para eventos paginados
-  selectedFiltro: string = '';
+  selectedFiltro : string = '';
   today: Date = new Date();
 
   page = 1;
@@ -23,14 +23,19 @@ export class EventosAnunciadosComponent implements OnInit {
     private autenticacaoService: AutenticacaoService,
     private eventoService: EventosService,
     private router: Router,
-    private filtroServico: FiltrarEventoService
+    private filtroServico: FiltrarEventoService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.getEventosUsuario(); // Chama o método para buscar eventos ao inicializar
+    this.route.queryParams.subscribe((params) => {
+      this.selectedFiltro = params['filtro'] || ''; // Restaura o filtro
+      this.page = +params['page'] || 1; // Restaura a página
+      this.onSubmit(); // Aplica o filtro restaurado      
+    });
   }
 
-  getEventosUsuario(): void {
+  getEventosUsuario(): void {    
     this.eventoService.getEventosUsuario().subscribe(
       (response: any[]) => {
         this.eventos = response; // Armazena os eventos recebidos
@@ -40,10 +45,15 @@ export class EventosAnunciadosComponent implements OnInit {
       (error: Error) => {
         console.error('Erro ao buscar eventos:', error);
       }
-    );
+    );    
   }
 
   onSubmit() {
+    this.router.navigate([], {
+      queryParams: { filtro: this.selectedFiltro, page: this.page },
+      queryParamsHandling: 'merge', // Preserva outros parâmetros
+    });
+
     switch (this.selectedFiltro) {
       case '':
         this.getEventosUsuario();
@@ -132,14 +142,19 @@ export class EventosAnunciadosComponent implements OnInit {
 
   // Método para atualizar eventos paginados
   refreshPaginatedEventos(): void {
-    this.paginatedEventos = this.eventos.slice(
-      (this.page - 1) * this.pageSize,
-      this.page * this.pageSize
-    );
+    const startIndex = (this.page - 1) * this.pageSize;
+    const endIndex = this.page * this.pageSize;
+    this.paginatedEventos = this.eventos.slice(startIndex, endIndex);
   }
+  
 
   // Método chamado para atualizar eventos e a coleção paginada
   refreshEventos(): void {
+    this.router.navigate([], {
+      queryParams: { filtro: this.selectedFiltro, page: this.page },
+      queryParamsHandling: 'merge', // Preserva outros parâmetros
+    });
+
     this.refreshPaginatedEventos(); // Atualiza a lista de eventos paginados
   }
 }
