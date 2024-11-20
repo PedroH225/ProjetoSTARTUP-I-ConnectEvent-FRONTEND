@@ -1,12 +1,20 @@
 <div
   class="divPai"
-  [ngStyle]="{ 'background-image': 'url(' + imagemEventoUrl + ')' }"
+  [ngStyle]="{ 'background-image': 'url(' + imagemEventoUrl[0] + ')' }"
 >
   <div class="divCartaoDoEvento">
     <div class="centralizar">
       <div class="divImagem">
-        <img class="tagImagem" [src]="imagemEventoUrl" alt="Imagem do evento" />
-      </div>
+        <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
+          <ng-template ngbSlide *ngFor="let img of imagemEventoUrl; let i = index">
+            <div class="picsum-img-wrapper">
+              <img [src]="img" alt="Imagem do evento {{ i + 1 }}" class="d-block w-100" />
+            </div>
+            <div class="carousel-caption">
+              <p>Imagem {{ i + 1 }} de {{ imagemEventoUrl.length }}</p>
+            </div>
+          </ng-template>
+        </ngb-carousel>      </div>
       <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
           <div class="divDescricaoEvento">
