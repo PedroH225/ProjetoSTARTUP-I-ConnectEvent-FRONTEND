@@ -16,7 +16,13 @@
 
   <div class="infoCard">
     <div class="divImg">
-      <img [src]="imagem" class="tagImg" alt="" />
+      <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
+        <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
+          <div class="picsum-img-wrapper">
+            <img [src]="img" alt="Imagem do evento {{ i + 1 }}" class="d-block w-100" />
+          </div>
+        </ng-template>
+      </ngb-carousel>    
     </div>
     <div class="alinhamentoCard">
       <h5 class="text-center">{{ titulo }}</h5>

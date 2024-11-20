@@ -15,7 +15,15 @@ export class CardComponent {
   @Input() bairro: string = '';
   @Input() cidade: string = '';
   @Input() estado: string = '';
-  @Input() imagem: string = '';
+  @Input() fotos: any[] = [];
   @Input() participantes : any[] = [];
+
+  imagemUrls : string[] = [];
+
+  ngOnInit() {
+    this.fotos.forEach((foto : any) => {
+      this.imagemUrls.push(`http://localhost:3000/uploads/${foto.foto}`)
+    });
+  }
 
 }
