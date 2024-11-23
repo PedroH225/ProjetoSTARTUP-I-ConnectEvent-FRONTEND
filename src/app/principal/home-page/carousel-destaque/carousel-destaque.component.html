@@ -4,5 +4,6 @@
               <p>{{ evento.tipo }}</p>
               <p>{{ evento.endereco.bairro }}, {{ evento.endereco.cidade }} ({{ evento.endereco.estado }})</p>
               <img class="w-25" [src]="'http://localhost:3000/uploads/' + evento.fotos[0].foto" alt="Foto">		
+              <button [routerLink]="['/principal/cardPage', evento.id]">Ir ao Evento</button>		
           </ng-template>
 </ngb-carousel>
