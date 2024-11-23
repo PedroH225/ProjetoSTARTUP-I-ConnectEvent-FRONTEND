@@ -1,1 +1,8 @@
-<p>carousel-random works!</p>
+<ngb-carousel>
+		<ng-template ngbSlide *ngFor="let evento of eventosRandom; let i = index">
+                <p>{{ evento.titulo }}</p>		
+                <p>{{ evento.tipo }}</p>
+                <p>{{ evento.endereco.bairro }}, {{ evento.endereco.cidade }} ({{ evento.endereco.estado }})</p>
+                <img [src]="'http://localhost:3000/uploads/' + evento.fotos[0].foto" alt="Foto">		
+            </ng-template>
+</ngb-carousel>

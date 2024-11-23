@@ -18,6 +18,14 @@ export class EventosService {
     });
   }
 
+  getEventosRandom(): Observable<any[]> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/evento/random`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+  }
+
   getEventosUsuario() {
     const token = localStorage.getItem('token');
 
