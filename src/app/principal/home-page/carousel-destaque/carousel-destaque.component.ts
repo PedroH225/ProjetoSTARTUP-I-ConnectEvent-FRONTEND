@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { EventosService } from '../../../../services/eventos.service';
 
 @Component({
   selector: 'app-carousel-destaque',
@@ -6,12 +7,19 @@ import { Component, Input } from '@angular/core';
   styleUrl: './carousel-destaque.component.scss',
 })
 export class CarouselDestaqueComponent {
-  @Input() fotos: any[] = [];
-  imagemUrls: string[] = [];
+  eventosDestaque : any[] = []
+
+  constructor(
+    private eventoServico : EventosService
+  ) {}
 
   ngOnInit(): void {
-    this.fotos.forEach((foto: any) => {
-      this.imagemUrls.push(`http://localhost:3000/uploads/${foto.foto}`);
-    });
+    this.eventoServico.getEventosDestaque().subscribe(
+      (eventos) => {
+        this.eventosDestaque = eventos;
+      },
+    (error) => {
+
+    })
   }
 }

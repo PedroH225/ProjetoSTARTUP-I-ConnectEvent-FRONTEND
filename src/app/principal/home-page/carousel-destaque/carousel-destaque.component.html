@@ -1,9 +1,8 @@
-<ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
-  <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
-    <img
-      class="tagImg d-block"
-      [src]="img"
-      alt="Imagem do evento {{ i + 1 }}"
-    />
-  </ng-template>
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let evento of eventosDestaque; let i = index">
+              <p>{{ evento.titulo }}</p>		
+              <p>{{ evento.tipo }}</p>
+              <p>{{ evento.endereco.bairro }}, {{ evento.endereco.cidade }} ({{ evento.endereco.estado }})</p>
+              <img class="w-25" [src]="'http://localhost:3000/uploads/' + evento.fotos[0].foto" alt="Foto">		
+          </ng-template>
 </ngb-carousel>

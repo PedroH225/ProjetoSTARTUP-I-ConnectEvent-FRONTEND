@@ -26,6 +26,14 @@ export class EventosService {
     });
   }
 
+  getEventosDestaque(): Observable<any[]> {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/evento/destaque`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+  }
+
   getEventosUsuario() {
     const token = localStorage.getItem('token');
 
