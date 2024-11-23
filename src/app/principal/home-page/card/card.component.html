@@ -1,5 +1,5 @@
 <div class="divBody">
-  <!--  -->
+  <!-- SELO DO AMIGO -->
   <div class="divTemAmigos">
     <ng-container *ngIf="participantes.length > 0">
       <img
@@ -12,17 +12,21 @@
       />
     </ng-container>
   </div>
-  <!--  -->
+  <!-- Fim SELO DO AMIGO -->
 
   <div class="infoCard">
     <div class="divImg">
       <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
         <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
-          <div class="picsum-img-wrapper">
-            <img [src]="img" alt="Imagem do evento {{ i + 1 }}" class="d-block w-100" />
+          <div class="divEntreDivImgEtagImg picsum-img-wrapper">
+            <img
+              [src]="img"
+              alt="Imagem do evento {{ i + 1 }}"
+              class="tagImg d-block"
+            />
           </div>
         </ng-template>
-      </ngb-carousel>    
+      </ngb-carousel>
     </div>
     <div class="alinhamentoCard">
       <h5 class="text-center">{{ titulo }}</h5>
