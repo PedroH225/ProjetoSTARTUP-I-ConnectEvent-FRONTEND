@@ -19,6 +19,15 @@
 
   display: flex;
   flex-direction: column;
+  overflow: visible; /* Garante que o sticky funcione */
+}
+
+.divFiltro {
+  position: sticky;
+  top: 0; /* Define o ponto em que o elemento se "gruda" ao rolar */
+  z-index: 10; /* Para manter o filtro acima de outros elementos */
+  background-color: white; /* Evita que o conteúdo por trás fique visível */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona um sombreamento sutil */
 }
 
 .tagIcon {
