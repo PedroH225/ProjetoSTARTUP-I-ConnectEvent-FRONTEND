@@ -5,20 +5,41 @@
   </div>
   <!-- Fim Filtro -->
 
-  <!-- Cards -->
-  <div class="divCards">
-    <app-card
-      *ngFor="let evento of eventos"
-      [fotos]="evento.fotos"
-      [titulo]="evento.titulo"
-      [descricao]="evento.descricao"
-      [id]="evento.id"
-      [tipo]="evento.tipo"
-      [bairro]="evento.endereco.bairro"
-      [cidade]="evento.endereco.cidade"
-      [estado]="evento.endereco.estado"
-      [participantes]="evento.participantes"
-    ></app-card>
+  <!-- Carousel Novidades -->
+  <div class="divCarousel">
+    <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
+      <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
+        <img
+          class="tagImg d-block"
+          [src]="img"
+          alt="Imagem do evento {{ i + 1 }}"
+        />
+      </ng-template>
+    </ngb-carousel>
   </div>
-  <!-- Fim Cards -->
+  <!-- Fim Carousel -->
+
+  <div class="d-flex">
+    <!-- Carousel Lateral Esquerda -->
+    <div class="divCarouselLateralEsquerda">
+      <div></div>
+    </div>
+
+    <!-- Cards -->
+    <div class="divCards">
+      <app-card
+        *ngFor="let evento of eventos"
+        [fotos]="evento.fotos"
+        [titulo]="evento.titulo"
+        [descricao]="evento.descricao"
+        [id]="evento.id"
+        [tipo]="evento.tipo"
+        [bairro]="evento.endereco.bairro"
+        [cidade]="evento.endereco.cidade"
+        [estado]="evento.endereco.estado"
+        [participantes]="evento.participantes"
+      ></app-card>
+    </div>
+    <!-- Fim Cards -->
+  </div>
 </div>

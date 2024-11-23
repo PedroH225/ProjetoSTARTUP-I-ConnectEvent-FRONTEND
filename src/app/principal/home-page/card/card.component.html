@@ -15,24 +15,20 @@
   <!-- Fim SELO DO AMIGO -->
 
   <div class="infoCard">
-    <div class="divImg">
+    <div class="divCarousel">
       <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
         <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
-          <div class="divEntreDivImgEtagImg picsum-img-wrapper">
-            <img
-              [src]="img"
-              alt="Imagem do evento {{ i + 1 }}"
-              class="tagImg d-block"
-            />
-          </div>
+          <img
+            class="tagImg d-block"
+            [src]="img"
+            alt="Imagem do evento {{ i + 1 }}"
+          />
         </ng-template>
       </ngb-carousel>
     </div>
-    <div class="alinhamentoCard">
-      <h5 class="text-center">{{ titulo }}</h5>
-      <p class="text-center">Categoria: {{ tipo }}</p>
-      <p class="text-center">Local: {{ bairro }}, {{ cidade }}/{{ estado }}</p>
-    </div>
+    <h4 class="tagTitulo text-center">{{ titulo }}</h4>
+    <p class="text-center">{{ tipo }}</p>
+    <p class="text-center">{{ bairro }}, {{ cidade }} ({{ estado }})</p>
     <a
       href="#"
       class="styleButtons btn btn-primary"

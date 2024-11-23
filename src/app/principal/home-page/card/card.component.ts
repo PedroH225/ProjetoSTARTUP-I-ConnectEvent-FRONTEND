@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { EventosService } from '../../../../services/eventos.service'; // Importar o serviço corretamente
 
 @Component({
   selector: 'app-card',
@@ -16,14 +15,13 @@ export class CardComponent {
   @Input() cidade: string = '';
   @Input() estado: string = '';
   @Input() fotos: any[] = [];
-  @Input() participantes : any[] = [];
+  @Input() participantes: any[] = [];
 
-  imagemUrls : string[] = [];
+  imagemUrls: string[] = [];
 
   ngOnInit() {
-    this.fotos.forEach((foto : any) => {
-      this.imagemUrls.push(`http://localhost:3000/uploads/${foto.foto}`)
+    this.fotos.forEach((foto: any) => {
+      this.imagemUrls.push(`http://localhost:3000/uploads/${foto.foto}`);
     });
   }
-
 }
