@@ -6,15 +6,23 @@
     <div class="centralizar">
       <div class="divImagem">
         <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
-          <ng-template ngbSlide *ngFor="let img of imagemEventoUrl; let i = index">
-            <div class="picsum-img-wrapper">
-              <img [src]="img" alt="Imagem do evento {{ i + 1 }}" class="d-block w-100" />
+          <ng-template
+            ngbSlide
+            *ngFor="let img of imagemEventoUrl; let i = index"
+          >
+            <div class="divEntreDivImgEtagImg picsum-img-wrapper">
+              <img
+                [src]="img"
+                alt="Imagem do evento {{ i + 1 }}"
+                class="tagImg d-block"
+              />
             </div>
             <div class="carousel-caption">
-              <p>Imagem {{ i + 1 }} de {{ imagemEventoUrl.length }}</p>
+              <!-- <p>Imagem {{ i + 1 }} de {{ imagemEventoUrl.length }}</p> -->
             </div>
           </ng-template>
-        </ngb-carousel>      </div>
+        </ngb-carousel>
+      </div>
       <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
           <div class="divDescricaoEvento">

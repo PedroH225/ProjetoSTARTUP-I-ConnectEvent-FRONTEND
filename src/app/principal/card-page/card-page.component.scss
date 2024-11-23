@@ -55,14 +55,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80rem;
 }
 
-.tagImagem {
+.divEntreDivImgEtagImg {
+  padding: 1rem 0 0 0;
+  width: 80rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Altera a cor das setas do carousel para preto
+::ng-deep .carousel-control-prev-icon,
+::ng-deep .carousel-control-next-icon {
+  filter: brightness(0) saturate(100%) invert(0) sepia(0) saturate(7500%)
+    hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+.tagImg {
   border-radius: 5rem;
-  max-width: 100%;
-  width: 40rem;
-  box-shadow: 0px 0px 15px $CONNECTEVENT-cor-cinza-dark;
+  width: 50rem;
+  height: 30rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-dark;
 }
 
 .divDetalhesEvento {
