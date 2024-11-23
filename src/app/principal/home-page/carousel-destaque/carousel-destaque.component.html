@@ -1,0 +1,9 @@
+<ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
+  <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
+    <img
+      class="tagImg d-block"
+      [src]="img"
+      alt="Imagem do evento {{ i + 1 }}"
+    />
+  </ng-template>
+</ngb-carousel>

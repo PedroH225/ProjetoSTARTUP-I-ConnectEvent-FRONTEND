@@ -5,25 +5,18 @@
   </div>
   <!-- Fim Filtro -->
 
-  <!-- Carousel Novidades -->
-  <div class="divCarousel">
-    <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
-      <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
-        <img
-          class="tagImg d-block"
-          [src]="img"
-          alt="Imagem do evento {{ i + 1 }}"
-        />
-      </ng-template>
-    </ngb-carousel>
+  <!-- Carousel Destaques -->
+  <div class="divCarousel1">
+    <app-carousel-destaque></app-carousel-destaque>
   </div>
   <!-- Fim Carousel -->
 
   <div class="d-flex">
     <!-- Carousel Lateral Esquerda -->
-    <div class="divCarouselLateralEsquerda">
-      <div></div>
+    <div class="divCarousel2">
+      <app-carousel-random></app-carousel-random>
     </div>
+    <!-- Fim Carousel Lateral Esquerda -->
 
     <!-- Cards -->
     <div class="divCards">

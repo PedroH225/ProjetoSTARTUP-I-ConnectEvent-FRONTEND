@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { EventosService } from '../../../services/eventos.service'; // Importa o serviço
 
 @Component({
@@ -7,17 +7,12 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
-  @Input() fotos: any[] = [];
   eventos: any[] = [];
-  imagemUrls: string[] = [];
 
   constructor(private eventosService: EventosService) {}
 
   ngOnInit(): void {
     this.getEventos();
-    this.fotos.forEach((foto: any) => {
-      this.imagemUrls.push(`http://localhost:3000/uploads/${foto.foto}`);
-    });
   }
 
   getEventos(): void {

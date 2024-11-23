@@ -32,6 +32,8 @@ import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/im
 import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
 import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
 import { FeedbacksUsuarioComponent } from './principal/area-usuario/feedbacks-usuario/feedbacks-usuario.component';
+import { CarouselRandomComponent } from './principal/home-page/carousel-random/carousel-random.component';
+import { CarouselDestaqueComponent } from './principal/home-page/carousel-destaque/carousel-destaque.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { FeedbacksUsuarioComponent } from './principal/area-usuario/feedbacks-us
     ImageUploaderComponent,
     GeolocalizacaoComponent,
     FeedbacksUsuarioComponent,
+    CarouselRandomComponent,
+    CarouselDestaqueComponent,
   ],
   imports: [
     BrowserModule,
