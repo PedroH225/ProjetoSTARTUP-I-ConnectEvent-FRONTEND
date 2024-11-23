@@ -1,76 +1,107 @@
-<ng-container *ngIf="usuario">
-    <p>{{ usuario.nome }}</p>
-    <p>{{ usuario.email }}</p>
-    <p>{{ usuario.idade }}</p>
-    <p>{{ usuario.genero }}</p>
-    <p>{{ usuario.estado }}</p>
-    <p>{{ usuario.cidade }}</p>
-  
-    <!-- Botão para abrir o modal de edição -->
-    <button class="btn btn-primary" (click)="openEditModal()">Editar</button>
-    <button class="btn btn-primary" (click)="openSenhaModal()">Alterar Senha</button>
-  
-    <!-- Modal de edição -->
-    <ng-template #editModal let-modal>
-      <div class="modal-header">
-        <h5 class="modal-title">Editar Usuário</h5>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss()">
-          <span aria-hidden="true">&times;</span>
+<div class="divBody">
+  <div class="divPlane text-center">
+    <ng-container *ngIf="usuario">
+      <h5>Configurações</h5>
+      <div class="p-5">
+        <p>Nome: {{ usuario.nome }}</p>
+        <p>E-mail: {{ usuario.email }}</p>
+        <p>Idade: {{ usuario.idade }}</p>
+        <p>Gênero: {{ usuario.genero }}</p>
+        <p>Estado: {{ usuario.estado }}</p>
+        <p>Cidade: {{ usuario.cidade }}</p>
+      </div>
+
+      <!-- Botão para abrir o modal de edição -->
+      <div class="divButtons">
+        <button class="tagButton btn btn-primary" (click)="openEditModal()">
+          Editar
+        </button>
+        <button class="tagButton btn btn-primary" (click)="openSenhaModal()">
+          Alterar Senha
         </button>
       </div>
-      <div class="modal-body">
-        <form #form="ngForm" (ngSubmit)="onSubmit(modal)">
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" class="form-control" [(ngModel)]="nome" name="nome" required />
-          </div>
-          <div id="nomeErro">
 
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control" [(ngModel)]="email" name="email" required />
-          </div>
-          <div id="emailErro">
+      <!-- Modal de edição -->
+      <ng-template #editModal let-modal>
+        <div class="modal-header">
+          <h5 class="modal-title">Editar Usuário</h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" (ngSubmit)="onSubmit(modal)">
+            <div class="form-group">
+              <label for="nome">Nome</label>
+              <input
+                type="text"
+                id="nome"
+                class="form-control"
+                [(ngModel)]="nome"
+                name="nome"
+                required
+              />
+            </div>
+            <div id="nomeErro"></div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                class="form-control"
+                [(ngModel)]="email"
+                name="email"
+                required
+              />
+            </div>
+            <div id="emailErro"></div>
+            <div class="form-group">
+              <label for="idade">Idade</label>
+              <input
+                type="number"
+                id="idade"
+                class="form-control"
+                [(ngModel)]="idade"
+                name="idade"
+                required
+              />
+            </div>
+            <div id="idadeErro"></div>
 
-          </div>
-          <div class="form-group">
-            <label for="idade">Idade</label>
-            <input type="number" id="idade" class="form-control" [(ngModel)]="idade" name="idade" required/>
-          </div>
-          <div id="idadeErro">
+            <div class="form-group">
+              <label for="genero">Gênero</label>
+              <select
+                [(ngModel)]="genero"
+                name="genero"
+                class="w-100 select form-control-lg"
+                required
+              >
+                <option [value]="'Masculino'">Masculino</option>
+                <option [value]="'Feminino'">Feminino</option>
+                <option [value]="'Outro'">Outro</option>
+              </select>
+            </div>
 
-          </div>
+            <div class="form-group">
+              <label for="estado">Estado</label>
+              <select
+                [(ngModel)]="estado"
+                name="estado"
+                class="w-100 select form-control-lg"
+                required
+              >
+                <option [value]="'SP'">São Paulo</option>
+              </select>
+            </div>
 
-          <div class="form-group">
-            <label for="genero">Gênero</label>
-            <select
-            [(ngModel)]="genero"
-            name="genero"
-            class="w-100 select form-control-lg"
-            required
-            >
-            <option [value]="'Masculino'">Masculino</option>
-            <option [value]="'Feminino'">Feminino</option>
-            <option [value]="'Outro'">Outro</option>
-            </select>            
-         </div>
-         
-          <div class="form-group">
-            <label for="estado">Estado</label>
-            <select
-                      [(ngModel)]="estado"
-                      name="estado"
-                      class="w-100 select form-control-lg"
-                      required
-                    >
-                      <option [value]="'SP'">São Paulo</option>
-                    </select>
-             </div>
-
-          <div class="form-group">
-            <label for="cidade">Cidade</label>
-            <div ngbDropdown>
+            <div class="form-group">
+              <label for="cidade">Cidade</label>
+              <div ngbDropdown>
                 <select
                   name="cidade"
                   class="w-100 select form-control-lg"
@@ -82,44 +113,74 @@
                   </option>
                 </select>
               </div>
-          </div>
-          <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
-        </form>
-      </div>
-    </ng-template>
-    <ng-template #alterarSenha let-modalSenha>
-      <div class="modal-header">
-        <h5 class="modal-title">Alterar Senha</h5>
-        <button type="button" class="close" aria-label="Close" (click)="modalSenha.dismiss()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form #form="ngForm" (ngSubmit)="onSubmitAlterarSenha(modalSenha)">
-          <div class="form-group">
-            <label for="senhaAtual">Digite a senha atual:</label>
-            <input type="password" class="form-control" name="senhaAtual" [(ngModel)]="senhaAtual" required>
-          </div>
-          <div id="atualErro">
-
-          </div>
-          <div class="form-group">
-            <label for="senhaNova">Digite a nova senha:</label>
-            <input type="password" class="form-control" name="senhaNova" [(ngModel)]="senhaNova" required>
-          </div>
-          <div id="novaErro">
-
-          </div>
-          <div class="form-group">
-            <label for="confirmarSenhaNova">Confirme a nova senha:</label>
-            <input type="password" class="form-control" name="confirmarSenhaNova" [(ngModel)]="confirmarSenha" required>
-          </div>
-          <div id="confirmarErro">
-
-          </div>
-          <button type="submit" class="btn btn-success" [disabled]="!form.valid">Salvar</button>
-        </form>
-      </div>
-    </ng-template>
-  </ng-container>
-  
+            </div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="!form.valid"
+            >
+              Salvar
+            </button>
+          </form>
+        </div>
+      </ng-template>
+      <ng-template #alterarSenha let-modalSenha>
+        <div class="modal-header">
+          <h5 class="modal-title">Alterar Senha</h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modalSenha.dismiss()"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" (ngSubmit)="onSubmitAlterarSenha(modalSenha)">
+            <div class="form-group">
+              <label for="senhaAtual">Digite a senha atual:</label>
+              <input
+                type="password"
+                class="form-control"
+                name="senhaAtual"
+                [(ngModel)]="senhaAtual"
+                required
+              />
+            </div>
+            <div id="atualErro"></div>
+            <div class="form-group">
+              <label for="senhaNova">Digite a nova senha:</label>
+              <input
+                type="password"
+                class="form-control"
+                name="senhaNova"
+                [(ngModel)]="senhaNova"
+                required
+              />
+            </div>
+            <div id="novaErro"></div>
+            <div class="form-group">
+              <label for="confirmarSenhaNova">Confirme a nova senha:</label>
+              <input
+                type="password"
+                class="form-control"
+                name="confirmarSenhaNova"
+                [(ngModel)]="confirmarSenha"
+                required
+              />
+            </div>
+            <div id="confirmarErro"></div>
+            <button
+              type="submit"
+              class="btn btn-success"
+              [disabled]="!form.valid"
+            >
+              Salvar
+            </button>
+          </form>
+        </div>
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

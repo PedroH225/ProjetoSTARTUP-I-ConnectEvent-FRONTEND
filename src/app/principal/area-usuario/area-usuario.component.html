@@ -16,59 +16,59 @@
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/confirmation.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/eventosConfirmados'"
-                  >Eventos Confirmados</a
-                >
+                  >Eventos Confirmados
+                </a>
               </div>
             </li>
 
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/high-five.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/listaDeAmigos'"
-                  >Lista de Amigos</a
-                >
+                  >Lista de Amigos
+                </a>
               </div>
             </li>
 
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/mapa.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/geolocalizacao'"
-                  >Geolocalização</a
-                >
+                  >Geolocalização
+                </a>
               </div>
             </li>
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/feedback-do-cliente.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/feedbacksUsuario'"
-                  >Feedbacks</a
-                >
+                  >Feedbacks
+                </a>
               </div>
             </li>
           </ul>
@@ -91,54 +91,58 @@
           <ul ngbAccordionBody class="divAccordionBody navbar-nav">
             <li class="nav-item">
               <div class="divComponenteDoBotao">
-                <img class="tagIcon" src="../../../assets/add2.png" alt="" />
+                <img
+                  class="tagIcon filterDropShadow"
+                  src="../../../assets/add2.png"
+                  alt=""
+                />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/criarEvento'"
-                  >Criar Evento</a
-                >
+                  >Criar Evento
+                </a>
               </div>
             </li>
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/coworking.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/eventosAnunciados'"
-                  >Eventos Anunciados</a
-                >
+                  >Eventos Anunciados
+                </a>
               </div>
             </li>
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/feedback-do-cliente.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/feedbacks'"
-                  >Feedbacks</a
-                >
+                  >Feedbacks
+                </a>
               </div>
             </li>
             <li class="nav-item">
               <div class="divComponenteDoBotao">
                 <img
-                  class="tagIcon"
+                  class="tagIcon filterDropShadow"
                   src="../../../assets/restrictPlaceUser/estatisticas.png"
                   alt=""
                 />
                 <a
                   class="styleButtonsNavBar"
                   [routerLink]="'/principal/areaUsuario/estatisticas'"
-                  >Estatísticas</a
-                >
+                  >Estatísticas
+                </a>
               </div>
             </li>
           </ul>
@@ -147,28 +151,24 @@
     </div>
 
     <!-- CONFIGURAÇÕES -->
-    <div class="tagConfig divComponenteDoBotao" style="padding: 0.5rem 1rem">
-      <img
-        class="tagIconG"
-        src="../../../assets/restrictPlaceUser/settings.png"
-        alt=""
-      />
+    <div class="tagConfig divComponenteDoBotao" style="cursor: pointer">
+      <img class="tagIconM" src="../../../assets/configuracao22.png" alt="" />
       <a
-        class="styleButtons btn nav-item active"
+        class="p-1 styleButtonsNavBar tagTitulo"
         [routerLink]="'/principal/areaUsuario/configuracoes'"
-        >Configurações</a
-      >
+        >Configurações
+      </a>
     </div>
 
     <!-- SAIR -->
-    <div class="tagSair divComponenteDoBotao" style="padding: 0.5rem 1rem">
+    <!-- <div class="tagSair divComponenteDoBotao" style="padding: 0.5rem 1rem">
       <img
         class="tagIconG"
         src="../../../assets/restrictPlaceUser/sair.png"
         alt=""
       />
       <a class="styleButtons btn nav-item active" (click)="logout()">Sair</a>
-    </div>
+    </div> -->
   </div>
 
   <!-- Conteúdo do Menu -->

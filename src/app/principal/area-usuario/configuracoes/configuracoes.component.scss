@@ -1,0 +1,27 @@
+@import "padroes";
+
+.divBody {
+  padding: 1rem;
+}
+
+.divPlane {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.divButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.tagButton {
+  width: 10rem;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+  }
+}
