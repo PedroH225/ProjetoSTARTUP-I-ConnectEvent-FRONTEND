@@ -1,18 +1,64 @@
 @import "padroes";
 
-.tagImg {
-  border-radius: 2rem 0.5rem;
-  padding: 0 0.1rem;
-  width: 21rem;
-  height: 13rem;
+.divBody {
+  margin: 2rem 0 2rem 0;
+  border: 3px solid purple;
 
-  background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90rem;
+  height: 20rem;
+}
+
+// CLASSES TEM AMIGOS -----------------------------------------
+
+.divTemAmigos {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  height: 5rem;
+  z-index: 100;
 }
 
 .tagImgEstrelaTemAmigos {
   width: 3rem;
   border: 3px solid $CONNECTEVENT-cor-branco;
   border-radius: 50%;
+}
+
+// FIM CLASSES TEM AMIGOS ------------------------------------
+
+.divCarousel {
+  width: 100%;
+  height: 20rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.divTitulo {
+  background-color: rgba(0, 0, 0, 0.088);
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 0;
+}
+
+.tagImg {
+  // width: auto;
+  // height: 100%;
+  background-position: center;
+}
+
+.divInformacoes {
+  background-color: rgba(0, 0, 0, 0.088);
+
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }

@@ -7,19 +7,17 @@ import { EventosService } from '../../../../services/eventos.service';
   styleUrl: './carousel-destaque.component.scss',
 })
 export class CarouselDestaqueComponent {
-  eventosDestaque : any[] = []
+  eventosDestaque: any[] = [];
+  imagemEventoUrl: string[] = [];
 
-  constructor(
-    private eventoServico : EventosService
-  ) {}
+  constructor(private eventoServico: EventosService) {}
 
   ngOnInit(): void {
     this.eventoServico.getEventosDestaque().subscribe(
       (eventos) => {
         this.eventosDestaque = eventos;
       },
-    (error) => {
-
-    })
+      (error) => {}
+    );
   }
 }
