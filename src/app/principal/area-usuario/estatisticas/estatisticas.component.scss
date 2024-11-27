@@ -16,18 +16,19 @@
 
 .divDivisoria {
   width: 45%;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 .divFiltro {
-  border: 1px solid blue;
+  border: 1px solid $CONNECTEVENT-cor-branco;
   box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 2rem;
   margin: 1rem;
+  padding: 1rem;
   width: 30rem;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 }
@@ -49,6 +50,11 @@
 }
 
 .informacoesDosDadosFiltrados {
-  border: 1px solid red;
+  // border: 1px solid red;
   padding: 1rem;
+}
+
+.botao {
+  padding: 0.5rem;
+  border-radius: 0.6rem;
 }
