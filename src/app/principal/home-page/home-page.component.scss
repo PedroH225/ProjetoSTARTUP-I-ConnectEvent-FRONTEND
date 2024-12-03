@@ -12,7 +12,7 @@
   //   $CONNECTEVENT-cor-cinza-mid 70%,
   //   $CONNECTEVENT-cor-cinza-light 100%
   // );
-  background: url(../../../assets/pexels-magda-ehlers-pexels-3575827.jpg); //$CONNECTEVENT-cor-cinza-mid;
+  background: url(../../../assets/testesWallpaper/13294929_5155699.jpg); //$CONNECTEVENT-cor-cinza-mid;
   background-repeat: repeat;
   background-position: center;
   background-size: cover;
@@ -25,7 +25,7 @@
 .divFiltro {
   position: sticky;
   top: 0; /* Define o ponto em que o elemento se "gruda" ao rolar */
-  z-index: 10; /* Para manter o filtro acima de outros elementos */
+  z-index: 101; /* Para manter o filtro acima de outros elementos */
   background-color: white; /* Evita que o conteúdo por trás fique visível */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona um sombreamento sutil */
 }
@@ -36,12 +36,6 @@
   height: 3rem;
 }
 
-.divCarousel1 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .divCarousel2 {
   border: 3px solid blue;
   width: 15rem;
@@ -49,9 +43,9 @@
 }
 
 .divCards {
-  border: 1px solid red;
+  // border: 1px solid red;
   margin: 0;
-  padding: 5rem 0.5rem;
+  padding: 2rem 0.5rem;
   width: 100%;
 
   display: flex;

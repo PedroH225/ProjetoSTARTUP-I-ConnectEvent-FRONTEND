@@ -1,8 +1,8 @@
-<div class="divBody">
-  <ngb-carousel>
-    <ng-template ngbSlide *ngFor="let evento of eventosDestaque; let i = index">
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let evento of eventosDestaque; let i = index">
+    <div class="divCorpoCarousel">
       <!-- TEM AMIGOS -->
-      <div style="display: none" class="divTemAmigos">
+      <div class="divTemAmigos">
         <ng-container *ngIf="evento.participantes.length > 0">
           <img
             class="tagImgEstrelaTemAmigos"
@@ -16,37 +16,30 @@
       </div>
       <!-- FIM TEM AMIGOS -->
 
-      <div
-        class="divCarousel"
-        [ngStyle]="{ 'background-image': 'url(' + evento.fotos[0].foto + ')' }"
-      >
-        <div class="divTitulo">
-          <p>{{ evento.titulo }}</p>
-        </div>
-
-        <img
-          class="tagImg"
-          [src]="'http://localhost:3000/uploads/' + evento.fotos[0].foto"
-          alt="Foto"
-        />
-
-        <div class="divInformacoes">
-          <p>Explore esse event{{ evento.tipo }}</p>
-
-          <p>
-            {{ evento.endereco.bairro }}, {{ evento.endereco.cidade }} ({{
-              evento.endereco.estado
-            }})
-          </p>
-
-          <button
-            class="p-1 text-center"
-            [routerLink]="['/principal/cardPage', evento.id]"
-          >
-            Ir ao Evento
-          </button>
-        </div>
+      <div class="divTitulo">
+        <p>{{ evento.titulo }}</p>
       </div>
-    </ng-template>
-  </ngb-carousel>
-</div>
+
+      <img
+        class="tagImg"
+        [src]="'http://localhost:3000/uploads/' + evento.fotos[0].foto"
+        alt="Foto"
+      />
+
+      <!-- <div class="divInformacoes">
+        <p>Tipo de evento: {{ evento.tipo }}</p>
+
+        <p>
+          Localização: {{ evento.endereco.bairro }},
+          {{ evento.endereco.cidade }} ({{ evento.endereco.estado }})
+        </p>
+      </div> -->
+      <button
+        class="botaoCarousel text-center"
+        [routerLink]="['/principal/cardPage', evento.id]"
+      >
+        Ir ao Evento
+      </button>
+    </div>
+  </ng-template>
+</ngb-carousel>
