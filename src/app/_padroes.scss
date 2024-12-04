@@ -52,10 +52,45 @@ $detalhe-borda-hover-light: $CONNECTEVENT-cor-dourado-light;
 .BotaoTabelaCONNECTEVENT {
   padding: 0 0.5rem;
   border-radius: 1rem;
-  border: 2px solid black;
-  color: white;
-  background-color: grey;
+  border: 2px solid $CONNECTEVENT-cor-branco;
+  color: $CONNECTEVENT-cor-branco;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  transition: 0.5s;
+
+  &:hover{
+    background-color: $CONNECTEVENT-cor-branco;
+    color: $CONNECTEVENT-cor-preto;
+    border: 2px solid $CONNECTEVENT-cor-preto;
+    box-shadow: 0px 0px 5px $CONNECTEVENT-cor-branco;
+  }
 }
+
+// ESTILIZAÇÃO DA PAGINAÇÃO
+::ng-deep .page-item.active .page-link {
+  background-color: $CONNECTEVENT-cor-cinza-dark; // Nova cor de fundo para o item ativo
+  color: $CONNECTEVENT-cor-branco; // Cor do texto no item ativo
+}
+
+::ng-deep .page-item .page-link {
+  background-color: $CONNECTEVENT-cor-cinza-mid; // Cor de fundo das setas
+  color: $CONNECTEVENT-cor-branco;              // Cor das setas
+  border-color: $CONNECTEVENT-cor-cinza-low-dark; // Cor da borda
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-dourado-light; // Cor de fundo no hover
+    color: $CONNECTEVENT-cor-preto;                    // Cor da seta no hover
+    border-color: $CONNECTEVENT-cor-dourado;           // Borda no hover
+  }
+}
+
+::ng-deep .page-item.disabled .page-link {
+  background-color: $CONNECTEVENT-cor-cinza-dark; // Cor de fundo para setas desabilitadas
+  color: $CONNECTEVENT-cor-cinza-light;          // Cor para setas desabilitadas
+  border-color: $CONNECTEVENT-cor-cinza-mid;     // Borda para setas desabilitadas
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+// FIM DA ESTILIZAÇÃO DA PAGINAÇÃO
 
 .herancaCoresTabela {
   margin-top: 15px;
@@ -68,13 +103,26 @@ $detalhe-borda-hover-light: $CONNECTEVENT-cor-dourado-light;
 }
 
 .herancaCoresTabela > thead > tr > th {
-  background-color: rgb(53, 16, 53);
-  color: white;
+  background-color: $CONNECTEVENT-cor-dourado;
+  color: $CONNECTEVENT-cor-preto;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .herancaCoresTabela > tbody > tr > td {
-  background-color: rgb(255, 238, 255);
+  background-color: $CONNECTEVENT-cor-branco;
+}
+
+// Linhas Ímpares
+.herancaCoresTabela > tbody > tr:nth-child(odd) > td {
+  background-color: $CONNECTEVENT-cor-cinza-dark; // Cor para linhas ímpares
+  color: $CONNECTEVENT-cor-branco;
+}
+
+// Linhas Paras
+.herancaCoresTabela > tbody > tr:nth-child(even) > td {
+  background-color: $CONNECTEVENT-cor-cinza-mid; // Cor para linhas pares
+  color: $CONNECTEVENT-cor-branco;
 }
 
 .styleButtonsNavBar {

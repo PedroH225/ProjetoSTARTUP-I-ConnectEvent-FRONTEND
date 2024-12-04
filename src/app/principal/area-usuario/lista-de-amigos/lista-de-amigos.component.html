@@ -3,7 +3,7 @@
   <div class="divGeralComTodasAsListas">
     <!-- Lista dos SEUS Amigos -->
     <div class="divListaEsquerdaSeusAmigos">
-      <table class="mb-2 table table-striped">
+      <table class="herancaCoresTabela mb-2 table table-striped">
         <thead>
           <tr>
             <th scope="col">Nº</th>
@@ -18,7 +18,7 @@
             </td>
             <td>{{ amigo.nome }}</td>
             <td>
-              <button (click)="visualizarParticipados(amigo.id, content)">
+              <button class="BotaoTabelaCONNECTEVENT" (click)="visualizarParticipados(amigo.id, content)">
                 Eventos Participados
               </button>
             </td>
@@ -93,7 +93,7 @@
       <!-- Pedidos Pendentes -->
       <div class="divPedidosPendentes">
         <h2>Pedidos Pendentes</h2>
-        <table class="mb-2 table table-striped">
+        <table class="herancaCoresTabela mb-2 table table-striped">
           <thead>
             <tr>
               <th scope="col">Nº</th>
@@ -125,7 +125,7 @@
       <!-- Pedidos Recebidos -->
       <div class="divPedidosRecebidos">
         <h2>Pedidos Recebidos</h2>
-        <table class="mb-2 table table-striped">
+        <table class="herancaCoresTabela mb-2 table table-striped">
           <thead>
             <tr>
               <th scope="col">Nº</th>
@@ -140,8 +140,8 @@
               </td>
               <td>{{ amigo.nome }}</td>
               <td>
-                <button (click)="aceitarPedido(amigo.id)">Aceitar</button>
-                <button (click)="excluirPedido(amigo.id)">Excluir</button>
+                <button class="BotaoTabelaCONNECTEVENT" (click)="aceitarPedido(amigo.id)">Aceitar</button>
+                <button class="BotaoTabelaCONNECTEVENT" (click)="excluirPedido(amigo.id)">Excluir</button>
               </td>
             </tr>
           </tbody>
