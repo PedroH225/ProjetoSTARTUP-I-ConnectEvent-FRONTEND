@@ -50,14 +50,14 @@ $detalhe-borda-hover-light: $CONNECTEVENT-cor-dourado-light;
 // ----------------------------- Botões das Tabelas -----------------------------
 // ------------------------------------------------------------------------------
 .BotaoTabelaCONNECTEVENT {
-  padding: 0 0.5rem;
+  padding: 0.1rem 1rem;
   border-radius: 1rem;
   border: 2px solid $CONNECTEVENT-cor-branco;
   color: $CONNECTEVENT-cor-branco;
   background-color: $CONNECTEVENT-cor-cinza-dark;
   transition: 0.5s;
 
-  &:hover{
+  &:hover {
     background-color: $CONNECTEVENT-cor-branco;
     color: $CONNECTEVENT-cor-preto;
     border: 2px solid $CONNECTEVENT-cor-preto;
@@ -73,20 +73,20 @@ $detalhe-borda-hover-light: $CONNECTEVENT-cor-dourado-light;
 
 ::ng-deep .page-item .page-link {
   background-color: $CONNECTEVENT-cor-cinza-mid; // Cor de fundo das setas
-  color: $CONNECTEVENT-cor-branco;              // Cor das setas
+  color: $CONNECTEVENT-cor-branco; // Cor das setas
   border-color: $CONNECTEVENT-cor-cinza-low-dark; // Cor da borda
 
   &:hover {
     background-color: $CONNECTEVENT-cor-dourado-light; // Cor de fundo no hover
-    color: $CONNECTEVENT-cor-preto;                    // Cor da seta no hover
-    border-color: $CONNECTEVENT-cor-dourado;           // Borda no hover
+    color: $CONNECTEVENT-cor-preto; // Cor da seta no hover
+    border-color: $CONNECTEVENT-cor-dourado; // Borda no hover
   }
 }
 
 ::ng-deep .page-item.disabled .page-link {
   background-color: $CONNECTEVENT-cor-cinza-dark; // Cor de fundo para setas desabilitadas
-  color: $CONNECTEVENT-cor-cinza-light;          // Cor para setas desabilitadas
-  border-color: $CONNECTEVENT-cor-cinza-mid;     // Borda para setas desabilitadas
+  color: $CONNECTEVENT-cor-cinza-light; // Cor para setas desabilitadas
+  border-color: $CONNECTEVENT-cor-cinza-mid; // Borda para setas desabilitadas
   cursor: not-allowed;
   opacity: 0.5;
 }

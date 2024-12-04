@@ -15,7 +15,7 @@
         </select>
       </div>
     </form>
-    <table class="mb-2 table table-striped">
+    <table class="herancaCoresTabela mb-2 table table-striped">
       <thead>
         <tr class="tagCabecalhoTabela">
           <th scope="col">ID</th>
@@ -36,7 +36,7 @@
           <td>{{ evento.horario }}</td>
           <td>
             <button
-              class="btnsDaTabela"
+              class="BotaoTabelaCONNECTEVENT"
               [routerLink]="['/principal/cardPage', evento.id]"
             >
               Visualizar
@@ -44,14 +44,17 @@
           </td>
           <td>
             <button
-              class="btnsDaTabela"
+              class="BotaoTabelaCONNECTEVENT"
               [routerLink]="['/principal/areaUsuario/editarEvento', evento.id]"
             >
               Editar
             </button>
           </td>
           <td>
-            <button class="btnsDaTabela" (click)="excluirEvento(evento.id)">
+            <button
+              class="BotaoTabelaCONNECTEVENT"
+              (click)="excluirEvento(evento.id)"
+            >
               Excluir
             </button>
           </td>
@@ -64,7 +67,7 @@
             >
               <ng-container *ngIf="isEventoInFuture(evento); else passado">
                 <button
-                  class="btnsDaTabela"
+                  class="BotaoTabelaCONNECTEVENT"
                   (click)="anunciarEvento(evento.id)"
                 >
                   Anunciar
