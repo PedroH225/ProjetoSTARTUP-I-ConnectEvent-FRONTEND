@@ -7,12 +7,12 @@
 }
 
 .divBody {
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  height: 100%;
 }
 
 .tagTitulo {
@@ -20,12 +20,62 @@
 }
 
 .divGeralComTodasAsListas {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divTabelas {
+  width: 100%;
+
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+}
+
+.divInputAddAmigos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
+  // border: 1px solid red;
+}
+
+.formAddAmigo {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: $CONNECTEVENT-cor-cinza-mid;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-branco;
+  color: $CONNECTEVENT-cor-branco;
+
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.divBoxAdicionarAmigos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tagInputAmigo {
+  border-radius: 20px;
+  padding: 0 1rem;
+}
+
+#amizadeErro {
+  height: 15px;
 }
 
 .divListaEsquerdaSeusAmigos,
@@ -33,7 +83,6 @@
   padding: 1rem;
   height: 100%;
   width: 100%;
-  box-shadow: 0px 0px 5px black;
   border-radius: 1rem;
 }
 
@@ -52,38 +101,12 @@
   gap: 2rem;
 }
 
-.divInputAddAmigos {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-}
-
-.formAddAmigo {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  flex-direction: row;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.divBoxAdicionarAmigos {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-}
-
 .divPedidosPendentes {
   width: 100%;
   border-radius: 1rem;
-  box-shadow: 0px 0px 5px black;
 }
 
 .divPedidosRecebidos {
   width: 100%;
   border-radius: 1rem;
-  box-shadow: 0px 0px 5px black;
 }

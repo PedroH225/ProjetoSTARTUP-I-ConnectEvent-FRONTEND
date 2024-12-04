@@ -1,0 +1,22 @@
+@import "padroes";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.divBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.divFeedbacks {
+  padding: 30px;
+  width: 50rem;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0px 0px 15px $CONNECTEVENT-cor-cinza-mid;
+  text-align: center;
+}

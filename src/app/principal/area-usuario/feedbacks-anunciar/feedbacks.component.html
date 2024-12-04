@@ -1,5 +1,7 @@
-<div>
+<div class="divBody">
+  <div class="divFeedbacks">
     <h1>Feedbacks eventos anunciados</h1>
+    <br />
     <label class="pb-2" for="estado">Selecione o evento</label>
     <div ngbDropdown>
       <select
@@ -8,22 +10,29 @@
         [(ngModel)]="selectedEvento"
         (change)="getFeedbacksEvento(selectedEvento)"
       >
-        <option *ngFor="let evento of eventos" [value]="evento.id">
+        <option
+          class="text-center"
+          *ngFor="let evento of eventos"
+          [value]="evento.id"
+        >
           {{ evento.titulo }}
         </option>
       </select>
     </div>
-
-    <ng-container *ngIf="selectedEvento && feedbacks.length > 0; else semFeedbacks">
-        <div *ngFor="let feedback of feedbacks">
-            <p>{{ feedback.usuario.nome }}</p>
-            <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />           
-            <p>{{ feedback.comentario }}</p>
-            <p>{{ feedback.data }}</p>
-        </div>
+    <br />
+    <ng-container
+      *ngIf="selectedEvento && feedbacks.length > 0; else semFeedbacks"
+    >
+      <div *ngFor="let feedback of feedbacks">
+        <p>{{ feedback.usuario.nome }}</p>
+        <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />
+        <p>{{ feedback.comentario }}</p>
+        <p>{{ feedback.data }}</p>
+      </div>
     </ng-container>
 
     <ng-template #semFeedbacks>
-        <h2 *ngIf="selectedEvento">O evento selecionado não possui feedbacks.</h2>
+      <h2 *ngIf="selectedEvento">O evento selecionado não possui feedbacks.</h2>
     </ng-template>
+  </div>
 </div>

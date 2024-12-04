@@ -1,59 +1,83 @@
-<h1>Seus Feedbacks</h1>
-<ng-container *ngIf="feedbacks.length > 0; else semFeedbacks">
-    <div *ngFor="let feedback of feedbacks">
-        <p>{{ feedback.evento.titulo }}</p>
-        <p>{{ feedback.usuario.nome }}</p>
-        <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />           
-         <p>{{ feedback.comentario }}</p>
-         <p>{{ feedback.data }}</p>
-         <button type="submit" class="btn btn-success" (click)="openAddFeedbackModal(feedback.id)">Editar</button>
-         <button type="submit" class="btn btn-danger" (click)="excluirFeedback(feedback.id)">Excluir</button>
+<div class="divBody">
+  <div class="divFeedbacks">
+    <h1>Feedbacks Realizados</h1>
+    <br />
+    <hr />
+    <br />
+    <ng-container *ngIf="feedbacks.length > 0; else semFeedbacks">
+      <div *ngFor="let feedback of feedbacks">
+        <div class="divInformacoesFeedbacks">
+          <p>{{ feedback.evento.titulo }}</p>
+          <p>{{ feedback.usuario.nome }}</p>
+          <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />
+          <p>{{ feedback.comentario }}</p>
+          <p>{{ feedback.data }}</p>
         </div>
-</ng-container>
+        <div class="divBotoes">
+          <button
+            type="submit"
+            class="btnEditar"
+            (click)="openAddFeedbackModal(feedback.id)"
+          >
+            Editar
+          </button>
 
-<ng-template #semFeedbacks>
-    <h2>Você não fez nenhum feedback.</h2>
-</ng-template>
-
-<ng-template #editFeedback let-modal>
-    <div class="modal-header">
-      <h5 class="modal-title">Editar feedback</h5>
-      <button
-        type="button"
-        class="close"
-        aria-label="Close"
-        (click)="modal.dismiss()"
-      ></button>
-    </div>
-    <div class="modal-body">
-      <form
-        #form="ngForm"
-        (ngSubmit)="editarFeedback(modal)"
-      >
-        <div class="form-group">
-          <label for="comentario">Comentário</label>
-          <input
-            type="text"
-            id="nome"
-            class="form-control"
-            [(ngModel)]="comentario"
-            name="comentario"
-            required
-          />
+          <button
+            type="submit"
+            class="btnExcluir"
+            (click)="excluirFeedback(feedback.id)"
+          >
+            Excluir
+          </button>
         </div>
+        <br />
+        <hr />
+        <br />
+      </div>
+    </ng-container>
 
-        <div class="form-group">
-          <label for="nota">Nota</label>
-          <ngb-rating [(rate)]="nota" required />
-        </div>
+    <ng-template #semFeedbacks>
+      <h2>Você não fez nenhum feedback.</h2>
+    </ng-template>
 
+    <ng-template #editFeedback let-modal>
+      <div class="modal-header">
+        <h5 class="modal-title">Editar feedback</h5>
         <button
-          type="submit"
-          class="btn btn-success"
-          [disabled]="!form.valid"
-        >
-          Enviar
-        </button>
-      </form>
-    </div>
-  </ng-template>
+          type="button"
+          class="close"
+          aria-label="Close"
+          (click)="modal.dismiss()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" (ngSubmit)="editarFeedback(modal)">
+          <div class="form-group">
+            <label for="comentario">Comentário</label>
+            <input
+              type="text"
+              id="nome"
+              class="form-control"
+              [(ngModel)]="comentario"
+              name="comentario"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="nota">Nota</label>
+            <ngb-rating [(rate)]="nota" required />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-success"
+            [disabled]="!form.valid"
+          >
+            Enviar
+          </button>
+        </form>
+      </div>
+    </ng-template>
+  </div>
+</div>

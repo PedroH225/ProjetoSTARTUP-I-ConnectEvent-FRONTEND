@@ -162,18 +162,18 @@
 }
 
 .btnConfirmarPresenca {
-  background-color: rgb(5, 5, 60);
+  background-color: $CONNECTEVENT-cor-azul-escuro;
   color: white;
   &:hover {
-    background-color: rgb(7, 7, 35);
+    background-color: $CONNECTEVENT-cor-azul-escuro-deep;
   }
 }
 
 .btnRetirarPresenca {
-  background-color: rgb(57, 10, 10);
+  background-color: $CONNECTEVENT-cor-vermelho-escuro;
   color: white;
   &:hover {
-    background-color: rgb(42, 8, 8);
+    background-color: $CONNECTEVENT-cor-vermelho-escuro-deep;
   }
 }
 
