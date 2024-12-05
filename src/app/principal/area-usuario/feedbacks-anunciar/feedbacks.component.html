@@ -20,14 +20,14 @@
       </select>
     </div>
     <br />
-    <ng-container
+    <ng-container 
       *ngIf="selectedEvento && feedbacks.length > 0; else semFeedbacks"
     >
-      <div *ngFor="let feedback of feedbacks">
-        <p>{{ feedback.usuario.nome }}</p>
-        <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />
-        <p>{{ feedback.comentario }}</p>
-        <p>{{ feedback.data }}</p>
+      <div class="divComentarioFeedback" *ngFor="let feedback of feedbacks">
+        <ngb-rating class="mb-1" [max]="5" [(rate)]="feedback.nota" [readonly]="true" />
+        <p class="mb-1">{{ feedback.usuario.nome }}</p>
+        <p class="mb-1">{{ feedback.comentario }}</p>
+        <p class="mb-1">{{ feedback.data }}</p>
       </div>
     </ng-container>
 

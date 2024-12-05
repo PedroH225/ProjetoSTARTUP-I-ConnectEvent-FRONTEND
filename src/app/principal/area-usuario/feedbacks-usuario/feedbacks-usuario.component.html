@@ -9,7 +9,7 @@
         <div class="divInformacoesFeedbacks">
           <p>{{ feedback.evento.titulo }}</p>
           <p>{{ feedback.usuario.nome }}</p>
-          <ngb-rating [(rate)]="feedback.nota" [readonly]="true" />
+          <ngb-rating [max]="5" [(rate)]="feedback.nota" [readonly]="true" />
           <p>{{ feedback.comentario }}</p>
           <p>{{ feedback.data }}</p>
         </div>
