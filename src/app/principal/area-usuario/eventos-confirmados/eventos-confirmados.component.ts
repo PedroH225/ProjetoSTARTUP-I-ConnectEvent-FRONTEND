@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UsuarioService } from '../../../../services/usuario.service';
 import { FeedbackService } from '../../../../services/feedback.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-eventos-confirmados',
@@ -80,34 +81,22 @@ export class EventosConfirmadosComponent {
     );
   }
 
-  getEventosSemFiltro(): void {
-    this.usuarioService.getEventosParticipando().subscribe(
-      (responseFuturos: any[]) => {
-        const eventosFuturos = responseFuturos; 
-
-        this.eventos = [...eventosFuturos];
-        this.collectionSize = this.eventos.length; 
-        this.refreshPaginatedEventos(); 
+  async getEventosSemFiltro() {
+    this.eventos = []; // Limpa os eventos antes de buscar novamente
+  
+    // Usando forkJoin para combinar as chamadas de API assíncronas
+    forkJoin({
+      eventosFuturos: this.usuarioService.getEventosParticipando(),
+      eventosOcorridos: this.usuarioService.getEventosParticipandoOcorridos()
+    }).subscribe(
+      ({ eventosFuturos, eventosOcorridos }) => {
+        // Combina os dois arrays sem duplicação
+        this.eventos = [...eventosFuturos, ...eventosOcorridos];
+        this.collectionSize = this.eventos.length;
+        this.refreshPaginatedEventos(); // Atualiza os eventos paginados
       },
       (error: Error) => {
-        console.error('Erro ao buscar eventos futuros:', error);
-      }
-    );
-    // Busca os eventos passados
-    this.usuarioService.getEventosParticipandoOcorridos().subscribe(
-      (responseOcorridos: any[]) => {
-        const eventosOcorridos = responseOcorridos; 
-        
-        eventosOcorridos.forEach(ocorrido => {
-          this.eventos.push(ocorrido);
-        });
-
-        this.collectionSize = this.eventos.length; 
-        this.refreshPaginatedEventos();
-        
-      },
-      (error: Error) => {
-        console.error('Erro ao buscar eventos passados:', error);
+        console.error('Erro ao buscar eventos:', error);
       }
     );
   }
