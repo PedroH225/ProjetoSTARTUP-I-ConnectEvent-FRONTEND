@@ -41,12 +41,11 @@ export class ListaDeAmigosComponent implements OnInit {
     if (this.newFriendEmail) {
       this.amizadeService.enviarPedidoAmizade(this.newFriendEmail).subscribe(
         (response) => {
-          console.log(response);
           this.newFriendEmail = ''; // Limpa o campo após enviar
           this.refreshPendentes(); // Recarrega a lista de amigos
           alert("Pedido de amizade enviado.")
         },
-        (error) => {
+        (error) => {          
           listarErrosAmizade(error)
         }
       );
