@@ -50,7 +50,14 @@ export class ConfiguracoesComponent {
   }
 
   loadWallpapers() {
-    this.wallpapers = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg'];
+    this.wallpapers = [
+      'default.jpg',
+      '1.jpg',
+      '2.jpg',
+      '3.jpg',
+      '4.jpg',
+      '5.jpg',
+    ];
   }
 
   changeWallpaper() {
