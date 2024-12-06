@@ -198,6 +198,7 @@
             aria-label="Close"
             (click)="modalWallpaper.dismiss()"
           >
+          
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -206,7 +207,7 @@
         <div class="modal-body">
           <form
             #form="ngForm"
-            (ngSubmit)="onSubmitAlterarWallpaper(wallpaperModal)"
+           
           >
             <div class="form-group">
               <select
@@ -225,6 +226,12 @@
                 </option>
               </select>
             </div>
+            <button 
+            class="btn btn-primary mt-2"
+            (click)="modalWallpaper.dismiss()"
+            >
+              Fechar
+            </button>
           </form>
         </div>
       </ng-template>

@@ -61,14 +61,21 @@ export class ConfiguracoesComponent {
   }
 
   changeWallpaper() {
-    const newWallpaper = `assets/wallpapers/${this.selectedWallpaper}`;
-    this.wallpaperService.updateWallpaper(newWallpaper);
-  }
+    const payload = {
+      wallpaper: this.selectedWallpaper
+    };
 
-  onSubmitAlterarWallpaper(modal: any) {
-    const newWallpaper = `assets/wallpapers/${this.selectedWallpaper}`;
-    this.wallpaperService.updateWallpaper(newWallpaper); // Atualiza o wallpaper no serviço
-    modal.close();
+    // Enviando o payload ao backend
+    this.usuarioService.editarUsuario(payload).subscribe(
+      (response) => {
+        this.usuario = response;
+        const newWallpaper = `assets/wallpapers/${this.usuario.wallpaper}`;
+        this.wallpaperService.updateWallpaper(newWallpaper);
+      },
+      (error) => {
+      }
+    );
+    
   }
 
   carregarUsuario() {
@@ -82,6 +89,7 @@ export class ConfiguracoesComponent {
         this.genero = usuario.genero;
         this.estado = usuario.estado;
         this.cidade = usuario.cidade;
+        this.selectedWallpaper = usuario.wallpaper
       },
       (error) => {
         console.log(error);
@@ -123,6 +131,7 @@ export class ConfiguracoesComponent {
       genero: this.genero,
       estado: this.estado,
       cidade: this.cidade,
+      wallpaper: this.selectedWallpaper
     };
 
     // Enviando o payload ao backend

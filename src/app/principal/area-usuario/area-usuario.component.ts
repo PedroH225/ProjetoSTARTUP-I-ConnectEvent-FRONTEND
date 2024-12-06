@@ -6,6 +6,7 @@ import {
   NgbAccordionModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { WallpaperService } from '../../../../src/services/wallpaper.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-area-usuario',
@@ -13,18 +14,30 @@ import { WallpaperService } from '../../../../src/services/wallpaper.service';
   styleUrl: './area-usuario.component.scss',
 })
 export class AreaUsuarioComponent implements OnInit {
-  wallpaperUrl: string = 'assets/wallpapers/default.jpg';
+  wallpaperUrl: string = '';
+
+  usuario !: any;
 
   constructor(
     private autenticacaoService: AutenticacaoService,
     private router: Router,
     private wallpaperService: WallpaperService,
+    private usuarioService: UsuarioService,
     config: NgbAccordionConfig
   ) {
     config.closeOthers = true;
   }
 
   ngOnInit() {
+    this.usuarioService.getUsuarioById().subscribe(
+      (response) => {
+        this.usuario = response;
+        this.wallpaperUrl = `assets/wallpapers/${this.usuario.wallpaper}`
+      },
+    (error) => {
+      
+    });
+
     this.wallpaperService.currentWallpaper.subscribe(
       (wallpaper) => (this.wallpaperUrl = wallpaper)
     );
