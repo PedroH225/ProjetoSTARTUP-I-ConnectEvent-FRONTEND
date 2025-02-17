@@ -9,6 +9,7 @@ Para executar o projeto, é necessário:
 - Instalação do Angular CLI globalmente;
 - [Executar o Backend do Projeto](https://github.com/VictorAlexandreMuller/Projeto_STARTUP-I-ConnectEvent-BACKEND)
 
+## Execução
 1. **Clone o repositório**:
   - Abra o terminal do GitBash no diretório desejado e digite os comandos:
    ```bash
