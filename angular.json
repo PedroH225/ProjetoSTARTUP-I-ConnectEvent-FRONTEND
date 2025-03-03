@@ -61,7 +61,7 @@
                   "maximumError": "150kb"
                 },
                 {
-                  "type": "inlineCSS",
+                  "type": "all",
                   "maximumWarning": "100kb",
                   "maximumError": "150kb"
                 }
