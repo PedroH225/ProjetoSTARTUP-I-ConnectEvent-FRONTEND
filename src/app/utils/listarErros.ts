@@ -135,7 +135,7 @@ export function listarErrosAmizade(erro: any) {
     alert.textContent = erro.error.mensagem;
 
 
-    if (erro.error.tipo === "amizadeErro") {
+    if (erro.error.campo === "amizadeErro") {
       amizadeErroDiv.appendChild(alert);
 
     } else {
