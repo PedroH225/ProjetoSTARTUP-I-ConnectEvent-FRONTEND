@@ -1,7 +1,6 @@
 @import "padroes";
 
 .divPai {
-  background: url(../../../assets/2pexels-edotommo99-3249760.jpg);
   background-size: cover;
 
   padding: 0.5rem;
@@ -13,16 +12,18 @@
 .divCartaoDoEvento {
   opacity: 90%;
   border-radius: 1rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-dark;
 
-  background-color: $background-HomePage;
+  background-color: $CONNECTEVENT-cor-branco-mid;
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  width: 70%;
+  max-width: 90%;
+  width: 80rem;
+
   height: 100%;
   padding: 1rem;
 }
@@ -54,13 +55,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80rem;
 }
 
-.tagImagem {
+.divEntreDivImgEtagImg {
+  padding: 1rem 0 0 0;
+  width: 80rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Altera a cor das setas do carousel para preto
+::ng-deep .carousel-control-prev-icon,
+::ng-deep .carousel-control-next-icon {
+  filter: brightness(0) saturate(100%) invert(0) sepia(0) saturate(7500%)
+    hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+.tagImg {
   border-radius: 5rem;
-  max-width: 100%;
-  width: 40rem;
+  width: 50rem;
+  height: 30rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-dark;
 }
 
 .divDetalhesEvento {
@@ -68,17 +90,28 @@
   flex-direction: row;
   align-items: start;
   justify-content: center;
-  gap: 6rem;
+  gap: 3rem;
 
   width: 100%;
   padding: 2rem 4rem;
 }
 
 .detalhesEsquerda {
+  width: 60%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divDescricaoEvento {
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-mid;
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
-  width: 60%;
+  max-width: 100%;
+  width: 40rem;
+  min-height: 10rem;
 
   display: flex;
   flex-direction: column;
@@ -86,10 +119,68 @@
   gap: 2rem;
 }
 
+.divDosAmigosImagemElistagem {
+  width: 30rem;
+  max-width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-mid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagImgEstrelaTemAmigos {
+  width: 3rem;
+  border: 2px solid white;
+  box-shadow: 0px 0px 5px black;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.divBotaoConfirmarRetirarPresenca {
+  max-width: 100%;
+}
+
+.btnConfirmarPresenca,
+.btnRetirarPresenca {
+  max-width: 100%;
+  width: 12rem;
+  font-size: 1rem;
+  border-radius: 1rem;
+  padding: 1rem;
+  transition: 0.3s ease;
+  border: 2px solid white;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-mid;
+
+  &:hover {
+    width: 15rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+}
+
+.btnConfirmarPresenca {
+  background-color: $CONNECTEVENT-cor-azul-escuro;
+  color: white;
+  &:hover {
+    background-color: $CONNECTEVENT-cor-azul-escuro-deep;
+  }
+}
+
+.btnRetirarPresenca {
+  background-color: $CONNECTEVENT-cor-vermelho-escuro;
+  color: white;
+  &:hover {
+    background-color: $CONNECTEVENT-cor-vermelho-escuro-deep;
+  }
+}
+
 .detalhesDireita {
   padding: 2rem;
   border-radius: 10px;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-mid;
   width: 40%;
 
   display: flex;
@@ -102,6 +193,7 @@
 .alinharLinhaCentro {
   padding: 0.5rem;
   width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -111,7 +203,7 @@
 .cardsDataLocalTelefone {
   padding: 0.5rem;
   border-radius: 10px;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-mid;
   width: 100%;
   display: flex;
   align-items: center;
@@ -126,12 +218,12 @@
   flex-direction: row;
   gap: 1rem;
 
-  color: $cor-Texto-e-BordaBotao-card;
+  color: $CONNECTEVENT-cor-branco-light-gelo;
   border: none;
 
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }

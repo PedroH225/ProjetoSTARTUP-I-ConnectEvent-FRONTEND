@@ -1,0 +1,38 @@
+<div class="divBody">
+  <div class="divFeedbacks">
+    <h1>Feedbacks Recebidos</h1>
+    <br />
+    <label class="pb-2" for="estado">Selecione o evento</label>
+    <div ngbDropdown>
+      <select
+        name="cidade"
+        class="w-100 select form-control-lg"
+        [(ngModel)]="selectedEvento"
+        (change)="getFeedbacksEvento(selectedEvento)"
+      >
+        <option
+          class="text-center"
+          *ngFor="let evento of eventos"
+          [value]="evento.id"
+        >
+          {{ evento.titulo }}
+        </option>
+      </select>
+    </div>
+    <br />
+    <ng-container 
+      *ngIf="selectedEvento && feedbacks.length > 0; else semFeedbacks"
+    >
+      <div class="divComentarioFeedback" *ngFor="let feedback of feedbacks">
+        <ngb-rating class="corNgbRating mb-1" [max]="5" [(rate)]="feedback.nota" [readonly]="true" />
+        <p class="mb-1">{{ feedback.usuario.nome }}</p>
+        <p class="mb-1">{{ feedback.comentario }}</p>
+        <p class="mb-1">{{ feedback.data }}</p>
+      </div>
+    </ng-container>
+
+    <ng-template #semFeedbacks>
+      <h2 *ngIf="selectedEvento">O evento selecionado não possui feedbacks.</h2>
+    </ng-template>
+  </div>
+</div>

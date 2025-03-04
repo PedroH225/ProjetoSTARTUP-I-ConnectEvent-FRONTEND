@@ -1,0 +1,17 @@
+<ngb-carousel>
+		<ng-template ngbSlide *ngFor="let evento of eventosRandom; let i = index">
+
+            <div class="divTemAmigos">
+                <ng-container *ngIf="evento.participantes.length > 0">
+                  <img class="tagImgEstrelaTemAmigos" src="../../../../assets/amigos.png" alt="temAmigos" placement="top"
+                    ngbPopover="Um de seus amigos está participando deste evento" triggers="hover" />
+                </ng-container>
+              </div>
+              
+                <p>{{ evento.titulo }}</p>		
+                <p>{{ evento.tipo }}</p>
+                <p>{{ evento.endereco.bairro }}, {{ evento.endereco.cidade }} ({{ evento.endereco.estado }})</p>
+                <img [src]="'http://localhost:3000/uploads/' + evento.fotos[0].foto" alt="Foto">
+                <button [routerLink]="['/principal/cardPage', evento.id]">Ir ao Evento</button>		
+            </ng-template>
+</ngb-carousel>

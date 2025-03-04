@@ -20,6 +20,20 @@ import { FormsModule } from '@angular/forms';
 import { CardPageComponent } from './principal/card-page/card-page.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { EsqueceuSenhaComponent } from './principal/esqueceu-senha/esqueceu-senha.component';
+import { CriarEventoComponent } from './principal/area-usuario/criar-evento/criar-evento.component';
+import { EventosAnunciadosComponent } from './principal/area-usuario/eventos-anunciados/eventos-anunciados.component';
+import { FeedbacksComponent } from './principal/area-usuario/feedbacks-anunciar/feedbacks.component';
+import { EstatisticasComponent } from './principal/area-usuario/estatisticas/estatisticas.component';
+import { EventosConfirmadosComponent } from './principal/area-usuario/eventos-confirmados/eventos-confirmados.component';
+import { ListaDeAmigosComponent } from './principal/area-usuario/lista-de-amigos/lista-de-amigos.component';
+import { ConfiguracoesComponent } from './principal/area-usuario/configuracoes/configuracoes.component';
+import { ImageUploaderComponent } from './principal/area-usuario/criar-evento/image-uploader/image-uploader.component';
+import { GeolocalizacaoComponent } from './principal/area-usuario/geolocalizacao/geolocalizacao.component';
+import { GoogleMap, GoogleMapsModule } from '@angular/google-maps';
+import { FeedbacksUsuarioComponent } from './principal/area-usuario/feedbacks-usuario/feedbacks-usuario.component';
+import { CarouselRandomComponent } from './principal/home-page/carousel-random/carousel-random.component';
+import { CarouselDestaqueComponent } from './principal/home-page/carousel-destaque/carousel-destaque.component';
 
 @NgModule({
   declarations: [
@@ -34,9 +48,23 @@ import { HttpClientModule } from '@angular/common/http';
     CardComponent,
     FilterComponent,
     CardPageComponent,
+    EsqueceuSenhaComponent,
+    CriarEventoComponent,
+    EventosAnunciadosComponent,
+    FeedbacksComponent,
+    EstatisticasComponent,
+    EventosConfirmadosComponent,
+    ListaDeAmigosComponent,
+    ConfiguracoesComponent,
+    ImageUploaderComponent,
+    GeolocalizacaoComponent,
+    FeedbacksUsuarioComponent,
+    CarouselRandomComponent,
+    CarouselDestaqueComponent,
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,

@@ -1,32 +1,232 @@
-/* Padrões utilizados no projeto */
+// ------------------------------------------------------------------------------
+// ---------------------- Padrões utilizados no projeto -------------------------
+// ------------------------------------------------------------------------------
 
-/* NavBar e Footer */
-$cor-bordas-NavBarFooter: wheat;
-$cor-sombra-NavBarFooter: 0px 0px 10px rgb(176, 176, 176); // direita sul brilho
-$background-NavBarFooter: #2b2b2b;
-$background-NavBarFooter2: #303030;
-$cor-Texto-e-BordaBotao-NavBarFooter: #dea521;
-$cor-Hover-Botao-NavBarFooter: #353535;
-$cor-Texto-e-Bordas-active-Botao-NavBarFooter: #5b5b5b;
-/* Lembrando que os icones das Redes Sociais devem ser confeccionados em Photoshop */
+// ------------------------------------------------------------------------------
+// --------------------------------- Fontes -------------------------------------
+// ------------------------------------------------------------------------------
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-/* Outros */
-$cor-checkedBox: 0px 0px 7px black;
+// ------------------------------------------------------------------------------
+// -------------------------------- Dark Mode -----------------------------------
+// ------------------------------------------------------------------------------
+$CONNECTEVENT-cor-cinza-light: #b0b0b0;
+$CONNECTEVENT-cor-cinza-low-mid: #7c7c7c;
+$CONNECTEVENT-cor-cinza-mid: #353535;
+$CONNECTEVENT-cor-cinza-low-dark: #303030;
+$CONNECTEVENT-cor-cinza-dark: #2b2b2b;
+$CONNECTEVENT-cor-preto: black;
 
-/* Home Page // Login // Register */
-/* Default */
-$background-HomePage: #e2e2e2; // background geral, atrás dos cards
-/* Cards */
-$cor-Titulo-Card: #212121;
-$cor-Texto-Card: #2c2c2c;
-$background-active-Botao-Card: #5b5b5b;
-$background-Card: #bdbdbd;
-$background-Botao-card: #2b2b2b;
-$background-hover-Botao-card: #404040;
-$cor-Texto-e-BordaBotao-card: #efefef;
-$cor-Bordas-Card: none; // rgb(57, 57, 57);
-$detalhe-Sombra-BordasCard: 0px 0px 10px rgb(132, 132, 132); // direita sul brilho
+// ------------------------------------------------------------------------------
+// -------------------------------- Light Mode ----------------------------------
+// ------------------------------------------------------------------------------
+// Apenas as duas primeiras cores são confirmadas
+$CONNECTEVENT-cor-branco: white;
+$CONNECTEVENT-cor-branco-light-gelo: #efefef;
 
-/* Home Pages Especiais */
+// Light Mode não confirmado
+$CONNECTEVENT-cor-branco-mid: #cfcfcf;
+$CONNECTEVENT-cor-branco-dark: #aeaeae;
 
-//
+// ------------------------------------------------------------------------------
+// ---------------------------------- Cores -------------------------------------
+// ------------------------------------------------------------------------------
+// ----- Cores CONNECTEVENT -----
+$CONNECTEVENT-cor-dourado-light: wheat;
+$CONNECTEVENT-cor-dourado: #dea521;
+$CONNECTEVENT-cor-limao: #eaf587;
+
+$CONNECTEVENT-cor-vermelho-light: #d18686;
+$CONNECTEVENT-cor-vermelho-escuro: rgb(57, 10, 10);
+$CONNECTEVENT-cor-vermelho-escuro-deep: rgb(42, 8, 8);
+
+$CONNECTEVENT-cor-azul-light: rgb(160, 160, 243);
+$CONNECTEVENT-cor-azul-escuro: rgb(5, 5, 60);
+$CONNECTEVENT-cor-azul-escuro-deep: rgb(7, 7, 35);
+
+// ------------------------------------------------------------------------------
+// --------------------------------- Detalhes -----------------------------------
+// ------------------------------------------------------------------------------
+// --------- Obrigatoriamente os detalhes devem estar abaixo das cores ----------
+// ------------------------------------------------------------------------------
+$detalhe-borda-especial: $CONNECTEVENT-cor-dourado-light;
+$detalhe-borda-normal: $CONNECTEVENT-cor-dourado;
+
+$detalhe-borda-hover-light: $CONNECTEVENT-cor-dourado-light;
+
+// ------------------------------------------------------------------------------
+// ----------------------------- Botões das Tabelas -----------------------------
+// ------------------------------------------------------------------------------
+.ngtemplate {
+  padding: 1rem;
+  text-align: center;
+}
+
+.ngtemplate .escolhoVoce {
+  background-color: $CONNECTEVENT-cor-azul-light;
+  color: $CONNECTEVENT-cor-preto;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-azul-escuro;
+    color: $CONNECTEVENT-cor-branco;
+  }
+}
+
+.corNgbRating {
+  color: $CONNECTEVENT-cor-dourado;
+  font-size: 3rem;
+  // filter: drop-shadow(0px 0px 18px $CONNECTEVENT-cor-preto);
+}
+
+
+.BotaoTabelaCONNECTEVENT {
+  padding: 0.1rem 1rem;
+  border-radius: 1rem;
+  border: 2px solid $CONNECTEVENT-cor-branco;
+  color: $CONNECTEVENT-cor-branco;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-branco;
+    color: $CONNECTEVENT-cor-preto;
+    border: 2px solid $CONNECTEVENT-cor-preto;
+    box-shadow: 0px 0px 5px $CONNECTEVENT-cor-branco;
+  }
+}
+
+// ESTILIZAÇÃO DA PAGINAÇÃO
+::ng-deep .page-item.active .page-link {
+  background-color: $CONNECTEVENT-cor-cinza-dark; // Nova cor de fundo para o item ativo
+  color: $CONNECTEVENT-cor-branco; // Cor do texto no item ativo
+}
+
+::ng-deep .page-item .page-link {
+  background-color: $CONNECTEVENT-cor-cinza-mid; // Cor de fundo das setas
+  color: $CONNECTEVENT-cor-branco; // Cor das setas
+  border-color: $CONNECTEVENT-cor-cinza-low-dark; // Cor da borda
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-dourado-light; // Cor de fundo no hover
+    color: $CONNECTEVENT-cor-preto; // Cor da seta no hover
+    border-color: $CONNECTEVENT-cor-dourado; // Borda no hover
+  }
+}
+
+::ng-deep .page-item.disabled .page-link {
+  background-color: $CONNECTEVENT-cor-cinza-dark; // Cor de fundo para setas desabilitadas
+  color: $CONNECTEVENT-cor-cinza-light; // Cor para setas desabilitadas
+  border-color: $CONNECTEVENT-cor-cinza-mid; // Borda para setas desabilitadas
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+// FIM DA ESTILIZAÇÃO DA PAGINAÇÃO
+
+.herancaCoresTabela {
+  margin-top: 15px;
+  width: 100%;
+  overflow: hidden;
+  border-collapse: separate;
+  -webkit-border-radius: 1.5rem;
+  -moz-border-radius: 1.5rem;
+  border-radius: 1.5rem;
+}
+
+.herancaCoresTabela > thead > tr > th {
+  background-color: $CONNECTEVENT-cor-dourado;
+  color: $CONNECTEVENT-cor-preto;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.herancaCoresTabela > tbody > tr > td {
+  background-color: $CONNECTEVENT-cor-branco;
+}
+
+// Linhas Ímpares
+.herancaCoresTabela > tbody > tr:nth-child(odd) > td {
+  background-color: $CONNECTEVENT-cor-cinza-dark; // Cor para linhas ímpares
+  color: $CONNECTEVENT-cor-branco;
+}
+
+// Linhas Paras
+.herancaCoresTabela > tbody > tr:nth-child(even) > td {
+  background-color: $CONNECTEVENT-cor-cinza-mid; // Cor para linhas pares
+  color: $CONNECTEVENT-cor-branco;
+}
+
+.styleButtonsNavBar {
+  color: $detalhe-borda-normal;
+  padding: 0.7rem 2rem;
+  width: 10rem;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  position: relative; // Necessário para posicionar o pseudo-elemento
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; // Posiciona o pseudo-elemento na parte inferior
+    left: 50%; // Começa no centro
+    width: 0;
+    height: 3px; // Altura desejada para a "borda"
+    background-color: $detalhe-borda-normal;
+    transition: all 0.3s ease-out; // Controle a duração e o timing
+    transform: translateX(-50%);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+// Mixin para tema claro
+// @mixin light-theme {
+//   background-color: $CONNECTEVENT-cor-branco-mid;
+//   color: $CONNECTEVENT-cor-branco-mid;
+
+//   a {
+//     color: $CONNECTEVENT-cor-branco-mid;
+//   }
+
+//   button {
+//     background-color: $CONNECTEVENT-cor-branco-mid;
+//     color: $CONNECTEVENT-cor-branco-mid;
+
+//   }
+// }
+
+// Mixin para tema escuro
+// @mixin dark-theme {
+//   background-color: $CONNECTEVENT-cor-preto;
+//   color: $CONNECTEVENT-cor-preto;
+
+//   a {
+//     color: $CONNECTEVENT-cor-preto;
+//   }
+
+//   button {
+//     background-color: $CONNECTEVENT-cor-preto;
+//     color: $CONNECTEVENT-cor-preto;
+
+//   }
+// }
+
+// Estilos Globais
+// body {
+//   // Tema claro padrão
+//   @include light-theme;
+
+//   // Quando a classe 'dark' for adicionada ao body, aplica o tema escuro
+//   &.dark-theme {
+//     @include dark-theme;
+//   }
+
+//   @media (prefers-color-scheme: dark-theme) {
+//     @include dark-theme;
+//   }
+
+// }

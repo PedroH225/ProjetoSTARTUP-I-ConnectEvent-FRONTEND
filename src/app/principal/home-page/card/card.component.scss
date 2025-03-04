@@ -1,56 +1,96 @@
 @import "padroes";
 
-.borderCard {
-  border: none;
-  box-shadow: $detalhe-Sombra-BordasCard;
-  width: 25rem;
+.divBody {
+  cursor: default;
+  border: 2px solid $CONNECTEVENT-cor-branco;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
+  width: 23rem;
+  height: auto;
+  position: relative;
+  background-color: $CONNECTEVENT-cor-cinza-light;
+  border-radius: 3rem 0.5rem;
+  padding: 0rem 1rem 2rem 1rem;
 
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.1s ease-in-out;
 
   &:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 25px $cor-Texto-e-BordaBotao-NavBarFooter;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 25px $detalhe-borda-hover-light;
   }
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: $background-Card;
-  border-radius: 0.6rem;
-  padding: 1rem;
+.divTemAmigos {
+  position: absolute;
+  top: -5%;
+  right: -5%;
+  height: 5rem;
+  z-index: 100;
 }
 
-.alinhamentoCard {
-  margin-top: 1rem;
+.tagImgEstrelaTemAmigos {
+  width: 3rem;
+  border: 3px solid $CONNECTEVENT-cor-branco;
+  border-radius: 50%;
+}
+
+.infoCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+  z-index: 0;
+}
+
+.divCarousel {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 2rem;
+  justify-content: center;
+
+  height: 15rem;
 }
 
 .tagImg {
-  border-radius: 0.6rem;
+  border-radius: 2rem 0.5rem;
+  padding: 0 0.1rem;
+  width: 21rem;
+  height: 13rem;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+// Altera a cor das setas do carousel para preto
+::ng-deep .carousel-control-prev-icon,
+::ng-deep .carousel-control-next-icon {
+  filter: brightness(0) saturate(100%) invert(0) sepia(0) saturate(7500%)
+    hue-rotate(0deg) brightness(0%) contrast(100%);
+  display: none;
+}
+
+.tagTitulo {
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  color: $CONNECTEVENT-cor-cinza-dark;
+  font-weight: bold;
+
+  height: 4rem;
+  width: 100%;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-align: center;
 }
 
 .styleButtons {
-  color: $cor-Texto-e-BordaBotao-card;
+  color: $CONNECTEVENT-cor-branco-light-gelo;
   border: none;
   width: 10rem;
 
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
-}
-
-.card-title {
-  color: $cor-Titulo-Card;
-}
-
-.card-text {
-  color: $cor-Texto-Card;
 }

@@ -1,0 +1,112 @@
+@import "padroes";
+
+* {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.divBody {
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagTitulo {
+  margin: 0.5rem 0 1rem 0;
+}
+
+.divGeralComTodasAsListas {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divTabelas {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.divInputAddAmigos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  // border: 1px solid red;
+}
+
+.formAddAmigo {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: $CONNECTEVENT-cor-cinza-mid;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-branco;
+  color: $CONNECTEVENT-cor-branco;
+
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.divBoxAdicionarAmigos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tagInputAmigo {
+  border-radius: 20px;
+  padding: 0 1rem;
+}
+
+#amizadeErro {
+  height: 15px;
+}
+
+.divListaEsquerdaSeusAmigos,
+.divListaDireitaAddPendentesErecebidos {
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.divListaEsquerdaSeusAmigos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.divListaDireitaAddPendentesErecebidos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.divPedidosPendentes {
+  width: 100%;
+  border-radius: 1rem;
+}
+
+.divPedidosRecebidos {
+  width: 100%;
+  border-radius: 1rem;
+}

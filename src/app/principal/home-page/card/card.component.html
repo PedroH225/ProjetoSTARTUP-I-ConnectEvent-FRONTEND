@@ -1,17 +1,34 @@
-<div class="borderCard card">
-  <img
-    src="../../../../assets/2pexels-edotommo99-3249760.jpg"
-    class="tagImg card-img-top"
-    alt="Card image cap"
-  />
-  <div class="alinhamentoCard card-body">
-    <h5 class="card-title">{{ titulo }}</h5>
-    <p class="infosCard card-text">
-      Categoria: {{ tipo }}
-      <br />
-      Local: {{ bairro }}, {{ cidade }}/{{ estado }}
-    </p>
+<div class="divBody">
+  <!-- SELO DO AMIGO -->
+  <div class="divTemAmigos">
+    <ng-container *ngIf="participantes.length > 0">
+      <img
+        class="tagImgEstrelaTemAmigos"
+        src="../../../../assets/amigos.png"
+        alt="temAmigos"
+        placement="top"
+        ngbPopover="Um de seus amigos está participando deste evento"
+        triggers="hover"
+      />
+    </ng-container>
+  </div>
+  <!-- Fim SELO DO AMIGO -->
 
+  <div class="infoCard">
+    <div class="divCarousel">
+      <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
+        <ng-template ngbSlide *ngFor="let img of imagemUrls; let i = index">
+          <img
+            class="tagImg d-block"
+            [src]="img"
+            alt="Imagem do evento {{ i + 1 }}"
+          />
+        </ng-template>
+      </ngb-carousel>
+    </div>
+    <h4 class="tagTitulo text-center">{{ titulo }}</h4>
+    <p class="text-center">{{ tipo }}</p>
+    <p class="text-center">{{ bairro }}, {{ cidade }} ({{ estado }})</p>
     <a
       href="#"
       class="styleButtons btn btn-primary"

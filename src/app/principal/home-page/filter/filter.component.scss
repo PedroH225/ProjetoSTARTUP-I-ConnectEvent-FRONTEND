@@ -1,26 +1,50 @@
 @import "padroes";
 
-.divFiltros {
-  margin-top: 1rem;
-
+.divBody {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+
+  padding: 1rem 0 0.7rem 0;
+  border-bottom: 3px solid $detalhe-borda-especial;
+  box-shadow: 0px 15px 15px -10px $CONNECTEVENT-cor-cinza-low-dark; // Aplica apenas na parte de baixo
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+}
+
+.divFormDePesquisaCampoEbotao {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputPesquisa {
+  border-radius: 1rem;
+  padding: 0 1rem;
+}
+
+.divFiltros {
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
 }
 
 .styleButtons {
-  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
+  border: 1px solid $detalhe-borda-normal;
   border-radius: 1rem;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
+  color: $detalhe-borda-normal;
 
   padding: 0.2rem;
   width: 10rem;
   appearance: none; /* Remove a seta padrão no Chrome, Safari, etc. */
 
   &:hover {
-    background-color: $cor-Hover-Botao-NavBarFooter;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }
 
@@ -32,5 +56,5 @@
 
 .cidade-dropdown {
   max-height: 150px; /* Altura máxima da lista (ajustável) */
-  overflow-y: auto;  /* Ativa a barra de rolagem vertical */
+  overflow-y: auto; /* Ativa a barra de rolagem vertical */
 }

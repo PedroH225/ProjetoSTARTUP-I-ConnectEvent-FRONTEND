@@ -1,41 +1,51 @@
-<nav class="navbar navbar-expand navbar-light bg-body-tertiary">
-  <div class="container-fluid tagDivComposta">
-    <a class="navbar-brand" [routerLink]="'/principal/homePage'"
-      ><img class="tagImg" src="../../assets/connectEventSemFundo.png" alt="" />
-    </a>
-
-    <!-- <div class="divHamburguer">
-      <button
-        class="navbar-toggler"
-        type="button"
-        (click)="isMenuCollapsed = !isMenuCollapsed"
-        aria-controls="navbarNav"
-        aria-expanded="!isMenuCollapsed"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-
-    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
-      <ul class="tagListaBotao navbar-nav">
-        <li class="nav-item">
-          <a
-            class="styleButtons btn nav-item active"
-            [routerLink]="'/principal/login'"
-            (click)="isMenuCollapsed = true"
-            >Login</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="styleButtons btn nav-item active"
-            [routerLink]="'/principal/register'"
-            (click)="isMenuCollapsed = true"
-            >Register</a
-          >
-        </li>
+<nav class="divNavBar navbar-expand">
+  <a class="tituloCONNECTEVENT" [routerLink]="'/principal/homePage'">
+    CONNECTEVENT
+  </a>
+  <!-- Mexer nesse botão algum dia -->
+  <button style="display: none" (click)="toggleTheme()">Alterar Tema</button>
+  <!-- Div responsável por transformar botão em Menu Hamburguer -->
+  <!-- Colocar ngIf -->
+  <div class="divBotoes">
+    <!-- Botões Login/Registro OU ÁreaUsuário/Logout -->
+    <div class="collapse navbar-collapse" [ngbCollapse]="isMenuCollapsed">
+      <ul class="listaBotao navbar-nav">
+        <ng-container *ngIf="!(autenticacao$ | async)">
+          <!-- Verifica se a autenticação é falsa -->
+          <li class="nav-item">
+            <a
+              class="styleButtonsNavBar"
+              [routerLink]="'/principal/login'"
+              (click)="isMenuCollapsed = true"
+            >
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="styleButtonsNavBar"
+              [routerLink]="'/principal/register'"
+              (click)="isMenuCollapsed = true"
+              >Register</a
+            >
+          </li>
+        </ng-container>
+        <ng-container *ngIf="autenticacao$ | async">
+          <!-- Verifica se a autenticação é verdadeira -->
+          <li class="nav-item">
+            <a
+              class="styleButtonsNavBar"
+              [routerLink]="'/principal/areaUsuario'"
+              >Área do usuário</a
+            >
+          </li>
+          <li class="nav-item">
+            <a (click)="logout()" class="tagSair styleButtonsNavBar">Logout</a>
+          </li>
+        </ng-container>
       </ul>
-      <!-- </div> -->
     </div>
+    <!-- DIV DO MENU HAMBURGUER -->
+    <div></div>
   </div>
 </nav>

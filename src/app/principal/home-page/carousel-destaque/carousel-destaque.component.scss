@@ -1,0 +1,106 @@
+@import "padroes";
+
+// CLASSES TEM AMIGOS -----------------------------------------
+.divTemAmigos {
+  position: absolute;
+  // top: 0;
+  // right: 2.5%;
+  bottom: 13%;
+  height: 5rem;
+  // z-index: 100;
+}
+
+.tagImgEstrelaTemAmigos {
+  margin: 1rem;
+  width: 3rem;
+  border: 3px solid $CONNECTEVENT-cor-branco;
+  border-radius: 50%;
+}
+// FIM CLASSES TEM AMIGOS ------------------------------------
+
+.divCorpoCarousel {
+  border: 3px solid $CONNECTEVENT-cor-branco;
+  border-radius: 20px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+  width: 90rem; // não colocar, se não o icone de amigo quebra, arrumar algum dia
+  max-width: 95%;
+
+  height: 35rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tagImg {
+  width: 100%;
+}
+
+// CLASSES DE TEXTOS NO CAROUSEL -------------------------------------
+.divTitulo {
+  padding: 0.5rem 5rem;
+  border-bottom: 3px solid white;
+  border-top: 3px solid white;
+  color: $CONNECTEVENT-cor-branco;
+  text-align: center;
+  font-weight: bold;
+  width: auto;
+  height: 48px;
+  cursor: default;
+
+  text-transform: uppercase;
+
+  background: linear-gradient(
+    90deg,
+    #00000000 0%,
+    $CONNECTEVENT-cor-cinza-low-dark 20%,
+    $CONNECTEVENT-cor-cinza-dark 50%,
+    $CONNECTEVENT-cor-cinza-dark 80%,
+    #00000000 100%
+  );
+
+  position: absolute;
+  top: 3%;
+}
+
+.divInformacoes {
+  padding: 1rem 1.5rem;
+  border: 3px solid white;
+  border-radius: 10px;
+  background-color: $CONNECTEVENT-cor-cinza-low-mid;
+  color: $CONNECTEVENT-cor-branco;
+  text-align: center;
+  width: auto;
+  cursor: default;
+
+  position: absolute;
+  bottom: 20%;
+}
+
+.botaoCarousel {
+  padding: 0.5rem 1rem;
+  border: 3px solid white;
+  border-radius: 10px;
+  background-color: $CONNECTEVENT-cor-cinza-low-mid;
+  color: $CONNECTEVENT-cor-branco;
+
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+
+  // Torna o meio do Botão o fator centralizador para o left 50%
+  transform: translate(-50%, 0%);
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-cinza-dark;
+  }
+
+  &:active {
+    background-color: $CONNECTEVENT-cor-preto;
+  }
+}
+// FIM DE CLASSES DE TEXTOS NO CAROUSEL -----------------------------

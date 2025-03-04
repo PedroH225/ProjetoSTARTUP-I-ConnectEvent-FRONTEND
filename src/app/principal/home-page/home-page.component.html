@@ -1,34 +1,36 @@
 <div class="backgroundPrincipal">
-  <nav
-    class="divFiltrosNavBar navbar-expand-lg navbar-light"
-    [ngClass]="isCollapsed ? 'collapsed' : 'expanded'"
-  >
-    <div class="divIconeEFiltros">
-      <a class="mb-2" [routerLink]="'.'" (click)="toggleFiltro()">
-        <img class="tagIcon" src="../../../assets/filtro.png" alt="filtro" />
-      </a>
-      <div
-        #collapse="ngbCollapse"
-        [(ngbCollapse)]="isCollapsed"
-        [ngClass]="{ collapsed: isCollapsed, expanded: !isCollapsed }"
-      >
-        <div class="mb-3 card-body">
-          <app-filter (eventosFiltrados)="atualizarEventos($event)"></app-filter>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- Filtro -->
+  <div class="divFiltro mb-3 card-body">
+    <app-filter (eventosFiltrados)="atualizarEventos($event)"></app-filter>
+  </div>
+  <!-- Fim Filtro -->
 
-  <div class="divCards">
-    <app-card
-      *ngFor="let evento of eventos"
-      [titulo]="evento.titulo"
-      [descricao]="evento.descricao"
-      [id]="evento.id"
-      [tipo]="evento.tipo"
-      [bairro]="evento.endereco.bairro"
-      [cidade]="evento.endereco.cidade"
-      [estado]="evento.endereco.estado"
-    ></app-card>
+  <!-- Carousel Destaques -->
+  <app-carousel-destaque></app-carousel-destaque>
+  <!-- Fim Carousel -->
+
+  <div class="d-flex">
+    <!-- Carousel Lateral Esquerda -->
+    <!-- <div class="divCarousel2">
+      <app-carousel-random></app-carousel-random>
+    </div> -->
+    <!-- Fim Carousel Lateral Esquerda -->
+
+    <!-- Cards -->
+    <div class="divCards">
+      <app-card
+        *ngFor="let evento of eventos"
+        [fotos]="evento.fotos"
+        [titulo]="evento.titulo"
+        [descricao]="evento.descricao"
+        [id]="evento.id"
+        [tipo]="evento.tipo"
+        [bairro]="evento.endereco.bairro"
+        [cidade]="evento.endereco.cidade"
+        [estado]="evento.endereco.estado"
+        [participantes]="evento.participantes"
+      ></app-card>
+    </div>
+    <!-- Fim Cards -->
   </div>
 </div>

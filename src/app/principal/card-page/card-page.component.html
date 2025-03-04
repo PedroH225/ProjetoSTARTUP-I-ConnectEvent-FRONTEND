@@ -1,20 +1,71 @@
-<div class="divPai">
+<div
+  class="divPai"
+  [ngStyle]="{ 'background-image': 'url(' + imagemEventoUrl[0] + ')' }"
+>
   <div class="divCartaoDoEvento">
     <div class="centralizar">
       <div class="divImagem">
-        <img
-          class="tagImagem"
-          src="../../../assets/2pexels-edotommo99-3249760.jpg"
-          alt=""
-        />
+        <ngb-carousel [interval]="0" [keyboard]="true" [pauseOnHover]="true">
+          <ng-template
+            ngbSlide
+            *ngFor="let img of imagemEventoUrl; let i = index"
+          >
+            <div class="divEntreDivImgEtagImg picsum-img-wrapper">
+              <img
+                [src]="img"
+                alt="Imagem do evento {{ i + 1 }}"
+                class="tagImg d-block"
+              />
+            </div>
+            <div class="carousel-caption">
+              <!-- <p>Imagem {{ i + 1 }} de {{ imagemEventoUrl.length }}</p> -->
+            </div>
+          </ng-template>
+        </ngb-carousel>
       </div>
       <div class="divDetalhesEvento" *ngIf="evento">
         <div class="detalhesEsquerda">
-          <div class="w-100 text-center">
-            <h1>{{ evento.titulo }}</h1>
-            <h5>{{ evento.tipo }}</h5>
+          <div class="divDescricaoEvento">
+            <div class="w-100 text-center">
+              <h1>{{ evento.titulo }}</h1>
+              <h5>{{ evento.tipo }}</h5>
+            </div>
+            <p>{{ evento.descricao }}</p>
           </div>
-          <p>{{ evento.descricao }}</p>
+
+          <div
+            class="divDosAmigosImagemElistagem"
+            *ngIf="evento.participantes.length > 0"
+          >
+            <img
+              class="tagImgEstrelaTemAmigos"
+              src="../../../assets/amigos.png"
+              alt=""
+            />
+            <p *ngFor="let participante of evento.participantes">
+              {{ participante.nome }}
+            </p>
+          </div>
+
+          <div class="divBotaoConfirmarRetirarPresenca">
+            <button
+              class="btnConfirmarPresenca"
+              *ngIf="!desabilitarBotao && (autenticacao$ | async)"
+              [disabled]="desabilitarBotao"
+              (click)="participar()"
+            >
+              Confirmar Presença
+            </button>
+            <button
+              class="btnRetirarPresenca"
+              for="presenca"
+              *ngIf="desabilitarBotao && (autenticacao$ | async)"
+              [disabled]="!desabilitarBotao"
+              (click)="removerParticipar()"
+            >
+              Retirar Presença
+            </button>
+          </div>
         </div>
         <div class="detalhesDireita">
           <div class="cardsDataLocalTelefone">
@@ -57,14 +108,16 @@
             </div>
             <p>{{ evento.telefone }}</p>
           </div>
-          <button class="styleButtons btn btn-primary">
+          <a class="styleButtons btn btn-primary"
+          href="{{evento.link}}"
+          >
             <img
               class="tagIcon"
               src="../../../assets/card-page/external-linkCOLOR.png"
               alt=""
             />
             Click para Link do Evento
-          </button>
+        </a>
         </div>
       </div>
     </div>

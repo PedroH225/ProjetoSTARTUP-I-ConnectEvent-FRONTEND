@@ -1,55 +1,22 @@
 @import "padroes";
 
-.divExterna {
+.divBody {
   padding: 2rem 0rem;
-  background-color: $background-HomePage;
-}
-
-.tamanhoRegistreSe {
-  color: rgb(102, 102, 102);
-  font-size: 2rem;
-}
-
-.divForm3 {
-  // border: 1px solid red;
-  // padding: 1.5rem 0 1.5rem 0;
-  margin: 0 0 1rem 0;
-  // box-shadow: $detalhe-Sombra-BordasCard;
-  // width: 30%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.botaoUsuario,
-.botaoAnunciante {
-  background-color: $background-Botao-card;
-  transition: background-color 0.3s ease;
-
-  input[type="radio"] {
-    // display: none;
-  }
-
-  &.active {
-    background-color: $background-active-Botao-Card;
-  }
-}
-
-.divPrincipalDosForms {
-  padding: 1rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
+  background-color: $CONNECTEVENT-cor-cinza-mid;
 }
 
 .displaySectionForm {
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
   border-radius: 5px;
   padding: 1rem;
-  width: 70%;
+  width: 70rem;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+label {
+  color: $CONNECTEVENT-cor-branco;
 }
 
 .divPrincipal2 {
@@ -58,22 +25,49 @@
   align-items: center;
   justify-content: center;
   gap: 5rem;
+
+  @media screen and (max-width: 80rem) {
+    gap: 0rem;
+  }
 }
 
 .fotoCadastro {
-  height: 35rem;
   width: 35rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  height: 35rem;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 10%;
+
+  @media screen and (max-width: 80rem) {
+    display: none;
+  }
 }
 
-.divCabecalhoUsuarioOuAnunciante {
+.divCabecalho {
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 1.5rem;
+}
 
-  padding: 0rem 0rem 3rem 0rem;
+.tamanhoRegistreSe {
+  background: linear-gradient(
+    to right,
+    $detalhe-borda-normal,
+    $CONNECTEVENT-cor-limao
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-family: system-ui;
+  font-size: 2rem;
+}
+
+.divTituloEimagemEconteudoInputsForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .tagIconConnectEvent {
@@ -85,43 +79,33 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
-.gradient-custom {
-  /* fallback for old browsers */
-
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to bottom right);
-
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to bottom right);
-}
-
-.card-registration .select-input.form-control[readonly]:not([disabled]) {
-  font-size: 1rem;
-  line-height: 2.15;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-}
-
-.card-registration .select-arrow {
-  top: 13px;
+.div1 {
+  width: 100%;
 }
 
 .tagButtonEnviar {
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-light;
+  color: $CONNECTEVENT-cor-preto;
+  font-weight: bold;
   border: none;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-low-mid;
   }
 
   &:active {
-    background-color: $background-active-Botao-Card;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+    color: $CONNECTEVENT-cor-branco;
   }
 }
 
-// .divTeste {
-//   width: 30rem;
-//   height: 30rem;
-// }
+.divErro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}

@@ -1,42 +1,55 @@
 @import "padroes";
 
-.divPanorama {
-  width: 100%;
+* {
+  margin: 0;
+  padding: 0;
+}
 
+.divBody {
   display: flex;
   flex-direction: row;
-}
 
-.divEsquerda {
-  // border: 2px solid black;
-  width: 15%;
-  padding: 2rem 0 2rem 0;
-}
-
-.divCentral {
-  width: 70%;
-  min-height: 40rem;
-}
-
-.divDireita {
-  // border: 2px solid greenyellow;
-  width: 15%;
-  padding: 2rem 0 2rem 0;
-}
-
-.divBaixo {
-  // border: 2px solid purple;
-  padding: 2rem;
   width: 100%;
+  // background: url(../../../assets/wallpapers/wallpaperflare.com_wallpaper7.jpg);
+  background-size: cover;
+  background-repeat: none;
+  background-position: center;
+}
 
+.divMenuLateral {
+  margin: 1rem 0.5rem 1rem 1rem;
+  width: 19rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  gap: 1rem;
+}
+
+.divConteudoMenu {
+  width: 100%;
+  min-width: 50vw;
+  min-height: 40rem;
+  // REVER A TAG ABAIXO
+  backdrop-filter: blur(10px);
+}
+
+.divBorda {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 1rem;
+  // REVER A TAG ABAIXO
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
 }
 
 .tagIconG {
   width: 3rem;
   height: 3rem;
+}
+
+.tagIconM {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .tagIcon {
@@ -45,100 +58,107 @@
   height: 2rem;
 }
 
-.tagTitulo {
-  font-size: 1.5rem;
+.filterDropShadow {
+  filter: drop-shadow(0px 0px 5px $CONNECTEVENT-cor-branco);
 }
 
-.centralizarEsquerdaEdireita {
-  // border: 1px solid red;
+.tagTitulo {
+  font-size: 1.5rem;
+  color: $CONNECTEVENT-cor-branco;
+}
 
+.divAccordion {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.divAccordionItem {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  text-decoration: none;
 }
 
-.divCabecalho {
-  // border: 1px solid purple;
-  padding: 0.3rem;
-  border-radius: 1rem;
-  box-shadow: 0px 5px 10px $background-NavBarFooter2;
-  width: 16rem;
+.divAccordionHeader {
+  width: 100%;
+}
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+// Propriedades AccordionButton
+[ngbAccordionButton] {
+  border: none;
+  box-shadow: none;
+  color: $CONNECTEVENT-cor-branco;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  padding: 1rem;
 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+  }
 }
 
-.divListaBotoesEsquerdaEdireita {
-  // border: 1px solid red;
+// Propriedades AccordionItem
+[ngbAccordionItem] {
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  border: none;
+}
+
+::ng-deep .accordion-button::after {
+  display: none;
+}
+
+// ------------------------------------------------------------------
+// ------------------------------------------------------------------
+
+.divAccordionBody {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 0.5rem;
 }
 
-.divListaBotoesEsquerdaEdireita > li {
-  transition: background-color 1s, width 2s, height 2s, transform 2s;
+.divAccordionBody > li {
+  transition: background-color 0.2s, width 1s, height 1s, transform 1s;
 
   &:hover {
-    background-color: $background-HomePage;
-    transform: scale(1.05);
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }
 
-.btn {
-  width: 12rem;
-}
-
-.styleButtons {
-  border: 1px solid $cor-Texto-e-BordaBotao-NavBarFooter;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
-  background-color: $background-NavBarFooter2;
-  padding: 0.2rem;
-
-  &:hover {
-    background-color: $cor-Hover-Botao-NavBarFooter;
-  }
-
-  &:active {
-    border: 1px solid $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
-    color: $cor-Texto-e-Bordas-active-Botao-NavBarFooter;
-    background-color: $cor-Hover-Botao-NavBarFooter;
-  }
-}
-
-.divLinearParaAboxDeBaixo {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 20rem;
-}
-
-.divBotaoDoIconeComBotaoTexto {
+.divComponenteDoBotao {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  width: 16rem;
-  padding: 1rem;
-
-  box-shadow: 0px 0px 10px $background-NavBarFooter2;
+  width: 15rem;
+  padding: 0.2rem;
 }
 
 .tagConfig {
-  background-color: rgb(255, 244, 217);
-  transition: background-color 1s, width 2s, height 2s, transform 2s;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  padding: 1rem;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  transition: background-color 0.2s, width 1s, height 1s, transform 1s;
 
   &:hover {
-    transform: scale(1.05);
-    background-color: rgb(228, 213, 175);
+    background-color: $CONNECTEVENT-cor-cinza-mid;
   }
 }
 

@@ -1,0 +1,97 @@
+<div class="divBody">
+  <div class="divFeedbacks">
+    <h1>Feedbacks Enviados</h1>
+    <br />
+    <hr />
+    <br />
+    <ng-container *ngIf="feedbacks.length > 0; else semFeedbacks">
+      <div *ngFor="let feedback of feedbacks">
+        <div class="divInfoEbotoes" >
+          <div class="divInformacoesFeedbacks">
+            <ngb-rating class="corNgbRating" [max]="5" [(rate)]="feedback.nota" [readonly]="true" />
+            <p>{{ feedback.evento.titulo }}</p>
+            <p>{{ feedback.usuario.nome }}</p>
+            <p>{{ feedback.comentario }}</p>
+            <p>{{ feedback.data }}</p>
+          </div>
+          <div class="divBotoes">
+            <button
+              type="submit"
+              class="btnEditar"
+              (click)="openAddFeedbackModal(feedback.id)"
+            >
+              Editar
+            </button>
+
+            <button
+              type="submit"
+              class="btnExcluir"
+              (click)="excluirFeedback(feedback.id)"
+            >
+              Excluir
+            </button>
+          </div>
+          
+        </div>
+        <div>
+          <br />
+          <hr />
+          <br />
+        </div>
+      </div>
+      
+    </ng-container>
+    
+
+    <ng-template #semFeedbacks>
+      <h2>Você não fez nenhum feedback.</h2>
+    </ng-template>
+
+    <ng-template #editFeedback let-modal>
+      <div class="ngtemplate">
+        <div class="modal-header">
+          <h5 class="modal-title">Editar feedback</h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss()"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form #form="ngForm" (ngSubmit)="editarFeedback(modal)">
+
+            <div class="form-group">
+              <ngb-rating class="corNgbRating" [max]="5" [(rate)]="nota" required />
+            </div>
+            <br>
+            <div class="form-group">
+              <label style="font-weight: bold;" for="comentario">COMENTÁRIO</label>
+              <br><br>
+              <textarea
+              style="height: 10rem;"
+              type="text"
+              id="nome"
+              class="form-control"
+              [(ngModel)]="comentario"
+              name="comentario"
+              required></textarea>
+              
+            </div>
+
+            <br><br>
+
+            <button
+              type="submit"
+              class="escolhoVoce btn btn-success"
+              [disabled]="!form.valid"
+            >
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+    
+  </div>
+</div>

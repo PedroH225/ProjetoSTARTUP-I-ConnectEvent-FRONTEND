@@ -10,10 +10,15 @@ export class FiltrarEventoService {
 
   constructor(private http: HttpClient) {}
 
-  filtrar(tipo: string, cidade: string, data: string): Observable<any[]> {
+  filtrar(titulo: string, tipo: string, cidade: string, data: string): Observable<any[]> {
+    const token = localStorage.getItem('token');
     let params = new HttpParams();
 
     // Adiciona os parâmetros somente se estiverem preenchidos
+    if (titulo) {
+      params = params.set('titulo', titulo);
+
+    }
     if (tipo) {
       params = params.set('tipo', tipo);
     }
@@ -24,6 +29,36 @@ export class FiltrarEventoService {
       params = params.set('data', data);
     }
 
-    return this.http.get<any[]>(`${this.apiUrl}/evento/filtrar`, { params });
+    return this.http.get<any[]>(`${this.apiUrl}/evento/filtrar`, {
+      params,
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+  }
+
+  // Area do usuário
+  filtrarEventoOcorridos() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/ocorridos`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+  }
+
+  filtrarEventoAnunciados() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/eventoAnunciado`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+
+  }
+
+  filtrarEventoNaoAnunciados() {
+    const token = localStorage.getItem('token');
+
+    return this.http.get<any[]>(`${this.apiUrl}/organizador/eventoNaoAnunciado`, {
+      headers: {'Authorization': `Bearer ${token}` }
+    });
+
   }
 }

@@ -6,35 +6,28 @@
 }
 
 .backgroundPrincipal {
-  background-color: $background-HomePage; // cor background geral, atrás dos cards
-  display: flex;
-  flex-direction: row;
-  min-height: 100vh;
-}
+  // background: linear-gradient(
+  //   225deg,
+  //   $CONNECTEVENT-cor-cinza-dark 0%,
+  //   $CONNECTEVENT-cor-cinza-mid 70%,
+  //   $CONNECTEVENT-cor-cinza-light 100%
+  // );
+  background: url(../../../assets/testesWallpaper/13294929_5155699.jpg); //$CONNECTEVENT-cor-cinza-mid;
+  background-repeat: repeat;
+  background-position: center;
+  background-size: cover;
 
-.divFiltrosNavBar {
-  background-color: $background-NavBarFooter2; // cor dos filtros na navbar
-  padding-top: 1.5rem;
-  border-right: 3px solid $cor-bordas-NavBarFooter;
-  box-shadow: $cor-sombra-NavBarFooter;
-
-  // width: 1rem;
-  transition: width 0.5s ease-in-out; /* Animação suave de largura */
-
-  &.expanded {
-    width: 20rem; /* Largura expandida */
-  }
-
-  &.collapsed {
-    width: 12rem; /* Largura colapsada */
-  }
-}
-
-.divIconeEFiltros {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  // gap: 1rem; NAO COLOCAR GAP, POIS TRAVA A ANIMACAO DE ENCOLHIMENTO
+  overflow: visible; /* Garante que o sticky funcione */
+}
+
+.divFiltro {
+  position: sticky;
+  top: 0; /* Define o ponto em que o elemento se "gruda" ao rolar */
+  z-index: 101; /* Para manter o filtro acima de outros elementos */
+  background-color: white; /* Evita que o conteúdo por trás fique visível */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona um sombreamento sutil */
 }
 
 .tagIcon {
@@ -43,15 +36,22 @@
   height: 3rem;
 }
 
+.divCarousel2 {
+  border: 3px solid blue;
+  width: 15rem;
+  height: auto;
+}
+
 .divCards {
+  // border: 1px solid red;
   margin: 0;
-  padding: 5rem;
+  padding: 2rem 0.5rem;
   width: 100%;
 
   display: flex;
   flex-direction: row;
-  align-items: center;
-  gap: 6rem 3rem;
+  align-items: start;
+  gap: 4rem 2rem;
   justify-content: center;
   flex-wrap: wrap;
 }

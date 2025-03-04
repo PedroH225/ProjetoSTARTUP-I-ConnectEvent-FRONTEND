@@ -5,10 +5,11 @@
   flex-direction: row;
   gap: 10rem;
   flex-wrap: wrap;
-  background-color: $background-NavBarFooter;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
-  border-top: 3px solid $cor-bordas-NavBarFooter;
-  box-shadow: $cor-sombra-NavBarFooter;
+  min-width: 100%;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  color: $detalhe-borda-normal;
+  border-top: 3px solid $detalhe-borda-especial;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
 }
 
 .displayFooter {
@@ -18,14 +19,14 @@
 }
 
 .divCopyright {
-  background-color: $background-NavBarFooter2;
-  color: $cor-Texto-e-BordaBotao-NavBarFooter;
+  background-color: $CONNECTEVENT-cor-cinza-low-dark;
+  color: $detalhe-borda-normal;
   width: 100%;
 }
 
 .divCard {
-  border: 3px solid $cor-bordas-NavBarFooter;
-  box-shadow: $cor-sombra-NavBarFooter;
+  border: 3px solid $detalhe-borda-especial;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 10px;
   width: 20rem;
   height: 12rem;
@@ -64,10 +65,13 @@
   width: 3.5rem;
 }
 
-.nav-item {
-  // border: 1px solid red;
-
+.dropShadow {
+  transition: ease-in-out 0.2s;
   &:hover {
-    filter: drop-shadow(0px 0px 10px $cor-Texto-e-BordaBotao-NavBarFooter);
+    filter: drop-shadow(0px 0px 10px $detalhe-borda-hover-light);
   }
+}
+
+.styleButtonsNavBar {
+  padding: 0.4rem 0.5rem;
 }

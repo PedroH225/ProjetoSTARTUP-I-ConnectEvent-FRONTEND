@@ -12,6 +12,8 @@ import { FiltrarEventoService } from '../../../../services/filtrar-evento.servic
 export class FilterComponent {
   isCollapsed = false; // NAO TIRAR ISSO DAQUI
   tipos: any[] = []; // Variável para armazenar os tipos
+
+  titulo : string = '';
   selectedTipo: string = ''; // Variável para armazenar o tipo de evento selecionado
   selectedCidade : string = "";
   cidades: any[] = []
@@ -55,7 +57,7 @@ export class FilterComponent {
   // Método para filtrar eventos por data
   filtrar(): void {
     this.filtrarServico
-      .filtrar(this.selectedTipo, this.selectedCidade, this.selectedDate)
+      .filtrar(this.titulo, this.selectedTipo, this.selectedCidade, this.selectedDate)
       .subscribe(
         (response) => {
           this.eventosFiltrados.emit(response);

@@ -1,7 +1,12 @@
 @import "padroes";
 
-.divMaior {
-  background-color: $background-HomePage; // #8d8d8d;
+label,
+.tagWhite {
+  color: $CONNECTEVENT-cor-branco;
+}
+
+.divBody {
+  background-color: $CONNECTEVENT-cor-cinza-mid;
 
   display: flex;
   flex-direction: column;
@@ -9,26 +14,11 @@
   justify-content: center;
 }
 
-.tamanhoRegistreSe {
-  color: rgb(102, 102, 102);
-  font-size: 2rem;
-}
-
-.divForm3 {
-  padding: 1.5rem 0 1.5rem 0;
-  margin: 1rem;
-  // box-shadow: $detalhe-Sombra-BordasCard;
-  // width: 30%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .divForm {
   padding: 3rem;
   margin: 1rem;
-  box-shadow: $detalhe-Sombra-BordasCard;
+  background-color: $CONNECTEVENT-cor-cinza-dark;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   width: 30%;
 
   display: flex;
@@ -36,9 +26,31 @@
   align-items: center;
 }
 
+.divCabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
 .tagIconConnectEvent {
   height: 6rem;
   width: 7rem;
+}
+
+.tamanhoRegistreSe {
+  background: linear-gradient(
+    to right,
+    $detalhe-borda-normal,
+    $CONNECTEVENT-cor-limao
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-family: system-ui;
+  font-size: 3rem;
+  padding: 1rem;
 }
 
 .divForm2 {
@@ -64,42 +76,39 @@
 }
 
 .checkboxRememberMe {
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-mid;
   border: none;
   cursor: pointer;
-
-  &:focus {
-    box-shadow: none;
-    border: none;
-  }
-
-  &:checked {
-    box-shadow: $cor-checkedBox;
-  }
+  box-shadow: 0px 0px 7px $CONNECTEVENT-cor-preto;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-low-mid;
   }
 }
 
 .tagParaClick {
-  color: $cor-Texto-Card;
+  color: $CONNECTEVENT-cor-branco;
   &:hover {
-    color: $background-hover-Botao-card;
-    filter: drop-shadow($detalhe-Sombra-BordasCard);
+    color: $CONNECTEVENT-cor-branco;
+    filter: drop-shadow(0px 0px 10px $CONNECTEVENT-cor-branco-light-gelo);
   }
 }
 
 .BotaoEntrar {
-  background-color: $background-Botao-card;
+  background-color: $CONNECTEVENT-cor-cinza-light;
+  color: $CONNECTEVENT-cor-preto;
+  font-weight: bold;
   border: none;
 
   &:hover {
-    background-color: $background-hover-Botao-card;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+    color: $CONNECTEVENT-cor-branco;
   }
 
   &:active {
-    background-color: $background-active-Botao-Card;
+    background-color: $CONNECTEVENT-cor-cinza-dark;
+    color: $CONNECTEVENT-cor-branco;
+    box-shadow: 0px 0px 5px $CONNECTEVENT-cor-branco-light-gelo;
   }
 }
 
@@ -128,7 +137,7 @@
 }
 
 .tagButtons {
-  box-shadow: $detalhe-Sombra-BordasCard;
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-light;
   border-radius: 5px;
   height: 3rem;
   width: 7rem;

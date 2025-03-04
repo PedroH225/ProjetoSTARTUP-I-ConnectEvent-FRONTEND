@@ -1,0 +1,145 @@
+<div class="divBody">
+  <!-- Esquerda -->
+  <div class="divDivisoria">
+    <form #form="ngForm" (ngSubmit)="onSubmit()">
+      <div class="divFiltro">
+        <div class="divComponenteDoFiltro col-md-6">
+          <label class="text-center pb-2" for="">Evento</label>
+          <div ngbDropdown>
+            <ng-container
+              *ngIf="
+                usuarioEventos && usuarioEventos.length > 0;
+                else noEventsMessage
+              "
+            >
+              <select
+                name="selectedEvento"
+                [(ngModel)]="selectedEvento"
+                class="w-100 select form-control-lg"
+                required
+              >
+                <option
+                  *ngFor="let evento of usuarioEventos"
+                  [value]="evento.id"
+                >
+                  {{ evento.titulo }}
+                </option>
+              </select>
+              <ng-container *ngIf="!selectedEvento">
+                <p class="text-center">Selecione o evento</p>
+              </ng-container>
+            </ng-container>
+            <ng-template #noEventsMessage>
+              <p>Você não possui eventos cadastrados.</p>
+            </ng-template>
+          </div>
+        </div>
+        <div class="divComponenteDoFiltro col-md-6">
+          <label class="pb-2" for="">Dados</label>
+
+          <div ngbDropdown>
+            <select
+              name="selectedDados"
+              [(ngModel)]="selectedDados"
+              class="w-100 select form-control-lg"
+              [disabled]="!selectedEvento"
+              required
+            >
+              <option value="genero">Genero</option>
+              <option value="idade">Idade</option>
+              <option value="participantes">Participantes</option>
+            </select>
+            <ng-container *ngIf="selectedEvento && !selectedDados">
+              <p>Selecione os dados</p>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="divBotaoDoFiltro">
+          <button type="submit" class="botao mt-3" [disabled]="!form.valid">
+            Selecionar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- DIV RESPONSÁVEL POR TRAZER AS INFORMACOES GRÁFICAS COM OS SEUS RESPECTIVOS TITULOS -->
+    <div class="informacoesDosDadosFiltrados">
+      <div class="text-center" *ngIf="graficoImg">
+        <img class="tagImg" [src]="graficoImg" alt="Gráfico de Gênero" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Direita -->
+  <div class="divDivisoria">
+    <form #form2="ngForm" (ngSubmit)="onSubmit2()">
+      <div class="divFiltro">
+        <div class="divComponenteDoFiltro col-md-6">
+          <label class="pb-2" for="">Evento</label>
+          <div ngbDropdown>
+            <ng-container
+              *ngIf="
+                usuarioEventos && usuarioEventos.length > 0;
+                else noEventsMessage2
+              "
+            >
+              <select
+                name="selectedEvento"
+                [(ngModel)]="selectedEvento2"
+                class="w-100 select form-control-lg"
+                required
+              >
+                <option
+                  *ngFor="let evento of usuarioEventos"
+                  [value]="evento.id"
+                >
+                  {{ evento.titulo }}
+                </option>
+              </select>
+              <ng-container *ngIf="!selectedEvento2">
+                <p class="text-center">Selecione o evento</p>
+              </ng-container>
+            </ng-container>
+            <ng-template #noEventsMessage2>
+              <p>Você não possui eventos cadastrados.</p>
+            </ng-template>
+          </div>
+        </div>
+        <div class="divComponenteDoFiltro col-md-6">
+          <label class="pb-2" for="">Dados</label>
+
+          <div ngbDropdown>
+            <select
+              name="selectedDados2"
+              [(ngModel)]="selectedDados2"
+              class="w-100 select form-control-lg"
+              [disabled]="!selectedEvento2"
+              required
+            >
+              <option value="genero">Genero</option>
+              <option value="idade">Idade</option>
+              <option value="participantes">Participantes</option>
+            </select>
+            <ng-container *ngIf="selectedEvento2 && !selectedDados2">
+              <p>Selecione os dados</p>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="divBotaoDoFiltro">
+          <button type=" submit" class="botao mt-3" [disabled]="!form2.valid">
+            Selecionar
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- DIV RESPONSÁVEL POR TRAZER AS INFORMACOES GRÁFICAS COM OS SEUS RESPECTIVOS TITULOS -->
+    <div class="informacoesDosDadosFiltrados">
+      <div class="text-center" *ngIf="graficoImg2">
+        <img class="tagImg" [src]="graficoImg2" alt="Gráfico de Gênero" />
+      </div>
+    </div>
+  </div>
+</div>

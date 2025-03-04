@@ -1,0 +1,119 @@
+<div class="divBody">
+  <h1 class="tagTitulo">Eventos Confirmados</h1>
+  <div class="divTabelaPaginacaoQuantidade">
+    <form class="divEnd" (change)="onSubmit()" #form="ngForm">
+      <div class="divFiltro">
+        <select name="selectFiltro" [(ngModel)]="selectedFiltro">
+          <option value="" selected>Todos os eventos</option>
+          <option value="futuros">Eventos futuros</option>
+          <option value="ocorridos">Ocorridos</option>
+        </select>
+      </div>
+    </form>
+    <table class="herancaCoresTabela mb-2 table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Título do Evento</th>
+          <th scope="col">Data do Evento</th>
+          <th scope="col">Horário</th>
+          <th scope="col">Evento</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
+          <td scope="row">{{ evento.id }}</td>
+          <td>{{ evento.titulo }}</td>
+          <td>{{ evento.data }}</td>
+          <td>{{ evento.horario }}</td>
+          <td>
+            <button
+              class="BotaoTabelaCONNECTEVENT"
+              [routerLink]="['/principal/cardPage', evento.id]"
+            >
+              Visualizar
+            </button>
+          </td>
+          <td>
+            <ng-container *ngIf="isEventoInFuture(evento)">
+              <button
+                class="BotaoTabelaCONNECTEVENT"
+                (click)="retirarPresenca(evento.id)"
+              >
+                Retirar
+              </button>
+            </ng-container>
+            <ng-container *ngIf="!isEventoInFuture(evento)">
+              <button
+                class="BotaoTabelaCONNECTEVENT"
+                [disabled]="!semFeedback.includes(evento.id)"
+                (click)="openAddFeedbackModal(evento.id)"
+              >
+                {{
+                  semFeedback.includes(evento.id)
+                    ? "Dar Feedback"
+                    : "Feedback enviado"
+                }}
+              </button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <ng-template #addFeedback let-modal>
+      <div class="ngtemplate">
+        <div class="modal-header">
+          <h5 class="modal-title">Adicionar feedback</h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            (click)="modal.dismiss()"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form
+            #form="ngForm"
+            (ngSubmit)="adicionarFeedback(modal, selectedEventoId)"
+          >
+          <div class="form-group">
+            <ngb-rating class="corNgbRating" [max]="5" [(rate)]="nota" required />
+          </div>
+
+            <div class="form-group">
+              <label for="comentario">Comentário</label>
+              <input
+                type="text"
+                id="nome"
+                class="form-control"
+                [(ngModel)]="comentario"
+                name="comentario"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="escolhoVoce btn btn-success"
+              [disabled]="!form.valid"
+            >
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class=" d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshEventos()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>

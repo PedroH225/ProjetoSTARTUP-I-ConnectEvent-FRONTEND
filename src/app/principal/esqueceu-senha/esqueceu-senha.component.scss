@@ -1,0 +1,56 @@
+@import "padroes";
+
+.divPai {
+  min-height: 30rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divBotaoDoIconeComBotaoTexto {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 35rem;
+  padding: 1rem;
+
+  box-shadow: 0px 0px 10px $CONNECTEVENT-cor-cinza-low-dark;
+}
+
+.divCentralizar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tagIcon {
+  margin: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+}
+
+.styleButtons {
+  border: 1px solid $detalhe-borda-normal;
+  color: $detalhe-borda-normal;
+  background-color: $CONNECTEVENT-cor-cinza-low-dark;
+  padding: 0.2rem;
+
+  &:hover {
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+  }
+
+  &:active {
+    border: 1px solid $CONNECTEVENT-cor-cinza-light;
+    color: $CONNECTEVENT-cor-cinza-light;
+    background-color: $CONNECTEVENT-cor-cinza-mid;
+  }
+}
+
+.btn {
+  width: 12rem;
+}

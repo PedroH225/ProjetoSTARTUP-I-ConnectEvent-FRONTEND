@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'; // Importar para acessar os parâmetros da URL
 import { EventosService } from '../../../services/eventos.service'; // Importa o serviço
+import { AutenticacaoService } from '../../../services/autenticacao.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   selector: 'app-card-page',
@@ -8,19 +10,64 @@ import { EventosService } from '../../../services/eventos.service'; // Importa o
   styleUrls: ['./card-page.component.scss'],
 })
 export class CardPageComponent implements OnInit {
+  public autenticacao$ = this.autenticacaoService.autenticacao$;
+  desabilitarBotao: boolean = false;
+  habilitarBotao: boolean = true;
   evento: any;
   tipo!: string;
+  imagemEventoUrl : string[] = [];
 
   constructor(
     private route: ActivatedRoute, // Necessário para capturar o parâmetro da URL
-    private eventosService: EventosService // Serviço para buscar o evento
+    private autenticacaoService: AutenticacaoService,
+    private eventosService: EventosService,
+    private usuarioService: UsuarioService // Serviço para buscar o evento
   ) {}
 
   ngOnInit(): void {
-    // Captura o ID da rota e carrega o evento correto
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.getEventoById(+id); // Converte o ID para number e busca o evento
+      this.getEventoById(+id);
+      this.autenticacao$.subscribe((autenticado) => {
+        if (autenticado) {
+          // O usuário está autenticado, verifica a presença
+          this.eventosService
+            .verificarPresenca(parseInt(id))
+            .subscribe((resposta: { estaParticipando: boolean }) => {
+              this.desabilitarBotao = resposta.estaParticipando; // Atribui o valor retornado à variável
+            });
+        }
+      });
+    }
+  }
+
+  participar() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.usuarioService.participar(parseInt(id)).subscribe(
+        (response) => {
+          this.desabilitarBotao = true;
+          alert(response.message);
+        },
+        (error) => {
+          alert(error);
+        }
+      );
+    }
+  }
+
+  removerParticipar() {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.usuarioService.removerParticipar(parseInt(id)).subscribe(
+        (response) => {
+          this.desabilitarBotao = false;
+          alert(response.message);
+        },
+        (error) => {
+          alert(error);
+        }
+      );
     }
   }
 
@@ -29,13 +76,16 @@ export class CardPageComponent implements OnInit {
       (response) => {
         this.evento = response; // Armazena os dados do evento
         this.tipo = response.tipo;
-      },
+        response.fotos.forEach((foto : any) => {
+          this.imagemEventoUrl.push(`http://localhost:3000/uploads/${foto.foto}`)
+          
+        });
+        
+    },
       (error) => {
         console.error('Erro ao buscar evento:', error);
       }
     );
-
-    console.log(this.tipo);
 
     let cor;
 

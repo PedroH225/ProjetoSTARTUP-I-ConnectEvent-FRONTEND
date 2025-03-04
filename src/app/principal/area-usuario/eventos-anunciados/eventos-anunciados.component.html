@@ -1,0 +1,93 @@
+<div class="divBody">
+  <h1 class="tagTitulo">Eventos Anunciados</h1>
+  <div class="divTabelaPaginacaoQuantidade">
+    <form class="divEnd" (change)="onSubmit()" #form="ngForm">
+      <div class="divFiltro">
+        <select
+          class="tagSelectFiltro"
+          name="selectFiltro"
+          [(ngModel)]="selectedFiltro"
+        >
+          <option value="" selected>Todos os eventos</option>
+          <option value="Nanunciado">Não Anunciados</option>
+          <option value="correntes">Correntes</option>
+          <option value="ocorridos">Ocorridos</option>
+        </select>
+      </div>
+    </form>
+    <table class="herancaCoresTabela mb-2 table table-striped">
+      <thead>
+        <tr class="tagCabecalhoTabela">
+          <th scope="col">ID</th>
+          <th scope="col">Título do Evento</th>
+          <th scope="col">Data do Evento</th>
+          <th scope="col">Horário</th>
+          <th scope="col"></th>
+          <th scope="col">Ações</th>
+          <th scope="col"></th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let evento of paginatedEventos; trackBy: trackByEventoId">
+          <td scope="row">{{ evento.id }}</td>
+          <td>{{ evento.titulo }}</td>
+          <td>{{ evento.data }}</td>
+          <td>{{ evento.horario }}</td>
+          <td>
+            <button
+              class="BotaoTabelaCONNECTEVENT"
+              [routerLink]="['/principal/cardPage', evento.id]"
+            >
+              Visualizar
+            </button>
+          </td>
+          <td>
+            <button
+              class="BotaoTabelaCONNECTEVENT"
+              [routerLink]="['/principal/areaUsuario/editarEvento', evento.id]"
+            >
+              Editar
+            </button>
+          </td>
+          <td>
+            <button
+              class="BotaoTabelaCONNECTEVENT"
+              (click)="excluirEvento(evento.id)"
+            >
+              Excluir
+            </button>
+          </td>
+          <td>
+            <ng-container
+              *ngIf="
+                !(evento.isAnunciado && isEventoInFuture(evento));
+                else anunciado
+              "
+            >
+              <ng-container *ngIf="isEventoInFuture(evento); else passado">
+                <button
+                  class="BotaoTabelaCONNECTEVENT"
+                  (click)="anunciarEvento(evento.id)"
+                >
+                  Anunciar
+                </button>
+              </ng-container>
+            </ng-container>
+            <ng-template #anunciado>Anunciado</ng-template>
+            <ng-template #passado>Passado</ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="divPaginacao">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshEventos()"
+      >
+      </ngb-pagination>
+    </div>
+  </div>
+</div>
