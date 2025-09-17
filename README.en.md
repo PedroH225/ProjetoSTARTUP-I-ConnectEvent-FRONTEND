@@ -7,14 +7,14 @@ ConnectEvent is a digital platform designed to connect people (consumers) with e
 To run the project, you need:
   - NodeJS installed;
   - Angular CLI installed globally;
-  - [Run the Project Backend](https://github.com/VictorAlexandreMuller/Projeto_STARTUP-I-ConnectEvent-BACKEND)
+  - [Run the Project Backend](https://github.com/PedroH225/Projeto_STARTUP-I-ConnectEvent-BACKEND.git)
 
 ## Running the Project
 1. **Clone the repository**:
   - Open GitBash in your desired directory and run:
   ```bash
    git init
-   git clone git@github.com:VictorAlexandreMuller/Projeto_STARTUP-I-ConnectEvent-FRONTEND.git
+   git clone git@github.com:PedroH225/ProjetoSTARTUP-I-ConnectEvent-FRONTEND.git
   ```
 
 2. **Install dependencies:**:
