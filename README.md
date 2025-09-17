@@ -9,14 +9,14 @@ A ConnectEvent é uma plataforma digital que possui a finalidade de conectar as 
 Para executar o projeto, é necessário:
 - Instalação do NodeJS;
 - Instalação do Angular CLI globalmente;
-- [Executar o Backend do Projeto](https://github.com/VictorAlexandreMuller/Projeto_STARTUP-I-ConnectEvent-BACKEND)
+- [Executar o Backend do Projeto](https://github.com/PedroH225/Projeto_STARTUP-I-ConnectEvent-BACKEND.git)
 
 ## Execução
 1. **Clone o repositório**:
   - Abra o terminal do GitBash no diretório desejado e digite os comandos:
    ```bash
    git init
-   git clone git@github.com:VictorAlexandreMuller/Projeto_STARTUP-I-ConnectEvent-FRONTEND.git
+   git@github.com:PedroH225/ProjetoSTARTUP-I-ConnectEvent-FRONTEND.git
   ```
 
 2. **Instale as dependências**:
